@@ -1,5 +1,4 @@
 // src/app/blog/[slug]/[lang]/page.tsx
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/constants/blogData';
@@ -9,26 +8,20 @@ import {
   ShareIcon,
 } from '@heroicons/react/24/solid';
 import parse from 'html-react-parser';
-
+import { Metadata } from 'next';
 /* -------------------------------------------------------------------------- */
 /* Types                                                                      */
 /* -------------------------------------------------------------------------- */
 type Lang = 'en' | 'sq';
 
-interface Params {
-  slug: string;
-  lang: Lang;
-}
-
 /* -------------------------------------------------------------------------- */
 /* SEO metadata (single source of truth)                                      */
 /* -------------------------------------------------------------------------- */
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const { slug, lang } = params;
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }>}
+): Promise<Metadata> {
+  const { slug } = await params;
+  const lang = 'sq'
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return {};
 
@@ -116,8 +109,13 @@ export const generateStaticParams = () =>
 /* -------------------------------------------------------------------------- */
 /* Page Component (Server)                                                    */
 /* -------------------------------------------------------------------------- */
-export default function LocalizedPost({ params }: { params: Params }) {
-  const { slug, lang } = params;
+
+// Page Component (Server)
+export default async function Localized(
+{ params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+  const lang = 'sq'
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return notFound();
 

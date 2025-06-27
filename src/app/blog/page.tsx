@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { blogPosts, Lang } from "@/constants/blogData";
 import Image from "next/image";
 
@@ -20,7 +20,16 @@ import Image from "next/image";
  * 4. Added `break-inside-avoid` on cards to prevent column breaks.
  * ------------------------------------------------------------------
  */
+
 export default function BlogListPage() {
+  return (
+    <Suspense fallback={<div>Loading …</div>}>
+      <BlogListContent />
+    </Suspense>
+  );
+}
+
+function BlogListContent() {
   const router = useRouter();
   const params = useSearchParams();
   const initial = (params.get("lang") as Lang) || "sq";

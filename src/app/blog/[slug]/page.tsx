@@ -1,21 +1,20 @@
 // src/app/blog/[slug]/page.tsx
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export default async function SlugPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  // 1. await the headers() promise
-  const hdrs = await headers()
-  // 2. safely grab the Accept-Language (might be undefined)
-  const acceptLang = hdrs.get('accept-language') ?? ''
+type RouteParams = { slug: string };
 
-  // 3. derive primary subtag (e.g. "sq" from "sq-AL,en;q=0.9")
-  const primary = acceptLang.split(',')[0].split('-')[0].toLowerCase()
-  const lang = primary === 'sq' ? 'sq' : 'en'
+export default async function SlugPage(
+  { params }: { params: Promise<RouteParams> }   // 👈 promise
+) {
+  // 1. Resolve both promises up-front
+  const [{ slug }, hdrs] = await Promise.all([params, headers()]);
 
-  // 4. redirect to the localized URL
-  redirect(`/blog/${params.slug}/${lang}`)
+  // 2. Pick the preferred language
+  const acceptLang = hdrs.get('accept-language') ?? '';
+  const primary    = acceptLang.split(',')[0].split('-')[0].toLowerCase();
+  const lang       = primary === 'sq' ? 'sq' : 'en';
+
+  // 3. Redirect to the localized URL
+  redirect(`/blog/${slug}/${lang}`);
 }
