@@ -176,6 +176,7 @@ export default async function Localized(
             src={post.imageUrl}
             alt={title}
             className="h-full w-full object-cover object-center"
+            loading='lazy'
           />
         </div>
 
@@ -205,6 +206,7 @@ export default async function Localized(
                     src={s.imageUrl}
                     alt={s.titles[lang]}
                     className="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading='lazy'
                   />
                   <div className="absolute inset-0 bg-black/10 backdrop-blur-xs transition-opacity duration-300 group-hover:bg-black/20" />
                   <div className="absolute inset-x-4 bottom-4 flex items-center justify-between text-white">

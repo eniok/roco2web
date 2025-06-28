@@ -23,7 +23,7 @@ const Products = () => {
                 <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                     {productsData.map((product, index) => (
                          <div key={index} className="relative group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
-                            <img src={product.imgSrc} alt={product.alt} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"/>
+                            <img src={product.imgSrc} loading='lazy' alt={product.alt} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"/>
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                                 <p className="text-gray-600 mb-4">{product.price}</p>

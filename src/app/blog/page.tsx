@@ -101,6 +101,8 @@ function BlogListContent() {
                   height={960}
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="w-full h-auto object-cover"
+                  loading='lazy'
+
                   // placeholder="blur"
                   // blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzAnIGhlaWdodD0nNDUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGZpbHRlciBpZD0nYic+PGZlVHVyYnVsZW5jZSB0eXBlPSJ0dXJidWxlbmNlIiBiYXNlRnJlcXVlbmN5PScuNScgbnVtT2N0YXZlcz0nMycgbnVtSXRlcmF0aW9ucz0nMycvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNiKScgY2xpcC1wYXRoPSJ1cmwoI2EpIiBmaWxsPSIjZ2ZnZmZnIi8+PC9zdmc+"
                 />

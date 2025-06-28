@@ -58,6 +58,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
               src={navScrolled ? '/logo-2.png' : "/logo.svg"}
               alt="Logo"
               className="h-8 w-auto mr-2"
+              loading='lazy'
             />
             <span className={`text-red-600 font-thin text-md ${navScrolled ? "text-xl": 'text-2xl'}`}>SH.P.K</span>
           </h1>
