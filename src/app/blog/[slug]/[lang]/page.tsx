@@ -189,7 +189,7 @@ export default async function Localized(
           <section className="mx-auto mt-16 max-w-5xl">
             <h2 className="mb-8 text-center text-2xl font-bold tracking-tight">
               {lang === 'sq'
-                ? 'Artikuj që mund të ju pëlqejnë'
+                ? 'Artikuj të tjerë'
                 : 'You might also like'}
             </h2>
 
