@@ -38,7 +38,7 @@ const About = () => {
               <img
                 src={item.img}
                 alt={item.title}
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end">
                 <item.icon className="w-12 h-12 text-red-400 mb-4" />

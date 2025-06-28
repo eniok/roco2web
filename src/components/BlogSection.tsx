@@ -1,17 +1,58 @@
-// src/components/BlogSection.tsx
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { blogPosts, Lang } from '@/constants/blogData'
+import { motion } from 'framer-motion'
+import { getStorage, ref, getDownloadURL } from 'firebase/storage'
+
+import { BlogPost, Lang } from '@/constants/blogData'
+import { getAllBlogPosts } from '@/lib/firebase/firestore'
 
 interface BlogSectionProps {
   lang: Lang
 }
 
-const BlogSection = ({ lang }: BlogSectionProps) => {
-  // Show the 2 most recent posts
-  const recentPosts = blogPosts.slice(0, 2)
+const storage = getStorage() // uses the same Firebase app you initialised
+
+export default function BlogSection({ lang }: BlogSectionProps) {
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    /** Get the two newest posts and make sure each has a public imageUrl */
+    const load = async () => {
+      try {
+        const allPosts = await getAllBlogPosts()
+
+        // newest → oldest for this language
+        const sorted = [...allPosts].sort(
+          (a, b) =>
+            new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
+        )
+
+        // Resolve Storage URLs in parallel
+        const withUrls = await Promise.all(
+          sorted.slice(0, 2).map(async post => {
+            // If imageUrl is already a https link, keep it; otherwise fetch from Storage
+            if (/^https?:\/\//i.test(post.imageUrl)) return post
+
+            // Fallback key names - use whichever you saved in Firestore
+            const path = post.imagePath || post.imageUrl
+            const url  = await getDownloadURL(ref(storage, path))
+            return { ...post, imageUrl: url }
+          }),
+        )
+
+        setRecentPosts(withUrls)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    load()
+  }, [lang])
+
+  if (loading || recentPosts.length === 0) return null
 
   return (
     <motion.section
@@ -22,10 +63,9 @@ const BlogSection = ({ lang }: BlogSectionProps) => {
       viewport={{ once: true, margin: '-100px' }}
     >
       <div className="container mx-auto px-6">
+        {/* Heading */}
         <h2 className="text-4xl font-bold text-center mb-6">
-          {lang === 'en'
-            ? 'From Our '
-            : 'Nga '}
+          {lang === 'en' ? 'From Our ' : 'Nga '}
           <span className="text-red-600">
             {lang === 'en' ? 'Blog' : 'Blogu'}
           </span>
@@ -36,34 +76,31 @@ const BlogSection = ({ lang }: BlogSectionProps) => {
             : 'Njohuri mbi dizajnin, materialet dhe krijimin e hapësirave të bukura.'}
         </p>
 
+        {/* Two most-recent posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {recentPosts.map((post) => {
-            const title   = post.titles[lang]
-            const author  = post.authors[lang]
-            const date    = post.dates[lang]
-            const excerpt = post.excerpts[lang]
-
+          {recentPosts.map(post => {
+            const { titles, authors, dates, excerpts, imageUrl, slug } = post
             return (
               <Link
-                href={`/blog/${post.slug}/${lang}`}
-                key={post.slug}
-                className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-lg"
+                href={`/blog/${slug}/${lang}`}
+                key={slug}
+                className="group block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
               >
-                <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <div className="overflow-hidden rounded-lg shadow-lg transition-shadow hover:shadow-2xl">
                   <img
-                    src={post.imageUrl}
-                    alt={title}
-                    loading='lazy'
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    src={imageUrl}
+                    alt={titles[lang]}
+                    loading="lazy"
+                    className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="p-6 flex flex-col h-full">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-red-600 transition-colors">
-                      {title}
+                    <h3 className="text-2xl font-bold mb-2 transition-colors group-hover:text-red-600">
+                      {titles[lang]}
                     </h3>
                     <p className="text-gray-500 text-sm mb-4">
-                      {date} &nbsp;•&nbsp; {author}
+                      {dates[lang]} &nbsp;•&nbsp; {authors[lang]}
                     </p>
-                    <p className="text-gray-700 flex-grow">{excerpt}</p>
+                    <p className="text-gray-700 flex-grow">{excerpts[lang]}</p>
                   </div>
                 </div>
               </Link>
@@ -71,10 +108,11 @@ const BlogSection = ({ lang }: BlogSectionProps) => {
           })}
         </div>
 
+        {/* View-all button */}
         <div className="text-center">
           <Link
-            href={`/blog/${lang}`}
-            className="inline-flex items-center bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full text-lg font-medium text-white transition-all shadow-lg hover:shadow-xl"
+            href={`/blog?lang=${lang}`}
+            className="inline-flex items-center rounded-full bg-red-600 px-8 py-3 text-lg font-medium text-white shadow-lg transition hover:bg-red-700 hover:shadow-xl"
           >
             {lang === 'en' ? 'View All Posts' : 'Shiko të Gjitha Postimet'}
           </Link>
@@ -83,5 +121,3 @@ const BlogSection = ({ lang }: BlogSectionProps) => {
     </motion.section>
   )
 }
-
-export default BlogSection

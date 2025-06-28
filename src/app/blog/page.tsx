@@ -1,61 +1,82 @@
-"use client";
+"use client"
 
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
-import { blogPosts, Lang } from "@/constants/blogData";
-
-/**
- * Blog list page optimised for portrait‑oriented cover images.
- * ------------------------------------------------------------------
- * Key layout tweaks:
- * 1. Replaced fixed‑height grid cells with a CSS masonry column layout
- *    (Tailwind `columns-*`) so cards flow naturally regardless of image
- *    height.
- * 2. Removed the forced `h-56` wrapper and let the image dictate its own
- *    height while preserving width; vertical images are now fully visible.
- * 3. Switched to `next/image` for automatic optimisation & responsive
- *    sizing.
- * 4. Added `break-inside-avoid` on cards to prevent column breaks.
- * ------------------------------------------------------------------
- */
+import { Suspense, useEffect, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
+import Link from "next/link"
+import Image from "next/image"
+import { collection, getDocs } from "firebase/firestore/lite"
+import { BlogPost, Lang } from "@/constants/blogData"
+import { db } from "@/lib/firebase/firestore"
 
 export default function BlogListPage() {
   return (
-    <Suspense fallback={<div>Loading …</div>}>
+    <Suspense fallback={<div className="pt-32 text-center">Loading …</div>}>
       <BlogListContent />
     </Suspense>
-  );
+  )
 }
 
 function BlogListContent() {
-  const router = useRouter();
-  const params = useSearchParams();
-  const initial = (params.get("lang") as Lang) || "sq";
-  const [lang, setLang] = useState<Lang>(initial);
+  const router       = useRouter()
+  const params       = useSearchParams()
+  const initialLang  = (params.get("lang") as Lang) || "sq"
 
-  // Sort posts by date descending (most recent first)
-  const sortedPosts = [...blogPosts].sort((a, b) => {
-    const dateA = new Date(a.dates[lang]).getTime();
-    const dateB = new Date(b.dates[lang]).getTime();
-    return dateB - dateA;
-  });
+  const [lang,       setLang]       = useState<Lang>(initialLang)
+  const [blogPosts,  setBlogPosts]  = useState<BlogPost[]>([])
+  const [loading,    setLoading]    = useState(true)
 
-  // On first mount, if no `?lang=` param, detect and patch the URL
+  // ─────────────────────────────────────────────
+  // Fetch posts once, on mount
+  // ─────────────────────────────────────────────
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const snap  = await getDocs(collection(db, "blogPosts"))
+        const posts = snap.docs.map(doc => ({
+          slug: doc.id,
+          ...(doc.data() as Omit<BlogPost, "slug">),
+        }))
+        setBlogPosts(posts)
+      } catch (err) {
+        console.error("Could not fetch blog posts:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPosts()
+  }, [])
+
+  // If the URL lacks ?lang=, patch it with detected language once
   useEffect(() => {
     if (!params.get("lang")) {
-      const browser = navigator.language.split("-")[0];
-      const detected = browser === "en" ? "en" : "sq";
-      setLang(detected);
-      router.replace(`/blog?lang=${detected}`, { scroll: false });
+      const browser   = navigator.language.split("-")[0]
+      const detected  = browser === "en" ? "en" : "sq"
+      setLang(detected)
+      router.replace(`/blog?lang=${detected}`, { scroll: false })
     }
-  }, [params, router]);
+  }, [params, router])
 
   const switchLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const nl = e.target.value as Lang;
-    setLang(nl);
-    router.push(`/blog?lang=${nl}`);
-  };
+    const nl = e.target.value as Lang
+    setLang(nl)
+    router.push(`/blog?lang=${nl}`)
+  }
+
+  // Sort after we have data
+  const sortedPosts = [...blogPosts].sort((a, b) => {
+    const dateA = new Date(a.dates[lang]).getTime()
+    const dateB = new Date(b.dates[lang]).getTime()
+    return dateB - dateA
+  })
+
+  if (loading) return <div className="pt-32 text-center">Loading …</div>
+  if (blogPosts.length === 0) {
+    return (
+      <div className="pt-32 text-center text-gray-500">
+        {lang === "en" ? "No blog posts found." : "Asnjë postim i gjetur."}
+      </div>
+    )
+  }
 
   return (
     <div className="bg-gray-50 pt-32 pb-20">
@@ -79,32 +100,29 @@ function BlogListContent() {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {lang === "en"
-          ? "Browse our blog for inspiring insights on interior design, expert craftsmanship, and sustainable living."
-          : "Shfletoni blogun tonë për ide frymëzuese mbi dizajnin e brendshëm, mjeshtërinë artizanale dhe jetesën e qëndrueshme."}
+              ? "Browse our blog for inspiring insights on interior design, expert craftsmanship, and sustainable living."
+              : "Shfletoni blogun tonë për ide frymëzuese mbi dizajnin e brendshëm, mjeshtërinë artizanale dhe jetesën e qëndrueshme."}
           </p>
         </header>
 
         {/* Masonry column layout */}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-8">
-          {sortedPosts.map((post) => (
+          {sortedPosts.map(post => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}/${lang}`}
               className="group block mb-8 break-inside-avoid transform transition-transform hover:-translate-y-1"
             >
               <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden">
-                {/* Responsive portrait‑friendly image */}
-                <img
+                {/* Optimised portrait-friendly image */}
+                <Image
                   src={post.imageUrl}
                   alt={post.titles[lang]}
                   width={640}
                   height={960}
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="w-full h-auto object-cover"
-                  loading='lazy'
-
-                  // placeholder="blur"
-                  // blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzAnIGhlaWdodD0nNDUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGZpbHRlciBpZD0nYic+PGZlVHVyYnVsZW5jZSB0eXBlPSJ0dXJidWxlbmNlIiBiYXNlRnJlcXVlbmN5PScuNScgbnVtT2N0YXZlcz0nMycgbnVtSXRlcmF0aW9ucz0nMycvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNiKScgY2xpcC1wYXRoPSJ1cmwoI2EpIiBmaWxsPSIjZ2ZnZmZnIi8+PC9zdmc+"
+                  loading="lazy"
                 />
 
                 <div className="p-6 flex flex-col">
@@ -127,5 +145,5 @@ function BlogListContent() {
         </div>
       </div>
     </div>
-  );
+  )
 }
