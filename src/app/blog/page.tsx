@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
-import Image from "next/image"
 import { collection, getDocs } from "firebase/firestore/lite"
 import { BlogPost, Lang } from "@/constants/blogData"
 import { db } from "@/lib/firebase/firestore"
@@ -115,7 +114,7 @@ function BlogListContent() {
             >
               <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden">
                 {/* Optimised portrait-friendly image */}
-                <Image
+                <img
                   src={post.imageUrl}
                   alt={post.titles[lang]}
                   width={640}
