@@ -176,7 +176,6 @@ export default async function Localized(
             src={post.imageUrl}
             alt={title}
             className="h-full w-full object-cover object-center"
-            loading="lazy"
           />
         </div>
 

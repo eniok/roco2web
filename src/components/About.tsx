@@ -2,7 +2,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { aboutCards } from '../constants';
 
 const About = () => {
@@ -35,10 +34,10 @@ const About = () => {
               whileHover="hover"
               variants={{ hover: { y: -1 } }}
             >
-              <Image
+              
+              <img
                 src={item.img}
                 alt={item.title}
-                fill
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end">

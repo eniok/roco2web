@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { blogPosts, Lang } from "@/constants/blogData";
-import Image from "next/image";
 
 /**
  * Blog list page optimised for portrait‑oriented cover images.
@@ -95,16 +94,15 @@ function BlogListContent() {
             >
               <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden">
                 {/* Responsive portrait‑friendly image */}
-                <Image
+                <img
                   src={post.imageUrl}
                   alt={post.titles[lang]}
                   width={640}
                   height={960}
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="w-full h-auto object-cover"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzAnIGhlaWdodD0nNDUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGZpbHRlciBpZD0nYic+PGZlVHVyYnVsZW5jZSB0eXBlPSJ0dXJidWxlbmNlIiBiYXNlRnJlcXVlbmN5PScuNScgbnVtT2N0YXZlcz0nMycgbnVtSXRlcmF0aW9ucz0nMycvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNiKScgY2xpcC1wYXRoPSJ1cmwoI2EpIiBmaWxsPSIjZ2ZnZmZnIi8+PC9zdmc+"
+                  // placeholder="blur"
+                  // blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzAnIGhlaWdodD0nNDUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PGZpbHRlciBpZD0nYic+PGZlVHVyYnVsZW5jZSB0eXBlPSJ0dXJidWxlbmNlIiBiYXNlRnJlcXVlbmN5PScuNScgbnVtT2N0YXZlcz0nMycgbnVtSXRlcmF0aW9ucz0nMycvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNiKScgY2xpcC1wYXRoPSJ1cmwoI2EpIiBmaWxsPSIjZ2ZnZmZnIi8+PC9zdmc+"
                 />
 
                 <div className="p-6 flex flex-col">

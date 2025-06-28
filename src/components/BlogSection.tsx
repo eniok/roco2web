@@ -54,7 +54,6 @@ const BlogSection = ({ lang }: BlogSectionProps) => {
                     src={post.imageUrl}
                     alt={title}
                     className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
                   />
                   <div className="p-6 flex flex-col h-full">
                     <h3 className="text-2xl font-bold mb-2 group-hover:text-red-600 transition-colors">

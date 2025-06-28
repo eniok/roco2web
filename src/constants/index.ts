@@ -5,7 +5,6 @@ import { BuildingOffice2Icon, BuildingStorefrontIcon, CheckBadgeIcon, HomeModern
 import qualityMaterialsImg from "../../public/images/3a10262a-0ec1-40ed-b335-027a0ad6d843.png";
 import modernDesignImg from "../../public/images/living.png";
 import craftedToLastImg from "../../public/images/precision.png";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export const navLinks = [
   { label: "Home", href: "/" }, // Changed from #hero
@@ -17,7 +16,7 @@ export const navLinks = [
 ];
 
 export interface AboutCard {
-  img: StaticImport;
+  img: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   text: string;
@@ -25,19 +24,19 @@ export interface AboutCard {
 
 export const aboutCards: AboutCard[] = [
   {
-    img: qualityMaterialsImg,
+    img: qualityMaterialsImg.src,
     icon: CheckBadgeIcon,
     title: 'Premium Materials',
     text: 'Ethically sourced hardwoods, FSC‑certified plywood and low‑VOC finishes that honour both craft and planet.',
   },
   {
-    img: modernDesignImg,
+    img: modernDesignImg.src,
     icon: SparklesIcon,
     title: 'Innovative Design',
     text: 'Space‑smart interiors and statement pieces, engineered in CAD and refined in the workshop for form‑meets‑function elegance.',
   },
   {
-    img: craftedToLastImg,
+    img: craftedToLastImg.src,
     icon: WrenchScrewdriverIcon,
     title: 'Precision Crafting',
     text: 'CNC‑cut to 0.1 mm, hand‑assembled under a 30‑point QA checklist.',
