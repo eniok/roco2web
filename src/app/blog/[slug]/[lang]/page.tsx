@@ -17,8 +17,10 @@ import {
 } from '@heroicons/react/24/solid';
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore/lite';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { BlogPost, Lang } from '@/constants/blogData';
 import { db } from '@/lib/firebase/firestore';
+
 /* -------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------- */
 
@@ -45,6 +47,34 @@ async function getAllPosts(): Promise<BlogPost[]> {
   return snap.docs.map(d => normalizeSlug(d.data() as Partial<BlogPost>, d.id));
 }
 
+// Utility function to get public image URL for Open Graph
+async function getPublicImageUrl(imageUrl: string): Promise<string> {
+  const baseUrl = 'https://roalmobileri.com';
+  
+  // If it's already a full URL, return it
+  if (imageUrl.startsWith('http')) {
+    return imageUrl;
+  }
+  
+  // If it's a Firebase Storage path, try to get the download URL
+  if (imageUrl.includes('firebase') || imageUrl.includes('googleapis')) {
+    try {
+      const storage = getStorage();
+      const url = await getDownloadURL(ref(storage, imageUrl));
+      return url;
+    } catch (error) {
+      console.warn('Failed to get Firebase Storage URL:', error);
+    }
+  }
+  
+  // If it's a relative path, make it absolute
+  if (imageUrl.startsWith('/')) {
+    return `${baseUrl}${imageUrl}`;
+  }
+  
+  // Default fallback
+  return `${baseUrl}/images/${imageUrl}`;
+}
 
 function sortByDateDesc(posts: BlogPost[], lang: Lang) {
   return [...posts].sort(
@@ -87,10 +117,14 @@ export async function generateMetadata({
   if (!post) return {};
 
   const seo     = post.seo;
-  const baseUrl = new URL('https://roalmobileri.com');
+  const baseUrl = new URL('https://roal.design');
 
   const canonicalPath = `/blog/${slug}/${lang}`;
   const canonicalUrl  = seo?.canonicalUrl || `${baseUrl.origin}${canonicalPath}`;
+
+  // Get the appropriate image URL for Open Graph
+  const imageUrl = seo?.ogImage || post.imageUrl;
+  const publicImageUrl = await getPublicImageUrl(imageUrl);
 
   return {
     metadataBase: baseUrl,
@@ -109,14 +143,27 @@ export async function generateMetadata({
       description: seo?.ogDescription || post.excerpts[lang],
       url:         seo?.ogUrl         || canonicalUrl,
       type:        seo?.ogType        || 'article',
-      images:     [seo?.ogImage       || post.imageUrl],
+      images: [
+        {
+          url: publicImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.titles[lang],
+        }
+      ],
       locale:      lang === 'sq' ? 'sq_AL' : 'en_US',
+      siteName: 'RO-AL Mobileri',
     },
     twitter: {
       card:  'summary_large_image',
       title: seo?.ogTitle       || post.titles[lang],
       description: seo?.ogDescription || post.excerpts[lang],
-      images: [seo?.ogImage     || post.imageUrl],
+      images: [
+        {
+          url: publicImageUrl,
+          alt: post.titles[lang],
+        }
+      ],
     },
     robots: { index: true, follow: true },
   };
@@ -154,7 +201,7 @@ export default async function BlogPage({
     .replace(/\[oaicite:\d+][^]*?}/g, '')
     .replace(/className\s*=\s*"/g, 'class="');
 
-  const shareUrl = `https://roalmobileri.com/blog/${slug}/${lang}`;
+  const shareUrl = `https://roal.design/blog/${slug}/${lang}`;
 
   /* ------------------------ PAGE MARK-UP (server) ------------------------ */
   return (

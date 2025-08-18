@@ -55,9 +55,10 @@ export const metadata: Metadata = {
       'Premium bespoke furniture crafted in Albania—discover our latest designs.',
     url: 'https://roalmobileri.com/',
     type: 'website',
+    siteName: 'RO-AL Mobileri',
     images: [
       {
-        url: '/cover.jpg', // 1200×630 px, ≤ 200 KB
+        url: 'https://roalmobileri.com/cover.jpg', // 1200×630 px, ≤ 200 KB
         width: 1200,
         height: 630,
         alt: 'Hero image of RO-AL Mobileri showroom',
