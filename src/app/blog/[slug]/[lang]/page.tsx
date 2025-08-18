@@ -10,6 +10,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import parse from 'html-react-parser';
+import Script from 'next/script';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -49,7 +50,7 @@ async function getAllPosts(): Promise<BlogPost[]> {
 
 // Utility function to get public image URL for Open Graph
 async function getPublicImageUrl(imageUrl: string): Promise<string> {
-  const baseUrl = 'https://roalmobileri.com';
+  const baseUrl = 'https://roal.design';
   
   // If it's already a full URL, return it
   if (imageUrl.startsWith('http')) {
@@ -74,6 +75,68 @@ async function getPublicImageUrl(imageUrl: string): Promise<string> {
   
   // Default fallback
   return `${baseUrl}/images/${imageUrl}`;
+}
+
+// Generate structured data for the blog post
+function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: string) {
+  const baseUrl = 'https://roal.design';
+  const postUrl = `${baseUrl}/blog/${post.slug}/${lang}`;
+  
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.titles[lang],
+    description: post.excerpts[lang],
+    image: publicImageUrl,
+    author: {
+      '@type': 'Person',
+      name: post.authors[lang],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'RO-AL Design',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/logo.png`,
+      },
+    },
+    datePublished: post.dates[lang],
+    dateModified: post.dates[lang], // You might want to add a modified date field
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    url: postUrl,
+    inLanguage: lang === 'sq' ? 'sq' : 'en',
+    isAccessibleForFree: true,
+    articleSection: 'Furniture Design',
+    keywords: post.seo?.keywords || 'furniture design, interior design, custom furniture',
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: lang === 'sq' ? 'Kryesore' : 'Home',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: `${baseUrl}/blog`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: post.titles[lang],
+          item: postUrl,
+        },
+      ],
+    },
+  };
+
+  return structuredData;
 }
 
 function sortByDateDesc(posts: BlogPost[], lang: Lang) {
@@ -126,11 +189,24 @@ export async function generateMetadata({
   const imageUrl = seo?.ogImage || post.imageUrl;
   const publicImageUrl = await getPublicImageUrl(imageUrl);
 
+  // Enhanced title with brand name
+  const title = seo?.metaTitle || `${post.titles[lang]} | RO-AL Mobileri`;
+  const description = seo?.metaDescription || post.excerpts[lang];
+
   return {
     metadataBase: baseUrl,
-    title:       seo?.metaTitle       || post.titles[lang],
-    description: seo?.metaDescription || post.excerpts[lang],
-    keywords:    seo?.keywords?.split(',').map(k => k.trim()),
+    title,
+    description,
+    keywords: seo?.keywords?.split(',').map(k => k.trim()) || [
+      'furniture design',
+      'interior design',
+      'custom furniture',
+      'Albania furniture',
+      'modern furniture',
+      'home design',
+      'furniture blog',
+      lang === 'sq' ? 'mobilje shqiptare' : 'Albanian furniture'
+    ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -139,10 +215,10 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title:       seo?.ogTitle       || post.titles[lang],
-      description: seo?.ogDescription || post.excerpts[lang],
-      url:         seo?.ogUrl         || canonicalUrl,
-      type:        seo?.ogType        || 'article',
+      title: seo?.ogTitle || title,
+      description: seo?.ogDescription || description,
+      url: seo?.ogUrl || canonicalUrl,
+      type: seo?.ogType || 'article',
       images: [
         {
           url: publicImageUrl,
@@ -151,21 +227,42 @@ export async function generateMetadata({
           alt: post.titles[lang],
         }
       ],
-      locale:      lang === 'sq' ? 'sq_AL' : 'en_US',
+      locale: lang === 'sq' ? 'sq_AL' : 'en_US',
       siteName: 'RO-AL Mobileri',
+      publishedTime: post.dates[lang],
+      authors: [post.authors[lang]],
+      tags: seo?.keywords?.split(',').map(k => k.trim()) || [],
     },
     twitter: {
-      card:  'summary_large_image',
-      title: seo?.ogTitle       || post.titles[lang],
-      description: seo?.ogDescription || post.excerpts[lang],
+      card: 'summary_large_image',
+      title: seo?.ogTitle || title,
+      description: seo?.ogDescription || description,
       images: [
         {
           url: publicImageUrl,
           alt: post.titles[lang],
         }
       ],
+      creator: '@roaldesign',
+      site: '@roaldesign',
     },
-    robots: { index: true, follow: true },
+    robots: { 
+      index: true, 
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    other: {
+      'article:published_time': post.dates[lang],
+      'article:author': post.authors[lang],
+      'article:section': 'Furniture Design',
+      'article:tag': seo?.keywords?.split(',').map(k => k.trim()) || [],
+    },
   };
 }
 
@@ -202,10 +299,20 @@ export default async function BlogPage({
     .replace(/className\s*=\s*"/g, 'class="');
 
   const shareUrl = `https://roal.design/blog/${slug}/${lang}`;
+  const publicImageUrl = await getPublicImageUrl(imageUrl);
+  const structuredData = generateStructuredData(post, lang, publicImageUrl);
 
   /* ------------------------ PAGE MARK-UP (server) ------------------------ */
   return (
-    <article className="relative py-28">
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      <article className="relative py-28">
       {/* ---------- Language Toggle ----------- */}
       <div className="absolute right-6 top-6 flex gap-2">
         {(['en', 'sq'] as Lang[]).map(lg => (
@@ -225,6 +332,31 @@ export default async function BlogPage({
 
       {/* -------------- Wrapper -------------- */}
       <div className="mx-auto max-w-4xl space-y-10 px-6">
+        {/* Breadcrumb Navigation */}
+        <nav className="mb-8" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <Link href="/" className="hover:text-red-600 transition-colors">
+                {lang === 'sq' ? 'Kryesore' : 'Home'}
+              </Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li>
+              <Link href={`/blog?lang=${lang}`} className="hover:text-red-600 transition-colors">
+                {lang === 'sq' ? 'Blog' : 'Blog'}
+              </Link>
+            </li>
+            <li>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-900 font-medium" aria-current="page">
+              {title}
+            </li>
+          </ol>
+        </nav>
+
         {/* Header */}
         <header className="space-y-2 text-center">
           <h1 className="text-4xl font-extrabold md:text-5xl">{title}</h1>
@@ -325,5 +457,6 @@ export default async function BlogPage({
         </footer>
       </div>
     </article>
+    </>
   );
 }

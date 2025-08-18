@@ -2,7 +2,7 @@
 import { getAllBlogPosts } from '@/lib/firebase/firestore'
 import { NextResponse } from 'next/server'
 
-const BASE_URL = 'https://roalmobileri.com'
+const BASE_URL = 'https://roal.design'
 
 /* -------------------------------------------------------------------------- */
 /* Helpers                                                                    */
@@ -33,7 +33,7 @@ function buildUrlNode(
 /* -------------------------------------------------------------------------- */
 export async function GET() {
   /* 1️⃣  Static routes */
-  const staticPaths = ['', 'about', 'services', 'instagram', 'contact']
+  const staticPaths = ['', 'about', 'services', 'instagram', 'contact', 'blog']
 
   /* 2️⃣  Dynamic blog routes pulled from Firestore */
   let blogPaths: string[] = []
