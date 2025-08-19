@@ -58,17 +58,17 @@ export async function GET() {
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
   <channel>
-    <title>RO-AL Design Blog</title>
+    <title>RO-AL Mobileri Blog</title>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <link>${BASE_URL}/blog</link>
-    <description>Latest insights on furniture design, interior inspiration, and custom furniture solutions from RO-AL Design.</description>
+    <description>Latest insights on furniture design, interior inspiration, and custom furniture solutions from RO-AL Mobileri.</description>
     <lastBuildDate>${formatDate(new Date().toISOString())}</lastBuildDate>
     <language>en-US</language>
     <sy:updatePeriod>daily</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
     <image>
       <url>${BASE_URL}/logo.png</url>
-      <title>RO-AL Design Blog</title>
+      <title>RO-AL Mobileri Blog</title>
       <link>${BASE_URL}/blog</link>
     </image>${rssItems}
   </channel>
@@ -87,7 +87,7 @@ export async function GET() {
     const fallbackRss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>RO-AL Design Blog</title>
+    <title>RO-AL Mobileri Blog</title>
     <link>${BASE_URL}/blog</link>
     <description>Latest insights on furniture design and interior inspiration.</description>
     <language>en-US</language>

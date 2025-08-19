@@ -3,8 +3,8 @@ import { Suspense } from "react"
 import BlogListContent from './BlogListContent'
 
 export const metadata: Metadata = {
-  title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Design',
-  description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions. Expert tips and insights from RO-AL Design.',
+  title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
+  description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions. Expert tips and insights from RO-AL Mobileri.',
   keywords: [
     'furniture design blog',
     'interior design inspiration',
@@ -16,23 +16,23 @@ export const metadata: Metadata = {
     'interior design blog'
   ],
   openGraph: {
-    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Design',
+    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
     description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions.',
     url: 'https://roal.design/blog',
     type: 'website',
-    siteName: 'RO-AL Design',
+    siteName: 'RO-AL Mobileri',
     images: [
       {
         url: 'https://roal.design/images/cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'RO-AL Design Blog',
+        alt: 'RO-AL Mobileri Blog',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Design',
+    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
     description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions.',
     images: ['https://roal.design/images/cover.jpg'],
   },

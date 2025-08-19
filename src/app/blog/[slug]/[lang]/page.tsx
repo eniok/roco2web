@@ -94,7 +94,7 @@ function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: stri
     },
     publisher: {
       '@type': 'Organization',
-      name: 'RO-AL Design',
+      name: 'RO-AL Mobileri',
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/logo.png`,

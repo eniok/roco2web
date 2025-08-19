@@ -1,11 +1,11 @@
 # Blog SEO Optimization Guide
 
-This guide outlines the comprehensive SEO improvements implemented for the RO-AL Design blog to enhance search engine visibility and user experience.
+This guide outlines the comprehensive SEO improvements implemented for the RO-AL Mobileri blog to enhance search engine visibility and user experience.
 
 ## 🚀 SEO Improvements Implemented
 
 ### 1. **Enhanced Meta Tags**
-- **Title Tags**: Added brand name to all blog post titles (e.g., "Post Title | RO-AL Design")
+- **Title Tags**: Added brand name to all blog post titles (e.g., "Post Title | RO-AL Mobileri")
 - **Meta Descriptions**: Optimized descriptions with target keywords
 - **Keywords**: Added relevant furniture and design keywords
 - **Open Graph Tags**: Enhanced social media sharing with proper images and descriptions
@@ -35,13 +35,13 @@ This guide outlines the comprehensive SEO improvements implemented for the RO-AL
 ### Meta Tags Structure
 ```html
 <!-- Enhanced Title -->
-<title>Blog Post Title | RO-AL Design</title>
+<title>Blog Post Title | RO-AL Mobileri</title>
 
 <!-- Meta Description -->
 <meta name="description" content="Optimized description with keywords..." />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Blog Post Title | RO-AL Design" />
+<meta property="og:title" content="Blog Post Title | RO-AL Mobileri" />
 <meta property="og:description" content="Description for social sharing..." />
 <meta property="og:image" content="https://roal.design/images/post-image.jpg" />
 <meta property="og:type" content="article" />
@@ -49,7 +49,7 @@ This guide outlines the comprehensive SEO improvements implemented for the RO-AL
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Blog Post Title | RO-AL Design" />
+<meta name="twitter:title" content="Blog Post Title | RO-AL Mobileri" />
 <meta name="twitter:description" content="Description for Twitter..." />
 <meta name="twitter:image" content="https://roal.design/images/post-image.jpg" />
 ```
@@ -68,7 +68,7 @@ This guide outlines the comprehensive SEO improvements implemented for the RO-AL
   },
   "publisher": {
     "@type": "Organization",
-    "name": "RO-AL Design"
+    "name": "RO-AL Mobileri"
   },
   "datePublished": "2024-01-15",
   "breadcrumb": {
