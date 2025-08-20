@@ -5,14 +5,13 @@ import { productsData } from '../constants';
 const Products = () => {
     return (
         <motion.section
-            id="products"
             className="bg-gray-50 pt-20 pb-20"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
         >
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto px-6" id='products'>
                 <h2 className="text-4xl font-bold text-center mb-6">
                     Featured <span className="text-red-600">Products</span>
                 </h2>

@@ -85,7 +85,6 @@ export const servicesData: ServiceItem[] = [
       'Bulk‑order economies of scale',
       'Dedicated project & budget management',
       'Fire‑safe & acoustic materials',
-      'Post‑installation maintenance programme',
     ],
   },
   // {
