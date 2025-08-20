@@ -12,7 +12,6 @@ import {
 } from "framer-motion";
 import { ArrowRight, MoveDown, Ruler, Leaf, MapPin } from "lucide-react";
 import Link from "next/link";
-import { Inspiration } from "next/font/google";
 
 interface HeroProps {
   /** A MotionValue controlling the hero height (e.g., from a scroll-linked animation) */
@@ -114,10 +113,10 @@ export default function Hero({ heroHeight }: HeroProps) {
       <motion.div
         className="relative z-10 mx-auto w-full max-w-[92rem] px-4 sm:px-6 md:px-8"
         style={{
-          rotateX: rX as any,
-          rotateY: rY as any,
-          translateX: tX as any,
-          translateY: tY as any,
+          rotateX: rX,
+          rotateY: rY,
+          translateX: tX,
+          translateY: tY,
           transformStyle: "preserve-3d",
         }}
         initial={{ opacity: 0, y: 16 }}

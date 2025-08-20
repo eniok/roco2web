@@ -86,7 +86,7 @@ function nextOpening(nowMinutes: number, weekdayIndex: number) {
   for (let i = 0; i < 7; i++) {
     const day = (weekdayIndex + i) % 7;
     const intervals = STORE.hours[day] || [];
-    for (const [open, close] of intervals) {
+    for (const [open,] of intervals) {
       const candidateMinutes = i === 0 && nowMinutes <= open ? open : i > 0 ? open : null;
       if (candidateMinutes !== null) {
         return { dayOffset: i, day, minutes: candidateMinutes };
@@ -139,10 +139,6 @@ function useOpenStatus() {
   };
 }
 
-function classNames(...c: Array<string | false | null | undefined>) {
-  return c.filter(Boolean).join(' ');
-}
-
 export default function Contact() {
   const { openNow, closesAt, nextOpenDisplay } = useOpenStatus();
 
@@ -154,6 +150,12 @@ export default function Contact() {
   const gradient = useMotionTemplate`radial-gradient(600px 200px at ${sx}% ${sy}%, rgba(239,68,68,0.06), rgba(255,255,255,0))`;
 
   const [copied, setCopied] = React.useState<'phone' | 'email' | null>(null);
+  const [gradientString, setGradientString] = React.useState('');
+
+  React.useEffect(() => {
+    const unsubscribe = gradient.on('change', setGradientString);
+    return unsubscribe;
+  }, [gradient]);
 
   function copy(text: string, target: 'phone' | 'email') {
     navigator.clipboard?.writeText(text).then(() => {
@@ -195,7 +197,7 @@ export default function Contact() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(60%_50%_at_50%_30%,black,transparent)]"
-        style={{ background: gradient as any }}
+        style={{ background: gradientString }}
       />
       <div
         aria-hidden
