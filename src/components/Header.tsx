@@ -56,15 +56,19 @@ const Header = ({ navScrolled }: HeaderProps) => {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="flex items-center space-x-2 font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <Link
+            href="/"
+            aria-label="ROAL Mobileri — kreu"
+            className="flex items-center space-x-2 font-display text-2xl md:text-3xl font-bold tracking-tight"
+          >
             <img
               src={navScrolled ? '/logo-2.png' : "/logo.svg"}
-              alt="Logo"
+              alt="ROAL Mobileri"
               className="h-8 w-auto mr-2"
               loading='lazy'
             />
             <span className={`text-red-600 font-thin text-md ${navScrolled ? "text-xl": 'text-2xl'}`}>SH.P.K</span>
-          </h1>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
