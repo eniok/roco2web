@@ -1,32 +1,24 @@
-export const dynamic        = 'force-dynamic'; 
+export const dynamic = 'force-dynamic';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* -------------------------------------------------------------------------- */
-/*  ⛳  BLOG POST PAGE  (ISR + i18n)                                           */
-/* -------------------------------------------------------------------------- */
 
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import parse from 'html-react-parser';
 import Script from 'next/script';
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ShareIcon,
-} from '@heroicons/react/24/solid';
+import { ArrowLeft, ArrowUpRight, Share2 } from 'lucide-react';
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore/lite';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { BlogPost, Lang } from '@/constants/blogData';
 import { db } from '@/lib/firebase/firestore';
 
-/* -------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------- */
+const SITE_URL = 'https://roalmobileri.com';
+const BRAND = 'ROAL Mobileri';
 
 function readingTime(html: string): number {
-  const text  = html.replace(/<[^>]*>/g, '');
+  const text = html.replace(/<[^>]*>/g, '');
   const words = text.trim().split(/\s+/).length;
   return Math.max(1, Math.round(words / 200));
 }
@@ -38,93 +30,68 @@ function normalizeSlug<T extends Partial<BlogPost>>(data: T, id: string): BlogPo
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const snap = await getDoc(doc(db, 'blogPosts', slug));
   if (!snap.exists()) return null;
-
-  const data = snap.data() as Partial<BlogPost>;
-  return normalizeSlug(data, snap.id);
+  return normalizeSlug(snap.data() as Partial<BlogPost>, snap.id);
 }
 
 async function getAllPosts(): Promise<BlogPost[]> {
   const snap = await getDocs(collection(db, 'blogPosts'));
-  return snap.docs.map(d => normalizeSlug(d.data() as Partial<BlogPost>, d.id));
+  return snap.docs.map((d) => normalizeSlug(d.data() as Partial<BlogPost>, d.id));
 }
 
-// Utility function to get public image URL for Open Graph
 async function getPublicImageUrl(imageUrl: string): Promise<string> {
-  const baseUrl = 'https://roal.design';
-  
-  // If it's already a full URL, return it
-  if (imageUrl.startsWith('http')) {
-    return imageUrl;
-  }
-  
-  // If it's a Firebase Storage path, try to get the download URL
+  if (imageUrl.startsWith('http')) return imageUrl;
+
   if (imageUrl.includes('firebase') || imageUrl.includes('googleapis')) {
     try {
       const storage = getStorage();
-      const url = await getDownloadURL(ref(storage, imageUrl));
-      return url;
+      return await getDownloadURL(ref(storage, imageUrl));
     } catch (error) {
       console.warn('Failed to get Firebase Storage URL:', error);
     }
   }
-  
-  // If it's a relative path, make it absolute
-  if (imageUrl.startsWith('/')) {
-    return `${baseUrl}${imageUrl}`;
-  }
-  
-  // Default fallback
-  return `${baseUrl}/images/${imageUrl}`;
+
+  if (imageUrl.startsWith('/')) return `${SITE_URL}${imageUrl}`;
+  return `${SITE_URL}/images/${imageUrl}`;
 }
 
-// Generate structured data for the blog post
 function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: string) {
-  const baseUrl = 'https://roal.design';
-  const postUrl = `${baseUrl}/blog/${post.slug}/${lang}`;
-  
-  const structuredData = {
+  const postUrl = `${SITE_URL}/blog/${post.slug}/${lang}`;
+
+  return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.titles[lang],
     description: post.excerpts[lang],
     image: publicImageUrl,
-    author: {
-      '@type': 'Person',
-      name: post.authors[lang],
-    },
+    author: { '@type': 'Person', name: post.authors[lang] },
     publisher: {
       '@type': 'Organization',
-      name: 'RO-AL Mobileri',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`,
-      },
+      name: BRAND,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
     },
     datePublished: post.dates[lang],
-    dateModified: post.dates[lang], // You might want to add a modified date field
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
+    dateModified: post.dates[lang],
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
     url: postUrl,
     inLanguage: lang === 'sq' ? 'sq' : 'en',
     isAccessibleForFree: true,
     articleSection: 'Furniture Design',
-    keywords: post.seo?.keywords || 'furniture design, interior design, custom furniture',
+    keywords:
+      post.seo?.keywords || 'mobileri me porosi, kuzhina me masë, dizajn interieri',
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
-          name: lang === 'sq' ? 'Kryesore' : 'Home',
-          item: baseUrl,
+          name: lang === 'sq' ? 'Kreu' : 'Home',
+          item: SITE_URL,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${baseUrl}/blog`,
+          item: `${SITE_URL}/blog`,
         },
         {
           '@type': 'ListItem',
@@ -135,41 +102,28 @@ function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: stri
       ],
     },
   };
-
-  return structuredData;
 }
 
 function sortByDateDesc(posts: BlogPost[], lang: Lang) {
   return [...posts].sort(
-    (a, b) =>
-      new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime()
+    (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
   );
 }
 
-async function getNextPosts(
-  currentSlug: string,
-  lang: Lang,
-  count = 3
-): Promise<BlogPost[]> {
+async function getNextPosts(currentSlug: string, lang: Lang, count = 3): Promise<BlogPost[]> {
   const posts = await getAllPosts();
   return sortByDateDesc(posts, lang)
-    .filter(p => p.slug !== currentSlug)
+    .filter((p) => p.slug !== currentSlug)
     .slice(0, count);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Static params for SSG/ISR                                                  */
-/* -------------------------------------------------------------------------- */
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  return (['en', 'sq'] as Lang[]).flatMap(lang =>
-    posts.map(p => ({ slug: p.slug, lang }))
+  return (['en', 'sq'] as Lang[]).flatMap((lang) =>
+    posts.map((p) => ({ slug: p.slug, lang })),
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Metadata                                                                   */
-/* -------------------------------------------------------------------------- */
 export async function generateMetadata({
   params,
 }: {
@@ -179,39 +133,35 @@ export async function generateMetadata({
   const post = await getBlogPost(slug);
   if (!post) return {};
 
-  const seo     = post.seo;
-  const baseUrl = new URL('https://roal.design');
-
+  const seo = post.seo;
+  const baseUrl = new URL(SITE_URL);
   const canonicalPath = `/blog/${slug}/${lang}`;
-  const canonicalUrl  = seo?.canonicalUrl || `${baseUrl.origin}${canonicalPath}`;
+  const canonicalUrl = seo?.canonicalUrl || `${baseUrl.origin}${canonicalPath}`;
 
-  // Get the appropriate image URL for Open Graph
   const imageUrl = seo?.ogImage || post.imageUrl;
   const publicImageUrl = await getPublicImageUrl(imageUrl);
 
-  // Enhanced title with brand name
-  const title = seo?.metaTitle || `${post.titles[lang]} | RO-AL Mobileri`;
+  const title = seo?.metaTitle || `${post.titles[lang]} | ${BRAND}`;
   const description = seo?.metaDescription || post.excerpts[lang];
 
   return {
     metadataBase: baseUrl,
     title,
     description,
-    keywords: seo?.keywords?.split(',').map(k => k.trim()) || [
-      'furniture design',
-      'interior design',
-      'custom furniture',
-      'Albania furniture',
-      'modern furniture',
-      'home design',
-      'furniture blog',
-      lang === 'sq' ? 'mobilje shqiptare' : 'Albanian furniture'
-    ],
+    keywords:
+      seo?.keywords?.split(',').map((k) => k.trim()) || [
+        'mobileri me porosi',
+        'kuzhina me masë',
+        'garderoba me porosi',
+        'dizajn interieri',
+        'mobileri Tiranë',
+        'ROAL Mobileri',
+      ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': `/blog/${slug}/en`,
         'sq-AL': `/blog/${slug}/sq`,
+        'en-AL': `/blog/${slug}/en`,
       },
     },
     openGraph: {
@@ -225,29 +175,23 @@ export async function generateMetadata({
           width: 1200,
           height: 630,
           alt: post.titles[lang],
-        }
+        },
       ],
       locale: lang === 'sq' ? 'sq_AL' : 'en_US',
-      siteName: 'RO-AL Mobileri',
+      siteName: BRAND,
       publishedTime: post.dates[lang],
       authors: [post.authors[lang]],
-      tags: seo?.keywords?.split(',').map(k => k.trim()) || [],
+      tags: seo?.keywords?.split(',').map((k) => k.trim()) || [],
     },
     twitter: {
       card: 'summary_large_image',
       title: seo?.ogTitle || title,
       description: seo?.ogDescription || description,
-      images: [
-        {
-          url: publicImageUrl,
-          alt: post.titles[lang],
-        }
-      ],
-      creator: '@roaldesign',
-      site: '@roaldesign',
+      images: [{ url: publicImageUrl, alt: post.titles[lang] }],
+      site: '@roalmobileri',
     },
-    robots: { 
-      index: true, 
+    robots: {
+      index: true,
       follow: true,
       googleBot: {
         index: true,
@@ -261,19 +205,13 @@ export async function generateMetadata({
       'article:published_time': post.dates[lang],
       'article:author': post.authors[lang],
       'article:section': 'Furniture Design',
-      'article:tag': seo?.keywords?.split(',').map(k => k.trim()) || [],
+      'article:tag': seo?.keywords?.split(',').map((k) => k.trim()) || [],
     },
   };
 }
 
-/* -------------------------------------------------------------------------- */
-/* ISR: revalidate every hour                                                 */
-/* -------------------------------------------------------------------------- */
-export const revalidate = 3600; // seconds
+export const revalidate = 3600;
 
-/* -------------------------------------------------------------------------- */
-/* Page Component                                                             */
-/* -------------------------------------------------------------------------- */
 export default async function BlogPage({
   params,
 }: {
@@ -285,178 +223,227 @@ export default async function BlogPage({
 
   const suggestions = await getNextPosts(slug, lang);
 
-  /* --------------------- Derive per-language fields ---------------------- */
   const { titles, authors, dates, content, imageUrl } = post;
-  const title  = titles[lang];
+  const title = titles[lang];
   const author = authors[lang];
-  const date   = dates[lang];
+  const date = dates[lang];
   const rawHtml = content[lang];
-  const mins    = readingTime(rawHtml);
+  const mins = readingTime(rawHtml);
 
-  /* strip any oaicite placeholders + convert `className` to `class` */
   const cleaned = rawHtml
     .replace(/\[oaicite:\d+][^]*?}/g, '')
     .replace(/className\s*=\s*"/g, 'class="');
 
-  const shareUrl = `https://roal.design/blog/${slug}/${lang}`;
+  const shareUrl = `${SITE_URL}/blog/${slug}/${lang}`;
   const publicImageUrl = await getPublicImageUrl(imageUrl);
   const structuredData = generateStructuredData(post, lang, publicImageUrl);
 
-  /* ------------------------ PAGE MARK-UP (server) ------------------------ */
+  const t = {
+    home: lang === 'sq' ? 'Kreu' : 'Home',
+    blog: 'Blog',
+    minRead: lang === 'sq' ? 'min lexim' : 'min read',
+    related: lang === 'sq' ? 'Shkrime të tjera' : 'You might also like',
+    backToBlog: lang === 'sq' ? 'Kthehu te blogu' : 'Back to blog',
+    share: lang === 'sq' ? 'Ndaje' : 'Share',
+  };
+
   return (
     <>
       <Script
         id="structured-data"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <article className="relative py-28">
-      {/* ---------- Language Toggle ----------- */}
-      <div className="absolute right-6 top-6 flex gap-2">
-        {(['en', 'sq'] as Lang[]).map(lg => (
-          <Link
-            key={lg}
-            href={`/blog/${slug}/${lg}`}
-            className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              lang === lg
-                ? 'bg-red-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            {lg.toUpperCase()}
-          </Link>
-        ))}
-      </div>
 
-      {/* -------------- Wrapper -------------- */}
-      <div className="mx-auto max-w-4xl space-y-10 px-6">
-        {/* Breadcrumb Navigation */}
-        <nav className="mb-8" aria-label="Breadcrumb">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
-            <li>
-              <Link href="/" className="hover:text-red-600 transition-colors">
-                {lang === 'sq' ? 'Kryesore' : 'Home'}
-              </Link>
-            </li>
-            <li>
-              <span className="mx-2">/</span>
-            </li>
-            <li>
-              <Link href={`/blog?lang=${lang}`} className="hover:text-red-600 transition-colors">
-                {lang === 'sq' ? 'Blog' : 'Blog'}
-              </Link>
-            </li>
-            <li>
-              <span className="mx-2">/</span>
-            </li>
-            <li className="text-gray-900 font-medium" aria-current="page">
-              {title}
-            </li>
-          </ol>
-        </nav>
-
-        {/* Header */}
-        <header className="space-y-2 text-center">
-          <h1 className="text-4xl font-extrabold md:text-5xl">{title}</h1>
-          <p className="text-sm text-gray-500">
-            <span className="font-medium">{author}</span>
-            <span className="mx-1.5">•</span>
-            <time dateTime={date}>{date}</time>
-            <span className="mx-1.5">•</span>
-            {mins} {lang === 'sq' ? 'min lexim' : 'min read'}
-          </p>
-        </header>
-
-        {/* Hero Image */}
-        <div className="aspect-video overflow-hidden rounded-lg shadow-md">
-          {/* Use next/image if remotePatterns are set */}
-          <img
-            src={imageUrl}
-            alt={title}
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Article Content */}
-        <div className="prose prose-lg max-w-none dark:prose-invert">
-          {parse(cleaned)}
-        </div>
-
-        {/* Suggested Posts */}
-        {suggestions.length > 0 && (
-          <section className="mx-auto mt-16 max-w-5xl">
-            <h2 className="mb-8 text-center text-2xl font-bold">
-              {lang === 'sq' ? 'Artikuj të tjerë' : 'You might also like'}
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {suggestions.map(s => (
-                <Link
-                  key={s.slug}
-                  href={`/blog/${s.slug}/${lang}`}
-                  className="group relative block overflow-hidden rounded-xl shadow-lg transition-transform hover:scale-[1.03]"
-                >
-                  <img
-                    src={s.imageUrl}
-                    alt={s.titles[lang]}
-                    className="h-56 w-full object-cover transition-transform group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/10 backdrop-blur-xs transition-opacity group-hover:bg-black/20" />
-                  <div className="absolute inset-x-4 bottom-4 flex items-center justify-between text-white">
-                    <div>
-                      <p className="text-xs opacity-90">{s.authors[lang]}</p>
-                      <h3 className="mt-1 text-base font-semibold line-clamp-2">
-                        {s.titles[lang]}
-                      </h3>
-                    </div>
-                    <ArrowRightIcon className="h-5 w-5 opacity-80 transition group-hover:translate-x-1" />
-                  </div>
+      <article className="relative bg-[#FAF8F4] text-[#15130F]">
+        <div className="mx-auto max-w-3xl px-6 pt-32 sm:px-8 sm:pt-40">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-10">
+            <ol className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
+              <li>
+                <Link href="/" className="hover:text-[#8B4A2E] transition-colors">
+                  {t.home}
                 </Link>
-              ))}
+              </li>
+              <li aria-hidden="true">·</li>
+              <li>
+                <Link
+                  href={`/blog?lang=${lang}`}
+                  className="hover:text-[#8B4A2E] transition-colors"
+                >
+                  {t.blog}
+                </Link>
+              </li>
+              <li aria-hidden="true">·</li>
+              <li className="text-[#8B4A2E] normal-case tracking-normal" aria-current="page">
+                <span className="line-clamp-1 max-w-[60vw]">{title}</span>
+              </li>
+            </ol>
+          </nav>
+
+          {/* Language switch — this route is language-keyed, so we nav between URLs */}
+          <div className="mb-10 flex items-center gap-2 text-xs uppercase tracking-[0.18em]">
+            {(['sq', 'en'] as Lang[]).map((lg) => (
+              <Link
+                key={lg}
+                href={`/blog/${slug}/${lg}`}
+                className={
+                  'rounded-full border px-3 py-1 transition-colors ' +
+                  (lang === lg
+                    ? 'border-[#15130F] bg-[#15130F] text-[#FAF8F4]'
+                    : 'border-[#15130F]/20 text-[#15130F]/70 hover:border-[#15130F]/40')
+                }
+              >
+                {lg.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+
+          {/* Header */}
+          <header>
+            <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
+              <time dateTime={date}>{date}</time>
+              <span className="mx-2">·</span>
+              {author}
+              <span className="mx-2">·</span>
+              {mins} {t.minRead}
+            </p>
+            <h1
+              className="mt-4 text-balance font-serif font-normal leading-[1.05] tracking-tight"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(2rem, 5vw, 3.6rem)',
+              }}
+            >
+              {title}
+            </h1>
+          </header>
+        </div>
+
+        {/* Full-width hero image */}
+        <div className="mx-auto mt-12 max-w-5xl px-6 sm:px-8">
+          <div className="relative overflow-hidden bg-[#E8E3DB]" style={{ aspectRatio: '16 / 9' }}>
+            <img
+              src={imageUrl}
+              alt={title}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="mx-auto mt-12 max-w-2xl px-6 pb-20 sm:px-8">
+          <div
+            className="prose prose-lg max-w-none
+              prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-tight
+              prose-h2:text-[1.75rem] prose-h3:text-xl
+              prose-p:text-[#3A352C] prose-p:leading-relaxed
+              prose-a:text-[#8B4A2E] prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-[#15130F]
+              prose-blockquote:border-l-[#8B4A2E] prose-blockquote:text-[#3A352C]
+              prose-img:rounded-none"
+            style={{ ['--tw-prose-headings' as any]: '#15130F' }}
+          >
+            {parse(cleaned)}
+          </div>
+        </div>
+
+        {/* Suggestions */}
+        {suggestions.length > 0 && (
+          <section className="border-t border-[#15130F]/15 bg-[#FAF8F4]">
+            <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+              <h2
+                className="text-balance font-serif font-normal leading-[1.1] tracking-tight"
+                style={{
+                  fontFamily: 'var(--font-fraunces), Georgia, serif',
+                  fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)',
+                }}
+              >
+                {t.related}
+              </h2>
+
+              <ul
+                role="list"
+                className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {suggestions.map((s) => (
+                  <li key={s.slug}>
+                    <Link
+                      href={`/blog/${s.slug}/${lang}`}
+                      className="group block focus:outline-none"
+                    >
+                      <div
+                        className="relative overflow-hidden bg-[#E8E3DB]"
+                        style={{ aspectRatio: '4 / 5' }}
+                      >
+                        <img
+                          src={s.imageUrl}
+                          alt={s.titles[lang]}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                        />
+                      </div>
+                      <div className="mt-5">
+                        <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
+                          {s.dates[lang]} · {s.authors[lang]}
+                        </p>
+                        <h3
+                          className="mt-3 text-balance font-serif text-xl font-normal leading-snug tracking-tight text-[#15130F] transition-colors group-hover:text-[#8B4A2E] sm:text-2xl"
+                          style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+                        >
+                          {s.titles[lang]}
+                        </h3>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}
 
         {/* Footer: back + share */}
-        <footer className="mt-12 flex flex-col items-center gap-6 border-t pt-6 md:flex-row md:justify-between">
-          <Link
-            href={`/blog?lang=${lang}`}
-            className="inline-flex items-center gap-2 font-medium text-red-600 hover:text-red-800"
-          >
-            <ArrowLeftIcon className="h-4 w-4" />
-            {lang === 'sq' ? 'Kthehu te Blogu' : 'Back to Blog'}
-          </Link>
+        <div className="border-t border-[#15130F]/15">
+          <div className="mx-auto flex max-w-3xl flex-col items-start gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <Link
+              href={`/blog?lang=${lang}`}
+              className="group inline-flex items-center gap-2 text-sm font-medium text-[#15130F] underline-offset-[6px] hover:underline"
+            >
+              <ArrowLeft
+                className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
+                aria-hidden="true"
+              />
+              {t.backToBlog}
+            </Link>
 
-          <div className="flex gap-4">
-            <Link
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                shareUrl
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-gray-500 hover:text-gray-700"
-            >
-              <ShareIcon className="h-4 w-4" />
-              Facebook
-            </Link>
-            <Link
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                shareUrl
-              )}&text=${encodeURIComponent(title)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-gray-500 hover:text-gray-700"
-            >
-              <ShareIcon className="h-4 w-4" />
-              X
-            </Link>
+            <div className="flex items-center gap-2 text-sm">
+              <Share2 className="h-4 w-4 text-[#15130F]/60" aria-hidden="true" />
+              <span className="text-[#15130F]/60">{t.share}</span>
+              <Link
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 inline-flex items-center gap-1 text-[#15130F] hover:text-[#8B4A2E]"
+              >
+                Facebook
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+              <Link
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[#15130F] hover:text-[#8B4A2E]"
+              >
+                X
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-        </footer>
-      </div>
-    </article>
+        </div>
+      </article>
     </>
   );
 }

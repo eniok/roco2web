@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Poppins, Fraunces } from 'next/font/google';
 import './globals.css';
 import MainLayout from '@/components/MainLayout';
 import { FirebaseAnalytics } from '@/components/FirebaseAnalytics';
 
 /* ------------------------------------------------------------------ */
-/* Font                                                               */
+/* Fonts                                                              */
 /* ------------------------------------------------------------------ */
 const poppins = Poppins({
   subsets: ['latin'],
@@ -13,24 +13,27 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
+});
+
 /* ------------------------------------------------------------------ */
 /* Global <head> metadata (used as defaults site-wide)                */
 /* ------------------------------------------------------------------ */
 export const metadata: Metadata = {
-  /** <title> → “Page Title | RO-AL Mobileri” */
   title: {
-    default: 'Home & Commercial Furniture Albania | RO-AL Mobileri',
-    template: '%s | RO-AL Mobileri',
+    default: 'ROAL Mobileri — Mobilje me porosi, të bëra për të zgjatur',
+    template: '%s | ROAL Mobileri',
   },
 
-  /** <meta name="description"> */
   description:
-    'Bespoke kitchens, wardrobes and interior solutions crafted in Tirana. Premium materials, precision cutting, delivery and mounting across Albania.',
+    'Kuzhina, garderoba dhe ambiente të plota me porosi. Vite përvojë, cilësi e qëndrueshme, ne ju shoqërojmë nga skica e parë deri te instalimi.',
 
-  /** Canonical domain for absolute URL generation */
   metadataBase: new URL('https://roalmobileri.com'),
 
-  /** Canonical & language-specific alternates */
   alternates: {
     canonical: 'https://roalmobileri.com/',
     languages: {
@@ -40,42 +43,162 @@ export const metadata: Metadata = {
   },
 
   keywords: [
-    'custom furniture',
-    'bespoke furniture',
-    'fitted wardrobes',
-    'kitchens Albania',
-    'RO-AL Mobileri',
-    'furniture Tirana',
-    'interior design',
+    'mobileri me porosi',
+    'kuzhina me masë',
+    'garderoba me porosi',
+    'mobileri Tiranë',
+    'mobilje cilësore',
+    'ROAL Mobileri',
+    'bespoke furniture Albania',
+    'fitted wardrobes Tirana',
   ],
 
   openGraph: {
-    title: 'RO-AL Mobileri',
+    title: 'ROAL Mobileri — Mobilje me porosi',
     description:
-      'Premium bespoke furniture crafted in Albania—discover our latest designs.',
+      'Kuzhina, garderoba dhe ambiente të plota të projektuara për t\u2019ju shërbyer për vite. Ju shoqërojmë në çdo hap.',
     url: 'https://roalmobileri.com/',
     type: 'website',
-    siteName: 'RO-AL Mobileri',
+    siteName: 'ROAL Mobileri',
+    locale: 'sq_AL',
     images: [
       {
-        url: 'https://roalmobileri.com/cover.jpg', // 1200×630 px, ≤ 200 KB
+        url: 'https://roalmobileri.com/images/cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'Hero image of RO-AL Mobileri showroom',
+        alt: 'Projekt me porosi nga ROAL Mobileri',
       },
     ],
   },
 
-  /** Twitter / X Card */
   twitter: {
     card: 'summary_large_image',
-    site: '@roalmobileri', // update if you have a handle
+    site: '@roalmobileri',
   },
 
-  /** Indexing & snippet rules */
   robots: {
     index: true,
     follow: true,
+  },
+
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
+};
+
+const LOCAL_BUSINESS_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'FurnitureStore',
+  '@id': 'https://roalmobileri.com/#business',
+  name: 'ROAL Mobileri',
+  alternateName: 'RO-AL SH.P.K',
+  description:
+    'Mobileri me porosi në Tiranë. Kuzhina, garderoba dhe ambiente të plota, të projektuara për të zgjatur.',
+  url: 'https://roalmobileri.com/',
+  image: 'https://roalmobileri.com/images/cover.jpg',
+  logo: 'https://roalmobileri.com/logo.svg',
+  telephone: '+355672029739',
+  email: 'info@roalmobileri.com',
+  priceRange: '$$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Km 8, Autostrada Tiranë–Durrës',
+    addressLocality: 'Tiranë',
+    postalCode: '1000',
+    addressCountry: 'AL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 41.367775,
+    longitude: 19.69557,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Albania',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Sunday',
+      opens: '08:00',
+      closes: '16:00',
+    },
+  ],
+  sameAs: ['https://www.instagram.com/roal_mobileri/'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Sherbime ROAL Mobileri',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Kuzhina me porosi',
+          serviceType: 'Bespoke kitchens',
+          description:
+            'Kuzhina të projektuara dhe të punuara sipas përmasave të hapësirës suaj, me materiale të zgjedhura për të zgjatur vite.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roalmobileri.com/#business' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Garderoba me masë',
+          serviceType: 'Fitted wardrobes',
+          description:
+            'Garderoba dhe dollapë me masë për çdo dhomë, përfshirë hapësira të parregullta dhe tavane të pjerrëta.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roalmobileri.com/#business' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Ambiente pune',
+          serviceType: 'Home office and workspace fit-out',
+          description:
+            'Tavolina pune, rafte dhe ambiente të plota zyre, të punuara me porosi për shtëpinë ose biznesin tuaj.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roalmobileri.com/#business' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Dhoma ndenje',
+          serviceType: 'Living-room cabinetry',
+          description:
+            'Mobilim i integruar për dhomën e ndenjes — vitrina, mure medie dhe depozitim i personalizuar.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roalmobileri.com/#business' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hoteleri dhe lokale',
+          serviceType: 'Hospitality and retail fit-out',
+          description:
+            'Projekte komerciale për hotele, restorante, bare dhe dyqane në gjithë Shqipërinë.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roalmobileri.com/#business' },
+        },
+      },
+    ],
   },
 };
 
@@ -88,8 +211,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="sq" className={`${poppins.variable} ${fraunces.variable}`}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}
+        />
         <MainLayout>
           {children}
           <FirebaseAnalytics />

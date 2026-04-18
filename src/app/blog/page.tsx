@@ -1,50 +1,52 @@
-import { Metadata } from 'next'
-import { Suspense } from "react"
-import BlogListContent from './BlogListContent'
+import { Metadata } from 'next';
+import { Suspense } from 'react';
+import BlogListContent from './BlogListContent';
 
 export const metadata: Metadata = {
-  title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
-  description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions. Expert tips and insights from RO-AL Mobileri.',
+  title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+  description:
+    'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë. Ide dhe këshilla para se të filloni projektin tuaj me porosi.',
   keywords: [
-    'furniture design blog',
-    'interior design inspiration',
-    'custom furniture',
-    'Albania furniture',
-    'modern furniture trends',
-    'home design tips',
-    'furniture blog',
-    'interior design blog'
+    'blog mobilje',
+    'dizajn interieri Shqipëri',
+    'mobilje me porosi',
+    'kuzhina me masë',
+    'këshilla dizajni',
+    'ROAL Mobileri',
+    'bespoke furniture blog',
   ],
   openGraph: {
-    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
-    description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions.',
-    url: 'https://roal.design/blog',
+    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    description:
+      'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide për projektin tuaj të ardhshëm.',
+    url: 'https://roalmobileri.com/blog',
     type: 'website',
-    siteName: 'RO-AL Mobileri',
+    siteName: 'ROAL Mobileri',
+    locale: 'sq_AL',
     images: [
       {
-        url: 'https://roal.design/images/cover.jpg',
+        url: 'https://roalmobileri.com/images/cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'RO-AL Mobileri Blog',
+        alt: 'ROAL Mobileri — Blog',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog - Furniture Design & Interior Inspiration | RO-AL Mobileri',
-    description: 'Discover the latest trends in furniture design, interior inspiration, and custom furniture solutions.',
-    images: ['https://roal.design/images/cover.jpg'],
+    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    description: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë.',
+    images: ['https://roalmobileri.com/images/cover.jpg'],
   },
   alternates: {
-    canonical: 'https://roal.design/blog',
+    canonical: 'https://roalmobileri.com/blog',
     languages: {
-      'en-US': '/blog?lang=en',
       'sq-AL': '/blog?lang=sq',
+      'en-AL': '/blog?lang=en',
     },
   },
-  robots: { 
-    index: true, 
+  robots: {
+    index: true,
     follow: true,
     googleBot: {
       index: true,
@@ -54,12 +56,18 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-}
+};
 
 export default function BlogListPage() {
   return (
-    <Suspense fallback={<div className="pt-32 text-center">Loading …</div>}>
+    <Suspense
+      fallback={
+        <div className="bg-[#FAF8F4] min-h-screen pt-32 text-center text-sm text-[#15130F]/50">
+          Po ngarkohet…
+        </div>
+      }
+    >
       <BlogListContent />
     </Suspense>
-  )
+  );
 }

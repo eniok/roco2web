@@ -1,141 +1,153 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import Link from "next/link"
-import { collection, getDocs } from "firebase/firestore/lite"
-import { BlogPost, Lang } from "@/constants/blogData"
-import { db } from "@/lib/firebase/firestore"
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { collection, getDocs } from 'firebase/firestore/lite';
+import { BlogPost } from '@/constants/blogData';
+import { db } from '@/lib/firebase/firestore';
+import { useLang, type Dict, type Lang } from '@/lib/i18n';
+
+const copy = {
+  eyebrow: { sq: 'Blog', en: 'Journal' },
+  headingLead: { sq: 'Shënime nga', en: 'Notes from' },
+  headingAccent: { sq: 'punishtja.', en: 'the workshop.' },
+  subhead: {
+    sq: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
+    en: 'Thoughts on materials, design and the spaces we build — ideas that might help you before starting your own project.',
+  },
+  loading: { sq: 'Po ngarkohet…', en: 'Loading…' },
+  empty: { sq: 'Asnjë postim për tani.', en: 'No posts yet.' },
+  readMore: { sq: 'Lexo më shumë', en: 'Read more' },
+} satisfies Record<string, Dict<string>>;
 
 export default function BlogListContent() {
-  const router       = useRouter()
-  const params       = useSearchParams()
-  const initialLang  = (params.get("lang") as Lang) || "sq"
+  const { lang, setLang } = useLang();
+  const params = useSearchParams();
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const [lang,       setLang]       = useState<Lang>(initialLang)
-  const [blogPosts,  setBlogPosts]  = useState<BlogPost[]>([])
-  const [loading,    setLoading]    = useState(true)
+  // Sync lang from ?lang= on mount so shared URLs keep working
+  useEffect(() => {
+    const qp = params.get('lang') as Lang | null;
+    if ((qp === 'sq' || qp === 'en') && qp !== lang) {
+      setLang(qp);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // ─────────────────────────────────────────────
-  // Fetch posts once, on mount
-  // ─────────────────────────────────────────────
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const snap  = await getDocs(collection(db, "blogPosts"))
-        const posts = snap.docs.map(doc => ({
+        const snap = await getDocs(collection(db, 'blogPosts'));
+        const posts = snap.docs.map((doc) => ({
           slug: doc.id,
-          ...(doc.data() as Omit<BlogPost, "slug">),
-        }))
-        setBlogPosts(posts)
+          ...(doc.data() as Omit<BlogPost, 'slug'>),
+        }));
+        setBlogPosts(posts);
       } catch (err) {
-        console.error("Could not fetch blog posts:", err)
+        console.error('Could not fetch blog posts:', err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchPosts()
-  }, [])
+    };
+    fetchPosts();
+  }, []);
 
-  // If the URL lacks ?lang=, patch it with detected language once
-  useEffect(() => {
-    if (!params.get("lang")) {
-      const browser   = navigator.language.split("-")[0]
-      const detected  = browser === "en" ? "en" : "sq"
-      setLang(detected)
-      router.replace(`/blog?lang=${detected}`, { scroll: false })
-    }
-  }, [params, router])
-
-  const switchLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const nl = e.target.value as Lang
-    setLang(nl)
-    router.push(`/blog?lang=${nl}`)
-  }
-
-  // Sort after we have data
-  const sortedPosts = [...blogPosts].sort((a, b) => {
-    const dateA = new Date(a.dates[lang]).getTime()
-    const dateB = new Date(b.dates[lang]).getTime()
-    return dateB - dateA
-  })
-
-  if (loading) return <div className="pt-32 text-center">Loading …</div>
-  if (blogPosts.length === 0) {
-    return (
-      <div className="pt-32 text-center text-gray-500">
-        {lang === "en" ? "No blog posts found." : "Asnjë postim i gjetur."}
-      </div>
-    )
-  }
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
+  );
 
   return (
-    <div className="bg-gray-50 pt-32 pb-20">
-      <div className="container mx-auto px-6">
-        {/* Language selector */}
-        <div className="flex justify-end mb-6">
-          <select
-            value={lang}
-            onChange={switchLang}
-            className="border rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
+    <section className="relative bg-[#FAF8F4] text-[#15130F] min-h-screen">
+      <div className="mx-auto max-w-6xl px-6 pt-32 pb-24 sm:px-8 sm:pt-40 sm:pb-32">
+        <p className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5">
+          {copy.eyebrow[lang]}
+        </p>
+
+        <h1
+          className="max-w-3xl text-balance font-serif font-normal leading-[1.05] tracking-tight"
+          style={{
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
+            fontSize: 'clamp(2.2rem, 5.5vw, 4rem)',
+          }}
+        >
+          {copy.headingLead[lang]}{' '}
+          <span className="italic text-[#8B4A2E]">{copy.headingAccent[lang]}</span>
+        </h1>
+
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#3A352C] sm:text-lg">
+          {copy.subhead[lang]}
+        </p>
+
+        {loading ? (
+          <p className="mt-16 text-sm text-[#15130F]/50">{copy.loading[lang]}</p>
+        ) : blogPosts.length === 0 ? (
+          <p className="mt-16 text-sm text-[#15130F]/50">{copy.empty[lang]}</p>
+        ) : (
+          <ul
+            role="list"
+            className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-16"
           >
-            <option value="en">English</option>
-            <option value="sq">Shqip</option>
-          </select>
-        </div>
+            {sortedPosts.map((post, i) => (
+              <motion.li
+                key={post.slug}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  delay: (i % 6) * 0.05,
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <Link
+                  href={`/blog/${post.slug}/${lang}`}
+                  className="group block focus:outline-none"
+                >
+                  <div
+                    className="relative overflow-hidden bg-[#E8E3DB]"
+                    style={{ aspectRatio: '4 / 5' }}
+                  >
+                    <img
+                      src={post.imageUrl}
+                      alt={post.titles[lang]}
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
 
-        {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-5xl font-extrabold mb-4">
-            {lang === "en" ? "Our Blog" : "Blogu Ynë"}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {lang === "en" 
-              ? "Discover the latest trends in furniture design, interior inspiration, and expert tips for creating beautiful spaces."
-              : "Zbuloni trendet më të fundit në dizajnin e mobiljeve, frymëzimet e brendshme dhe këshilla ekspertësh për krijimin e hapësirave të bukura."
-            }
-          </p>
-        </header>
-
-        {/* Masonry column layout */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-8">
-          {sortedPosts.map(post => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}/${lang}`}
-              className="group block mb-8 break-inside-avoid transform transition-transform hover:-translate-y-1"
-            >
-              <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden">
-                {/* Optimised portrait-friendly image */}
-                <img
-                  src={post.imageUrl}
-                  alt={post.titles[lang]}
-                  width={640}
-                  height={960}
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
-
-                <div className="p-6 flex flex-col">
-                  <h2 className="text-2xl font-semibold mb-2 group-hover:text-red-600">
-                    {post.titles[lang]}
-                  </h2>
-                  <p className="text-gray-500 text-sm mb-4">
-                    {post.dates[lang]} &middot; {post.authors[lang]}
-                  </p>
-                  <p className="text-gray-700 flex-grow line-clamp-4">
-                    {post.excerpts[lang]}
-                  </p>
-                  <span className="mt-6 inline-block font-medium text-red-600">
-                    {lang === "en" ? "Read More →" : "Lexo Më Shumë →"}
-                  </span>
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
+                  <div className="mt-5">
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
+                      {post.dates[lang]} · {post.authors[lang]}
+                    </p>
+                    <h2
+                      className="mt-3 text-balance font-serif text-xl font-normal leading-snug tracking-tight text-[#15130F] transition-colors group-hover:text-[#8B4A2E] sm:text-2xl"
+                      style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+                    >
+                      {post.titles[lang]}
+                    </h2>
+                    <p className="mt-3 text-[15px] leading-relaxed text-[#3A352C] line-clamp-3">
+                      {post.excerpts[lang]}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#15130F] underline-offset-[6px] group-hover:underline">
+                      {copy.readMore[lang]}
+                      <ArrowUpRight
+                        className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </div>
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div>
-  )
+    </section>
+  );
 }

@@ -1,156 +1,163 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { getStorage, ref, getDownloadURL } from 'firebase/storage'
-import { Inter_Tight, Manrope } from 'next/font/google'
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
-import { BlogPost, Lang } from '@/constants/blogData'
-import { getAllBlogPosts } from '@/lib/firebase/firestore'
+import { BlogPost } from '@/constants/blogData';
+import { getAllBlogPosts } from '@/lib/firebase/firestore';
+import { useLang, type Dict } from '@/lib/i18n';
 
-const display = Inter_Tight({ subsets: ['latin'], variable: '--font-display' })
-const text = Manrope({ subsets: ['latin'], variable: '--font-sans' })
+const storage = getStorage();
 
-interface BlogSectionProps {
-  lang: Lang
-}
-
-const storage = getStorage()
-
-const listVariants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+const copy = {
+  eyebrow: { sq: 'Blog', en: 'Journal' },
+  headingLead: { sq: 'Nga tavolina', en: 'From the' },
+  headingAccent: { sq: 'jonë e projektimit.', en: 'drawing table.' },
+  subhead: {
+    sq: 'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
+    en: 'Notes on materials, design and the spaces we build — ideas that might help you before starting your own project.',
   },
-}
+  viewAll: { sq: 'Shiko të gjitha shkrimet', en: 'See all posts' },
+} satisfies Record<string, Dict<string>>;
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-}
-
-export default function BlogSection({ lang }: BlogSectionProps) {
-  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
-  const [loading, setLoading] = useState(true)
+export default function BlogSection() {
+  const { lang } = useLang();
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    /** Get the two newest posts and make sure each has a public imageUrl */
     const load = async () => {
       try {
-        const allPosts = await getAllBlogPosts()
+        const allPosts = await getAllBlogPosts();
 
-        // newest → oldest for this language
         const sorted = [...allPosts].sort(
           (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
-        )
+        );
 
-        // Resolve Storage URLs in parallel
         const withUrls = await Promise.all(
-          sorted.slice(0, 2).map(async post => {
-            // If imageUrl is already a https link, keep it; otherwise fetch from Storage
-            if (/^https?:\/\//i.test(post.imageUrl)) return post
-
-            // Fallback key names - use whichever you saved in Firestore
-            const path = post.imagePath || post.imageUrl
-            const url = await getDownloadURL(ref(storage, path))
-            return { ...post, imageUrl: url }
+          sorted.slice(0, 2).map(async (post) => {
+            if (/^https?:\/\//i.test(post.imageUrl)) return post;
+            const path = post.imagePath || post.imageUrl;
+            const url = await getDownloadURL(ref(storage, path));
+            return { ...post, imageUrl: url };
           }),
-        )
+        );
 
-        setRecentPosts(withUrls)
+        setRecentPosts(withUrls);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    load()
-  }, [lang])
+    load();
+  }, [lang]);
 
-  if (loading || recentPosts.length === 0) return null
+  if (loading || recentPosts.length === 0) return null;
 
   return (
-    <motion.section
+    <section
       id="blog"
-      className={`${text.className} relative isolate bg-gradient-to-b from-white via-rose-50/40 to-white py-24`}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: '-100px' }}
+      aria-labelledby="blog-heading"
+      className="relative bg-[#FAF8F4] text-[#15130F]"
     >
-      {/* Subtle background rose glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10 [background:radial-gradient(60%_50%_at_50%_0%,rgba(244,63,94,0.08)_0%,transparent_60%)]" />
-
-      <div className="container mx-auto px-6">
-        {/* Heading */}
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className={`${display.className} text-4xl md:text-5xl font-extrabold tracking-tight text-gray-950`}> 
-            {lang === 'en' ? 'From Our ' : 'Nga '}
-            <span className="bg-gradient-to-r from-rose-500 via-rose-600 to-rose-400 bg-clip-text text-transparent align-baseline">
-              {lang === 'en' ? 'Blog' : 'Blogu'}
-            </span>
-          </h2>
-          <div className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-rose-400/60 to-transparent" />
-          <p className="mt-6 text-lg md:text-xl text-gray-600">
-            {lang === 'en'
-              ? 'Insights on design, materials, and creating beautiful spaces.'
-              : 'Njohuri mbi dizajnin, materialet dhe krijimin e hapësirave të bukura.'}
-          </p>
-        </div>
-
-        {/* Two most-recent posts */}
-        <motion.div
-          className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+      <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-32">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5 }}
+          className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5"
         >
-          {recentPosts.map(post => {
-            const { titles, authors, dates, excerpts, imageUrl, slug } = post
+          {copy.eyebrow[lang]}
+        </motion.p>
+
+        <motion.h2
+          id="blog-heading"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl text-balance font-serif font-normal leading-[1.05] tracking-tight"
+          style={{
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
+            fontSize: 'clamp(2rem, 5vw, 3.6rem)',
+          }}
+        >
+          {copy.headingLead[lang]}{' '}
+          <span className="italic text-[#8B4A2E]">{copy.headingAccent[lang]}</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="mt-5 max-w-2xl text-base leading-relaxed text-[#3A352C] sm:text-lg"
+        >
+          {copy.subhead[lang]}
+        </motion.p>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-16 md:grid-cols-2 md:gap-10">
+          {recentPosts.map((post, i) => {
+            const { titles, authors, dates, excerpts, imageUrl, slug } = post;
             return (
-              <motion.article key={slug} variants={cardVariants}>
+              <motion.article
+                key={slug}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: i * 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <Link
                   href={`/blog/${slug}/${lang}`}
-                  className="group block rounded-2xl ring-1 ring-rose-200/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/70 shadow-sm hover:shadow-rose-200/50 transition-shadow"
+                  className="group block focus:outline-none"
                 >
-                  <div className="relative overflow-hidden rounded-2xl">
+                  <div className="relative overflow-hidden bg-[#E8E3DB]" style={{ aspectRatio: '4 / 3' }}>
                     <img
                       src={imageUrl}
                       alt={titles[lang]}
                       loading="lazy"
-                      className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                     />
-                    {/* soft top gradient for legibility */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-90" />
                   </div>
 
-                  <div className="p-6">
-                    <h3 className={`${display.className} text-2xl font-bold mb-2 text-gray-900 transition-colors group-hover:text-rose-600 line-clamp-1`}>
+                  <div className="mt-5">
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
+                      {dates[lang]} · {authors[lang]}
+                    </p>
+                    <h3
+                      className="mt-3 text-balance font-serif text-2xl font-normal leading-snug tracking-tight text-[#15130F] group-hover:text-[#8B4A2E] transition-colors sm:text-[1.75rem]"
+                      style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+                    >
                       {titles[lang]}
                     </h3>
-                    <p className="text-sm text-gray-500 mb-4">
-                      {dates[lang]} &nbsp;•&nbsp; {authors[lang]}
-                    </p>
-                    <p className="text-gray-700 line-clamp-1">
+                    <p className="mt-3 text-[15px] leading-relaxed text-[#3A352C] line-clamp-2">
                       {excerpts[lang]}
                     </p>
                   </div>
                 </Link>
               </motion.article>
-            )
+            );
           })}
-        </motion.div>
+        </div>
 
-        {/* View-all button */}
-        <div className="text-center mt-8">
+        <div className="mt-12 flex justify-center sm:mt-16">
           <Link
             href={`/blog?lang=${lang}`}
-            className="inline-flex items-center rounded-full bg-rose-600 px-8 py-3 text-lg font-semibold text-white shadow-xl ring-1 ring-rose-300/30 transition hover:bg-rose-500 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/70"
+            className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#15130F] underline-offset-[6px] hover:underline"
           >
-            {lang === 'en' ? 'View All Posts' : 'Shiko të Gjitha Postimet'}
+            {copy.viewAll[lang]}
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>
-    </motion.section>
-  )
+    </section>
+  );
 }
