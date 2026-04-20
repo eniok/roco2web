@@ -14,7 +14,7 @@ This guide will help you test and debug Open Graph meta tags to ensure your blog
 ### Method 1: Manual Testing
 
 1. **Deploy your changes** to your production environment
-2. **Visit a blog post** (e.g., `https://roalmobileri.com/blog/your-post-slug/en`)
+2. **Visit a blog post** (e.g., `https://roal.design/blog/your-post-slug/en`)
 3. **Copy the URL** and paste it in:
    - WhatsApp
    - Facebook
@@ -34,7 +34,7 @@ This guide will help you test and debug Open Graph meta tags to ensure your blog
 
 ### Method 3: Using Our Test Page
 
-1. Visit `https://roalmobileri.com/test-og`
+1. Visit `https://roal.design/test-og`
 2. Copy the URL and test it on social media platforms
 3. This page has hardcoded meta tags for testing
 
@@ -45,10 +45,10 @@ This guide will help you test and debug Open Graph meta tags to ensure your blog
 chmod +x scripts/test-og.js
 
 # Test a blog post URL
-node scripts/test-og.js https://roalmobileri.com/blog/your-post-slug/en
+node scripts/test-og.js https://roal.design/blog/your-post-slug/en
 
 # Test the test page
-node scripts/test-og.js https://roalmobileri.com/test-og
+node scripts/test-og.js https://roal.design/test-og
 ```
 
 ## Expected Meta Tags
@@ -59,9 +59,9 @@ Your blog posts should now include these meta tags:
 <!-- Open Graph -->
 <meta property="og:title" content="Your Blog Post Title" />
 <meta property="og:description" content="Your blog post description..." />
-<meta property="og:url" content="https://roalmobileri.com/blog/your-post-slug/en" />
+<meta property="og:url" content="https://roal.design/blog/your-post-slug/en" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="https://roalmobileri.com/images/your-image.jpg" />
+<meta property="og:image" content="https://roal.design/images/your-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
@@ -71,7 +71,7 @@ Your blog posts should now include these meta tags:
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Your Blog Post Title" />
 <meta name="twitter:description" content="Your blog post description..." />
-<meta name="twitter:image" content="https://roalmobileri.com/images/your-image.jpg" />
+<meta name="twitter:image" content="https://roal.design/images/your-image.jpg" />
 ```
 
 ## Troubleshooting

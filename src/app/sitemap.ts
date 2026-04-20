@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllBlogPosts } from '@/lib/firebase/firestore';
 import { ALL_SERVICES } from '@/constants/services';
 
-const SITE_URL = 'https://roalmobileri.com';
+const SITE_URL = 'https://roal.design';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

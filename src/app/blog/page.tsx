@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
     description:
       'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide për projektin tuaj të ardhshëm.',
-    url: 'https://roalmobileri.com/blog',
+    url: 'https://roal.design/blog',
     type: 'website',
     siteName: 'ROAL Mobileri',
     locale: 'sq_AL',
     images: [
       {
-        url: 'https://roalmobileri.com/images/cover.jpg',
+        url: 'https://roal.design/images/cover.jpg',
         width: 1200,
         height: 630,
         alt: 'ROAL Mobileri — Blog',
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
     description: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë.',
-    images: ['https://roalmobileri.com/images/cover.jpg'],
+    images: ['https://roal.design/images/cover.jpg'],
   },
   alternates: {
-    canonical: 'https://roalmobileri.com/blog',
+    canonical: 'https://roal.design/blog',
     languages: {
       'sq-AL': '/blog?lang=sq',
       'en-AL': '/blog?lang=en',

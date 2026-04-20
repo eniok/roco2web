@@ -77,4 +77,7 @@ User-agent: DuckAssistBot
 Allow: /
 
 # Block nothing else — this is a marketing site.
-Sitemap: https://roalmobileri.com/sitemap.xml
+Sitemap: https://roal.design/sitemap.xml
+
+# LLM-friendly site summary (https://llmstxt.org)
+LLM-Content: https://roal.design/llms.txt

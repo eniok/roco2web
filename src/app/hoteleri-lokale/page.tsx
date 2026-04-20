@@ -4,7 +4,7 @@ import { SERVICES } from '@/constants/services';
 import { buildServiceSchema } from '@/lib/serviceSchema';
 
 const service = SERVICES['hoteleri-lokale'];
-const SITE_URL = 'https://roalmobileri.com';
+const SITE_URL = 'https://roal.design';
 
 export const metadata: Metadata = {
   title: service.metaTitle.sq,

@@ -29,12 +29,12 @@ export type Lang = 'en' | 'sq';
 export interface BlogPost {
   slug: string;
   imageUrl: string;
-  titles:  Record<Lang, string>;
+  titles: Record<Lang, string>;
   authors: Record<Lang, string>;
-  dates:   Record<Lang, string>;
-  excerpts:Record<Lang, string>;
+  dates: Record<Lang, string>;
+  excerpts: Record<Lang, string>;
   content: Record<Lang, string>;
-    seo?: SeoMetadata;
+  seo?: SeoMetadata;
 }
 
 export interface SeoMetadata {
@@ -50,29 +50,29 @@ export interface SeoMetadata {
 }
 
 
-  //   {
-  //   "slug": "empty",
-  //   "imageUrl": modernDesignImg.src,
-  //   "titles": {
-  //     "en": "",
-  //     "sq": ""
-  //   },
-  //   "authors": {
-  //     "en": "Redi K.",
-  //     "sq": "Redi K."
-  //   },
-  //   "dates": {
-  //     "en": "",
-  //     "sq": ""
-  //   },
-  //   "excerpts": {
-  //     "en": "",
-  //     "sq": ""
-  //   },
-  //   "content": {
-  //   "en": '',     
-  //  "sq": ""
-  //   },
+//   {
+//   "slug": "empty",
+//   "imageUrl": modernDesignImg.src,
+//   "titles": {
+//     "en": "",
+//     "sq": ""
+//   },
+//   "authors": {
+//     "en": "Redi K.",
+//     "sq": "Redi K."
+//   },
+//   "dates": {
+//     "en": "",
+//     "sq": ""
+//   },
+//   "excerpts": {
+//     "en": "",
+//     "sq": ""
+//   },
+//   "content": {
+//   "en": '',
+//  "sq": ""
+//   },
 
 // export const blogPosts: BlogPost[] = [
 //   {
@@ -102,12 +102,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Arti i Mobiljeve Minimaliste – Zgjidhjet e Roal Mobileri",
 //       "metaDescription": "Zbuloni si të krijoni hapësira elegante me mobilje minimaliste. Këshilla, materiale cilësore dhe ide për shtëpinë tuaj nga Roal Mobileri.",
 //       "keywords": "mobilje minimaliste,mobilje shqiptare,Roal Mobileri,interior design,mobilje moderne,tavolina druri,divan minimal,tryeza multifunksionale,dizajn shqiptar,materiale natyrale,mobilje cilësore,rafe librash,tapiceri leshi,mobilje funksionale,kuzhina moderne",
-//       "canonicalUrl": "https://roalmobileri.com/blog/the-art-of-minimalist-furniture/sq",
+//       "canonicalUrl": "https://roal.design/blog/the-art-of-minimalist-furniture/sq",
 //       "ogTitle": "Arti i Mobiljeve Minimaliste – Zgjidhjet e Roal Mobileri",
 //       "ogDescription": "Zbuloni si të krijoni hapësira elegante me mobilje minimaliste. Këshilla, materiale cilësore dhe ide për shtëpinë tuaj nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": modernDesignImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/the-art-of-minimalist-furniture/sq"
+//       "ogUrl": "https://roal.design/blog/the-art-of-minimalist-furniture/sq"
 //     }
 //   },
 //   {
@@ -137,12 +137,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Si të Shfrytëzoni Hapësirat e Vogla me Mobilje Multifunksionale",
 //       "metaDescription": "Zbuloni si mobiljet multifunksionale rrisin komoditetin dhe kursimin në shtëpitë shqiptare. Ide të zgjuara për çdo hapësirë të vogël!",
 //       "keywords": "mobilje multifunksionale, mobilje shqiptare, hapësira të vogla, ide mobilimi, dollapë, krevate me hapësirë magazinimi, tryeza që zgjerohet, divan modular, mobilje për apartament, mobilje Roal Mobileri, këshilla mobilimi, mobilje efikase, kursim hapësire, mobilje të qëndrueshme, planifikim interieri",
-//       "canonicalUrl": "https://roalmobileri.com/blog/maximizing-small-spaces-multifunctional-furniture/sq",
+//       "canonicalUrl": "https://roal.design/blog/maximizing-small-spaces-multifunctional-furniture/sq",
 //       "ogTitle": "Si të Shfrytëzoni Hapësirat e Vogla me Mobilje Multifunksionale",
 //       "ogDescription": "Zbuloni si mobiljet multifunksionale rrisin komoditetin dhe kursimin në shtëpitë shqiptare. Ide të zgjuara për çdo hapësirë të vogël!",
 //       "ogType": "article",
 //       "ogImage": multifunctionalImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/maximizing-small-spaces-multifunctional-furniture/sq"
+//       "ogUrl": "https://roal.design/blog/maximizing-small-spaces-multifunctional-furniture/sq"
 //     }
 //   },
 //   {
@@ -172,12 +172,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Dizajni Biofilik: Si të Sjellësh Natyrën në Shtëpinë Tënde",
 //       "metaDescription": "Zbuloni si të përdorni bimë, dritë natyrore dhe mobilje shqiptare për një shtëpi më të shëndetshme me dizajn biofilik.",
 //       "keywords": "dizajn biofilik,mobilje shqiptare,mobilje druri,bime shtëpie,dritë natyrore,Roal Mobileri,mobilje moderne,tekstura natyrore,interior design Shqipëri,materiale natyrore,kopsht vertikal,aksesore natyrale,ide për shtëpinë,mobilje cilësore,stil jete shqiptar",
-//       "canonicalUrl": "https://roalmobileri.com/blog/biophilic-design-bringing-nature-indoors/sq",
+//       "canonicalUrl": "https://roal.design/blog/biophilic-design-bringing-nature-indoors/sq",
 //       "ogTitle": "Dizajni Biofilik: Si të Sjellësh Natyrën në Shtëpinë Tënde",
 //       "ogDescription": "Zbuloni si të përdorni bimë, dritë natyrore dhe mobilje shqiptare për një shtëpi më të shëndetshme me dizajn biofilik.",
 //       "ogType": "article",
 //       "ogImage": biophilicImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/biophilic-design-bringing-nature-indoors/sq"
+//       "ogUrl": "https://roal.design/blog/biophilic-design-bringing-nature-indoors/sq"
 //     }
 //   },
 //   {
@@ -231,12 +231,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Komoditet & Shëndet: Ergonomia në Mobiljet Shqiptare | Roal Mobileri",
 //       "metaDescription": "Zbuloni si mobiljet ergonomike përmirësojnë shëndetin, komoditetin dhe përqendrimin në çdo shtëpi shqiptare. Këshilla praktike nga Roal Mobileri.",
 //       "keywords": "mobilje, mobilje ergonomike, Roal Mobileri, komoditet, shëndet, mobilje Shqipëri, karrige ergonomike, tavolina pune, dizajn shqiptar, mobilje me porosi, këshilla ergonomie, mobileri shqiptare, arredim shtëpie, mobilje zyre, mobilje cilësore",
-//       "canonicalUrl": "https://roalmobileri.com/blog/ergonomics-furniture-comfort-health/sq",
+//       "canonicalUrl": "https://roal.design/blog/ergonomics-furniture-comfort-health/sq",
 //       "ogTitle": "Komoditet & Shëndet: Ergonomia në Mobiljet Shqiptare | Roal Mobileri",
 //       "ogDescription": "Zbuloni si mobiljet ergonomike përmirësojnë shëndetin, komoditetin dhe përqendrimin në çdo shtëpi shqiptare. Këshilla praktike nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": ergonomicImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/ergonomics-furniture-comfort-health/sq"
+//       "ogUrl": "https://roal.design/blog/ergonomics-furniture-comfort-health/sq"
 //     }
 //   },
 //   {
@@ -266,12 +266,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Ambient i Hapur: Pro dhe Kundër për Shtëpinë Tuaj Moderne",
 //       "metaDescription": "Zbuloni avantazhet dhe sfidat e ambientit të hapur në shtëpi, këshilla praktike dhe zgjidhje të zgjuara për jetesën moderne shqiptare.",
 //       "keywords": "ambient i hapur, mobilje, Roal Mobileri, arredim shtëpie, plan i hapur, kuzhinë moderne, tryezë ngrënieje, sallon, arredim shqiptar, ndarje hapsirash, këshilla arredimi, mobilje cilësore, dizajn shqiptar, ide per shtëpi, zgjidhje të zgjuara",
-//       "canonicalUrl": "https://roalmobileri.com/blog/open-concept-living-pros-cons/sq",
+//       "canonicalUrl": "https://roal.design/blog/open-concept-living-pros-cons/sq",
 //       "ogTitle": "Ambient i Hapur: Pro dhe Kundër për Shtëpinë Tuaj Moderne",
 //       "ogDescription": "Zbuloni avantazhet dhe sfidat e ambientit të hapur në shtëpi, këshilla praktike dhe zgjidhje të zgjuara për jetesën moderne shqiptare.",
 //       "ogType": "article",
 //       "ogImage": openconceptImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/open-concept-living-pros-cons/sq"
+//       "ogUrl": "https://roal.design/blog/open-concept-living-pros-cons/sq"
 //     }
 //   },
 //   {
@@ -301,12 +301,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Fuqia e Ngjyrës në Dizajnin e Brendshëm | Roal Mobileri",
 //       "metaDescription": "Zbuloni si ngjyrat transformojnë shtëpinë tuaj me ide praktike nga Roal Mobileri. Risi, harmoni dhe stil në çdo hapësirë.",
 //       "keywords": "mobilie, dizajn i brendshëm, ngjyra, arredim, ngjyra muri, divan, Roal Mobileri, shtëpi, këshilla arredimi, tekstile, ngjyra të ngrohta, mobilje druri, ide dekorimi, mobilie shqiptare, interier",
-//       "canonicalUrl": "https://roalmobileri.com/blog/power-of-color-interior-design/sq",
+//       "canonicalUrl": "https://roal.design/blog/power-of-color-interior-design/sq",
 //       "ogTitle": "Fuqia e Ngjyrës në Dizajnin e Brendshëm | Roal Mobileri",
 //       "ogDescription": "Zbuloni si ngjyrat transformojnë shtëpinë tuaj me ide praktike nga Roal Mobileri. Risi, harmoni dhe stil në çdo hapësirë.",
 //       "ogType": "article",
 //       "ogImage": lightsImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/power-of-color-interior-design/sq"
+//       "ogUrl": "https://roal.design/blog/power-of-color-interior-design/sq"
 //     }
 //   },
 //   {
@@ -336,12 +336,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Kthimi Vintage: Trendet Retro që Ndriçojnë Shtëpitë Shqiptare",
 //       "metaDescription": "Zbuloni si mobiljet dhe dekori retro rikthejnë stilin e mesit të shekullit në shtëpitë shqiptare. Ide kreative dhe këshilla për arredim unik.",
 //       "keywords": "mobilje retro,mobilje vintage,dizajn interieri,arredim shtëpie,trende retro,Roal Mobileri,mobilje shqiptare,thesare vintage,artizanat shqiptar,bufe vintage,kolltuk retro,treg mobilerish,ide arredimi,letër muri vintage,mobilje të ripërdorura",
-//       "canonicalUrl": "https://roalmobileri.com/blog/vintage-comeback-retro-trends/sq",
+//       "canonicalUrl": "https://roal.design/blog/vintage-comeback-retro-trends/sq",
 //       "ogTitle": "Kthimi Vintage: Trendet Retro që Ndriçojnë Shtëpitë Shqiptare",
 //       "ogDescription": "Zbuloni si mobiljet dhe dekori retro rikthejnë stilin e mesit të shekullit në shtëpitë shqiptare. Ide kreative dhe këshilla për arredim unik.",
 //       "ogType": "article",
 //       "ogImage": vintageImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/vintage-comeback-retro-trends/sq"
+//       "ogUrl": "https://roal.design/blog/vintage-comeback-retro-trends/sq"
 //     }
 //   },
 //   {
@@ -371,12 +371,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Ndriçimi 101: Si të Krijoni Atmosferë të Ngrohtë në Shtëpi",
 //       "metaDescription": "Zbuloni teknikat më të mira të ndriçimit për çdo apartament. Këshilla praktike nga Roal Mobileri për ambiente komode dhe moderne.",
 //       "keywords": "mobilje, ndriçim, shtëpi, Roal Mobileri, llambadarë, llamba LED, arredim, dizajn interieri, atmosferë, këshilla ndriçimi, llamba inteligjente, mobilim shtëpie, llamba tavoline, ambient shtëpie, ide arredimi",
-//       "canonicalUrl": "https://roalmobileri.com/blog/lighting-101-setting-mood/sq",
+//       "canonicalUrl": "https://roal.design/blog/lighting-101-setting-mood/sq",
 //       "ogTitle": "Ndriçimi 101: Si të Krijoni Atmosferë të Ngrohtë në Shtëpi",
 //       "ogDescription": "Zbuloni teknikat më të mira të ndriçimit për çdo shtëpi shqiptare. Këshilla praktike nga Roal Mobileri për ambiente komode dhe moderne.",
 //       "ogType": "article",
 //       "ogImage": lights2Img.src,
-//       "ogUrl": "https://roalmobileri.com/blog/lighting-101-setting-mood/sq"
+//       "ogUrl": "https://roal.design/blog/lighting-101-setting-mood/sq"
 //     }
 //   },
 //   {
@@ -406,12 +406,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Oazë Pune nga Shtëpia: Si të Dizajnoni Zyrën Tuaj Komode",
 //       "metaDescription": "Krijoni një zyrë funksionale në shtëpi me truke, mobilje praktike dhe ide dekorimi të përshtatura për apartamentet shqiptare.",
 //       "keywords": "mobilje, zyra në shtëpi, tavolinë pune, karrige ergonomike, dizajn zyre, mobilje shqiptare, ruajtje, ndriçim, rafte muri, dekor, komoditet, zgjidhje pune, apartamente shqiptare, Roal Mobileri, zyrë komode",
-//       "canonicalUrl": "https://roalmobileri.com/blog/home-office-design-tips/sq",
+//       "canonicalUrl": "https://roal.design/blog/home-office-design-tips/sq",
 //       "ogTitle": "Oazë Pune nga Shtëpia: Si të Dizajnoni Zyrën Tuaj Komode",
 //       "ogDescription": "Krijoni një zyrë funksionale në shtëpi me truke, mobilje praktike dhe ide dekorimi të përshtatura për apartamentet shqiptare.",
 //       "ogType": "article",
 //       "ogImage": homeofficeImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/home-office-design-tips/sq"
+//       "ogUrl": "https://roal.design/blog/home-office-design-tips/sq"
 //     }
 //   },
 //   {
@@ -441,12 +441,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Minimalizëm vs. Maksimalizëm: Si të gjesh stilin tënd të mobilimit",
 //       "metaDescription": "Zbulo këshilla praktike për minimalizëm dhe maksimalizëm në mobilim, ide për shtëpi shqiptare dhe kombinime stili nga Roal Mobileri.",
 //       "keywords": "mobilie, Roal Mobileri, minimalizëm, maksimalizëm, mobilim shqiptar, ide shtëpie, arredim, këshilla mobilimi, stil modern, dizajn interieri, shtëpi shqiptare, trende mobilimi, arredim ekonomik, mobilie druri, rafte të personalizuara",
-//       "canonicalUrl": "https://roalmobileri.com/blog/minimalist-vs-maximalist-style/sq",
+//       "canonicalUrl": "https://roal.design/blog/minimalist-vs-maximalist-style/sq",
 //       "ogTitle": "Minimalizëm vs. Maksimalizëm: Si të gjesh stilin tënd të mobilimit",
 //       "ogDescription": "Zbulo këshilla praktike për minimalizëm dhe maksimalizëm në mobilim, ide për shtëpi shqiptare dhe kombinime stili nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": maxvsminImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/minimalist-vs-maximalist-style/sq"
+//       "ogUrl": "https://roal.design/blog/minimalist-vs-maximalist-style/sq"
 //     }
 //   },
 //   {
@@ -476,12 +476,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Zgjedhja e Stilit Tuaj: Nga Modernja te Boho | Roal Mobileri",
 //       "metaDescription": "Zbuloni stilin tuaj me këshilla praktike për arredim që i përshtatet jetës dhe realitetit shqiptar. Udhëzues nga Roal Mobileri.",
 //       "keywords": "mobilje shqiptare, arredim shtëpie, stil modern, stil boho, këshilla arredimi, mobilje cilësore, dizajn interieri, mobilje druri, tekstura natyrale, trende mobiljesh, shtëpia shqiptare, arredim modern, buxhet i ulët, materiale natyrale, Roal Mobileri",
-//       "canonicalUrl": "https://roalmobileri.com/blog/picking-your-signature-style/sq",
+//       "canonicalUrl": "https://roal.design/blog/picking-your-signature-style/sq",
 //       "ogTitle": "Zgjedhja e Stilit Tuaj: Nga Modernja te Boho | Roal Mobileri",
 //       "ogDescription": "Zbuloni stilin tuaj me këshilla praktike për arredim që i përshtatet jetës dhe realitetit shqiptar. Udhëzues nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": stylepickerImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/picking-your-signature-style/sq"
+//       "ogUrl": "https://roal.design/blog/picking-your-signature-style/sq"
 //     }
 //   },
 //   {
@@ -511,12 +511,12 @@ export interface SeoMetadata {
 //       "metaTitle": "7 Truke për Mobilimin e Shtëpive të Vogla – Roal Mobileri",
 //       "metaDescription": "Zbulo truke për kursim hapësire dhe ide mobilimi për shtëpi të vogla në Shqipëri. Kthe 60 m² në një “vilë” të vogël me Roal Mobileri.",
 //       "keywords": "mobilje, mobilim shtëpie, mobilje për shtëpi të vogla, kursim hapësire, Roal Mobileri, mobilje shqiptare, mobilje multifunksionale, këshilla mobilimi, apartament i vogël, ide për mobilim, mobilje të palosshme, mobilje me magazinim, dekor shtëpie, mobilje moderne, mobilje cilësore",
-//       "canonicalUrl": "https://roalmobileri.com/blog/furnishing-a-small-home/sq",
+//       "canonicalUrl": "https://roal.design/blog/furnishing-a-small-home/sq",
 //       "ogTitle": "7 Truke për Mobilimin e Shtëpive të Vogla – Roal Mobileri",
 //       "ogDescription": "Zbulo truke për kursim hapësire dhe ide mobilimi për shtëpi të vogla në Shqipëri. Kthe 60 m² në një “vilë” të vogël me Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": spaceSavingImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/furnishing-a-small-home/sq"
+//       "ogUrl": "https://roal.design/blog/furnishing-a-small-home/sq"
 //     }
 //   },
 //   {
@@ -546,12 +546,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Ngjyra e Dritës: Si të Zgjidhni Ndriçimin Ideal për Shtëpinë",
 //       "metaDescription": "Mësoni diferencat mes 2700K, 4000K dhe 6500K për një atmosferë të ngrohtë apo të freskët në shtëpi. Zbuloni këshilla nga Roal Mobileri.",
 //       "keywords": "mobilje, ndriçim, shtëpi, dhoma ndenjeje, kuzhinë, dhoma gjumi, Roal Mobileri, dizajn interieri, dritë e ngrohtë, dritë e ftohtë, Kelvin, llamba, LED, këshilla ndriçimi, atmosferë shtëpie",
-//       "canonicalUrl": "https://roalmobileri.com/blog/choosing-light-colour-kelvin/sq",
+//       "canonicalUrl": "https://roal.design/blog/choosing-light-colour-kelvin/sq",
 //       "ogTitle": "Ngjyra e Dritës: Si të Zgjidhni Ndriçimin Ideal për Shtëpinë",
 //       "ogDescription": "Mësoni diferencat mes 2700K, 4000K dhe 6500K për një atmosferë të ngrohtë apo të freskët në shtëpi. Zbuloni këshilla nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": colorImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/choosing-light-colour-kelvin/sq"
+//       "ogUrl": "https://roal.design/blog/choosing-light-colour-kelvin/sq"
 //     }
 //   },
 //   {
@@ -581,12 +581,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Si t’i Bëni Mobiljet të Duken të Shtrenjta me Buxhet të Ulët",
 //       "metaDescription": "Zbuloni si t’i transformoni mobiljet tuaja në luks me pak shpenzime. Këshilla të thjeshta për një pamje elegante nga Roal Mobileri.",
 //       "keywords": "mobilje, mobilje të lira, mobilje luksoze, Roal Mobileri, arredim shtëpie, këshilla mobilimi, përmirësim mobiljesh, ndriçim modern, doreza mobiljesh, dekor shtëpie, perde, art në shtëpi, tekstile cilësore, dizajn shqiptar, arredim ekonomik",
-//       "canonicalUrl": "https://roalmobileri.com/blog/make-furniture-look-expensive-budget/sq",
+//       "canonicalUrl": "https://roal.design/blog/make-furniture-look-expensive-budget/sq",
 //       "ogTitle": "Si t’i Bëni Mobiljet të Duken të Shtrenjta me Buxhet të Ulët",
 //       "ogDescription": "Zbuloni si t’i transformoni mobiljet tuaja në luks me pak shpenzime. Këshilla të thjeshta për një pamje elegante nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": luxuryImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/make-furniture-look-expensive-budget/sq"
+//       "ogUrl": "https://roal.design/blog/make-furniture-look-expensive-budget/sq"
 //     }
 //   },
 //   {
@@ -616,12 +616,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Aksesore Luks dhe Stil për Çdo Dhomë | Roal Mobileri",
 //       "metaDescription": "Zbuloni si të shtoni luks dhe thellësi në shtëpinë tuaj me pasqyra, tekstile e metale elegante. Ide moderne nga Roal Mobileri.",
 //       "keywords": "aksesore mobilje,luks ne shtepi,dizajn shqiptar,aksesore dhome,roal mobileri,qilima te punuar me dore,pasqyra dekorative,metale te ngrohta,tekstile cilësore,mobilje moderne,ide arredimi,aksesore dekorativ,arredim shtepie,detaje luksoze,aksesore trend",
-//       "canonicalUrl": "https://roalmobileri.com/blog/luxury-accessories-add-depth/sq",
+//       "canonicalUrl": "https://roal.design/blog/luxury-accessories-add-depth/sq",
 //       "ogTitle": "Aksesore Luks dhe Stil për Çdo Dhomë | Roal Mobileri",
 //       "ogDescription": "Zbuloni si të shtoni luks dhe thellësi në shtëpinë tuaj me pasqyra, tekstile e metale elegante. Ide moderne nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": accessoriesImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/luxury-accessories-add-depth/sq"
+//       "ogUrl": "https://roal.design/blog/luxury-accessories-add-depth/sq"
 //     }
 //   },
 //   {
@@ -651,12 +651,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Mobilje Eko-Miqësore: Zgjedhje të Qëndrueshme për Shtëpinë",
 //       "metaDescription": "Zbuloni si të zgjidhni mobilje të qëndrueshme, kurseni burime dhe mbrojeni ambientin me këshilla praktike për mobilje eko-miqësore.",
 //       "keywords": "mobilje, mobilje të qëndrueshme, mobilje eko-miqësore, mobilje druri, mobilje shqiptare, mobilje ekologjike, FSC, PEFC, mobilje bambuje, mobilje të ricikluara, mobilje vintage, mirëmbajtje mobiljesh, arredim i brendshëm, tavolina druri, Roal Mobileri",
-//       "canonicalUrl": "https://roalmobileri.com/blog/sustainable-furniture-choices/sq",
+//       "canonicalUrl": "https://roal.design/blog/sustainable-furniture-choices/sq",
 //       "ogTitle": "Mobilje Eko-Miqësore: Zgjedhje të Qëndrueshme për Shtëpinë",
 //       "ogDescription": "Zbuloni si të zgjidhni mobilje të qëndrueshme, kurseni burime dhe mbrojeni ambientin me këshilla praktike për mobilje eko-miqësore.",
 //       "ogType": "article",
 //       "ogImage": ecofriendlyImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/sustainable-furniture-choices/sq"
+//       "ogUrl": "https://roal.design/blog/sustainable-furniture-choices/sq"
 //     }
 //   },
 //   {
@@ -686,12 +686,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Shtrirja e Mobiljeve: Si të Organizoni Hapësirën me Stil",
 //       "metaDescription": "Zbuloni si të shfrytëzoni çdo cep të shtëpisë me këshilla për rrjedhë, fokus dhe funksion. Ide praktike për mobilje nga Roal Mobileri.",
 //       "keywords": "mobilje, arredim, mobilje shqiptare, dizajn interieri, këshilla mobilimi, Roal Mobileri, organizimi i hapësirës, mobilje për shtëpi, divan, tapet, ndriçim, dhoma e ndenjes, apartamente shqiptare, komodë, mobilje funksionale",
-//       "canonicalUrl": "https://roalmobileri.com/blog/planning-your-furniture-layout/sq",
+//       "canonicalUrl": "https://roal.design/blog/planning-your-furniture-layout/sq",
 //       "ogTitle": "Shtrirja e Mobiljeve: Si të Organizoni Hapësirën me Stil",
 //       "ogDescription": "Zbuloni si të shfrytëzoni çdo cep të shtëpisë me këshilla për rrjedhë, fokus dhe funksion. Ide praktike për mobilje nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": measuringImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/planning-your-furniture-layout/sq"
+//       "ogUrl": "https://roal.design/blog/planning-your-furniture-layout/sq"
 //     }
 //   },
 //   {
@@ -721,12 +721,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Matjet për Dorëzimin e Mobiljeve – Udhëzues Praktik nga Roal Mobileri",
 //       "metaDescription": "Mësoni si të matni saktë hapësirat për dorëzim mobiljesh dhe shmangni surprizat. Këshilla praktike nga Roal Mobileri për një proces pa stres.",
 //       "keywords": "mobilje, dorëzim mobiljesh, matje mobiljesh, Roal Mobileri, udhëzues mobiljesh, mobilje Shqipëri, transport mobiljesh, këshilla mobilje, blerje mobiljesh, hyrje apartamenti, shkallë, ashensor, dimensione mobiljesh, shtëpi shqiptare, përmasat e mobiljeve",
-//       "canonicalUrl": "https://roalmobileri.com/blog/measuring-furniture-delivery/sq",
+//       "canonicalUrl": "https://roal.design/blog/measuring-furniture-delivery/sq",
 //       "ogTitle": "Matjet për Dorëzimin e Mobiljeve – Udhëzues Praktik nga Roal Mobileri",
 //       "ogDescription": "Mësoni si të matni saktë hapësirat për dorëzim mobiljesh dhe shmangni surprizat. Këshilla praktike nga Roal Mobileri për një proces pa stres.",
 //       "ogType": "article",
 //       "ogImage": measuringImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/measuring-furniture-delivery/sq"
+//       "ogUrl": "https://roal.design/blog/measuring-furniture-delivery/sq"
 //     }
 //   },
 //   {
@@ -756,12 +756,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Kombinimi Vintage & Modern: Udhëzues për Shtëpinë Shqiptare",
 //       "metaDescription": "Zbuloni si të balanconi mobiljet vintage me ato moderne për një shtëpi plot stil, ngjyra dhe funksionalitet shqiptar.",
 //       "keywords": "mobilje shqiptare,vintage,modern,mobilje moderne,shtëpi shqiptare,komoda,sënduk,ndriçim,interier,rinovim mobiljesh,dizajn shqiptar,mobilje druri,ngjyra neutrale,tekstura,ide kursimi",
-//       "canonicalUrl": "https://roalmobileri.com/blog/mixing-vintage-modern/sq",
+//       "canonicalUrl": "https://roal.design/blog/mixing-vintage-modern/sq",
 //       "ogTitle": "Kombinimi Vintage & Modern: Udhëzues për Shtëpinë Shqiptare",
 //       "ogDescription": "Zbuloni si të balanconi mobiljet vintage me ato moderne për një shtëpi plot stil, ngjyra dhe funksionalitet shqiptar.",
 //       "ogType": "article",
 //       "ogImage": vintage2Img.src,
-//       "ogUrl": "https://roalmobileri.com/blog/mixing-vintage-modern/sq"
+//       "ogUrl": "https://roal.design/blog/mixing-vintage-modern/sq"
 //     }
 //   },
 //   {
@@ -791,12 +791,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Tapetet: Si të zgjedhësh madhësinë, modelin dhe vendosjen perfekte",
 //       "metaDescription": "Zbulo si të zgjedhësh tapetin e duhur për shtëpinë: madhësia, modeli, ngjyrat dhe materialet për komoditet dhe stil shqiptar.",
 //       "keywords": "tapete, qilima, mobilje shqiptare, Roal Mobileri, arredim, tapet dhome ndenjeje, tapet ngrënieje, tapet dhome gjumi, tapet korridori, tapet ballkoni, pllaka qeramike, parket, modele tapetesh, ngjyra tapetesh, tekstile shtëpie",
-//       "canonicalUrl": "https://roalmobileri.com/blog/choosing-perfect-rug/sq",
+//       "canonicalUrl": "https://roal.design/blog/choosing-perfect-rug/sq",
 //       "ogTitle": "Tapetet: Si të zgjedhësh madhësinë, modelin dhe vendosjen perfekte",
 //       "ogDescription": "Zbulo si të zgjedhësh tapetin e duhur për shtëpinë: madhësia, modeli, ngjyrat dhe materialet për komoditet dhe stil shqiptar.",
 //       "ogType": "article",
 //       "ogImage": rugImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/choosing-perfect-rug/sq"
+//       "ogUrl": "https://roal.design/blog/choosing-perfect-rug/sq"
 //     }
 //   },
 //   {
@@ -826,12 +826,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Kujdesi për Mobiljet prej Druri: Udhëzues Praktik & Efektiv",
 //       "metaDescription": "Mësoni si të pastroni, mbroni dhe ruani mobiljet prej druri për jetëgjatësi e shkëlqim. Këshilla të thjeshta për çdo ambient shqiptar.",
 //       "keywords": "mobilje druri, kujdesi për mobiljet, pastrim mobiljesh, ruajtje mobiljesh, mbrojtje druri, mobileri, Roal Mobileri, këshilla mobilje, pastrim druri, lagështia mobilje, sirtarë druri, tavolina druri, lustrim druri, riparim mobiljesh, mobilje cilësore",
-//       "canonicalUrl": "https://roalmobileri.com/blog/caring-for-wood-furniture/sq",
+//       "canonicalUrl": "https://roal.design/blog/caring-for-wood-furniture/sq",
 //       "ogTitle": "Kujdesi për Mobiljet prej Druri: Udhëzues Praktik & Efektiv",
 //       "ogDescription": "Mësoni si të pastroni, mbroni dhe ruani mobiljet prej druri për jetëgjatësi e shkëlqim. Këshilla të thjeshta për çdo ambient shqiptar.",
 //       "ogType": "article",
 //       "ogImage": careImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/caring-for-wood-furniture/sq"
+//       "ogUrl": "https://roal.design/blog/caring-for-wood-furniture/sq"
 //     }
 //   },
 //   {
@@ -861,12 +861,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Ndryshime Sezoni: Ide Dekori të Freskëta për Shtëpinë Tuaj",
 //       "metaDescription": "Zbuloni si të rifreskoni shtëpinë tuaj çdo sezon me këshilla praktike për tekstile, aroma dhe dekor nga Roal Mobileri.",
 //       "keywords": "mobilje, dekor shtëpie, Roal Mobileri, tekstile, këshilla dekori, ndryshime sezoni, arredim, qilima, jastëkë, batanije, vazo, shporta, dizajn shqiptar, tendenca mobiljesh, ide shtëpie",
-//       "canonicalUrl": "https://roalmobileri.com/blog/seasonal-decor-changes/sq",
+//       "canonicalUrl": "https://roal.design/blog/seasonal-decor-changes/sq",
 //       "ogTitle": "Ndryshime Sezoni: Ide Dekori të Freskëta për Shtëpinë Tuaj",
 //       "ogDescription": "Zbuloni si të rifreskoni shtëpinë tuaj çdo sezon me këshilla praktike për tekstile, aroma dhe dekor nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": seasonsImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/seasonal-decor-changes/sq"
+//       "ogUrl": "https://roal.design/blog/seasonal-decor-changes/sq"
 //     }
 //   },
 //   {
@@ -920,12 +920,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Udhëzues Pastrimi Tapicerie: Si të Pastrojmë Çdo Pëlhurë",
 //       "metaDescription": "Zbuloni si të pastroni tapicerinë nga pambuku te kadifja. Këshilla praktike për çdo lloj pëlhure dhe situatë shtëpiake shqiptare.",
 //       "keywords": "pastrim tapicerie, divan shqiptar, këshilla pastrimi, Roal Mobileri, pëlhura mobiljesh, pastrimi pëlhurave, tapiceri pambuku, tapiceri lino, pastrim lëkure, divan me kadife, mobilje cilësore, pastrim akrili, pluhur në shtëpi, qime kafshësh mobilje, mobilje Shqipëri",
-//       "canonicalUrl": "https://roalmobileri.com/blog/cleaning-upholstery-guide/sq",
+//       "canonicalUrl": "https://roal.design/blog/cleaning-upholstery-guide/sq",
 //       "ogTitle": "Udhëzues Pastrimi Tapicerie: Si të Pastrojmë Çdo Pëlhurë",
 //       "ogDescription": "Zbuloni si të pastroni tapicerinë nga pambuku te kadifja. Këshilla praktike për çdo lloj pëlhure dhe situatë shtëpiake shqiptare.",
 //       "ogType": "article",
 //       "ogImage": cleaningImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/cleaning-upholstery-guide/sq"
+//       "ogUrl": "https://roal.design/blog/cleaning-upholstery-guide/sq"
 //     }
 //   },
 //   {
@@ -955,12 +955,12 @@ export interface SeoMetadata {
 //       "metaTitle": "Si të Zgjidhni Setin Ideal të Divanit për Shtëpinë Tuaj | Roal Mobileri",
 //       "metaDescription": "Zbuloni udhëzuesin përfundimtar për zgjedhjen e divanit perfekt: madhësia, stili dhe komoditeti, këshilla praktike nga Roal Mobileri.",
 //       "keywords": "divan, mobilje, Roal Mobileri, set divani, zgjedhja e divanit, komoditet, stil, madhësia e divanit, këshilla për divan, ndërtimi i divanit, tapiceri, mirëmbajtja e divanit, mobilje shqiptare, arredim, divan për familje, buxhet mobiljesh",
-//       "canonicalUrl": "https://roalmobileri.com/blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq",
+//       "canonicalUrl": "https://roal.design/blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq",
 //       "ogTitle": "Si të Zgjidhni Setin Ideal të Divanit për Shtëpinë Tuaj | Roal Mobileri",
 //       "ogDescription": "Zbuloni udhëzuesin përfundimtar për zgjedhjen e divanit perfekt: madhësia, stili dhe komoditeti, këshilla praktike nga Roal Mobileri.",
 //       "ogType": "article",
 //       "ogImage": sofaImg.src,
-//       "ogUrl": "https://roalmobileri.com/blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq"
+//       "ogUrl": "https://roal.design/blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq"
 //     }
 //   }
 // ];

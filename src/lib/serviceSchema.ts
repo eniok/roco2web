@@ -1,6 +1,6 @@
 import type { ServiceConfig } from '@/constants/services';
 
-const SITE_URL = 'https://roalmobileri.com';
+const SITE_URL = 'https://roal.design';
 
 export function buildServiceSchema(service: ServiceConfig) {
   const url = `${SITE_URL}/${service.slug}`;

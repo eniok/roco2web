@@ -32,13 +32,18 @@ export const metadata: Metadata = {
   description:
     'Kuzhina, garderoba dhe ambiente të plota me porosi. Vite përvojë, cilësi e qëndrueshme, ne ju shoqërojmë nga skica e parë deri te instalimi.',
 
-  metadataBase: new URL('https://roalmobileri.com'),
+  metadataBase: new URL('https://roal.design'),
 
   alternates: {
-    canonical: 'https://roalmobileri.com/',
+    canonical: 'https://roal.design/',
     languages: {
       'sq-AL': '/?lang=sq',
       'en-AL': '/?lang=en',
+    },
+    types: {
+      'text/plain': [
+        { url: '/llms.txt', title: 'LLMs.txt — site summary for AI crawlers' },
+      ],
     },
   },
 
@@ -57,13 +62,13 @@ export const metadata: Metadata = {
     title: 'ROAL Mobileri — Mobilje me porosi',
     description:
       'Kuzhina, garderoba dhe ambiente të plota të projektuara për t\u2019ju shërbyer për vite. Ju shoqërojmë në çdo hap.',
-    url: 'https://roalmobileri.com/',
+    url: 'https://roal.design/',
     type: 'website',
     siteName: 'ROAL Mobileri',
     locale: 'sq_AL',
     images: [
       {
-        url: 'https://roalmobileri.com/images/cover.jpg',
+        url: 'https://roal.design/images/cover.jpg',
         width: 1200,
         height: 630,
         alt: 'Projekt me porosi nga ROAL Mobileri',
@@ -92,14 +97,14 @@ export const metadata: Metadata = {
 const LOCAL_BUSINESS_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
-  '@id': 'https://roalmobileri.com/#business',
+  '@id': 'https://roal.design/#business',
   name: 'ROAL Mobileri',
   alternateName: 'RO-AL SH.P.K',
   description:
     'Mobileri me porosi në Tiranë. Kuzhina, garderoba dhe ambiente të plota, të projektuara për të zgjatur.',
-  url: 'https://roalmobileri.com/',
-  image: 'https://roalmobileri.com/images/cover.jpg',
-  logo: 'https://roalmobileri.com/logo.svg',
+  url: 'https://roal.design/',
+  image: 'https://roal.design/images/cover.jpg',
+  logo: 'https://roal.design/logo.svg',
   telephone: '+355672029739',
   email: 'info@roalmobileri.com',
   priceRange: '$$$',
@@ -147,7 +152,7 @@ const LOCAL_BUSINESS_JSON_LD = {
           description:
             'Kuzhina të projektuara dhe të punuara sipas përmasave të hapësirës suaj, me materiale të zgjedhura për të zgjatur vite.',
           areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roalmobileri.com/#business' },
+          provider: { '@id': 'https://roal.design/#business' },
         },
       },
       {
@@ -159,7 +164,7 @@ const LOCAL_BUSINESS_JSON_LD = {
           description:
             'Garderoba dhe dollapë me masë për çdo dhomë, përfshirë hapësira të parregullta dhe tavane të pjerrëta.',
           areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roalmobileri.com/#business' },
+          provider: { '@id': 'https://roal.design/#business' },
         },
       },
       {
@@ -171,7 +176,7 @@ const LOCAL_BUSINESS_JSON_LD = {
           description:
             'Tavolina pune, rafte dhe ambiente të plota zyre, të punuara me porosi për shtëpinë ose biznesin tuaj.',
           areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roalmobileri.com/#business' },
+          provider: { '@id': 'https://roal.design/#business' },
         },
       },
       {
@@ -183,7 +188,7 @@ const LOCAL_BUSINESS_JSON_LD = {
           description:
             'Mobilim i integruar për dhomën e ndenjes — vitrina, mure medie dhe depozitim i personalizuar.',
           areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roalmobileri.com/#business' },
+          provider: { '@id': 'https://roal.design/#business' },
         },
       },
       {
@@ -195,7 +200,7 @@ const LOCAL_BUSINESS_JSON_LD = {
           description:
             'Projekte komerciale për hotele, restorante, bare dhe dyqane në gjithë Shqipërinë.',
           areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roalmobileri.com/#business' },
+          provider: { '@id': 'https://roal.design/#business' },
         },
       },
     ],

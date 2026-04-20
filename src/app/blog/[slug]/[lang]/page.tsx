@@ -14,7 +14,7 @@ import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { BlogPost, Lang } from '@/constants/blogData';
 import { db } from '@/lib/firebase/firestore';
 
-const SITE_URL = 'https://roalmobileri.com';
+const SITE_URL = 'https://roal.design';
 const BRAND = 'ROAL Mobileri';
 
 function readingTime(html: string): number {
