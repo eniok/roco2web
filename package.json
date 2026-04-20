@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
