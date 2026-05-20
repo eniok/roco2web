@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { navLinks } from '../constants';
+import LangToggle from './LangToggle';
+import { useLang } from '@/lib/i18n';
 
 // Wrap Next’s Link to get framer-motion props
 const MotionLink = motion(Link);
@@ -16,6 +18,7 @@ interface HeaderProps {
 const Header = ({ navScrolled }: HeaderProps) => {
   const [navOpen, setNavOpen] = useState(false);
   const toggleNav = () => setNavOpen((o) => !o);
+  const { lang } = useLang();
 
   const headerVariants = {
     scrolled: {
@@ -53,18 +56,22 @@ const Header = ({ navScrolled }: HeaderProps) => {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="flex items-center space-x-2 font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <Link
+            href="/"
+            aria-label="ROAL Mobileri — kreu"
+            className="flex items-center space-x-2 font-display text-2xl md:text-3xl font-bold tracking-tight"
+          >
             <img
               src={navScrolled ? '/logo-2.png' : "/logo.svg"}
-              alt="Logo"
+              alt="ROAL Mobileri"
               className="h-8 w-auto mr-2"
               loading='lazy'
             />
             <span className={`text-red-600 font-thin text-md ${navScrolled ? "text-xl": 'text-2xl'}`}>SH.P.K</span>
-          </h1>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <MotionLink
                 key={link.href}
@@ -74,7 +81,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
                 initial="initial"
                 whileHover="hover"
               >
-                {link.label}
+                {link.label[lang]}
                 <motion.span
                   className="absolute bottom-0 left-0 h-0.5"
                   variants={underlineVariants}
@@ -82,11 +89,14 @@ const Header = ({ navScrolled }: HeaderProps) => {
                 />
               </MotionLink>
             ))}
+            <LangToggle className="ml-2" />
           </nav>
 
-          {/* Mobile Toggle */}
+          {/* Mobile: lang toggle + menu button */}
+          <div className="flex items-center gap-4 md:hidden">
+            <LangToggle />
           <motion.button
-            className="md:hidden z-50"
+            className="z-50"
             onClick={toggleNav}
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
@@ -110,6 +120,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
               />
             </svg>
           </motion.button>
+          </div>
         </div>
       </motion.header>
 
@@ -131,7 +142,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
                     className="block w-full py-3 text-2xl font-medium text-slate-800 hover:text-red-600 transition-colors"
                     onClick={() => setNavOpen(false)}
                   >
-                    {link.label}
+                    {link.label[lang]}
                   </Link>
                 </li>
               ))}

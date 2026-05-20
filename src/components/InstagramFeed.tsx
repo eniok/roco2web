@@ -44,7 +44,7 @@ const InstagramFeed: React.FC<InstagramFeedProps> = ({ embedHtmls }) => {
         - 3 columns on large screens and up (lg:grid-cols-3)
         - `gap-6` provides consistent spacing between items.
       */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id='products'>
         {embedHtmls.map((html, idx) => {
           // Extract the permalink from the full embed HTML.
           const match = html.match(/data-instgrm-permalink=["']([^"']+)["']/);

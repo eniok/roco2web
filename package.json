@@ -6,20 +6,23 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "firebase deploy",
+    "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "firebase": "^11.9.1",
+    "firebase": "^12",
     "firebase-admin": "^13.4.0",
     "framer-motion": "^12.19.1",
     "heroicons": "^2.2.0",
-    "html-react-parser": "^5.2.5",
-    "next": "15.3.4",
+    "html-react-parser": "^6",
+    "lucide-react": "^1.8.0",
+    "next": "16",
     "picomatch": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sharp": "0.33.5"
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -27,12 +30,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.4",
+    "eslint": "^10",
+    "eslint-config-next": "16",
     "tailwindcss": "^4",
-    "typescript": "^5"
-  },
-  "overrides": {
-    "sharp": "0.33.5"
+    "typescript": "^6"
   }
 }

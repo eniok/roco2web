@@ -1,44 +1,160 @@
-// src/components/Hero.tsx
-import { motion, MotionValue } from 'framer-motion';
+"use client";
+
+import * as React from "react";
+import { motion, type MotionValue } from "framer-motion";
+import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { useLang, type Dict } from "@/lib/i18n";
+
+const WHATSAPP_NUMBER = "355672029739";
+const WHATSAPP_PRESET = {
+  sq: "Përshëndetje ROAL, dua të mësoj më shumë për mobiljet me porosi.",
+  en: "Hello ROAL, I'd like to learn more about your made-to-measure furniture.",
+} satisfies Dict<string>;
+
+const copy = {
+  eyebrow: {
+    sq: "Mobileri me porosi · Tiranë",
+    en: "Bespoke furniture · Tirana",
+  },
+  titleLead: {
+    sq: "Mobilje të projektuara",
+    en: "Furniture designed",
+  },
+  titleAccent: {
+    sq: "për hapësirën tuaj.",
+    en: "for your space.",
+  },
+  subhead: {
+    sq: "Kuzhina, garderoba dhe ambiente të plota — të projektuara për t'ju shërbyer për vite. Ne ju shoqërojmë në çdo hap, nga skica e parë deri te instalimi.",
+    en: "Kitchens, wardrobes and full interiors — built to last for years. We stay with you every step, from the first sketch to the final install.",
+  },
+  ctaPrimary: {
+    sq: "Vizito showroom-in",
+    en: "Visit the showroom",
+  },
+  ctaSecondary: {
+    sq: "Shkruaj në WhatsApp",
+    en: "Message on WhatsApp",
+  },
+  trust: [
+    { sq: "Vite përvojë", en: "Years of experience" },
+    { sq: "Cilësi e qëndrueshme", en: "Built to last" },
+    { sq: "Me ju në çdo hap", en: "With you every step" },
+  ] as const,
+} satisfies Record<string, Dict<string> | readonly Dict<string>[]>;
 
 interface HeroProps {
   heroHeight: MotionValue<string>;
 }
 
-const Hero = ({ heroHeight }: HeroProps) => {
+export default function Hero({ heroHeight }: HeroProps) {
+  const { lang } = useLang();
+
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    WHATSAPP_PRESET[lang]
+  )}`;
+
   return (
-    <motion.section id="hero" className="relative flex flex-col justify-center items-center text-center" style={{ height: heroHeight }}>
-      <div className="absolute inset-0 overflow-hidden">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-95" poster="/images/cover.jpg">
-          <source src="/videos/hero-loop.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-linear-to-b from-black/40 to-transparent" />
+    <motion.section
+      id="hero"
+      aria-label="ROAL Mobileri"
+      className="relative isolate flex flex-col overflow-hidden bg-[#15130F] text-[#FAF8F4] min-h-[88svh]"
+      style={{ height: heroHeight }}
+    >
+      {/* Background image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/cover.jpg"
+          alt={
+            lang === 'sq'
+              ? 'Interier me mobilje me porosi nga ROAL Mobileri — kuzhina, garderoba dhe ambiente të plota në Tiranë'
+              : 'Interior with bespoke furniture by ROAL Mobileri — kitchens, wardrobes and full interiors in Tirana'
+          }
+          className="h-full w-full object-cover"
+          draggable={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/75" />
+        <div
+          className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
+          style={{ backgroundImage: "url('/images/noise.png')" }}
+        />
       </div>
 
-      <motion.div className="relative z-10 max-w-4xl px-4 mx-auto" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 }}}}>
-        <motion.h2 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 }}}>
-          <span className="inline-block mr-4">Elevate Your</span>
-          <motion.span className="text-red-600 inline-block" animate={{ textShadow: ['0 0 10px rgba(253,2,2,0.2)', '0 0 30px rgba(253,4,5,0.8)', '0 0 10px rgba(253,8,12,0.2)'] }} transition={{ duration: 4, repeat: Infinity }}>
-            Space
-          </motion.span>
-        </motion.h2>
-        <motion.p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}}>
-          Bespoke furniture solutions merging timeless craftsmanship with contemporary design
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-6 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 text-[0.7rem] uppercase tracking-[0.22em] text-[#E8E3DB]/70 sm:mb-8 sm:text-xs"
+        >
+          {copy.eyebrow[lang]}
         </motion.p>
-        <motion.div variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 }}}>
-          <a href="#instagram" className="inline-flex items-center bg-red-600 hover:bg-red-700 px-8 py-4 rounded-full text-lg font-medium text-white transition-all group shadow-xl hover:shadow-2xl">
-            Explore Collections
+
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl text-balance font-serif font-normal leading-[1.02] tracking-tight text-white"
+          style={{
+            fontFamily: "var(--font-fraunces), Georgia, serif",
+            fontSize: "clamp(2.4rem, 7vw, 5.4rem)",
+          }}
+        >
+          {copy.titleLead[lang]}{" "}
+          <span className="italic text-[#E8B894]">{copy.titleAccent[lang]}</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-[#FAF8F4]/85 sm:text-lg"
+        >
+          {copy.subhead[lang]}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-8 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4"
+        >
+          <Link
+            href="#showroom"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FAF8F4] px-6 py-3.5 text-base font-medium text-[#15130F] transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+          >
+            <MapPin className="h-4 w-4" aria-hidden="true" />
+            <span>{copy.ctaPrimary[lang]}</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+          </Link>
+
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-base font-medium text-white transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            <span>{copy.ctaSecondary[lang]}</span>
           </a>
         </motion.div>
-      </motion.div>
 
-      <motion.div className="absolute bottom-8" animate={{ y: [0, 20, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-        <a href="#about" className="block p-2">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-        </a>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#FAF8F4]/70 sm:mt-14"
+        >
+          {copy.trust.map((item, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <span aria-hidden="true" className="text-white/25">·</span>}
+              <span>{item[lang]}</span>
+            </React.Fragment>
+          ))}
+        </motion.div>
+      </div>
     </motion.section>
   );
-};
-
-export default Hero;
+}
