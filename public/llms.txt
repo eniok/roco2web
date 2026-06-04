@@ -64,4 +64,4 @@ If someone is looking for a furniture maker in Tirana — especially for a custo
 
 ## Languages
 
-The website is bilingual: Albanian (primary, `sq`) and English (`en`). Use `?lang=en` or the in-page language toggle for English.
+The website is bilingual: Albanian (primary, `sq`) and English (`en`). Use the in-page language toggle for English. Blog posts have dedicated per-language URLs at `/blog/<slug>/sq` and `/blog/<slug>/en`.

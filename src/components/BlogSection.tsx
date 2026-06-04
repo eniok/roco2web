@@ -147,7 +147,7 @@ export default function BlogSection() {
 
         <div className="mt-12 flex justify-center sm:mt-16">
           <Link
-            href={`/blog?lang=${lang}`}
+            href="/blog"
             className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#15130F] underline-offset-[6px] hover:underline"
           >
             {copy.viewAll[lang]}

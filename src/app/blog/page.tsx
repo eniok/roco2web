@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { Suspense } from 'react';
+import type { BlogPost } from '@/constants/blogData';
+import { getAllBlogPosts } from '@/lib/firebase/firestore';
 import BlogListContent from './BlogListContent';
 
 export const metadata: Metadata = {
-  title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+  title: 'Blog — Shënime nga punishtja',
   description:
     'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë. Ide dhe këshilla para se të filloni projektin tuaj me porosi.',
   keywords: [
@@ -40,10 +41,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://roal.design/blog',
-    languages: {
-      'sq-AL': '/blog?lang=sq',
-      'en-AL': '/blog?lang=en',
-    },
   },
   robots: {
     index: true,
@@ -58,16 +55,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogListPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="bg-[#FAF8F4] min-h-screen pt-32 text-center text-sm text-[#15130F]/50">
-          Po ngarkohet…
-        </div>
-      }
-    >
-      <BlogListContent />
-    </Suspense>
-  );
+// Revalidate hourly so the post list is served from cached HTML (ISR), not refetched per request.
+export const revalidate = 3600;
+
+export default async function BlogListPage() {
+  const posts = (await getAllBlogPosts().catch(() => [])) as BlogPost[];
+  return <BlogListContent posts={posts} />;
 }

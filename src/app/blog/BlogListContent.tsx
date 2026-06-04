@@ -1,14 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { collection, getDocs } from 'firebase/firestore/lite';
 import { BlogPost } from '@/constants/blogData';
-import { db } from '@/lib/firebase/firestore';
-import { useLang, type Dict, type Lang } from '@/lib/i18n';
+import { useLang, type Dict } from '@/lib/i18n';
 
 const copy = {
   eyebrow: { sq: 'Blog', en: 'Journal' },
@@ -18,45 +14,17 @@ const copy = {
     sq: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
     en: 'Thoughts on materials, design and the spaces we build — ideas that might help you before starting your own project.',
   },
-  loading: { sq: 'Po ngarkohet…', en: 'Loading…' },
   empty: { sq: 'Asnjë postim për tani.', en: 'No posts yet.' },
   readMore: { sq: 'Lexo më shumë', en: 'Read more' },
 } satisfies Record<string, Dict<string>>;
 
-export default function BlogListContent() {
-  const { lang, setLang } = useLang();
-  const params = useSearchParams();
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+// Posts are fetched server-side in page.tsx and passed in, so the full list is
+// present in the initial HTML for crawlers. `useLang` only swaps the display
+// language client-side (default 'sq' during SSR/hydration — no mismatch).
+export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
+  const { lang } = useLang();
 
-  // Sync lang from ?lang= on mount so shared URLs keep working
-  useEffect(() => {
-    const qp = params.get('lang') as Lang | null;
-    if ((qp === 'sq' || qp === 'en') && qp !== lang) {
-      setLang(qp);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const snap = await getDocs(collection(db, 'blogPosts'));
-        const posts = snap.docs.map((doc) => ({
-          slug: doc.id,
-          ...(doc.data() as Omit<BlogPost, 'slug'>),
-        }));
-        setBlogPosts(posts);
-      } catch (err) {
-        console.error('Could not fetch blog posts:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
-
-  const sortedPosts = [...blogPosts].sort(
+  const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
   );
 
@@ -82,9 +50,7 @@ export default function BlogListContent() {
           {copy.subhead[lang]}
         </p>
 
-        {loading ? (
-          <p className="mt-16 text-sm text-[#15130F]/50">{copy.loading[lang]}</p>
-        ) : blogPosts.length === 0 ? (
+        {sortedPosts.length === 0 ? (
           <p className="mt-16 text-sm text-[#15130F]/50">{copy.empty[lang]}</p>
         ) : (
           <ul

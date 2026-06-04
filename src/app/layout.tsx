@@ -36,10 +36,6 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: 'https://roal.design/',
-    languages: {
-      'sq-AL': '/?lang=sq',
-      'en-AL': '/?lang=en',
-    },
     types: {
       'text/plain': [
         { url: '/llms.txt', title: 'LLMs.txt — site summary for AI crawlers' },

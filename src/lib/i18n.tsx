@@ -15,7 +15,10 @@ const STORAGE_KEY = 'roal-lang';
 
 type LangContextValue = {
   lang: Lang;
-  setLang: (next: Lang) => void;
+  /** Set the display language. Pass `persist: false` for a transient sync
+   *  (e.g. matching the chrome to a language-keyed URL) that must NOT overwrite
+   *  the visitor's explicitly-chosen preference in localStorage. */
+  setLang: (next: Lang, persist?: boolean) => void;
 };
 
 const LangContext = createContext<LangContextValue>({
@@ -46,8 +49,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
     }
   }, [lang]);
 
-  const setLang = (next: Lang) => {
+  const setLang = (next: Lang, persist = true) => {
     setLangState(next);
+    if (!persist) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {

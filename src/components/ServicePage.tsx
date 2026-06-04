@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, MessageCircle, Plus } from 'lucide-react';
 import { useLang, type Dict } from '@/lib/i18n';
-import type { ServiceConfig } from '@/constants/services';
+import { ALL_SERVICES, type ServiceConfig } from '@/constants/services';
 
 const copy = {
   visitCta: { sq: 'Vizito showroom-in', en: 'Visit the showroom' },
@@ -16,6 +16,8 @@ const copy = {
     en: 'The consultation and measurement are free. Visit the showroom or message us to book a meeting.',
   },
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
+  moreServices: { sq: 'Shërbime të tjera', en: 'More services' },
+  viewService: { sq: 'Shiko shërbimin', en: 'View service' },
 } satisfies Record<string, Dict<string>>;
 
 const WHATSAPP_HREF = 'https://wa.me/355672029739';
@@ -23,6 +25,7 @@ const SHOWROOM_HREF = '/#showroom';
 
 export default function ServicePage({ service }: { service: ServiceConfig }) {
   const { lang } = useLang();
+  const others = ALL_SERVICES.filter((s) => s.slug !== service.slug);
 
   return (
     <main className="bg-[#FAF8F4] text-[#15130F]">
@@ -136,8 +139,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
               }}
             >
-              {service.headingLead[lang]}{' '}
-              <span className="italic text-[#E8B894]">{service.headingAccent[lang]}</span>
+              {service.includesHeading[lang]}
             </h2>
           </div>
 
@@ -212,6 +214,44 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
                 </div>
               ))}
             </dl>
+          </div>
+        </section>
+      )}
+
+      {/* More services — sibling cross-links spread authority and keep visitors on the site */}
+      {others.length > 0 && (
+        <section className="border-t border-[#15130F]/10 bg-[#FAF8F4]">
+          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+            <p className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E]">
+              {copy.moreServices[lang]}
+            </p>
+            <ul
+              role="list"
+              className="mt-8 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              {others.map((s) => (
+                <li key={s.slug} className="border-t border-[#15130F]/15 pt-5">
+                  <Link href={`/${s.slug}`} className="group block focus:outline-none">
+                    <h3
+                      className="font-serif text-xl font-normal leading-snug tracking-tight text-[#15130F] transition-colors group-hover:text-[#8B4A2E]"
+                      style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+                    >
+                      {s.eyebrow[lang]}
+                    </h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-[#3A352C] line-clamp-2">
+                      {s.subhead[lang]}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#15130F] underline-offset-[6px] group-hover:underline">
+                      {copy.viewService[lang]}
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

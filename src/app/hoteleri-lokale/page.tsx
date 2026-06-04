@@ -11,10 +11,6 @@ export const metadata: Metadata = {
   description: service.metaDescription.sq,
   alternates: {
     canonical: `${SITE_URL}/${service.slug}`,
-    languages: {
-      'sq-AL': `/${service.slug}?lang=sq`,
-      'en-AL': `/${service.slug}?lang=en`,
-    },
   },
   openGraph: {
     title: service.metaTitle.sq,

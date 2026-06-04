@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Metadata } from 'next';
@@ -118,7 +116,10 @@ async function getNextPosts(currentSlug: string, lang: Lang, count = 3): Promise
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
+  // Prebuild every post in both languages. If Firestore is unreachable at build
+  // time, fall back to [] so the build never fails — posts still render on demand
+  // (dynamicParams defaults to true) and get cached via `revalidate`.
+  const posts = await getAllPosts().catch(() => [] as BlogPost[]);
   return (['en', 'sq'] as Lang[]).flatMap((lang) =>
     posts.map((p) => ({ slug: p.slug, lang })),
   );
@@ -136,17 +137,31 @@ export async function generateMetadata({
   const seo = post.seo;
   const baseUrl = new URL(SITE_URL);
   const canonicalPath = `/blog/${slug}/${lang}`;
-  const canonicalUrl = seo?.canonicalUrl || `${baseUrl.origin}${canonicalPath}`;
+  const selfUrl = `${baseUrl.origin}${canonicalPath}`;
+  // Honor a CMS-provided canonical only when it matches THIS language; otherwise
+  // self-canonicalize. A post-level canonicalUrl hardcoded to the /sq variant
+  // would otherwise make the /en page disown itself toward /sq while hreflang +
+  // the sitemap advertise /en as a real alternate — an asymmetric hreflang cluster.
+  const canonicalUrl =
+    seo?.canonicalUrl && seo.canonicalUrl.endsWith(`/${lang}`)
+      ? seo.canonicalUrl
+      : selfUrl;
 
   const imageUrl = seo?.ogImage || post.imageUrl;
   const publicImageUrl = await getPublicImageUrl(imageUrl);
 
-  const title = seo?.metaTitle || `${post.titles[lang]} | ${BRAND}`;
+  // The root layout applies the `%s | ROAL Mobileri` template, so the document
+  // <title> must NOT already include the brand. Use the bare post title (template
+  // appends the brand once); a CMS-provided metaTitle is treated as complete and
+  // bypasses the template via `absolute`. OG/Twitter titles don't go through the
+  // template, so they carry the brand explicitly.
+  const titleText = post.titles[lang];
+  const socialTitle = seo?.ogTitle || seo?.metaTitle || `${titleText} | ${BRAND}`;
   const description = seo?.metaDescription || post.excerpts[lang];
 
   return {
     metadataBase: baseUrl,
-    title,
+    title: seo?.metaTitle ? { absolute: seo.metaTitle } : titleText,
     description,
     keywords:
       seo?.keywords?.split(',').map((k) => k.trim()) || [
@@ -165,7 +180,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: seo?.ogTitle || title,
+      title: socialTitle,
       description: seo?.ogDescription || description,
       url: seo?.ogUrl || canonicalUrl,
       type: seo?.ogType || 'article',
@@ -185,7 +200,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: seo?.ogTitle || title,
+      title: socialTitle,
       description: seo?.ogDescription || description,
       images: [{ url: publicImageUrl, alt: post.titles[lang] }],
       site: '@roalmobileri',
@@ -268,7 +283,7 @@ export default async function BlogPage({
               <li aria-hidden="true">·</li>
               <li>
                 <Link
-                  href={`/blog?lang=${lang}`}
+                  href="/blog"
                   className="hover:text-[#8B4A2E] transition-colors"
                 >
                   {t.blog}
@@ -280,24 +295,6 @@ export default async function BlogPage({
               </li>
             </ol>
           </nav>
-
-          {/* Language switch — this route is language-keyed, so we nav between URLs */}
-          <div className="mb-10 flex items-center gap-2 text-xs uppercase tracking-[0.18em]">
-            {(['sq', 'en'] as Lang[]).map((lg) => (
-              <Link
-                key={lg}
-                href={`/blog/${slug}/${lg}`}
-                className={
-                  'rounded-full border px-3 py-1 transition-colors ' +
-                  (lang === lg
-                    ? 'border-[#15130F] bg-[#15130F] text-[#FAF8F4]'
-                    : 'border-[#15130F]/20 text-[#15130F]/70 hover:border-[#15130F]/40')
-                }
-              >
-                {lg.toUpperCase()}
-              </Link>
-            ))}
-          </div>
 
           {/* Header */}
           <header>
@@ -409,7 +406,7 @@ export default async function BlogPage({
         <div className="border-t border-[#15130F]/15">
           <div className="mx-auto flex max-w-3xl flex-col items-start gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <Link
-              href={`/blog?lang=${lang}`}
+              href="/blog"
               className="group inline-flex items-center gap-2 text-sm font-medium text-[#15130F] underline-offset-[6px] hover:underline"
             >
               <ArrowLeft

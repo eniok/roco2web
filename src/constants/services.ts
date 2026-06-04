@@ -21,6 +21,7 @@ export type ServiceConfig = {
   subhead: Dict<string>;
   intro: Dict<string>;
   includesTitle: Dict<string>;
+  includesHeading: Dict<string>;
   includes: Dict<string[]>;
   materialsTitle: Dict<string>;
   materialsBody: Dict<string>;
@@ -37,8 +38,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Modern bespoke kitchen by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Kuzhina me porosi në Tiranë — të bëra për të zgjatur',
-      en: 'Bespoke kitchens in Tirana — built to last',
+      sq: 'Kuzhina me porosi në Tiranë',
+      en: 'Bespoke kitchens in Tirana',
     },
     metaDescription: {
       sq: 'Kuzhina të projektuara dhe të punuara sipas përmasave të shtëpisë suaj. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
@@ -56,6 +57,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'We don\u2019t work from a rigid catalogue. Every kitchen starts with a meeting and the exact measurements of your space, continues through a 3D design where you see the full result before work begins, and ends with installation by our own team. The goal is simple: a kitchen that works every day and holds up for years.',
     },
     includesTitle: { sq: 'Çfarë përfshin', en: 'What\u2019s included' },
+    includesHeading: { sq: 'Gjithçka për një kuzhinë të plotë', en: 'Everything for a complete kitchen' },
     includes: {
       sq: [
         'Matje falas në shtëpinë tuaj ose në showroom',
@@ -113,8 +115,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Fitted wardrobe by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Garderoba me masë në Tiranë — të punuara me porosi',
-      en: 'Fitted wardrobes in Tirana — made to measure',
+      sq: 'Garderoba me masë në Tiranë',
+      en: 'Fitted wardrobes in Tirana',
     },
     metaDescription: {
       sq: 'Garderoba dhe dollapë që përshtaten me çdo hapësirë, përfshirë kënde të vështira dhe tavane të pjerrëta. Projekt 3D, instalim dhe garanci 2 vjet.',
@@ -132,6 +134,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'A good wardrobe isn\u2019t just a cupboard — it\u2019s a system that helps you stay organised every day. We design it around what you actually own: clothes, accessories, boots, boxes — and how you want to use them. Then we build it for your exact space.',
     },
     includesTitle: { sq: 'Çfarë përfshin', en: 'What\u2019s included' },
+    includesHeading: { sq: 'Brenda çdo garderobe me masë', en: 'Inside every fitted wardrobe' },
     includes: {
       sq: [
         'Matje falas dhe konsultim mbi përdorimin',
@@ -189,8 +192,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Bespoke living room by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Dhoma ndenje me porosi në Tiranë — mobilje të integruara',
-      en: 'Living-room cabinetry in Tirana — integrated furniture',
+      sq: 'Dhoma ndenje me porosi në Tiranë',
+      en: 'Living-room cabinetry in Tirana',
     },
     metaDescription: {
       sq: 'Mure medie, vitrina, rafte dhe depozitim i integruar për dhomën tuaj të ndenjes. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
@@ -208,6 +211,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'The living room is where you spend the most time. Good furniture here isn\u2019t a showpiece — it\u2019s a system that hides cables, holds books and decor, and lets the room breathe. We design the whole wall as one unit, not pieces that collide.',
     },
     includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
+    includesHeading: { sq: 'Mobilim i integruar për dhomën tuaj', en: 'Integrated furniture for your room' },
     includes: {
       sq: [
         'Mure medie për TV, me kalim kabllosh dhe ndriçim',
@@ -258,8 +262,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Custom workspace by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Ambiente pune me porosi në Tiranë — zyra dhe hapësira studimi',
-      en: 'Custom workspaces in Tirana — home offices and studios',
+      sq: 'Ambiente pune me porosi në Tiranë',
+      en: 'Custom workspaces in Tirana',
     },
     metaDescription: {
       sq: 'Tavolina pune, rafte dhe ambiente të plota zyre të punuara me porosi. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
@@ -277,6 +281,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'A good workspace starts with practical questions: how long you sit, what you need within reach, how many documents you keep, whether you need room for meetings or just for yourself. The answers shape the design. Then we build it.',
     },
     includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
+    includesHeading: { sq: 'Hapësira pune të punuara me porosi', en: 'Bespoke workspaces, built to fit' },
     includes: {
       sq: [
         'Tavolina pune me masë — të drejta, në kënd ose në formë U',
@@ -327,8 +332,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Hospitality and retail fit-out by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Hoteleri dhe lokale — punime me porosi nga ROAL Mobileri',
-      en: 'Hospitality & retail fit-out — bespoke work by ROAL Mobileri',
+      sq: 'Hoteleri dhe lokale me porosi',
+      en: 'Hospitality & retail fit-out',
     },
     metaDescription: {
       sq: 'Projekte komerciale me porosi për hotele, restorante, bare, kafene dhe dyqane në gjithë Shqipërinë. Projektim, prodhim dhe instalim nga një ekip i vetëm.',
@@ -346,6 +351,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Commercial furniture plays by different rules than home furniture. It has to handle peak hours, clean quickly and still look new after a full season. We\u2019ve worked with hotels, restaurants and shops in Tirana and beyond, keeping in mind both the guest\u2019s experience and the owner\u2019s return on investment.',
     },
     includesTitle: { sq: 'Çfarë kemi punuar', en: 'What we\u2019ve delivered' },
+    includesHeading: { sq: 'Projekte komerciale që zgjasin', en: 'Commercial projects that last' },
     includes: {
       sq: [
         'Banakë baresh dhe restorantesh, me finitura rezistente',

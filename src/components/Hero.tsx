@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, type MotionValue } from "framer-motion";
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLang, type Dict } from "@/lib/i18n";
 
 const WHATSAPP_NUMBER = "355672029739";
@@ -64,14 +65,17 @@ export default function Hero({ heroHeight }: HeroProps) {
     >
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
-        <img
+        <Image
           src="/images/cover.jpg"
           alt={
             lang === 'sq'
               ? 'Interier me mobilje me porosi nga ROAL Mobileri — kuzhina, garderoba dhe ambiente të plota në Tiranë'
               : 'Interior with bespoke furniture by ROAL Mobileri — kitchens, wardrobes and full interiors in Tirana'
           }
-          className="h-full w-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
           draggable={false}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/75" />

@@ -12,12 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.9,
-    alternates: {
-      languages: {
-        sq: `${SITE_URL}/${s.slug}?lang=sq`,
-        en: `${SITE_URL}/${s.slug}?lang=en`,
-      },
-    },
   }));
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -26,12 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 1,
-      alternates: {
-        languages: {
-          sq: `${SITE_URL}/?lang=sq`,
-          en: `${SITE_URL}/?lang=en`,
-        },
-      },
     },
     ...serviceRoutes,
     {
@@ -39,12 +27,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
-      alternates: {
-        languages: {
-          sq: `${SITE_URL}/blog?lang=sq`,
-          en: `${SITE_URL}/blog?lang=en`,
-        },
-      },
     },
   ];
 
