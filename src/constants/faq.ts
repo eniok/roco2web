@@ -34,4 +34,28 @@ export const FAQ_ITEMS: FaqItem[] = [
       en: 'Yes. Talk to us on WhatsApp or at the showroom for payment options — including bank instalment plans with our partners.',
     },
   },
+  {
+    q: { sq: 'A bëni mobilje zyre për biznese?', en: 'Do you make office furniture for businesses?' },
+    a: {
+      sq: 'Po. Punojmë mobilje zyre me porosi — tavolina pune, rafte, dollapë dosjesh dhe zyra të plota për biznese në Tiranë dhe në gjithë Shqipërinë, me projekt 3D dhe instalim nga ekipi ynë.',
+      en: 'Yes. We build custom office furniture — desks, shelving, filing cabinets and complete office fit-outs for businesses in Tirana and across Albania, with 3D design and installation by our own team.',
+    },
+  },
+  {
+    q: {
+      sq: 'Si krahasoheni me mobiljet e importit për raportin çmim–cilësi?',
+      en: 'How do you compare with imported furniture on price vs quality?',
+    },
+    a: {
+      sq: 'Prodhojmë vetë në punishten tonë në Tiranë, pa ndërmjetës importi — kështu çmimi shkon te materialet dhe puna, jo te marzhet e shpërndarjes. Materialet zgjidhen për vite përdorimi, dhe çdo projekt vjen me instalim dhe garanci 2-vjeçare nga i njëjti ekip.',
+      en: 'We manufacture in our own workshop in Tirana, with no import middlemen — so the price goes into materials and craftsmanship, not distribution margins. Materials are chosen to last years of daily use, and every project includes installation and a 2-year warranty from the same team.',
+    },
+  },
+  {
+    q: { sq: 'Ku ndodhet showroom-i juaj?', en: 'Where is your showroom?' },
+    a: {
+      sq: 'Në Km 8 të Autostradës Tiranë–Durrës, rreth 5 minuta me makinë nga qendra tregtare TEG. Parkimi është falas dhe jemi të hapur çdo ditë — e hënë deri të shtunën 08:00–18:00, të dielën 08:00–16:00.',
+      en: 'At Km 8 on the Tirana–Durrës highway, about 5 minutes by car from the TEG shopping centre. Parking is free and we are open every day — Monday to Saturday 08:00–18:00, Sunday 08:00–16:00.',
+    },
+  },
 ];

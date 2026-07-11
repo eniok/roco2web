@@ -255,19 +255,19 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
 
   'ambiente-pune': {
     slug: 'ambiente-pune',
-    serviceType: 'Home office and workspace fit-out',
+    serviceType: 'Office furniture, home office and workspace fit-out',
     image: '/images/homeoffice.jpg',
     imageAlt: {
       sq: 'Ambient pune i punuar me porosi nga ROAL Mobileri',
       en: 'Custom workspace by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Ambiente pune me porosi në Tiranë',
-      en: 'Custom workspaces in Tirana',
+      sq: 'Mobilje zyre dhe ambiente pune me porosi në Tiranë',
+      en: 'Office furniture & custom workspaces in Tirana',
     },
     metaDescription: {
-      sq: 'Tavolina pune, rafte dhe ambiente të plota zyre të punuara me porosi. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
-      en: 'Bespoke desks, shelving and full office fit-outs. 3D design, durable materials, installation and 2-year warranty.',
+      sq: 'Mobilje zyre me porosi në Tiranë — tavolina pune, rafte dhe zyra të plota për shtëpi e biznese. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
+      en: 'Custom office furniture in Tirana — desks, shelving and full office fit-outs for homes and businesses. 3D design, durable materials, installation and 2-year warranty.',
     },
     eyebrow: { sq: 'Ambiente pune', en: 'Workspaces' },
     headingLead: { sq: 'Hapësira ku', en: 'Spaces where' },
