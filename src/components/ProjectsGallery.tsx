@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useLang, type Dict } from '@/lib/i18n';
+import SectionHeading from './SectionHeading';
+import { EASE } from './ui';
 
 type Project = {
   src: string;
   alt: Dict<string>;
   caption: Dict<string>;
-  /** Optional aspect ratio, controls how tall the tile is. Defaults to 4/5. */
-  ratio?: string;
 };
 
 // TODO: swap/re-order these with the real project photos you want to feature.
@@ -23,7 +23,6 @@ const PROJECTS: Project[] = [
       en: 'Modern bespoke kitchen in Tirana — project by ROAL Mobileri',
     },
     caption: { sq: 'Kuzhinë me porosi · Tiranë', en: 'Bespoke kitchen · Tirana' },
-    ratio: '4 / 5',
   },
   {
     src: '/images/2.jpg',
@@ -32,7 +31,6 @@ const PROJECTS: Project[] = [
       en: 'Fitted wardrobe in Tirana — bespoke furniture by ROAL Mobileri',
     },
     caption: { sq: 'Garderobë me masë · Tiranë', en: 'Fitted wardrobe · Tirana' },
-    ratio: '1 / 1',
   },
   {
     src: '/images/3.jpg',
@@ -41,7 +39,6 @@ const PROJECTS: Project[] = [
       en: 'Living room with integrated cabinetry by ROAL Mobileri, 2024',
     },
     caption: { sq: 'Dhomë ndenje · 2024', en: 'Living room · 2024' },
-    ratio: '4 / 5',
   },
   {
     src: '/images/4.jpg',
@@ -50,7 +47,6 @@ const PROJECTS: Project[] = [
       en: 'Custom workspace by ROAL Mobileri, 2024',
     },
     caption: { sq: 'Ambient pune · 2024', en: 'Workspace · 2024' },
-    ratio: '1 / 1',
   },
   {
     src: '/images/5.jpg',
@@ -59,7 +55,6 @@ const PROJECTS: Project[] = [
       en: 'Open-plan kitchen and living — bespoke furniture by ROAL Mobileri',
     },
     caption: { sq: 'Kuzhinë dhe ndenjë', en: 'Kitchen & living' },
-    ratio: '4 / 5',
   },
   {
     src: '/images/6.jpg',
@@ -68,7 +63,6 @@ const PROJECTS: Project[] = [
       en: 'Bedroom with integrated wardrobe by ROAL Mobileri',
     },
     caption: { sq: 'Dhomë gjumi', en: 'Bedroom' },
-    ratio: '1 / 1',
   },
   {
     src: '/images/7.jpg',
@@ -77,7 +71,6 @@ const PROJECTS: Project[] = [
       en: 'Craft detail — furniture finish by ROAL Mobileri',
     },
     caption: { sq: 'Detaj punimi', en: 'Craft detail' },
-    ratio: '4 / 5',
   },
   {
     src: '/images/8.jpg',
@@ -86,7 +79,6 @@ const PROJECTS: Project[] = [
       en: 'Bespoke interior — furniture designed by ROAL Mobileri, 2024',
     },
     caption: { sq: 'Interier me porosi · 2024', en: 'Bespoke interior · 2024' },
-    ratio: '1 / 1',
   },
 ];
 
@@ -108,93 +100,75 @@ export default function ProjectsGallery() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative bg-[#FAF8F4] text-[#15130F]"
+      className="relative bg-linen text-ink"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-32">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5 }}
-          className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5"
-        >
-          {copy.eyebrow[lang]}
-        </motion.p>
-
-        <motion.h2
-          id="projects-heading"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl text-balance font-serif font-normal leading-[1.05] tracking-tight"
-          style={{
-            fontFamily: 'var(--font-fraunces), Georgia, serif',
-            fontSize: 'clamp(2rem, 5vw, 3.6rem)',
-          }}
-        >
-          {copy.headingLead[lang]}{' '}
-          <span className="italic text-[#8B4A2E]">{copy.headingAccent[lang]}</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="mt-5 max-w-2xl text-base leading-relaxed text-[#3A352C] sm:text-lg"
-        >
-          {copy.subhead[lang]}
-        </motion.p>
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <SectionHeading
+            id="projects-heading"
+            index="02"
+            eyebrow={copy.eyebrow}
+            lead={copy.headingLead}
+            accent={copy.headingAccent}
+            sub={copy.subhead}
+            className="max-w-3xl flex-1 basis-[32rem]"
+          />
+          <motion.a
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            href="https://www.instagram.com/roal_mobileri/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 pb-1 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-ink/60 transition-colors hover:text-clay"
+          >
+            {copy.ctaLabel[lang]}
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </motion.a>
+        </div>
 
         <ul
           role="list"
-          className="mt-12 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
+          className="mt-14 grid grid-cols-1 gap-x-6 gap-y-12 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3"
         >
           {PROJECTS.map((p, i) => (
             <motion.li
               key={p.src}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{
-                delay: (i % 6) * 0.05,
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group relative overflow-hidden bg-[#E8E3DB]"
-              style={{ aspectRatio: p.ratio ?? '4 / 5' }}
+              transition={{ delay: (i % 3) * 0.07, duration: 0.7, ease: EASE }}
             >
-              <img
-                src={p.src}
-                alt={p.alt[lang]}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-                className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <figcaption className="absolute inset-x-0 bottom-0 p-4 text-sm text-white sm:p-5">
-                {p.caption[lang]}
-              </figcaption>
+              <figure className="group">
+                <div className="overflow-hidden bg-ink/5 ring-1 ring-ink/10">
+                  <img
+                    src={p.src}
+                    alt={p.alt[lang]}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+                <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-ink/10 pt-3">
+                  <span className="text-[0.7rem] uppercase tracking-[0.16em] text-ink/70 transition-colors duration-300 group-hover:text-ink">
+                    {p.caption[lang]}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="font-serif text-sm italic text-clay/70"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </figcaption>
+              </figure>
             </motion.li>
           ))}
         </ul>
-
-        <div className="mt-12 flex justify-center sm:mt-16">
-          <a
-            href="https://www.instagram.com/roal_mobileri/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#15130F] underline-offset-[6px] hover:underline"
-          >
-            {copy.ctaLabel[lang]}
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </section>
   );

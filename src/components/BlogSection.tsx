@@ -9,6 +9,8 @@ import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { BlogPost } from '@/constants/blogData';
 import { getAllBlogPosts } from '@/lib/firebase/firestore';
 import { useLang, type Dict } from '@/lib/i18n';
+import SectionHeading from './SectionHeading';
+import { EASE } from './ui';
 
 const storage = getStorage();
 
@@ -61,101 +63,78 @@ export default function BlogSection() {
     <section
       id="blog"
       aria-labelledby="blog-heading"
-      className="relative bg-[#FAF8F4] text-[#15130F]"
+      className="relative bg-paper text-ink"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-32">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5 }}
-          className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5"
-        >
-          {copy.eyebrow[lang]}
-        </motion.p>
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-32">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <SectionHeading
+            id="blog-heading"
+            index="06"
+            eyebrow={copy.eyebrow}
+            lead={copy.headingLead}
+            accent={copy.headingAccent}
+            sub={copy.subhead}
+            className="max-w-3xl flex-1 basis-[32rem]"
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <Link
+              href="/blog"
+              className="group inline-flex items-center gap-2 pb-1 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-ink/60 transition-colors hover:text-clay"
+            >
+              {copy.viewAll[lang]}
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          </motion.div>
+        </div>
 
-        <motion.h2
-          id="blog-heading"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl text-balance font-serif font-normal leading-[1.05] tracking-tight"
-          style={{
-            fontFamily: 'var(--font-fraunces), Georgia, serif',
-            fontSize: 'clamp(2rem, 5vw, 3.6rem)',
-          }}
-        >
-          {copy.headingLead[lang]}{' '}
-          <span className="italic text-[#8B4A2E]">{copy.headingAccent[lang]}</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="mt-5 max-w-2xl text-base leading-relaxed text-[#3A352C] sm:text-lg"
-        >
-          {copy.subhead[lang]}
-        </motion.p>
-
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-16 md:grid-cols-2 md:gap-10">
+        <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-14 sm:mt-20 md:grid-cols-2">
           {recentPosts.map((post, i) => {
             const { titles, authors, dates, excerpts, imageUrl, slug } = post;
             return (
               <motion.article
                 key={slug}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: i * 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: i * 0.08, duration: 0.7, ease: EASE }}
               >
                 <Link
                   href={`/blog/${slug}/${lang}`}
-                  className="group block focus:outline-none"
+                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50"
                 >
-                  <div className="relative overflow-hidden bg-[#E8E3DB]" style={{ aspectRatio: '4 / 3' }}>
+                  <div className="overflow-hidden bg-ink/5 ring-1 ring-ink/10">
                     <img
                       src={imageUrl}
                       alt={titles[lang]}
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
                     />
                   </div>
 
-                  <div className="mt-5">
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
-                      {dates[lang]} · {authors[lang]}
-                    </p>
-                    <h3
-                      className="mt-3 text-balance font-serif text-2xl font-normal leading-snug tracking-tight text-[#15130F] group-hover:text-[#8B4A2E] transition-colors sm:text-[1.75rem]"
-                      style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
-                    >
-                      {titles[lang]}
-                    </h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-[#3A352C] line-clamp-2">
-                      {excerpts[lang]}
-                    </p>
-                  </div>
+                  <p className="mt-6 flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.18em] text-ink/55">
+                    <span>{dates[lang]}</span>
+                    <span aria-hidden="true" className="h-2 w-px bg-clay/50" />
+                    <span>{authors[lang]}</span>
+                  </p>
+                  <h3 className="mt-3 text-balance font-serif text-2xl font-normal leading-snug tracking-tight text-ink transition-colors duration-300 group-hover:text-clay sm:text-[1.75rem]">
+                    {titles[lang]}
+                  </h3>
+                  <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-body line-clamp-2">
+                    {excerpts[lang]}
+                  </p>
                 </Link>
               </motion.article>
             );
           })}
-        </div>
-
-        <div className="mt-12 flex justify-center sm:mt-16">
-          <Link
-            href="/blog"
-            className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#15130F] underline-offset-[6px] hover:underline"
-          >
-            {copy.viewAll[lang]}
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </Link>
         </div>
       </div>
     </section>

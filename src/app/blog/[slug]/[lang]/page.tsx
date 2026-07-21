@@ -67,8 +67,10 @@ function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: stri
       name: BRAND,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
     },
-    datePublished: post.dates[lang],
-    dateModified: post.dates[lang],
+    // Prefer the ISO timestamp (valid schema.org Date); locale strings like
+    // "9 Janar 2025" are not parseable by search engines.
+    datePublished: (post as any).publishedAt || post.dates[lang],
+    dateModified: (post as any).updatedAt || (post as any).publishedAt || post.dates[lang],
     mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
     url: postUrl,
     inLanguage: lang === 'sq' ? 'sq' : 'en',
@@ -138,12 +140,15 @@ export async function generateMetadata({
   const baseUrl = new URL(SITE_URL);
   const canonicalPath = `/blog/${slug}/${lang}`;
   const selfUrl = `${baseUrl.origin}${canonicalPath}`;
-  // Honor a CMS-provided canonical only when it matches THIS language; otherwise
-  // self-canonicalize. A post-level canonicalUrl hardcoded to the /sq variant
-  // would otherwise make the /en page disown itself toward /sq while hreflang +
-  // the sitemap advertise /en as a real alternate — an asymmetric hreflang cluster.
+  // Honor a CMS-provided canonical only when it matches THIS language AND this
+  // origin; otherwise self-canonicalize. A post-level canonicalUrl hardcoded to
+  // the /sq variant would make the /en page disown itself toward /sq, and one
+  // pointing at a foreign domain (legacy roalmobileri.com data) would disown the
+  // page from the site entirely.
   const canonicalUrl =
-    seo?.canonicalUrl && seo.canonicalUrl.endsWith(`/${lang}`)
+    seo?.canonicalUrl &&
+    seo.canonicalUrl.startsWith(SITE_URL) &&
+    seo.canonicalUrl.endsWith(`/${lang}`)
       ? seo.canonicalUrl
       : selfUrl;
 
@@ -182,7 +187,7 @@ export async function generateMetadata({
     openGraph: {
       title: socialTitle,
       description: seo?.ogDescription || description,
-      url: seo?.ogUrl || canonicalUrl,
+      url: seo?.ogUrl && seo.ogUrl.startsWith(SITE_URL) ? seo.ogUrl : canonicalUrl,
       type: seo?.ogType || 'article',
       images: [
         {
@@ -270,7 +275,8 @@ export default async function BlogPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <article className="relative bg-[#FAF8F4] text-[#15130F]">
+      <main id="main-content" className="relative bg-[#FAF8F4] text-[#15130F]">
+      <article>
         <div className="mx-auto max-w-3xl px-6 pt-32 sm:px-8 sm:pt-40">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-10">
@@ -441,6 +447,7 @@ export default async function BlogPage({
           </div>
         </div>
       </article>
+      </main>
     </>
   );
 }

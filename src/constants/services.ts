@@ -4,6 +4,7 @@ import type { FaqItem } from '@/constants/faq';
 export type ServiceSlug =
   | 'kuzhina'
   | 'garderoba'
+  | 'dhoma-gjumi'
   | 'dhoma-ndenje'
   | 'ambiente-pune'
   | 'hoteleri-lokale';
@@ -103,6 +104,13 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
           en: 'We work with any size — from one-wall apartment kitchens to large open-plan kitchens with islands. No minimum project.',
         },
       },
+      {
+        q: { sq: 'Sa kushton një kuzhinë me porosi?', en: 'How much does a bespoke kitchen cost?' },
+        a: {
+          sq: 'Çmimi varet nga metrat linearë, materialet e dyerve dhe sipërfaqes së punës, dhe pajisjet që zgjidhni. Matja në shtëpi dhe projekti 3D me çmimin e plotë janë falas dhe pa detyrim — kështu e krahasoni ofertën tonë me çdo alternativë.',
+          en: 'The price depends on the linear metres, the door and worktop materials, and the appliances you choose. The home measurement and the 3D design with a full quote are free and without obligation — so you can compare our offer against any alternative.',
+        },
+      },
     ],
   },
 
@@ -115,12 +123,12 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Fitted wardrobe by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Garderoba me masë në Tiranë',
-      en: 'Fitted wardrobes in Tirana',
+      sq: 'Garderoba me porosi në Tiranë — matje dhe projekt 3D falas',
+      en: 'Fitted wardrobes in Tirana — free measurement & 3D design',
     },
     metaDescription: {
-      sq: 'Garderoba dhe dollapë që përshtaten me çdo hapësirë, përfshirë kënde të vështira dhe tavane të pjerrëta. Projekt 3D, instalim dhe garanci 2 vjet.',
-      en: 'Fitted wardrobes that adapt to any space, including awkward corners and sloped ceilings. 3D design, installation and 2-year warranty.',
+      sq: 'Garderoba me masë, dollapë dhe walk-in closet për çdo hapësirë — edhe kënde të vështira e tavane të pjerrëta. Matje falas, projekt 3D dhe garanci 2 vjet.',
+      en: 'Fitted wardrobes, cupboards and walk-in closets for any space — including awkward corners and sloped ceilings. Free measurement, 3D design and 2-year warranty.',
     },
     eyebrow: { sq: 'Garderoba me masë', en: 'Fitted wardrobes' },
     headingLead: { sq: 'Garderoba që', en: 'Wardrobes that' },
@@ -178,6 +186,83 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         a: {
           sq: 'Po. Dhoma të plota walk-in closet, me ishull, ndriçim, ndarje për çanta, pasqyra dhe aksesorë.',
           en: 'Yes. Full walk-in closet rooms with islands, lighting, bag compartments, mirrors and accessories.',
+        },
+      },
+    ],
+  },
+
+  'dhoma-gjumi': {
+    slug: 'dhoma-gjumi',
+    serviceType: 'Bedroom furniture',
+    image: '/images/bedroom.jpg',
+    imageAlt: {
+      sq: 'Dhomë gjumi e punuar me porosi nga ROAL Mobileri',
+      en: 'Bespoke bedroom by ROAL Mobileri',
+    },
+    metaTitle: {
+      sq: 'Dhoma gjumi me porosi në Tiranë',
+      en: 'Bespoke bedrooms in Tirana',
+    },
+    metaDescription: {
+      sq: 'Dhoma gjumi të plota me porosi — krevate, komodina, garderoba dhe koka krevati të punuara me masë. Projekt 3D falas, instalim dhe garanci 2 vjet.',
+      en: 'Complete bespoke bedrooms — beds, nightstands, wardrobes and headboards built to measure. Free 3D design, installation and 2-year warranty.',
+    },
+    eyebrow: { sq: 'Dhoma gjumi', en: 'Bedrooms' },
+    headingLead: { sq: 'Dhoma gjumi ku', en: 'Bedrooms where' },
+    headingAccent: { sq: 'pushoni vërtet.', en: 'you truly rest.' },
+    subhead: {
+      sq: 'Krevat, garderobë, komodina dhe ndriçim — të projektuara si një e tërë, jo si copa të blera veç e veç.',
+      en: 'Bed, wardrobe, nightstands and lighting — designed as one whole, not as pieces bought separately.',
+    },
+    intro: {
+      sq: 'Dhoma e gjumit është dhoma ku kaloni një të tretën e jetës, por shpesh mobilohet e fundit dhe me copa që nuk flasin me njëra-tjetrën. Ne e projektojmë të gjithën si një ambient: krevati me përmasat që i duhen dyshekut tuaj, koka e krevatit me ndriçim dhe priza aty ku i doni, garderoba që shfrytëzon murin nga dyshemeja në tavan. Gjithçka me masë, për hapësirën tuaj të saktë.',
+      en: 'The bedroom is where you spend a third of your life, yet it is often furnished last, with pieces that don’t speak to each other. We design it as one environment: a bed sized exactly for your mattress, a headboard with lighting and sockets where you want them, a wardrobe that uses the wall from floor to ceiling. Everything made to measure, for your exact space.',
+    },
+    includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
+    includesHeading: { sq: 'Një dhomë gjumi e plotë, me masë', en: 'A complete bedroom, made to measure' },
+    includes: {
+      sq: [
+        'Krevate me porosi — me kokë të veshur, dru ose me ndriçim të integruar',
+        'Krevate me ngritje dhe depozitim poshtë dyshekut',
+        'Komodina dhe tualete me pasqyrë, me masë',
+        'Garderoba të integruara dhe dollapë mbi krevat',
+        'Dhoma gjumi për fëmijë — krevate teke, marina dhe zona studimi',
+        'Instalim nga ekipi ynë + garanci 2 vjet',
+      ],
+      en: [
+        'Custom beds — upholstered, wooden or with integrated lighting',
+        'Lift-up beds with storage under the mattress',
+        'Made-to-measure nightstands and dressing tables with mirrors',
+        'Integrated wardrobes and over-bed cabinets',
+        'Children’s bedrooms — single beds, bunk beds and study corners',
+        'Installation by our team + 2-year warranty',
+      ],
+    },
+    materialsTitle: { sq: 'Materialet dhe rehatia', en: 'Materials and comfort' },
+    materialsBody: {
+      sq: 'Për dhomat e gjumit zgjedhim materiale që qetësojnë — dru natyral, vener, tekstile të buta për kokat e krevatit dhe lak mat pa shkëlqim. Mekanizmat e ngritjes dhe sirtarët janë me mbyllje të butë, që as nata të mos prishet nga një zhurmë dere. Ngjyrat dhe ndriçimin i provoni në showroom para se të vendosni.',
+      en: 'For bedrooms we choose materials that calm — natural wood, veneer, soft upholstery for headboards and glare-free matt lacquer. Lift mechanisms and drawers are soft-close, so not even a cabinet door disturbs the night. You try colours and lighting in the showroom before you decide.',
+    },
+    faqs: [
+      {
+        q: { sq: 'A punoni krevate për çdo përmasë dysheku?', en: 'Do you make beds for any mattress size?' },
+        a: {
+          sq: 'Po. Punojmë krevate për dyshekë standardë (90, 120, 160, 180 cm) dhe për përmasa jo standarde — krevati bëhet sipas dyshekut, jo e kundërta.',
+          en: 'Yes. We build beds for standard mattresses (90, 120, 160, 180 cm) and for non-standard sizes — the bed is made to fit the mattress, not the other way round.',
+        },
+      },
+      {
+        q: { sq: 'A mund të kombinohet dhoma e gjumit me garderobë të integruar?', en: 'Can the bedroom include an integrated wardrobe?' },
+        a: {
+          sq: 'Po, është edhe zgjidhja që rekomandojmë më shpesh — krevati, komodinat dhe garderoba projektohen bashkë, me të njëjtat materiale dhe finitura.',
+          en: 'Yes — it’s the solution we recommend most often. The bed, nightstands and wardrobe are designed together, with the same materials and finishes.',
+        },
+      },
+      {
+        q: { sq: 'Sa kushton një dhomë gjumi me porosi?', en: 'How much does a bespoke bedroom cost?' },
+        a: {
+          sq: 'Varet nga përmasat, materialet dhe elementët që zgjidhni. Matja dhe projekti 3D me çmimin e plotë janë falas — vizitoni showroom-in në Km 8 të autostradës Tiranë–Durrës ose na shkruani në WhatsApp.',
+          en: 'It depends on dimensions, materials and the elements you choose. Measurement and the 3D design with a full price are free — visit the showroom at Km 8 of the Tirana–Durrës highway or message us on WhatsApp.',
         },
       },
     ],

@@ -2,7 +2,7 @@
 'use client';
 
 import { ReactNode, useEffect, useState } from 'react';
-import { useScroll } from 'framer-motion';
+import { MotionConfig, useScroll } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
 import WhatsAppFAB from './WhatsAppFAB';
@@ -36,12 +36,20 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <LangProvider>
-      <div className="flex flex-col min-h-screen bg-white text-gray-900 font-sans overflow-x-hidden w-screen">
-        <Header navScrolled={navScrolled} />
-        {children}
-        <Footer />
-        <WhatsAppFAB />
-      </div>
+      <MotionConfig reducedMotion="user">
+        <div className="flex min-h-screen w-full flex-col overflow-x-clip bg-paper font-sans text-ink antialiased">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-paper"
+          >
+            Kalo te përmbajtja
+          </a>
+          <Header navScrolled={navScrolled} />
+          {children}
+          <Footer />
+          <WhatsAppFAB />
+        </div>
+      </MotionConfig>
     </LangProvider>
   );
 };

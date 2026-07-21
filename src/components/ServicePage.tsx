@@ -28,7 +28,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
   const others = ALL_SERVICES.filter((s) => s.slug !== service.slug);
 
   return (
-    <main className="bg-[#FAF8F4] text-[#15130F]">
+    <main id="main-content" className="bg-[#FAF8F4] text-[#15130F]">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:grid-cols-2 lg:items-center lg:gap-16">

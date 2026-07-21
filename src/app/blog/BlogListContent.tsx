@@ -18,6 +18,36 @@ const copy = {
   readMore: { sq: 'Lexo më shumë', en: 'Read more' },
 } satisfies Record<string, Dict<string>>;
 
+// Month-name lookup for both languages. The dates are stored as localized
+// display strings (e.g. "18 Mars 2025"), which `new Date()` cannot parse — it
+// returns `Invalid Date`/NaN for Albanian month names, producing a NaN
+// comparator whose sort order differs between the server and client V8 engines
+// (the cause of the hydration mismatch). Parsing explicitly keeps sort order
+// deterministic and correct.
+const MONTHS: Record<string, number> = {
+  // Albanian
+  janar: 0, shkurt: 1, mars: 2, prill: 3, maj: 4, qershor: 5,
+  korrik: 6, gusht: 7, shtator: 8, tetor: 9, nentor: 10, dhjetor: 11,
+  // English
+  january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11,
+};
+
+// Parse a localized "D Month YYYY" string into a sortable timestamp.
+// Returns 0 (oldest) if the string can't be parsed, so unknown formats sink
+// deterministically instead of poisoning the comparator with NaN.
+function postTimestamp(date: string): number {
+  const normalized = date
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, ''); // strip diacritics: "nëntor" -> "nentor"
+  const day = normalized.match(/\d{1,2}/);
+  const year = normalized.match(/\d{4}/);
+  const monthKey = Object.keys(MONTHS).find((m) => normalized.includes(m));
+  if (!day || !year || monthKey === undefined) return 0;
+  return new Date(Number(year[0]), MONTHS[monthKey], Number(day[0])).getTime();
+}
+
 // Posts are fetched server-side in page.tsx and passed in, so the full list is
 // present in the initial HTML for crawlers. `useLang` only swaps the display
 // language client-side (default 'sq' during SSR/hydration — no mismatch).
@@ -25,11 +55,11 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
   const { lang } = useLang();
 
   const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
+    (a, b) => postTimestamp(b.dates[lang]) - postTimestamp(a.dates[lang]),
   );
 
   return (
-    <section className="relative bg-[#FAF8F4] text-[#15130F] min-h-screen">
+    <main id="main-content" className="relative bg-[#FAF8F4] text-[#15130F] min-h-screen">
       <div className="mx-auto max-w-6xl px-6 pt-32 pb-24 sm:px-8 sm:pt-40 sm:pb-32">
         <p className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5">
           {copy.eyebrow[lang]}
@@ -114,6 +144,6 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
           </ul>
         )}
       </div>
-    </section>
+    </main>
   );
 }

@@ -25,7 +25,7 @@ export default function LegalDocument({ title, updated, intro, sections }: Legal
   const { lang } = useLang();
 
   return (
-    <article className="relative bg-[#FAF8F4] text-[#15130F]">
+    <main id="main-content" className="relative bg-[#FAF8F4] text-[#15130F]">
       <div className="mx-auto max-w-3xl px-6 pt-32 sm:px-8 sm:pt-40">
         <nav aria-label="Breadcrumb" className="mb-10">
           <ol className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
@@ -78,6 +78,6 @@ export default function LegalDocument({ title, updated, intro, sections }: Legal
           ))}
         </div>
       </div>
-    </article>
+    </main>
   );
 }

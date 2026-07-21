@@ -13,16 +13,15 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "firebase": "^12",
-    "firebase-admin": "^13.4.0",
-    "framer-motion": "^12.19.1",
+    "framer-motion": "^12",
     "heroicons": "^2.2.0",
     "html-react-parser": "^6",
-    "lucide-react": "^1.8.0",
+    "lucide-react": "^1",
     "next": "16",
-    "picomatch": "^4.0.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sharp": "^0.33.5"
+    "picomatch": "^4",
+    "react": "^19",
+    "react-dom": "^19",
+    "sharp": "^0.33"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -25,12 +25,12 @@ const fraunces = Fraunces({
 /* ------------------------------------------------------------------ */
 export const metadata: Metadata = {
   title: {
-    default: 'ROAL Mobileri — Mobilje me porosi, të bëra për të zgjatur',
+    default: 'ROAL Mobileri — Mobileri me porosi në Tiranë | Kuzhina, garderoba, dhoma gjumi',
     template: '%s | ROAL Mobileri',
   },
 
   description:
-    'Kuzhina, garderoba dhe ambiente të plota me porosi. Vite përvojë, cilësi e qëndrueshme, ne ju shoqërojmë nga skica e parë deri te instalimi.',
+    'Mobileri me porosi në Tiranë — kuzhina, garderoba, dhoma gjumi dhe ambiente të plota me masë. Showroom në Km 8, autostrada Tiranë–Durrës. Matje dhe projekt 3D falas.',
 
   metadataBase: new URL('https://roal.design'),
 
@@ -45,9 +45,14 @@ export const metadata: Metadata = {
 
   keywords: [
     'mobileri me porosi',
+    'mobilje me porosi',
+    'kuzhina me porosi',
     'kuzhina me masë',
     'garderoba me porosi',
+    'dhoma gjumi me porosi',
     'mobileri Tiranë',
+    'mobileri Durrës',
+    'mobileri Shqipëri',
     'mobilje Tiranë',
     'mobilje zyre Tiranë',
     'mobilje shtëpie',
@@ -61,7 +66,7 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: 'ROAL Mobileri — Mobilje me porosi',
+    title: 'ROAL Mobileri — Mobileri me porosi në Tiranë',
     description:
       'Kuzhina, garderoba dhe ambiente të plota të projektuara për t\u2019ju shërbyer për vite. Ju shoqërojmë në çdo hap.',
     url: 'https://roal.design/',
@@ -131,6 +136,10 @@ const LOCAL_BUSINESS_JSON_LD = {
     'bespoke kitchens',
     'garderoba me masë',
     'fitted wardrobes',
+    'dhoma gjumi me porosi',
+    'bedroom furniture',
+    'krevate me porosi',
+    'custom beds',
     'mobilje zyre',
     'office furniture',
     'mobilje shtëpie',
@@ -153,10 +162,11 @@ const LOCAL_BUSINESS_JSON_LD = {
     latitude: 41.367775,
     longitude: 19.69557,
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Albania',
-  },
+  areaServed: [
+    { '@type': 'Country', name: 'Albania' },
+    { '@type': 'City', name: 'Tiranë' },
+    { '@type': 'City', name: 'Durrës' },
+  ],
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -209,6 +219,18 @@ const LOCAL_BUSINESS_JSON_LD = {
           serviceType: 'Office furniture, home office and workspace fit-out',
           description:
             'Mobilje zyre me porosi — tavolina pune, rafte dhe ambiente të plota zyre për shtëpinë ose biznesin tuaj.',
+          areaServed: { '@type': 'Country', name: 'Albania' },
+          provider: { '@id': 'https://roal.design/#business' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Dhoma gjumi me porosi',
+          serviceType: 'Bedroom furniture',
+          description:
+            'Dhoma gjumi të plota me masë — krevate, komodina, garderoba dhe koka krevati të punuara sipas hapësirës suaj.',
           areaServed: { '@type': 'Country', name: 'Albania' },
           provider: { '@id': 'https://roal.design/#business' },
         },

@@ -1,8 +1,4 @@
 // src/app/page.tsx
-'use client';
-
-import { useScroll, useTransform } from 'framer-motion';
-
 import Hero from '../components/Hero';
 import ProcessSection from '../components/ProcessSection';
 import ProjectsGallery from '../components/ProjectsGallery';
@@ -14,13 +10,10 @@ import Contact from '../components/Contact';
 import HomeSchema from '../components/HomeSchema';
 
 export default function HomePage() {
-  const { scrollY } = useScroll();
-  const heroHeight = useTransform(scrollY, [0, 500], ['100vh', '60vh']);
-
   return (
-    <main>
+    <main id="main-content">
       <HomeSchema />
-      <Hero heroHeight={heroHeight} />
+      <Hero />
       <ProcessSection />
       <ProjectsGallery />
       <CategoriesStrip />
