@@ -7,14 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "firebase deploy",
+    "predeploy": "rm -rf .next/dev",
+    "deploy": "npm run predeploy && firebase deploy",
     "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "firebase": "^12",
     "framer-motion": "^12",
-    "heroicons": "^2.2.0",
     "html-react-parser": "^6",
     "lucide-react": "^1",
     "next": "16",
