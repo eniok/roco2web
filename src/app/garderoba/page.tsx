@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'sq_AL',
     siteName: 'ROAL Mobileri',
-    images: [{ url: `${SITE_URL}${service.image}`, width: 1200, height: 900, alt: service.imageAlt.sq }],
+    images: [{ url: `${SITE_URL}${service.image}`, width: 1536, height: 1024, alt: service.imageAlt.sq }],
   },
 };
 

@@ -4,6 +4,10 @@
 User-agent: *
 Allow: /
 
+# Interactive choice atlases
+Allow: /kuzhina/katalog
+Allow: /garderoba/katalog
+
 # Anthropic (Claude)
 User-agent: ClaudeBot
 Allow: /

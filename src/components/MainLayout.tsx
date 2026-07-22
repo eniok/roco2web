@@ -20,7 +20,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   // Update navbar style on scroll (and always solid off-home)
   useEffect(() => {
-    return scrollY.onChange((latest) => {
+    return scrollY.on('change', (latest) => {
       setNavScrolled(pathname !== '/' || latest > 50);
     });
   }, [scrollY, pathname]);

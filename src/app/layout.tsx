@@ -134,7 +134,7 @@ const LOCAL_BUSINESS_JSON_LD = {
   knowsAbout: [
     'kuzhina me porosi',
     'bespoke kitchens',
-    'garderoba me masë',
+    'garderoba me përmasë',
     'fitted wardrobes',
     'dhoma gjumi me porosi',
     'bedroom furniture',
@@ -202,7 +202,7 @@ const LOCAL_BUSINESS_JSON_LD = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Garderoba me masë',
+          name: 'Garderoba me përmasë',
           serviceType: 'Fitted wardrobes',
           description:
             'Garderoba dhe dollapë me masë për çdo dhomë, përfshirë hapësira të parregullta dhe tavane të pjerrëta.',

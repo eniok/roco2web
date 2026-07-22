@@ -1,6 +1,7 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useLang, type Dict } from '@/lib/i18n';
 import { whatsappHref } from '@/lib/store';
 
@@ -16,6 +17,11 @@ const LABEL: Dict<string> = {
 
 export default function WhatsAppFAB() {
   const { lang } = useLang();
+  const pathname = usePathname();
+
+  // The catalogues have contextual WhatsApp actions in the hero and selection
+  // summary; the floating shortcut would cover the swipeable choice cards.
+  if (pathname === '/kuzhina/katalog' || pathname === '/garderoba/katalog') return null;
 
   return (
     <a

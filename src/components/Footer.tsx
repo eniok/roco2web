@@ -19,7 +19,9 @@ const copy = {
 
 const SERVICE_LINKS: { label: Dict<string>; href: string }[] = [
   { label: { sq: 'Kuzhina', en: 'Kitchens' }, href: '/kuzhina' },
+  { label: { sq: 'Katalogu i kuzhinave', en: 'Kitchen catalogue' }, href: '/kuzhina/katalog' },
   { label: { sq: 'Garderoba', en: 'Wardrobes' }, href: '/garderoba' },
+  { label: { sq: 'Katalogu i garderobave', en: 'Wardrobe catalogue' }, href: '/garderoba/katalog' },
   { label: { sq: 'Dhoma gjumi', en: 'Bedrooms' }, href: '/dhoma-gjumi' },
   { label: { sq: 'Dhoma ndenje', en: 'Living rooms' }, href: '/dhoma-ndenje' },
   { label: { sq: 'Ambiente pune', en: 'Workspaces' }, href: '/ambiente-pune' },

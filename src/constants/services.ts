@@ -117,20 +117,20 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
   garderoba: {
     slug: 'garderoba',
     serviceType: 'Fitted wardrobes',
-    image: '/images/10.jpg',
+    image: '/images/wardrobe-catalogue/hero.webp',
     imageAlt: {
-      sq: 'Garderobë me masë e punuar me porosi nga ROAL Mobileri',
-      en: 'Fitted wardrobe by ROAL Mobileri',
+      sq: 'Garderobë me masë me fronte mat, rimeso arre dhe vitrinë xhami bronz',
+      en: 'Fitted wardrobe with matte fronts, walnut veneer and a bronze-glass display bay',
     },
     metaTitle: {
       sq: 'Garderoba me porosi në Tiranë — matje dhe projekt 3D falas',
       en: 'Fitted wardrobes in Tirana — free measurement & 3D design',
     },
     metaDescription: {
-      sq: 'Garderoba me masë, dollapë dhe walk-in closet për çdo hapësirë — edhe kënde të vështira e tavane të pjerrëta. Matje falas, projekt 3D dhe garanci 2 vjet.',
-      en: 'Fitted wardrobes, cupboards and walk-in closets for any space — including awkward corners and sloped ceilings. Free measurement, 3D design and 2-year warranty.',
+      sq: 'Garderoba me përmasë dhe walk-in closet për çdo hapësirë, me fronte melamine, MDF, pasqyrë ose xham. Matje falas, projekt 3D dhe garanci 2 vjet.',
+      en: 'Fitted wardrobes and walk-in closets for any space, with melamine, MDF, mirror or glass fronts. Free measurement, 3D design and 2-year warranty.',
     },
-    eyebrow: { sq: 'Garderoba me masë', en: 'Fitted wardrobes' },
+    eyebrow: { sq: 'Garderoba me përmasë', en: 'Fitted wardrobes' },
     headingLead: { sq: 'Garderoba që', en: 'Wardrobes that' },
     headingAccent: { sq: 'mbushin çdo cep.', en: 'fill every corner.' },
     subhead: {
@@ -148,6 +148,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         'Matje falas dhe konsultim mbi përdorimin',
         'Projekt 3D me ndarjet, sirtarët dhe aksesorët',
         'Dyer rrëshqitëse, me mentesha ose pa dyer (walk-in)',
+        'Fronte pasqyre, xhami të tymosur, bronz ose të kanaluar',
+        'Vitrina dhe rafte xhami me ndriçim të integruar',
         'Sirtarë me mbyllje të butë, ndarëse, tuba, ndriçim LED',
         'Përshtatje për tavane të pjerrëta, kënde të ngushta, kolona',
         'Instalim nga ekipi ynë + garanci 2 vjet',
@@ -156,6 +158,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         'Free measurement and consultation on how you\u2019ll use it',
         '3D design showing internal layout, drawers and accessories',
         'Sliding, hinged or open (walk-in) configurations',
+        'Mirror, smoked, bronze or reeded-glass fronts',
+        'Display bays and glass shelving with integrated lighting',
         'Soft-close drawers, dividers, hanging rails, LED lighting',
         'Solutions for sloped ceilings, tight corners and columns',
         'Installation by our team + 2-year warranty',
@@ -163,8 +167,8 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     },
     materialsTitle: { sq: 'Si i ndërtojmë', en: 'How we build them' },
     materialsBody: {
-      sq: 'Trupat e garderobës punohen me melaminë cilësore rezistente ndaj njomjes, në trashësi që nuk lakohen me peshën e rrobave. Dyert zgjidhen sipas stilit — të lyer mat, me vener natyrale, me pasqyrë ose në xham. Të gjithë menteshat dhe rrëshqitësit kanë mbyllje të butë që zgjasin vite.',
-      en: 'Wardrobe carcases use high-grade moisture-resistant melamine in a thickness that won\u2019t sag under clothing weight. Doors match your style — matt lacquer, real veneer, mirrored or glass. All hinges and runners are soft-close and built to last.',
+      sq: 'Trupat dhe ndarjet dimensionohen sipas hapësirës, gjatësisë së rafteve dhe asaj që do të mbajnë. Frontet mund të jenë melaminë, MDF i lyer, rimeso, pasqyrë ose xham i tymosur, bronz e i kanaluar. Realizojmë edhe vitrina e rafte xhami të integruara; korniza, mekanizmi dhe ndriçimi specifikohen si pjesë e të njëjtit projekt.',
+      en: 'Carcases and divisions are sized around the space, shelf spans and what they need to carry. Fronts can be melamine, lacquered MDF, veneer, mirror, or smoked, bronze and reeded glass. We also create integrated display bays and glass shelving; frames, hardware and lighting are specified as part of the same design.',
     },
     faqs: [
       {
@@ -186,6 +190,13 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         a: {
           sq: 'Po. Dhoma të plota walk-in closet, me ishull, ndriçim, ndarje për çanta, pasqyra dhe aksesorë.',
           en: 'Yes. Full walk-in closet rooms with islands, lighting, bag compartments, mirrors and accessories.',
+        },
+      },
+      {
+        q: { sq: 'Realizoni edhe elemente xhami dhe pasqyre?', en: 'Do you also make glass and mirror elements?' },
+        a: {
+          sq: 'Po. Projektojmë fronte me pasqyrë, xham të tymosur, bronz ose të kanaluar, si edhe vitrina e rafte xhami të integruara me mobilierinë dhe ndriçimin.',
+          en: 'Yes. We design mirrored, smoked, bronze or reeded-glass fronts, as well as display bays and glass shelves integrated with the cabinetry and lighting.',
         },
       },
     ],

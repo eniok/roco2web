@@ -18,6 +18,7 @@ const copy = {
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
   moreServices: { sq: 'Shërbime të tjera', en: 'More services' },
   viewService: { sq: 'Shiko shërbimin', en: 'View service' },
+  catalogueCta: { sq: 'Shfleto atlasin e zgjedhjeve', en: 'Browse the choice atlas' },
 } satisfies Record<string, Dict<string>>;
 
 const WHATSAPP_HREF = 'https://wa.me/355672029739';
@@ -26,6 +27,12 @@ const SHOWROOM_HREF = '/#showroom';
 export default function ServicePage({ service }: { service: ServiceConfig }) {
   const { lang } = useLang();
   const others = ALL_SERVICES.filter((s) => s.slug !== service.slug);
+  const catalogueHref =
+    service.slug === 'kuzhina'
+      ? '/kuzhina/katalog'
+      : service.slug === 'garderoba'
+        ? '/garderoba/katalog'
+        : undefined;
 
   return (
     <main id="main-content" className="bg-[#FAF8F4] text-[#15130F]">
@@ -90,6 +97,18 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
                 {copy.whatsappCta[lang]}
               </a>
             </div>
+            {catalogueHref && (
+              <Link
+                href={catalogueHref}
+                className="group mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-[#8B4A2E] underline decoration-[#8B4A2E]/35 underline-offset-[6px] transition hover:decoration-[#8B4A2E]"
+              >
+                {copy.catalogueCta[lang]}
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            )}
           </div>
 
           <motion.div
