@@ -19,8 +19,8 @@ const copy = {
   headingLead: { sq: 'Eja të prekësh', en: 'Come touch' },
   headingAccent: { sq: 'materialet.', en: 'the materials.' },
   subhead: {
-    sq: 'Showroom-i ynë është te Km 8, autostrada Tiranë–Durrës. 5 minuta me makinë nga Qendra Tregtare TEG.',
-    en: 'Our showroom sits at Km 8 on the Tirana–Durrës highway. 5 minutes by car from TEG shopping centre.',
+    sq: 'Showroom-i ynë është te Km 8, autostrada Tiranë–Durrës. 5 minuta me makinë nga Qendra Tregtare City Park.',
+    en: 'Our showroom sits at Km 8 on the Tirana–Durrës highway. 5 minutes by car from City Park shopping centre.',
   },
   addressLabel: { sq: 'Adresa', en: 'Address' },
   hoursLabel: { sq: 'Orari', en: 'Hours' },
@@ -79,9 +79,8 @@ export default function ShowroomCTA() {
             <p className="inline-flex items-center gap-2.5 border border-ink/15 px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.16em]">
               <span
                 aria-hidden="true"
-                className={`inline-flex h-1.5 w-1.5 rounded-full ${
-                  openNow ? 'bg-moss' : 'bg-clay/70'
-                }`}
+                className={`inline-flex h-1.5 w-1.5 rounded-full ${openNow ? 'bg-moss' : 'bg-clay/70'
+                  }`}
               />
               {openNow ? (
                 <>

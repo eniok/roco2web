@@ -54,8 +54,8 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     q: { sq: 'Ku ndodhet showroom-i juaj?', en: 'Where is your showroom?' },
     a: {
-      sq: 'Në Km 8 të Autostradës Tiranë–Durrës, rreth 5 minuta me makinë nga qendra tregtare TEG. Parkimi është falas dhe jemi të hapur çdo ditë — e hënë deri të shtunën 08:00–18:00, të dielën 08:00–16:00.',
-      en: 'At Km 8 on the Tirana–Durrës highway, about 5 minutes by car from the TEG shopping centre. Parking is free and we are open every day — Monday to Saturday 08:00–18:00, Sunday 08:00–16:00.',
+      sq: 'Në Km 8 të Autostradës Tiranë–Durrës, rreth 5 minuta me makinë nga qendra tregtare City Park. Parkimi është falas dhe jemi të hapur çdo ditë — e hënë deri të shtunën 08:00–18:00, të dielën 08:00–16:00.',
+      en: 'At Km 8 on the Tirana–Durrës highway, about 5 minutes by car from the City Park shopping centre. Parking is free and we are open every day — Monday to Saturday 08:00–18:00, Sunday 08:00–16:00.',
     },
   },
 ];

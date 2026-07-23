@@ -1,50 +1,47 @@
-[debug] [2026-07-22T23:15:06.037Z] ----------------------------------------------------------------------
-[debug] [2026-07-22T23:15:06.039Z] Command:       /Users/eniokaso/.nvm/versions/node/v22.17.1/bin/node /Users/eniokaso/.nvm/versions/node/v22.17.1/bin/firebase deploy --only hosting
-[debug] [2026-07-22T23:15:06.039Z] CLI Version:   15.24.0
-[debug] [2026-07-22T23:15:06.039Z] Platform:      darwin
-[debug] [2026-07-22T23:15:06.039Z] Node Version:  v22.17.1
-[debug] [2026-07-22T23:15:06.039Z] Detected Agent: unknown
-[debug] [2026-07-22T23:15:06.039Z] Time:          Thu Jul 23 2026 01:15:06 GMT+0200 (Central European Summer Time)
-[debug] [2026-07-22T23:15:06.039Z] ----------------------------------------------------------------------
+[debug] [2026-07-23T07:02:26.273Z] ----------------------------------------------------------------------
+[debug] [2026-07-23T07:02:26.274Z] Command:       /Users/eniokaso/.nvm/versions/node/v22.17.1/bin/node /Users/eniokaso/.nvm/versions/node/v22.17.1/bin/firebase deploy --only hosting
+[debug] [2026-07-23T07:02:26.275Z] CLI Version:   15.24.0
+[debug] [2026-07-23T07:02:26.275Z] Platform:      darwin
+[debug] [2026-07-23T07:02:26.275Z] Node Version:  v22.17.1
+[debug] [2026-07-23T07:02:26.275Z] Detected Agent: unknown
+[debug] [2026-07-23T07:02:26.275Z] Time:          Thu Jul 23 2026 09:02:26 GMT+0200 (Central European Summer Time)
+[debug] [2026-07-23T07:02:26.275Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2026-07-22T23:15:06.044Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2026-07-22T23:15:06.433Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-07-22T23:15:06.433Z] > authorizing via signed-in user (eniokaso96@gmail.com)
-[debug] [2026-07-22T23:15:06.433Z] [iam] checking project roal-web for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2026-07-22T23:15:06.433Z] Checked if tokens are valid: false, expires at: 1784656535607
-[debug] [2026-07-22T23:15:06.433Z] Checked if tokens are valid: false, expires at: 1784656535607
-[debug] [2026-07-22T23:15:06.433Z] > refreshing access token with scopes: []
-[debug] [2026-07-22T23:15:06.434Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2026-07-22T23:15:06.434Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-07-22T23:15:06.748Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2026-07-22T23:15:06.748Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2026-07-22T23:15:06.766Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions [none]
-[debug] [2026-07-22T23:15:06.766Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions  x-goog-user-project=roal-web
-[debug] [2026-07-22T23:15:06.766Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2026-07-22T23:15:06.921Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2026-07-22T23:15:06.921Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2026-07-22T23:15:07.744Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions 200
-[debug] [2026-07-22T23:15:07.744Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2026-07-22T23:15:07.745Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:07.745Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:07.745Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roal-web [none]
-[debug] [2026-07-22T23:15:08.134Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roal-web 200
-[debug] [2026-07-22T23:15:08.134Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roal-web {"projectId":"roal-web","projectNumber":"401243604137","displayName":"ROAL-WEB","name":"projects/roal-web","resources":{"hostingSite":"roal-web","locationId":"europe-west"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_0c1a8af6-9cdc-4811-bc32-09dcd2432783"}
-[debug] [2026-07-22T23:15:08.873Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:08.873Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:08.873Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites pageToken=&pageSize=10
-[debug] [2026-07-22T23:15:10.442Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 200
-[debug] [2026-07-22T23:15:10.442Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites {"sites":[{"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}]}
-[debug] [2026-07-22T23:15:10.442Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:10.442Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:10.442Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 
-[debug] [2026-07-22T23:15:11.579Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 200
-[debug] [2026-07-22T23:15:11.579Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites {"sites":[{"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}]}
-[debug] [2026-07-22T23:15:11.579Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:11.579Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:11.579Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config [none]
-[debug] [2026-07-22T23:15:12.697Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config 200
-[debug] [2026-07-22T23:15:12.697Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config {"projectId":"roal-web","appId":"1:401243604137:web:a49a793837b81ec2f095b8","storageBucket":"roal-web.appspot.com","locationId":"europe-west","apiKey":"AIzaSyAJF9_shCx8VUqGDnmLEAQCKfbCN4NeecU","authDomain":"roal-web.firebaseapp.com","messagingSenderId":"401243604137","measurementId":"G-L2TEFP6NXJ","projectNumber":"401243604137","version":"2"}
+[debug] [2026-07-23T07:02:26.928Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-23T07:02:26.928Z] > authorizing via signed-in user (eniokaso96@gmail.com)
+[debug] [2026-07-23T07:02:26.928Z] [iam] checking project roal-web for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-07-23T07:02:26.932Z] Checked if tokens are valid: false, expires at: 1784765705748
+[debug] [2026-07-23T07:02:26.933Z] Checked if tokens are valid: false, expires at: 1784765705748
+[debug] [2026-07-23T07:02:26.933Z] > refreshing access token with scopes: []
+[debug] [2026-07-23T07:02:26.933Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-23T07:02:26.933Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-23T07:02:27.104Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-23T07:02:27.104Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-23T07:02:27.119Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions [none]
+[debug] [2026-07-23T07:02:27.119Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions  x-goog-user-project=roal-web
+[debug] [2026-07-23T07:02:27.119Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-07-23T07:02:28.096Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions 200
+[debug] [2026-07-23T07:02:28.096Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-07-23T07:02:28.096Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:28.096Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:28.097Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roal-web [none]
+[debug] [2026-07-23T07:02:28.541Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roal-web 200
+[debug] [2026-07-23T07:02:28.541Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roal-web {"projectId":"roal-web","projectNumber":"401243604137","displayName":"ROAL-WEB","name":"projects/roal-web","resources":{"hostingSite":"roal-web","locationId":"europe-west"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_0c1a8af6-9cdc-4811-bc32-09dcd2432783"}
+[debug] [2026-07-23T07:02:29.323Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:29.323Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:29.324Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites pageToken=&pageSize=10
+[debug] [2026-07-23T07:02:30.741Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 200
+[debug] [2026-07-23T07:02:30.741Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites {"sites":[{"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-07-23T07:02:30.741Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:30.741Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:30.741Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 
+[debug] [2026-07-23T07:02:31.811Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites 200
+[debug] [2026-07-23T07:02:31.811Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites {"sites":[{"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-07-23T07:02:31.811Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:31.811Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:31.811Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config [none]
+[debug] [2026-07-23T07:02:32.732Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config 200
+[debug] [2026-07-23T07:02:32.732Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/roal-web/webApps/-/config {"projectId":"roal-web","appId":"1:401243604137:web:a49a793837b81ec2f095b8","storageBucket":"roal-web.appspot.com","locationId":"europe-west","apiKey":"AIzaSyAJF9_shCx8VUqGDnmLEAQCKfbCN4NeecU","authDomain":"roal-web.firebaseapp.com","messagingSenderId":"401243604137","measurementId":"G-L2TEFP6NXJ","projectNumber":"401243604137","version":"2"}
 [info] 
    Thank you for trying our early preview of Next.js support on Firebase Hosting.
    During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
@@ -56,11 +53,11 @@
 
    We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
 
-[debug] [2026-07-22T23:15:14.138Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:14.138Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:14.138Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web [none]
-[debug] [2026-07-22T23:15:15.124Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web 200
-[debug] [2026-07-22T23:15:15.124Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web {"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}
+[debug] [2026-07-23T07:02:34.142Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:34.142Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:34.142Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web [none]
+[debug] [2026-07-23T07:02:35.191Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web 200
+[debug] [2026-07-23T07:02:35.191Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web {"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}
 [info] ▲ Next.js 16.2.11 (Turbopack)
 
 [info] - Environments: .env.local
@@ -68,11 +65,11 @@
 
 [info]   Creating an optimized production build ...
 
-[info] ✓ Compiled successfully in 1710ms
+[info] ✓ Compiled successfully in 1579ms
 
 [info]   Running TypeScript ...
 
-[info]   Finished TypeScript in 1692ms ...
+[info]   Finished TypeScript in 1762ms ...
 
 [info]   Collecting page data using 13 workers ...
 
@@ -84,7 +81,7 @@
 
 [info]   Generating static pages using 13 workers (66/89) 
 
-[info] ✓ Generating static pages using 13 workers (89/89) in 325ms
+[info] ✓ Generating static pages using 13 workers (89/89) in 1114ms
 
 [info]   Finalizing page optimization ...
 
@@ -128,461 +125,82 @@
 [info]  • use of revalidate /blog
 [info]  • use of revalidate /blog/[slug]/[lang]
 [info]  • non-static component /blog/[slug]/page
-[debug] [2026-07-22T23:15:20.929Z]  • non-static component /feed.xml/route
+[debug] [2026-07-23T07:02:41.782Z]  • non-static component /feed.xml/route
 [info]  • and 1 other reasons, use --debug to see more
 [info] 
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/albanian-design-heritage-meets-modern/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/albanian-design-heritage-meets-modern/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/biophilic-design-bringing-nature-indoors/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/biophilic-design-bringing-nature-indoors/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/buying-furniture-in-albania/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/buying-furniture-in-albania/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/buying-furniture-in-albania-guide/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/buying-furniture-in-albania-guide/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/caring-for-wood-furniture/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/caring-for-wood-furniture/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/choosing-light-colour-kelvin/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/choosing-light-colour-kelvin/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/choosing-perfect-rug/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/choosing-perfect-rug/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/cleaning-upholstery-guide/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/cleaning-upholstery-guide/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/dhoma-gjumi-moderne-tirane/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/dhoma-gjumi-moderne-tirane/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/dhoma-gjumi-si-ta-mobiloni/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/dhoma-gjumi-si-ta-mobiloni/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/ergonomics-furniture-comfort-health/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/ergonomics-furniture-comfort-health/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/furnishing-a-small-home/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/furnishing-a-small-home/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/home-office-design-tips/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/home-office-design-tips/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-me-porosi-tirane-cmimi/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-me-porosi-tirane-cmimi/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-te-vogla-moderne/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-te-vogla-moderne/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-te-vogla-moderne-ide/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/kuzhina-te-vogla-moderne-ide/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/lighting-101-setting-mood/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/lighting-101-setting-mood/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/luxury-accessories-add-depth/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/luxury-accessories-add-depth/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/make-furniture-look-expensive-budget/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/make-furniture-look-expensive-budget/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/maximizing-natural-light/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/maximizing-natural-light/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/maximizing-small-spaces-multifunctional-furniture/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/maximizing-small-spaces-multifunctional-furniture/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/measuring-furniture-delivery/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/measuring-furniture-delivery/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/minimalist-vs-maximalist-style/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/minimalist-vs-maximalist-style/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/mixing-vintage-modern/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/mixing-vintage-modern/sq due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/mobilje-me-porosi-tirane-cmimet/en due to revalidate
-[debug] [2026-07-22T23:15:21.255Z] skipping /blog/mobilje-me-porosi-tirane-cmimet/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/open-concept-living-pros-cons/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/open-concept-living-pros-cons/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/picking-your-signature-style/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/picking-your-signature-style/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/planning-your-furniture-layout/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/planning-your-furniture-layout/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/power-of-color-interior-design/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/power-of-color-interior-design/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/sa-kushton-nje-kuzhine-me-porosi/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/sa-kushton-nje-kuzhine-me-porosi/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/seasonal-decor-changes/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/seasonal-decor-changes/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/sustainable-furniture-choices/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/sustainable-furniture-choices/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/the-art-of-minimalist-furniture/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/the-art-of-minimalist-furniture/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/vintage-comeback-retro-trends/en due to revalidate
-[debug] [2026-07-22T23:15:21.256Z] skipping /blog/vintage-comeback-retro-trends/sq due to revalidate
-[debug] [2026-07-22T23:15:22.266Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:22.266Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:22.266Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web [none]
-[debug] [2026-07-22T23:15:23.526Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web 200
-[debug] [2026-07-22T23:15:23.527Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web {"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}
-[debug] [2026-07-22T23:15:36.820Z] [web frameworks] effective firebase.json:  {
-  "hosting": [
-    {
-      "source": ".",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "predeploy": [
-        "rm -rf .next/dev"
-      ],
-      "frameworksBackend": {
-        "region": "europe-west1"
-      },
-      "site": "roal-web",
-      "rewrites": [
-        {
-          "source": "**",
-          "function": {
-            "functionId": "ssrroalweb",
-            "region": "europe-west1",
-            "pinTag": true
-          }
-        }
-      ],
-      "redirects": [],
-      "headers": [
-        {
-          "source": "/llms.txt",
-          "headers": [
-            {
-              "key": "Content-Type",
-              "value": "text/plain; charset=utf-8"
-            },
-            {
-              "key": "X-Robots-Tag",
-              "value": "index, follow"
-            },
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=3600, must-revalidate"
-            },
-            {
-              "key": "Access-Control-Allow-Origin",
-              "value": "*"
-            }
-          ]
-        },
-        {
-          "source": "/_not-found",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/_not-found/layout,_N_T_/_not-found/page,_N_T_/_not-found"
-            }
-          ]
-        },
-        {
-          "source": "/_global-error",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/_global-error/layout,_N_T_/_global-error/page,_N_T_/_global-error"
-            }
-          ]
-        },
-        {
-          "source": "/ambiente-pune",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/ambiente-pune/layout,_N_T_/ambiente-pune/page,_N_T_/ambiente-pune"
-            }
-          ]
-        },
-        {
-          "source": "/blog",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/blog/layout,_N_T_/blog/page,_N_T_/blog"
-            }
-          ]
-        },
-        {
-          "source": "/dhoma-gjumi",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/dhoma-gjumi/layout,_N_T_/dhoma-gjumi/page,_N_T_/dhoma-gjumi"
-            }
-          ]
-        },
-        {
-          "source": "/dhoma-ndenje",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/dhoma-ndenje/layout,_N_T_/dhoma-ndenje/page,_N_T_/dhoma-ndenje"
-            }
-          ]
-        },
-        {
-          "source": "/garderoba/katalog",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/garderoba/layout,_N_T_/garderoba/katalog/layout,_N_T_/garderoba/katalog/page,_N_T_/garderoba/katalog"
-            }
-          ]
-        },
-        {
-          "source": "/hoteleri-lokale",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/hoteleri-lokale/layout,_N_T_/hoteleri-lokale/page,_N_T_/hoteleri-lokale"
-            }
-          ]
-        },
-        {
-          "source": "/favicon.ico",
-          "headers": [
-            {
-              "key": "cache-control",
-              "value": "public, max-age=0, must-revalidate"
-            },
-            {
-              "key": "content-type",
-              "value": "image/x-icon"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/favicon.ico/layout,_N_T_/favicon.ico/route,_N_T_/favicon.ico"
-            }
-          ]
-        },
-        {
-          "source": "/data-deletion",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/data-deletion/layout,_N_T_/data-deletion/page,_N_T_/data-deletion"
-            }
-          ]
-        },
-        {
-          "source": "/kuzhina/katalog",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/kuzhina/layout,_N_T_/kuzhina/katalog/layout,_N_T_/kuzhina/katalog/page,_N_T_/kuzhina/katalog"
-            }
-          ]
-        },
-        {
-          "source": "/privacy-policy",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/privacy-policy/layout,_N_T_/privacy-policy/page,_N_T_/privacy-policy"
-            }
-          ]
-        },
-        {
-          "source": "/garderoba",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/garderoba/layout,_N_T_/garderoba/page,_N_T_/garderoba"
-            }
-          ]
-        },
-        {
-          "source": "/kuzhina",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/kuzhina/layout,_N_T_/kuzhina/page,_N_T_/kuzhina"
-            }
-          ]
-        },
-        {
-          "source": "/terms-of-service",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/terms-of-service/layout,_N_T_/terms-of-service/page,_N_T_/terms-of-service"
-            }
-          ]
-        },
-        {
-          "source": "/sitemap.xml",
-          "headers": [
-            {
-              "key": "cache-control",
-              "value": "public, max-age=0, must-revalidate"
-            },
-            {
-              "key": "content-type",
-              "value": "application/xml"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/sitemap.xml/layout,_N_T_/sitemap.xml/route,_N_T_/sitemap.xml"
-            }
-          ]
-        },
-        {
-          "source": "/test-og",
-          "headers": [
-            {
-              "key": "x-nextjs-stale-time",
-              "value": "300"
-            },
-            {
-              "key": "x-nextjs-prerender",
-              "value": "1"
-            },
-            {
-              "key": "x-next-cache-tags",
-              "value": "_N_T_/layout,_N_T_/test-og/layout,_N_T_/test-og/page,_N_T_/test-og"
-            }
-          ]
-        },
-        {
-          "source": "**/*.[jt]s",
-          "headers": [
-            {
-              "key": "Set-Cookie",
-              "value": "__FIREBASE_DEFAULTS__=eyJjb25maWciOnsicHJvamVjdElkIjoicm9hbC13ZWIiLCJhcHBJZCI6IjE6NDAxMjQzNjA0MTM3OndlYjphNDlhNzkzODM3YjgxZWMyZjA5NWI4Iiwic3RvcmFnZUJ1Y2tldCI6InJvYWwtd2ViLmFwcHNwb3QuY29tIiwibG9jYXRpb25JZCI6ImV1cm9wZS13ZXN0IiwiYXBpS2V5IjoiQUl6YVN5QUpGOV9zaEN4OFZVcUdEbm1MRUFRQ0tmYkNONE5lZWNVIiwiYXV0aERvbWFpbiI6InJvYWwtd2ViLmZpcmViYXNlYXBwLmNvbSIsIm1lc3NhZ2luZ1NlbmRlcklkIjoiNDAxMjQzNjA0MTM3IiwibWVhc3VyZW1lbnRJZCI6IkctTDJURUZQNk5YSiIsInByb2plY3ROdW1iZXIiOiI0MDEyNDM2MDQxMzciLCJ2ZXJzaW9uIjoiMiJ9LCJfYXV0aFRva2VuU3luY1VSTCI6Ii9fX3Nlc3Npb24ifQ; SameSite=Strict; Expires=2028-06-16T09:55:36.820Z; Path=/;"
-            }
-          ]
-        }
-      ],
-      "cleanUrls": true,
-      "trailingSlash": false,
-      "public": ".firebase/roal-web/hosting",
-      "webFramework": "next_ssr"
-    }
-  ],
-  "functions": [
-    {
-      "source": ".firebase/roal-web/functions",
-      "codebase": "firebase-frameworks-roal-web"
-    }
-  ]
-}
-[debug] [2026-07-22T23:15:36.820Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-07-22T23:15:36.820Z] > authorizing via signed-in user (eniokaso96@gmail.com)
-[debug] [2026-07-22T23:15:36.820Z] [iam] checking project roal-web for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
-[debug] [2026-07-22T23:15:36.820Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:36.820Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:36.820Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions [none]
-[debug] [2026-07-22T23:15:36.820Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions  x-goog-user-project=roal-web
-[debug] [2026-07-22T23:15:36.820Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2026-07-22T23:15:37.221Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions 200
-[debug] [2026-07-22T23:15:37.221Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/roal-web:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2026-07-22T23:15:37.222Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:37.222Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:37.223Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/roal-web/locations/-/functions [none]
-[debug] [2026-07-22T23:15:38.101Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/roal-web/locations/-/functions 200
-[debug] [2026-07-22T23:15:38.101Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/roal-web/locations/-/functions {}
-[debug] [2026-07-22T23:15:38.102Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:38.102Z] Checked if tokens are valid: true, expires at: 1784765705748
-[debug] [2026-07-22T23:15:38.102Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/roal-web/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/albanian-design-heritage-meets-modern/en due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/albanian-design-heritage-meets-modern/sq due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/biophilic-design-bringing-nature-indoors/en due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/biophilic-design-bringing-nature-indoors/sq due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/buying-furniture-in-albania/en due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/buying-furniture-in-albania/sq due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/buying-furniture-in-albania-guide/en due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/buying-furniture-in-albania-guide/sq due to revalidate
+[debug] [2026-07-23T07:02:42.233Z] skipping /blog/caring-for-wood-furniture/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/caring-for-wood-furniture/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/choosing-light-colour-kelvin/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/choosing-light-colour-kelvin/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/choosing-perfect-rug/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/choosing-perfect-rug/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/cleaning-upholstery-guide/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/cleaning-upholstery-guide/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/dhoma-gjumi-moderne-tirane/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/dhoma-gjumi-moderne-tirane/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/dhoma-gjumi-si-ta-mobiloni/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/dhoma-gjumi-si-ta-mobiloni/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/ergonomics-furniture-comfort-health/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/ergonomics-furniture-comfort-health/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/furnishing-a-small-home/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/furnishing-a-small-home/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/home-office-design-tips/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/home-office-design-tips/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-me-porosi-tirane-cmimi/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-me-porosi-tirane-cmimi/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-te-vogla-moderne/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-te-vogla-moderne/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-te-vogla-moderne-ide/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/kuzhina-te-vogla-moderne-ide/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/lighting-101-setting-mood/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/lighting-101-setting-mood/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/luxury-accessories-add-depth/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/luxury-accessories-add-depth/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/make-furniture-look-expensive-budget/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/make-furniture-look-expensive-budget/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/maximizing-natural-light/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/maximizing-natural-light/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/maximizing-small-spaces-multifunctional-furniture/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/maximizing-small-spaces-multifunctional-furniture/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/measuring-furniture-delivery/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/measuring-furniture-delivery/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/minimalist-vs-maximalist-style/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/minimalist-vs-maximalist-style/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/mixing-vintage-modern/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/mixing-vintage-modern/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/mobilje-me-porosi-tirane-cmimet/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/mobilje-me-porosi-tirane-cmimet/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/open-concept-living-pros-cons/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/open-concept-living-pros-cons/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/picking-your-signature-style/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/picking-your-signature-style/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/planning-your-furniture-layout/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/planning-your-furniture-layout/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/power-of-color-interior-design/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/power-of-color-interior-design/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/sa-kushton-nje-kuzhine-me-porosi/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/sa-kushton-nje-kuzhine-me-porosi/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/seasonal-decor-changes/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/seasonal-decor-changes/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/sustainable-furniture-choices/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/sustainable-furniture-choices/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/the-art-of-minimalist-furniture/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/the-art-of-minimalist-furniture/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/the-definitive-guide-to-choosing-the-perfect-sofa-set/sq due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/vintage-comeback-retro-trends/en due to revalidate
+[debug] [2026-07-23T07:02:42.234Z] skipping /blog/vintage-comeback-retro-trends/sq due to revalidate
+[debug] [2026-07-23T07:02:43.470Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:43.470Z] Checked if tokens are valid: true, expires at: 1784793746104
+[debug] [2026-07-23T07:02:43.470Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web [none]
+[debug] [2026-07-23T07:02:44.667Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web 200
+[debug] [2026-07-23T07:02:44.667Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/roal-web/sites/roal-web {"name":"projects/roal-web/sites/roal-web","defaultUrl":"https://roal-web.web.app","type":"DEFAULT_SITE"}
