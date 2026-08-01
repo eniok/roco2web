@@ -4,9 +4,9 @@ import KitchenCatalogue from '@/components/KitchenCatalogue';
 const SITE_URL = 'https://roal.design';
 const PAGE_URL = `${SITE_URL}/kuzhina/katalog`;
 
-const title = 'Katalogu i kuzhinave me porosi — materiale, syprina, doreza, Blum';
+const title = 'Udhëzuesi i kuzhinës ROAL — materiale, syprina, hapje dhe mekanizma';
 const description =
-  'Ndërto kuzhinën tënde në 5 zgjedhje: materiali i dyerve, syprina, dorezat, aksesorët Blum dhe ndriçimi i fshehur. Të gjitha me mbyllje me vakum, me çmime orientuese për metër linear.';
+  'Përcaktoni kuzhinën tuaj në 5 vendime: materialet e fronteve, syprina, mënyra e hapjes, mekanizmat Blum dhe ndriçimi i integruar. Me buxhete orientuese për metër linear.';
 
 export const metadata: Metadata = {
   title,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/images/kitchen-catalogue/hero.webp`,
         width: 1536,
         height: 1024,
-        alt: 'Kuzhinë moderne me front mat, vener arre dhe ishull të rrumbullakosur',
+        alt: 'Kuzhinë bashkëkohore me fronte mat, rimeso arre dhe ishull të rrumbullakosur',
       },
     ],
   },
@@ -48,13 +48,13 @@ const schema = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Kreu', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: 'Kuzhina me porosi', item: `${SITE_URL}/kuzhina` },
-        { '@type': 'ListItem', position: 3, name: 'Katalogu i kuzhinave', item: PAGE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Kuzhina të projektuara', item: `${SITE_URL}/kuzhina` },
+        { '@type': 'ListItem', position: 3, name: 'Udhëzuesi i kuzhinës', item: PAGE_URL },
       ],
     },
     {
       '@type': 'ItemList',
-      name: 'Zgjedhjet e katalogut të kuzhinave',
+      name: 'Zgjedhjet e udhëzuesit të kuzhinës',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Materiali i dyerve', url: `${PAGE_URL}#materiali` },
         { '@type': 'ListItem', position: 2, name: 'Syprina e punës', url: `${PAGE_URL}#syprina` },

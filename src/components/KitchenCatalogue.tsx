@@ -16,18 +16,18 @@ import {
 const SHOWROOM_HREF = '/#showroom';
 
 const copy = {
-  backKitchens: { sq: 'Kuzhina me porosi', en: 'Bespoke kitchens' },
-  eyebrow: { sq: 'Atlasi i zgjedhjeve ROAL', en: 'The ROAL choice atlas' },
-  headingLead: { sq: 'Ndërto kuzhinën tënde', en: 'Build your kitchen' },
+  backKitchens: { sq: 'Kuzhina të projektuara', en: 'Bespoke kitchens' },
+  eyebrow: { sq: 'Udhëzuesi i kuzhinës ROAL', en: 'The ROAL choice atlas' },
+  headingLead: { sq: 'Përcaktoni kuzhinën tuaj', en: 'Build your kitchen' },
   headingAccent: { sq: 'në 5 vendime.', en: 'in 5 decisions.' },
   subhead: {
-    sq: 'Shihni nga afër ndryshimin mes materialeve, syprinave, hapjeve, mekanizmave dhe dritës. Përzgjidhni një alternativë në çdo hap; ne e kthejmë në projekt me përmasa fikse.',
+    sq: 'Shihni nga afër ndryshimin mes materialeve, syprinave, mënyrave të hapjes, mekanizmave dhe ndriçimit. Zgjidhni një drejtim në çdo hap; ne e zhvillojmë në një projekt të personalizuar.',
     en: 'See the difference between materials, worktops, opening styles, mechanisms and lighting up close. Pick one direction at each step; we turn it into a made-to-measure design.',
   },
-  visitCta: { sq: 'Vizito showroom-in', en: 'Visit the showroom' },
-  whatsappCta: { sq: 'Shkruaj në WhatsApp', en: 'Message on WhatsApp' },
+  visitCta: { sq: 'Vizitoni showroom-in', en: 'Visit the showroom' },
+  whatsappCta: { sq: 'Na shkruani në WhatsApp', en: 'Message on WhatsApp' },
   heroImageAlt: {
-    sq: 'Kuzhinë bashkëkohore me front mat, vener arre, ishull të rrumbullakosur dhe dritë të fshehur',
+    sq: 'Kuzhinë bashkëkohore me fronte mat, rimeso arre, ishull të rrumbullakosur dhe dritë të fshehur',
     en: 'Contemporary kitchen with matte fronts, walnut veneer, a rounded island and concealed lighting',
   },
   heroImageNote: {
@@ -35,13 +35,14 @@ const copy = {
     en: 'One composition, five decisions',
   },
   heroStats: {
-    sq: ['5 vendime', '20 alternativa', '1 projekt me përmasa fikse'],
+    sq: ['5 vendime', '20 alternativa', '1 projekt i personalizuar'],
     en: ['5 decisions', '20 alternatives', '1 made-to-measure plan'],
   },
   stepLabel: { sq: 'Vendimi', en: 'Decision' },
-  selectChoice: { sq: 'Zgjidh këtë', en: 'Choose this' },
+  selectChoice: { sq: 'Zgjidhni këtë', en: 'Choose this' },
   selectedChoice: { sq: 'Zgjedhur', en: 'Selected' },
-  swipeHint: { sq: 'Rrëshqit për të krahasuar →', en: 'Swipe to compare →' },
+  multiHint: { sq: 'Mund të zgjidhni disa', en: 'You can select several' },
+  swipeHint: { sq: 'Rrëshqitni për të krahasuar →', en: 'Swipe to compare →' },
   visualGuide: {
     sq: 'Pamjet janë udhëzuese. Ngjyrën, teksturën dhe mekanizmin real i provoni në showroom.',
     en: 'Images are visual guides. See and test the real colour, texture and mechanism in our showroom.',
@@ -52,12 +53,12 @@ const copy = {
     en: 'Five decisions, ready to discuss.',
   },
   selectionIntro: {
-    sq: 'Zgjedhjet nuk janë porosi përfundimtare. Ato na japin drejtimin e duhur për matjen, projektin 3D dhe ofertën tuaj.',
+    sq: 'Këto zgjedhje përcaktojnë drejtimin fillestar. Pas matjes, ne i zhvillojmë në projektin 3D dhe ofertën tuaj të detajuar.',
     en: 'These choices are not a final order. They give us the right direction for your measurement, 3D design and quotation.',
   },
   notSelected: { sq: 'Ende pa zgjedhur', en: 'Not selected yet' },
   selectionCount: { sq: 'zgjedhje të bëra', en: 'choices made' },
-  sendSelection: { sq: 'Dërgo përzgjedhjen', en: 'Send my selection' },
+  sendSelection: { sq: 'Dërgoni përzgjedhjen', en: 'Send my selection' },
   completeHint: {
     sq: 'Mund ta dërgoni edhe pa i plotësuar të gjitha.',
     en: 'You can send it even before completing every step.',
@@ -79,7 +80,7 @@ const copy = {
     sq: [
       'Mentesha dhe rrëshqitës me mbyllje të butë',
       'Sirtarë me nxjerrje të plotë',
-      'Trupa me masë të saktë dhe kanto ABS të qëndrueshme',
+      'Strukturë sipas përmasave të sakta dhe bordurë ABS rezistente',
       'Matje falas dhe projekt 3D para prodhimit',
       'Instalim nga ekipi ynë dhe garanci 2 vjet',
     ],
@@ -134,7 +135,7 @@ const copy = {
     en: 'Come touch the materials, test the mechanisms and let us look at your space together. Measurement and 3D design are free.',
   },
   genericWhatsAppMessage: {
-    sq: 'Përshëndetje ROAL, dua të diskutoj zgjedhjet për një kuzhinë me porosi.',
+    sq: 'Përshëndetje ROAL, dua të diskutoj zgjedhjet për projektin e kuzhinës sime.',
     en: 'Hello ROAL, I would like to discuss the choices for a bespoke kitchen.',
   },
 } satisfies Record<string, Dict<string> | Dict<string[]>>;
@@ -156,6 +157,7 @@ type CatalogueStep = {
   question: Dict<string>;
   intro: Dict<string>;
   options: CatalogueOption[];
+  multi?: boolean;
 };
 
 const STEPS: CatalogueStep[] = [
@@ -179,7 +181,7 @@ const STEPS: CatalogueStep[] = [
         },
         tier: '€',
         image: '/images/kitchen-catalogue/materials/melamine.webp',
-        imageAlt: { sq: 'Front melamine me dekor lisi dhe kanto të pastër', en: 'Oak-look melamine front with a clean edge' },
+        imageAlt: { sq: 'Front melamine me dekor lisi dhe bordurë të pastër', en: 'Oak-look melamine front with a clean edge' },
       },
       {
         id: 'pet-acrylic',
@@ -196,9 +198,9 @@ const STEPS: CatalogueStep[] = [
       {
         id: 'lacquered-mdf',
         name: { sq: 'MDF me lyerje', en: 'Lacquered MDF' },
-        badge: { sq: 'Me porosi', en: 'Custom' },
+        badge: { sq: 'E personalizuar', en: 'Custom' },
         desc: {
-          sq: 'Ngjyra RAL, mat ose gloss, pa kanto të dukshme. Lejon J-pull, kanale dhe forma të lakuara.',
+          sq: 'Ngjyra RAL, mat ose me shkëlqim, pa bordurë të dukshme. Lejon J-pull, kanale dhe forma të lakuara.',
           en: 'RAL colours, matte or gloss, with no visible edging. Allows J-pulls, fluting and curved forms.',
         },
         tier: '€€€',
@@ -232,7 +234,7 @@ const STEPS: CatalogueStep[] = [
       {
         id: 'laminate',
         name: { sq: 'Laminat / postforming', en: 'Laminate / postforming' },
-        badge: { sq: 'Ekonomike', en: 'Economical' },
+        badge: { sq: 'Praktike', en: 'Economical' },
         desc: {
           sq: 'Zgjidhje e shpejtë dhe praktike, me dekore guri bindëse dhe skaj të rrumbullakosur.',
           en: 'A quick, practical solution with convincing stone decors and a softly rounded front edge.',
@@ -341,6 +343,7 @@ const STEPS: CatalogueStep[] = [
   },
   {
     id: 'blum',
+    multi: true,
     navLabel: { sq: 'Mekanizmat', en: 'Mechanisms' },
     title: { sq: 'Mekanizmat Blum', en: 'Blum mechanisms' },
     question: { sq: 'Si duhet të lëvizë kuzhina?', en: 'How should the kitchen move?' },
@@ -401,6 +404,7 @@ const STEPS: CatalogueStep[] = [
   },
   {
     id: 'ndricimi',
+    multi: true,
     navLabel: { sq: 'Drita', en: 'Lighting' },
     title: { sq: 'Ndriçimi i integruar', en: 'Integrated lighting' },
     question: { sq: 'Çfarë pune duhet të bëjë drita?', en: 'What job should the light do?' },
@@ -473,7 +477,7 @@ type PriceTier = {
 
 const PRICE_TIERS: PriceTier[] = [
   {
-    name: { sq: 'Ekonomike', en: 'Essential' },
+    name: { sq: 'Klasike', en: 'Essential' },
     price: '€250',
     total: { sq: 'Kuzhinë tipike 5 m: €1.250 – €1.750', en: 'Typical 5 m kitchen: €1,250 – €1,750' },
     image: '/images/kitchen-catalogue/materials/melamine.webp',
@@ -482,7 +486,7 @@ const PRICE_TIERS: PriceTier[] = [
       sq: [
         'Fronte melamine, dekor druri ose uni',
         'Syprinë laminat',
-        'Mentesha dhe sirtarë soft-close',
+        'Mentesha dhe sirtarë me mbyllje të butë',
         'Doreza shirit sipas zgjedhjes',
       ],
       en: [
@@ -494,7 +498,7 @@ const PRICE_TIERS: PriceTier[] = [
     },
   },
   {
-    name: { sq: 'Mesatare', en: 'Signature' },
+    name: { sq: 'E përzgjedhur', en: 'Signature' },
     price: '€400',
     total: { sq: 'Kuzhinë tipike 5 m: €2.000 – €2.750', en: 'Typical 5 m kitchen: €2,000 – €2,750' },
     image: '/images/kitchen-catalogue/handles/gola-profile.webp',
@@ -544,7 +548,7 @@ const PRICE_TIERS: PriceTier[] = [
 
 export default function KitchenCatalogue() {
   const { lang } = useLang();
-  const [selections, setSelections] = useState<Record<string, string>>({});
+  const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [activeSection, setActiveSection] = useState(STEPS[0].id);
 
   useEffect(() => {
@@ -571,8 +575,13 @@ export default function KitchenCatalogue() {
 
   const selectionWhatsAppHref = useMemo(() => {
     const lines = STEPS.map((step, index) => {
-      const option = step.options.find((item) => item.id === selections[step.id]);
-      const value = option ? option.name[lang] : copy.notSelected[lang];
+      const selectedIds = selections[step.id] ?? [];
+      const value = selectedIds.length
+        ? step.options
+            .filter((item) => selectedIds.includes(item.id))
+            .map((item) => item.name[lang])
+            .join(', ')
+        : copy.notSelected[lang];
       return `${index + 1}. ${step.navLabel[lang]}: ${value}`;
     });
 
@@ -584,13 +593,22 @@ export default function KitchenCatalogue() {
   const genericWhatsAppHref = whatsappHref(copy.genericWhatsAppMessage[lang]);
 
   const selectOption = (stepId: string, optionId: string) => {
+    const multi = STEPS.find((step) => step.id === stepId)?.multi ?? false;
     setSelections((current) => {
-      if (current[stepId] === optionId) {
-        const next = { ...current };
+      const currentIds = current[stepId] ?? [];
+      const nextIds = currentIds.includes(optionId)
+        ? currentIds.filter((id) => id !== optionId)
+        : multi
+          ? [...currentIds, optionId]
+          : [optionId];
+
+      const next = { ...current };
+      if (nextIds.length === 0) {
         delete next[stepId];
-        return next;
+      } else {
+        next[stepId] = nextIds;
       }
-      return { ...current, [stepId]: optionId };
+      return next;
     });
   };
 
@@ -723,7 +741,7 @@ export default function KitchenCatalogue() {
           step={step}
           index={index}
           lang={lang}
-          selectedId={selections[step.id]}
+          selectedIds={selections[step.id] ?? []}
           onSelect={(optionId) => selectOption(step.id, optionId)}
         />
       ))}
@@ -748,14 +766,17 @@ export default function KitchenCatalogue() {
 
             <ol className="mt-9 border-t border-paper/15">
               {STEPS.map((step, index) => {
-                const selected = step.options.find((option) => option.id === selections[step.id]);
+                const selectedIds = selections[step.id] ?? [];
+                const selectedNames = step.options
+                  .filter((option) => selectedIds.includes(option.id))
+                  .map((option) => option.name[lang]);
                 return (
                   <li key={step.id} className="border-b border-paper/15">
                     <a href={`#${step.id}`} className="group grid min-h-14 grid-cols-[2rem_1fr_auto] items-center gap-3 py-3">
                       <span className="text-[0.65rem] text-sand">0{index + 1}</span>
                       <span className="text-xs uppercase tracking-[0.14em] text-paper/45">{step.navLabel[lang]}</span>
-                      <span className={`text-right text-sm transition-colors group-hover:text-sand ${selected ? 'text-paper' : 'italic text-paper/35'}`}>
-                        {selected?.name[lang] ?? copy.notSelected[lang]}
+                      <span className={`text-right text-sm transition-colors group-hover:text-sand ${selectedNames.length ? 'text-paper' : 'italic text-paper/35'}`}>
+                        {selectedNames.length ? selectedNames.join(', ') : copy.notSelected[lang]}
                       </span>
                     </a>
                   </li>
@@ -943,13 +964,13 @@ function StepSection({
   step,
   index,
   lang,
-  selectedId,
+  selectedIds,
   onSelect,
 }: {
   step: CatalogueStep;
   index: number;
   lang: Lang;
-  selectedId?: string;
+  selectedIds: string[];
   onSelect: (optionId: string) => void;
 }) {
   const onLinen = index % 2 === 1;
@@ -970,6 +991,11 @@ function StepSection({
               {step.title[lang]}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-[1.75] text-body sm:text-lg">{step.intro[lang]}</p>
+            {step.multi && (
+              <p className="mt-5 inline-flex items-center gap-2 border border-clay/40 px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.16em] text-clay">
+                {copy.multiHint[lang]}
+              </p>
+            )}
           </div>
           <aside className="border-l border-clay/35 pl-5 lg:col-span-4 lg:mt-2">
             <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-clay">
@@ -983,7 +1009,7 @@ function StepSection({
 
         <div className="-mx-6 mt-5 grid snap-x snap-mandatory auto-cols-[84vw] grid-flow-col gap-4 overflow-x-auto px-6 pb-3 sm:mx-0 sm:mt-12 sm:grid-flow-row sm:grid-cols-2 sm:auto-cols-auto sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4">
           {step.options.map((option, optionIndex) => {
-            const selected = selectedId === option.id;
+            const selected = selectedIds.includes(option.id);
             return (
               <motion.button
                 key={option.id}

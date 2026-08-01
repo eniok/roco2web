@@ -14,30 +14,31 @@ const SHOWROOM_HREF = '/#showroom';
 const t = (sq: string, en: string): Dict<string> => ({ sq, en });
 
 const copy = {
-  backWardrobes: t('Garderoba me përmasë', 'Fitted wardrobes'),
-  eyebrow: t('Atlasi i garderobave ROAL', 'The ROAL wardrobe atlas'),
-  headingLead: t('Ndërto garderobën tënde', 'Build your wardrobe'),
+  backWardrobes: t('Garderoba të integruara', 'Fitted wardrobes'),
+  eyebrow: t('Udhëzuesi i garderobës ROAL', 'The ROAL wardrobe atlas'),
+  headingLead: t('Përcaktoni garderobën tuaj', 'Build your wardrobe'),
   headingAccent: t('në 6 vendime.', 'in 6 decisions.'),
   subhead: t(
     'Nga forma e dhomës te hapja, frontet, xhami, organizimi dhe drita. Zgjidhni një drejtim në çdo hap; ne e përshtatim deri në milimetrin e fundit.',
     'From room layout to opening style, fronts, glass, organization and light. Choose one direction at each step; we tailor it down to the last millimetre.',
   ),
-  visitCta: t('Vizito showroom-in', 'Visit the showroom'),
-  whatsappCta: t('Shkruaj në WhatsApp', 'Message on WhatsApp'),
+  visitCta: t('Vizitoni showroom-in', 'Visit the showroom'),
+  whatsappCta: t('Na shkruani në WhatsApp', 'Message on WhatsApp'),
   heroImageAlt: t(
-    'Garderobë me masë me fronte mat, rimeso arre dhe vitrinë xhami bronz të ndriçuar',
+    'Garderobë e integruar me fronte mat, rimeso arre dhe vitrinë xhami bronz të ndriçuar',
     'Fitted wardrobe with matte fronts, walnut veneer and an illuminated bronze-glass display bay',
   ),
   heroImageNote: t('Një kompozim, gjashtë vendime', 'One composition, six decisions'),
   heroStats: {
-    sq: ['6 vendime', '24 alternativa', '1 projekt me përmasë'],
+    sq: ['6 vendime', '24 alternativa', '1 projekt i personalizuar'],
     en: ['6 decisions', '24 alternatives', '1 made-to-measure plan'],
   },
   stepLabel: t('Vendimi', 'Decision'),
   keyQuestion: t('Pyetja kryesore', 'The key question'),
-  selectChoice: t('Zgjidh këtë', 'Choose this'),
+  selectChoice: t('Zgjidhni këtë', 'Choose this'),
   selectedChoice: t('Zgjedhur', 'Selected'),
-  swipeHint: t('Rrëshqit për të krahasuar →', 'Swipe to compare →'),
+  multiHint: t('Mund të zgjidhni disa', 'You can select several'),
+  swipeHint: t('Rrëshqitni për të krahasuar →', 'Swipe to compare →'),
   visualGuide: t(
     'Pamjet janë udhëzuese. Toni, transparenca dhe reflektimi i xhamit ndryshojnë me dritën; materialet reale i verifikojmë me mostra.',
     'Images are visual guides. Glass tone, transparency and reflection change with the light; we verify the real materials with samples.',
@@ -45,15 +46,15 @@ const copy = {
   selectionTitle: t('Përmbledhja juaj', 'Your selection'),
   selectionHeading: t('Gjashtë vendime, gati për t’u kthyer në plan.', 'Six decisions, ready to become a plan.'),
   selectionIntro: t(
-    'Kjo nuk është porosi përfundimtare. Është një brief i qartë për matjen, projektin 3D dhe ofertën tuaj.',
+    'Këto zgjedhje krijojnë një përmbledhje të qartë për matjen, projektin 3D dhe ofertën tuaj.',
     'This is not a final order. It is a clear brief for your measurement, 3D design and quotation.',
   ),
   notSelected: t('Ende pa zgjedhur', 'Not selected yet'),
   selectionCount: t('zgjedhje të bëra', 'choices made'),
-  sendSelection: t('Dërgo përzgjedhjen', 'Send my selection'),
+  sendSelection: t('Dërgoni përzgjedhjen', 'Send my selection'),
   completeHint: t('Mund ta dërgoni edhe pa i plotësuar të gjitha.', 'You can send it before completing every step.'),
   summaryMessageIntro: t(
-    'Përshëndetje ROAL, këto janë zgjedhjet e mia fillestare për garderobën me masë:',
+    'Përshëndetje ROAL, këto janë zgjedhjet e mia fillestare për projektin e garderobës:',
     'Hello ROAL, these are my initial fitted-wardrobe choices:',
   ),
   summaryMessageEnd: t(
@@ -95,7 +96,7 @@ const copy = {
     'Wardrobe corner with bronze-glass doors, glass shelves, mirror and integrated lighting',
   ),
   packagesTitle: t('Drejtimi i investimit', 'Investment direction'),
-  packagesHeading: t('Tre pikënisje. Çdo projekt mbetet me masë.', 'Three starting points. Every project remains made to measure.'),
+  packagesHeading: t('Tre pikënisje. Çdo projekt mbetet unik.', 'Three starting points. Every project remains made to measure.'),
   packagesNote: t(
     'Simbolet tregojnë vetëm nivelin relativ të materialeve dhe mekanizmave, jo çmim. Oferta e saktë vjen pas matjes, planit të brendshëm dhe zgjedhjes së xhamit.',
     'The symbols only indicate the relative level of materials and hardware, not a price. The exact quotation follows measurement, interior planning and glass selection.',
@@ -107,7 +108,7 @@ const copy = {
     'Come see the front and glass samples, test the hardware and plan every interior zone. Measurement and 3D design are free.',
   ),
   genericWhatsAppMessage: t(
-    'Përshëndetje ROAL, dua të diskutoj një garderobë me masë dhe opsionet e xhamit.',
+    'Përshëndetje ROAL, dua të diskutoj projektin e garderobës dhe alternativat e xhamit.',
     'Hello ROAL, I would like to discuss a fitted wardrobe and the glass options.',
   ),
 };
@@ -129,6 +130,7 @@ type CatalogueStep = {
   question: Dict<string>;
   intro: Dict<string>;
   options: CatalogueOption[];
+  multi?: boolean;
 };
 
 const STEPS: CatalogueStep[] = [
@@ -150,7 +152,7 @@ const STEPS: CatalogueStep[] = [
       {
         id: 'corner', name: t('Në kënd', 'Corner fit'), badge: t('Shfrytëzim', 'Space use'), note: t('Në formë L', 'L-shaped'),
         desc: t('Vazhdon në dy mure dhe e kthen këndin në ruajtje reale, pa e rënduar qendrën e dhomës.', 'Continues across two walls and turns the corner into real storage without crowding the centre of the room.'),
-        image: '/images/wardrobe-catalogue/layouts/corner.webp', imageAlt: t('Garderobë me masë në formë L', 'L-shaped fitted corner wardrobe'),
+        image: '/images/wardrobe-catalogue/layouts/corner.webp', imageAlt: t('Garderobë e integruar në formë L', 'L-shaped fitted corner wardrobe'),
       },
       {
         id: 'walk-in', name: t('Walk-in', 'Walk-in'), badge: t('Përjetim', 'Experience'), note: t('Dhoma brenda', 'Room within'),
@@ -212,13 +214,13 @@ const STEPS: CatalogueStep[] = [
         image: '/images/wardrobe-catalogue/fronts/melamine.webp', imageAlt: t('Panele garderobe melamine në ton të ngrohtë', 'Warm-toned melamine wardrobe fronts'),
       },
       {
-        id: 'pet-acrylic', name: t('PET / Akrilik', 'PET / Acrylic'), badge: t('Uniforme', 'Uniform'), note: t('Mat ose gloss', 'Matte or gloss'),
+        id: 'pet-acrylic', name: t('PET / Akrilik', 'PET / Acrylic'), badge: t('Uniforme', 'Uniform'), note: t('Mat ose me shkëlqim', 'Matte or gloss'),
         desc: t('Sipërfaqe shumë e njëtrajtshme dhe e lëmuar, për një mur garderobe vizualisht të pastër.', 'A very even, smooth surface for a visually clean wall of wardrobe fronts.'),
         image: '/images/wardrobe-catalogue/fronts/pet-acrylic.webp', imageAlt: t('Panele garderobe të lëmuara në bezhë mat', 'Smooth matte-beige wardrobe fronts'),
       },
       {
-        id: 'lacquered-mdf', name: t('MDF me lyerje', 'Lacquered MDF'), badge: t('Ngjyrë me porosi', 'Custom colour'), note: t('Pa kanto të dukshme', 'Seamless edge'),
-        desc: t('Lejon ton të personalizuar, kanale, frezime dhe forma më të buta pa kanto të dukshme.', 'Allows custom colour, grooves, routed details and softer forms without visible edging.'),
+        id: 'lacquered-mdf', name: t('MDF me lyerje', 'Lacquered MDF'), badge: t('Ngjyrë e personalizuar', 'Custom colour'), note: t('Pa bordurë të dukshme', 'Seamless edge'),
+        desc: t('Lejon ton të personalizuar, kanale, frezime dhe forma më të buta pa bordurë të dukshme.', 'Allows custom colour, grooves, routed details and softer forms without visible edging.'),
         image: '/images/wardrobe-catalogue/fronts/lacquered-mdf.webp', imageAlt: t('Panele MDF me lyerje në ngjyrë fildishi', 'Ivory lacquered-MDF wardrobe fronts'),
       },
       {
@@ -262,6 +264,7 @@ const STEPS: CatalogueStep[] = [
   },
   {
     id: 'brenda',
+    multi: true,
     navLabel: t('Brenda', 'Interior'),
     title: t('Organizimi i brendshëm', 'Interior organization'),
     question: t('Çfarë përdorni çdo mëngjes dhe çfarë vetëm në sezon?', 'What do you use every morning, and what only seasonally?'),
@@ -294,6 +297,7 @@ const STEPS: CatalogueStep[] = [
   },
   {
     id: 'ndricimi',
+    multi: true,
     navLabel: t('Drita', 'Lighting'),
     title: t('Drita dhe ekspozimi', 'Lighting and display'),
     question: t('Doni të shihni më mirë apo të krijoni atmosferë?', 'Do you want better visibility or more atmosphere?'),
@@ -375,7 +379,7 @@ const PACKAGES: Package[] = [
 
 export default function WardrobeCatalogue() {
   const { lang } = useLang();
-  const [selections, setSelections] = useState<Record<string, string>>({});
+  const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [activeSection, setActiveSection] = useState(STEPS[0].id);
 
   useEffect(() => {
@@ -401,8 +405,14 @@ export default function WardrobeCatalogue() {
 
   const selectionWhatsAppHref = useMemo(() => {
     const lines = STEPS.map((step, index) => {
-      const option = step.options.find((item) => item.id === selections[step.id]);
-      return `${index + 1}. ${step.navLabel[lang]}: ${option ? option.name[lang] : copy.notSelected[lang]}`;
+      const selectedIds = selections[step.id] ?? [];
+      const value = selectedIds.length
+        ? step.options
+            .filter((item) => selectedIds.includes(item.id))
+            .map((item) => item.name[lang])
+            .join(', ')
+        : copy.notSelected[lang];
+      return `${index + 1}. ${step.navLabel[lang]}: ${value}`;
     });
     return whatsappHref(`${copy.summaryMessageIntro[lang]}\n\n${lines.join('\n')}\n\n${copy.summaryMessageEnd[lang]}`);
   }, [lang, selections]);
@@ -410,13 +420,22 @@ export default function WardrobeCatalogue() {
   const genericWhatsAppHref = whatsappHref(copy.genericWhatsAppMessage[lang]);
 
   const selectOption = (stepId: string, optionId: string) => {
+    const multi = STEPS.find((step) => step.id === stepId)?.multi ?? false;
     setSelections((current) => {
-      if (current[stepId] === optionId) {
-        const next = { ...current };
+      const currentIds = current[stepId] ?? [];
+      const nextIds = currentIds.includes(optionId)
+        ? currentIds.filter((id) => id !== optionId)
+        : multi
+          ? [...currentIds, optionId]
+          : [optionId];
+
+      const next = { ...current };
+      if (nextIds.length === 0) {
         delete next[stepId];
-        return next;
+      } else {
+        next[stepId] = nextIds;
       }
-      return { ...current, [stepId]: optionId };
+      return next;
     });
   };
 
@@ -480,7 +499,7 @@ export default function WardrobeCatalogue() {
       </nav>
 
       {STEPS.map((step, index) => (
-        <StepSection key={step.id} step={step} index={index} lang={lang} selectedId={selections[step.id]} onSelect={(optionId) => selectOption(step.id, optionId)} />
+        <StepSection key={step.id} step={step} index={index} lang={lang} selectedIds={selections[step.id] ?? []} onSelect={(optionId) => selectOption(step.id, optionId)} />
       ))}
 
       <section className="bg-ink text-paper">
@@ -494,13 +513,16 @@ export default function WardrobeCatalogue() {
             <p className="mt-5 max-w-xl text-base leading-relaxed text-paper/65">{copy.selectionIntro[lang]}</p>
             <ol className="mt-9 border-t border-paper/15">
               {STEPS.map((step, index) => {
-                const selected = step.options.find((option) => option.id === selections[step.id]);
+                const selectedIds = selections[step.id] ?? [];
+                const selectedNames = step.options
+                  .filter((option) => selectedIds.includes(option.id))
+                  .map((option) => option.name[lang]);
                 return (
                   <li key={step.id} className="border-b border-paper/15">
                     <a href={`#${step.id}`} className="group grid min-h-14 grid-cols-[2rem_1fr_auto] items-center gap-3 py-3">
                       <span className="text-[0.65rem] text-sand">0{index + 1}</span>
                       <span className="text-xs uppercase tracking-[0.14em] text-paper/45">{step.navLabel[lang]}</span>
-                      <span className={`text-right text-sm transition-colors group-hover:text-sand ${selected ? 'text-paper' : 'italic text-paper/35'}`}>{selected?.name[lang] ?? copy.notSelected[lang]}</span>
+                      <span className={`text-right text-sm transition-colors group-hover:text-sand ${selectedNames.length ? 'text-paper' : 'italic text-paper/35'}`}>{selectedNames.length ? selectedNames.join(', ') : copy.notSelected[lang]}</span>
                     </a>
                   </li>
                 );
@@ -601,7 +623,7 @@ export default function WardrobeCatalogue() {
   );
 }
 
-function StepSection({ step, index, lang, selectedId, onSelect }: { step: CatalogueStep; index: number; lang: Lang; selectedId?: string; onSelect: (optionId: string) => void }) {
+function StepSection({ step, index, lang, selectedIds, onSelect }: { step: CatalogueStep; index: number; lang: Lang; selectedIds: string[]; onSelect: (optionId: string) => void }) {
   const onLinen = index % 2 === 1;
 
   return (
@@ -615,6 +637,11 @@ function StepSection({ step, index, lang, selectedId, onSelect }: { step: Catalo
           <div className="lg:col-span-6">
             <h2 className="max-w-[15ch] text-balance font-serif text-[clamp(2.2rem,4.2vw,3.6rem)] font-normal leading-[1.02] tracking-[-0.03em]">{step.title[lang]}</h2>
             <p className="mt-5 max-w-2xl text-base leading-[1.75] text-body sm:text-lg">{step.intro[lang]}</p>
+            {step.multi && (
+              <p className="mt-5 inline-flex items-center gap-2 border border-clay/40 px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.16em] text-clay">
+                {copy.multiHint[lang]}
+              </p>
+            )}
           </div>
           <aside className="border-l border-clay/35 pl-5 lg:col-span-4 lg:mt-2">
             <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-clay">{copy.keyQuestion[lang]}</p>
@@ -625,7 +652,7 @@ function StepSection({ step, index, lang, selectedId, onSelect }: { step: Catalo
         <p className="mt-10 text-[0.62rem] font-medium uppercase tracking-[0.16em] text-body/55 sm:hidden">{copy.swipeHint[lang]}</p>
         <div className="-mx-6 mt-5 grid snap-x snap-mandatory auto-cols-[84vw] grid-flow-col gap-4 overflow-x-auto px-6 pb-3 sm:mx-0 sm:mt-12 sm:grid-flow-row sm:grid-cols-2 sm:auto-cols-auto sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4">
           {step.options.map((option, optionIndex) => {
-            const selected = selectedId === option.id;
+            const selected = selectedIds.includes(option.id);
             return (
               <motion.button key={option.id} type="button" aria-pressed={selected} aria-label={`${selected ? copy.selectedChoice[lang] : copy.selectChoice[lang]}: ${option.name[lang]}`} onClick={() => onSelect(option.id)} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ delay: optionIndex * 0.06, duration: 0.55, ease: EASE }} className={`group snap-start text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-4 focus-visible:ring-offset-paper ${selected ? 'bg-ink text-paper' : onLinen ? 'bg-paper text-ink' : 'bg-linen text-ink'}`}>
                 <span className="relative block aspect-[4/3] overflow-hidden bg-ink/5">

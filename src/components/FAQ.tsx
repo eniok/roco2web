@@ -10,12 +10,12 @@ import { EASE } from './ui';
 
 const copy = {
   eyebrow: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
-  headingLead: { sq: 'Gjithçka që', en: 'Everything you' },
-  headingAccent: { sq: 'duhet ta dini.', en: 'need to know.' },
+  headingLead: { sq: 'Përgjigje të qarta,', en: 'Everything you' },
+  headingAccent: { sq: 'para se të filloni.', en: 'need to know.' },
   noAnswer: { sq: 'Nuk e gjeni përgjigjen?', en: "Can't find your answer?" },
-  askUs: { sq: 'Na shkruaj në WhatsApp', en: 'Message us on WhatsApp' },
+  askUs: { sq: 'Na shkruani në WhatsApp', en: 'Message us on WhatsApp' },
   whatsappPreset: {
-    sq: 'Përshëndetje ROAL, kam një pyetje rreth mobiljeve me porosi.',
+    sq: 'Përshëndetje ROAL, kam një pyetje rreth një projekti interieri.',
     en: 'Hello ROAL, I have a question about bespoke furniture.',
   },
 } satisfies Record<string, Dict<string>>;

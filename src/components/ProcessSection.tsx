@@ -15,25 +15,25 @@ type Step = {
 const STEPS: Step[] = [
   {
     icon: Ruler,
-    title: { sq: 'Takim dhe matje', en: 'Meeting & measuring' },
+    title: { sq: 'Konsultim dhe matje', en: 'Meeting & measuring' },
     body: {
-      sq: 'Vijmë te ju ose ju vini te ne. Matim hapësirën dhe dëgjojmë idenë tuaj.',
+      sq: 'Ju takojmë në showroom ose në ambientin tuaj. Kuptojmë nevojat dhe masim hapësirën me saktësi.',
       en: 'We come to you, or you come to us. We measure the space and listen to your idea.',
     },
   },
   {
     icon: Box,
-    title: { sq: 'Projekt 3D', en: '3D design' },
+    title: { sq: 'Projektim 3D', en: '3D design' },
     body: {
-      sq: 'Ju tregojmë hapësirën tuaj të mobiluar — para se të fillojë prodhimi.',
+      sq: 'E shihni projektin të plotë, me materiale dhe përmasa, përpara se të nisë prodhimi.',
       en: 'We show you the space furnished — before production begins.',
     },
   },
   {
     icon: Hammer,
-    title: { sq: 'Materiale të qëndrueshme', en: 'Materials built to last' },
+    title: { sq: 'Materiale të përzgjedhura', en: 'Materials built to last' },
     body: {
-      sq: 'Çdo pjesë punohet me materiale të zgjedhura me kujdes, të menduara për t\u2019ju shërbyer për vite.',
+      sq: 'Çdo material zgjidhet për pamjen, ndjesinë dhe qëndrueshmërinë në përdorim të përditshëm.',
       en: 'Every piece is built with carefully chosen materials, meant to serve you for years.',
     },
   },
@@ -41,7 +41,7 @@ const STEPS: Step[] = [
     icon: ShieldCheck,
     title: { sq: 'Instalim dhe garanci', en: 'Installation & warranty' },
     body: {
-      sq: 'Ne e montojmë. Garanci 2 vjet mbi çdo punim — pa komplikime.',
+      sq: 'Ekipi ynë kujdeset për montimin përfundimtar. Çdo realizim mbulohet nga një garanci 2-vjeçare.',
       en: 'We install it ourselves. 2-year warranty on every build — no hassle.',
     },
   },
@@ -50,14 +50,14 @@ const STEPS: Step[] = [
 const copy = {
   eyebrow: { sq: 'Si punojmë', en: 'How we work' },
   headingLead: { sq: 'Nga ideja', en: 'From your idea' },
-  headingAccent: { sq: 'deri te shtëpia juaj.', en: 'to your home.' },
+  headingAccent: { sq: 'te realizimi.', en: 'to your home.' },
   subhead: {
-    sq: 'Vite përvojë në mobilje me porosi. Ju shoqërojmë nga skica e parë deri te instalimi — pa ju lënë në mes.',
+    sq: 'Një proces i qartë, i udhëhequr nga i njëjti ekip: koncept, matje, projektim, prodhim dhe instalim.',
     en: 'Years of experience in bespoke furniture. We stay with you from the first sketch to the final install — never dropped halfway.',
   },
-  figuresCaption: { sq: 'Matje dhe projekt 3D', en: 'Measuring & 3D design' },
+  figuresCaption: { sq: 'Matje dhe projektim 3D', en: 'Measuring & 3D design' },
   altMeasuring: {
-    sq: 'Matje e hapësirës për mobilje me porosi nga ROAL Mobileri',
+    sq: 'Matje e saktë e hapësirës nga ekipi i ROAL Mobileri',
     en: 'Measuring the space for bespoke furniture by ROAL Mobileri',
   },
   altRender: {

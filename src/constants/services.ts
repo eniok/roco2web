@@ -35,38 +35,38 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Bespoke kitchens',
     image: '/images/9.jpg',
     imageAlt: {
-      sq: 'Kuzhinë moderne e punuar me porosi nga ROAL Mobileri',
+      sq: 'Kuzhinë bashkëkohore e projektuar dhe realizuar nga ROAL Mobileri',
       en: 'Modern bespoke kitchen by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Kuzhina me porosi në Tiranë',
+      sq: 'Kuzhina të projektuara në Tiranë',
       en: 'Bespoke kitchens in Tirana',
     },
     metaDescription: {
-      sq: 'Kuzhina të projektuara dhe të punuara sipas përmasave të shtëpisë suaj. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
+      sq: 'Kuzhina të projektuara posaçërisht për hapësirën tuaj. Projektim 3D, materiale të përzgjedhura, instalim nga ekipi ynë dhe garanci 2-vjeçare.',
       en: 'Kitchens designed and built to the exact dimensions of your home. 3D design, durable materials, installation and 2-year warranty.',
     },
-    eyebrow: { sq: 'Kuzhina me porosi', en: 'Bespoke kitchens' },
-    headingLead: { sq: 'Kuzhina të bëra', en: 'Kitchens built' },
-    headingAccent: { sq: 'për hapësirën tuaj.', en: 'for your space.' },
+    eyebrow: { sq: 'Kuzhina të projektuara', en: 'Bespoke kitchens' },
+    headingLead: { sq: 'Kuzhina që ndjekin', en: 'Kitchens built' },
+    headingAccent: { sq: 'ritmin tuaj.', en: 'for your space.' },
     subhead: {
-      sq: 'Nga matja e parë deri te instalimi përfundimtar — një kuzhinë e menduar për mënyrën si gatuani, pritni miq dhe jetoni.',
+      sq: 'Nga matja e parë te instalimi përfundimtar, çdo detaj formësohet rreth mënyrës si gatuani, mikpritni dhe jetoni.',
       en: 'From the first measurement to final installation — a kitchen shaped around how you cook, entertain and live.',
     },
     intro: {
-      sq: 'Nuk punojmë me katalog të ngurtë. Çdo kuzhinë fillon me takimin dhe përmasat e hapësirës suaj, vazhdon me projektin 3D ku ju shihni gjithçka para se të fillojë puna, dhe mbyllet me një instalim të punuar nga ekipi ynë. Qëllimi është i thjeshtë: një kuzhinë që funksionon përditë dhe që qëndron në formë për vite.',
+      sq: 'Çdo kuzhinë nis me hapësirën dhe nevojat tuaja, jo me një model standard. Në projektin 3D shihni kompozimin, materialet dhe funksionet përpara prodhimit. Më pas, ekipi ynë kujdeset për realizimin dhe instalimin, deri në detajin e fundit.',
       en: 'We don\u2019t work from a rigid catalogue. Every kitchen starts with a meeting and the exact measurements of your space, continues through a 3D design where you see the full result before work begins, and ends with installation by our own team. The goal is simple: a kitchen that works every day and holds up for years.',
     },
-    includesTitle: { sq: 'Çfarë përfshin', en: 'What\u2019s included' },
-    includesHeading: { sq: 'Gjithçka për një kuzhinë të plotë', en: 'Everything for a complete kitchen' },
+    includesTitle: { sq: 'Nga projekti te instalimi', en: 'What\u2019s included' },
+    includesHeading: { sq: 'Gjithçka, e menduar si një e tërë', en: 'Everything for a complete kitchen' },
     includes: {
       sq: [
-        'Matje falas në shtëpinë tuaj ose në showroom',
-        'Projekt 3D me materiale, ngjyra dhe pajisje',
-        'Trupa dhe dyer të punuara sipas përmasave të sakta',
-        'Sipërfaqe pune në granit, kuarc ose lamineo',
-        'Montimi i pajisjeve të brendshme dhe lidhjet hidraulike-elektrike',
-        'Instalimi i plotë nga ekipi ynë + garanci 2 vjet',
+        'Konsultim dhe matje falas në ambientin tuaj ose në showroom',
+        'Projektim 3D me materialet, ngjyrat dhe pajisjet e përzgjedhura',
+        'Strukturë dhe fronte të prodhuara sipas përmasave të sakta',
+        'Syprina pune në granit, kuarc, porcelan ose laminat',
+        'Integrim i pajisjeve dhe koordinim i lidhjeve hidraulike e elektrike',
+        'Instalim i plotë nga ekipi ynë dhe garanci 2-vjeçare',
       ],
       en: [
         'Free measurement at your home or at the showroom',
@@ -77,37 +77,37 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         'Full installation by our team + 2-year warranty',
       ],
     },
-    materialsTitle: { sq: 'Materialet që zgjedhim', en: 'Materials we choose' },
+    materialsTitle: { sq: 'Materiale për përdorim të përditshëm', en: 'Materials we choose' },
     materialsBody: {
-      sq: 'Përdorim materiale që janë menduar për vite përdorimi të përditshëm — jo për vitrinë. Trupat në MDF hidrofug ose melaminë me cilësi të lartë, dyer në lak mat, PVC ose vener natyrale, menteshat dhe rrëshqitësit me mbyllje të butë. Para se të zgjidhni, ju tregojmë mostrat realisht në showroom.',
+      sq: 'Përzgjedhim materiale që ruajnë pamjen dhe funksionin për vite: MDF rezistent ndaj lagështirës ose melaminë cilësore për strukturën; lak mat, PET, akrilik apo rimeso natyrale për frontet; mekanizma me mbyllje të butë për përdorim të qetë. Çdo mostër mund ta shihni dhe ta prekni në showroom përpara se të vendosni.',
       en: 'We use materials built for years of daily use — not for the showroom window. Carcases in moisture-resistant MDF or high-grade melamine, doors in matt lacquer, PVC or real veneer, soft-close hinges and runners. You see and touch every material sample in the showroom before you choose.',
     },
     faqs: [
       {
-        q: { sq: 'Sa zgjat porositja e një kuzhine?', en: 'How long does a kitchen take?' },
+        q: { sq: 'Sa zgjat realizimi i një kuzhine?', en: 'How long does a kitchen take?' },
         a: {
-          sq: 'Zakonisht 3 deri 6 javë nga konfirmimi i projektit 3D deri në instalim. Afati i saktë jepet pasi të dakordohemi për materialet dhe pajisjet.',
+          sq: 'Zakonisht 3–6 javë nga miratimi i projektit 3D deri te instalimi. Afatin e saktë e konfirmojmë pasi të jenë zgjedhur materialet dhe pajisjet.',
           en: 'Typically 3 to 6 weeks from signing off the 3D design to installation. We confirm the exact timeline once materials and appliances are chosen.',
         },
       },
       {
         q: { sq: 'A përfshihen pajisjet elektroshtëpiake në çmim?', en: 'Are appliances included in the price?' },
         a: {
-          sq: 'Pajisjet mund të ofrohen nga ne ose mund t\u2019i blini vetë. Në të dyja rastet, ne e bëjmë kuzhinën t\u2019u përshtatet saktësisht.',
+          sq: 'Pajisjet mund t’i siguroni përmes nesh ose t’i zgjidhni vetë. Në të dyja rastet, projekti përshtatet saktësisht me modelet dhe përmasat e tyre.',
           en: 'Appliances can be supplied by us or bought by you. Either way, we build the kitchen to fit them exactly.',
         },
       },
       {
         q: { sq: 'Punoni edhe kuzhina të vogla apo vetëm të mëdha?', en: 'Do you also make small kitchens or only large ones?' },
         a: {
-          sq: 'Punojmë me çdo përmasë — nga kuzhina apartamenti me një mur, deri te kuzhina të hapura me ishull. Pa minimum projekti.',
+          sq: 'Po. Projektojmë nga kuzhina lineare për apartamente kompakte deri te ambiente të hapura me ishull. Nuk kërkojmë një përmasë minimale projekti.',
           en: 'We work with any size — from one-wall apartment kitchens to large open-plan kitchens with islands. No minimum project.',
         },
       },
       {
-        q: { sq: 'Sa kushton një kuzhinë me porosi?', en: 'How much does a bespoke kitchen cost?' },
+        q: { sq: 'Sa kushton një kuzhinë e projektuar për hapësirën time?', en: 'How much does a bespoke kitchen cost?' },
         a: {
-          sq: 'Çmimi varet nga metrat linearë, materialet e dyerve dhe sipërfaqes së punës, dhe pajisjet që zgjidhni. Matja në shtëpi dhe projekti 3D me çmimin e plotë janë falas dhe pa detyrim — kështu e krahasoni ofertën tonë me çdo alternativë.',
+          sq: 'Çmimi varet nga metrat linearë, materialet e fronteve dhe të syprinës, si edhe nga mekanizmat e pajisjet që zgjidhni. Matja, projekti 3D dhe oferta e detajuar janë falas dhe pa detyrim.',
           en: 'The price depends on the linear metres, the door and worktop materials, and the appliances you choose. The home measurement and the 3D design with a full quote are free and without obligation — so you can compare our offer against any alternative.',
         },
       },
@@ -119,40 +119,40 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Fitted wardrobes',
     image: '/images/wardrobe-catalogue/hero.webp',
     imageAlt: {
-      sq: 'Garderobë me masë me fronte mat, rimeso arre dhe vitrinë xhami bronz',
+      sq: 'Garderobë e integruar me fronte mat, rimeso arre dhe vitrinë xhami bronz',
       en: 'Fitted wardrobe with matte fronts, walnut veneer and a bronze-glass display bay',
     },
     metaTitle: {
-      sq: 'Garderoba me porosi në Tiranë — matje dhe projekt 3D falas',
+      sq: 'Garderoba të integruara në Tiranë — matje dhe projektim 3D falas',
       en: 'Fitted wardrobes in Tirana — free measurement & 3D design',
     },
     metaDescription: {
-      sq: 'Garderoba me përmasë dhe walk-in closet për çdo hapësirë, me fronte melamine, MDF, pasqyrë ose xham. Matje falas, projekt 3D dhe garanci 2 vjet.',
+      sq: 'Garderoba të integruara dhe ambiente walk-in për çdo hapësirë, me fronte melamine, MDF, pasqyrë ose xham. Matje falas, projektim 3D dhe garanci 2-vjeçare.',
       en: 'Fitted wardrobes and walk-in closets for any space, with melamine, MDF, mirror or glass fronts. Free measurement, 3D design and 2-year warranty.',
     },
-    eyebrow: { sq: 'Garderoba me përmasë', en: 'Fitted wardrobes' },
-    headingLead: { sq: 'Garderoba që', en: 'Wardrobes that' },
-    headingAccent: { sq: 'mbushin çdo cep.', en: 'fill every corner.' },
+    eyebrow: { sq: 'Garderoba të integruara', en: 'Fitted wardrobes' },
+    headingLead: { sq: 'Çdo centimetër', en: 'Wardrobes that' },
+    headingAccent: { sq: 'gjen funksion.', en: 'fill every corner.' },
     subhead: {
-      sq: 'Nga muri në mur, nga dyshemeja në tavan — garderoba që përdorin çdo centimetër të hapësirës suaj.',
+      sq: 'Nga muri në mur dhe nga dyshemeja në tavan, garderoba projektohet për ta përdorur hapësirën me inteligjencë.',
       en: 'Wall to wall, floor to ceiling — wardrobes that use every centimetre of your space.',
     },
     intro: {
-      sq: 'Një garderobë e mirë nuk është thjesht një dollap — është një sistem që ju ndihmon të mbani rendin çdo ditë. Ne e projektojmë atë sipas asaj që keni: rrobat, aksesorët, çizmet, kutitë — dhe sipas mënyrës si doni t\u2019i përdorni. Pastaj e ndërtojmë për hapësirën tuaj të saktë.',
+      sq: 'Një garderobë e menduar mirë nuk është thjesht një dollap, por një sistem që e bën përditshmërinë më të rregullt. Ndarjet, sirtarët, varëset dhe aksesorët planifikohen sipas asaj që ruani dhe mënyrës si e përdorni, ndërsa forma ndjek me saktësi arkitekturën e dhomës.',
       en: 'A good wardrobe isn\u2019t just a cupboard — it\u2019s a system that helps you stay organised every day. We design it around what you actually own: clothes, accessories, boots, boxes — and how you want to use them. Then we build it for your exact space.',
     },
-    includesTitle: { sq: 'Çfarë përfshin', en: 'What\u2019s included' },
-    includesHeading: { sq: 'Brenda çdo garderobe me masë', en: 'Inside every fitted wardrobe' },
+    includesTitle: { sq: 'Nga jashtë dhe brenda', en: 'What\u2019s included' },
+    includesHeading: { sq: 'Një garderobë e menduar në çdo detaj', en: 'Inside every fitted wardrobe' },
     includes: {
       sq: [
-        'Matje falas dhe konsultim mbi përdorimin',
-        'Projekt 3D me ndarjet, sirtarët dhe aksesorët',
-        'Dyer rrëshqitëse, me mentesha ose pa dyer (walk-in)',
+        'Konsultim dhe matje falas në ambientin tuaj',
+        'Projektim 3D i kompozimit dhe organizimit të brendshëm',
+        'Dyer rrëshqitëse, me mentesha ose konfigurim i hapur walk-in',
         'Fronte pasqyre, xhami të tymosur, bronz ose të kanaluar',
         'Vitrina dhe rafte xhami me ndriçim të integruar',
         'Sirtarë me mbyllje të butë, ndarëse, tuba, ndriçim LED',
         'Përshtatje për tavane të pjerrëta, kënde të ngushta, kolona',
-        'Instalim nga ekipi ynë + garanci 2 vjet',
+        'Instalim nga ekipi ynë dhe garanci 2-vjeçare',
       ],
       en: [
         'Free measurement and consultation on how you\u2019ll use it',
@@ -167,28 +167,28 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     },
     materialsTitle: { sq: 'Si i ndërtojmë', en: 'How we build them' },
     materialsBody: {
-      sq: 'Trupat dhe ndarjet dimensionohen sipas hapësirës, gjatësisë së rafteve dhe asaj që do të mbajnë. Frontet mund të jenë melaminë, MDF i lyer, rimeso, pasqyrë ose xham i tymosur, bronz e i kanaluar. Realizojmë edhe vitrina e rafte xhami të integruara; korniza, mekanizmi dhe ndriçimi specifikohen si pjesë e të njëjtit projekt.',
+      sq: 'Struktura dhe ndarjet dimensionohen sipas hapësirës, gjatësisë së rafteve dhe peshës që do të mbajnë. Frontet mund të realizohen në melaminë, MDF të lyer, rimeso, pasqyrë ose xham të tymosur, bronz apo të kanaluar. Vitrinat, raftet e xhamit, kornizat, mekanizmat dhe ndriçimi projektohen si pjesë e të njëjtit kompozim.',
       en: 'Carcases and divisions are sized around the space, shelf spans and what they need to carry. Fronts can be melamine, lacquered MDF, veneer, mirror, or smoked, bronze and reeded glass. We also create integrated display bays and glass shelving; frames, hardware and lighting are specified as part of the same design.',
     },
     faqs: [
       {
-        q: { sq: 'A punoni garderoba që shkojnë deri në tavan?', en: 'Do you make wardrobes that go up to the ceiling?' },
+        q: { sq: 'A mund të shkojë garderoba deri në tavan?', en: 'Do you make wardrobes that go up to the ceiling?' },
         a: {
-          sq: 'Po. Garderobat deri në tavan janë zgjidhja më e mirë për të shfrytëzuar hapësirën — edhe për tavane të pjerrëta dhe mansarda.',
+          sq: 'Po. Garderobat me lartësi të plotë shfrytëzojnë më mirë hapësirën dhe mund të përshtaten edhe me tavane të pjerrëta apo mansarda.',
           en: 'Yes. Full-height wardrobes are the best way to use the space — including for sloped ceilings and attics.',
         },
       },
       {
         q: { sq: 'Dyer rrëshqitëse apo me mentesha?', en: 'Sliding doors or hinged?' },
         a: {
-          sq: 'Varet nga hapësira. Rrëshqitëse për dhoma të ngushta, me mentesha për pamje klasike. Në showroom ju tregojmë të dyja dhe ju ndihmojmë të zgjidhni.',
+          sq: 'Varet nga hapësira dhe mënyra si doni ta përdorni. Dyert rrëshqitëse kursejnë vend përpara; ato me mentesha japin qasje të plotë në brendësi. Në showroom mund t’i provoni të dyja.',
           en: 'It depends on the room. Sliding for tight spaces, hinged for a classic look. At the showroom we show you both and help you choose.',
         },
       },
       {
-        q: { sq: 'Bëni edhe walk-in closet?', en: 'Do you also make walk-in closets?' },
+        q: { sq: 'Projektoni edhe garderoba walk-in?', en: 'Do you also make walk-in closets?' },
         a: {
-          sq: 'Po. Dhoma të plota walk-in closet, me ishull, ndriçim, ndarje për çanta, pasqyra dhe aksesorë.',
+          sq: 'Po. Projektojmë ambiente të plota walk-in me ishull, ndriçim të integruar, ndarje për çanta, pasqyra dhe aksesorë.',
           en: 'Yes. Full walk-in closet rooms with islands, lighting, bag compartments, mirrors and accessories.',
         },
       },
@@ -207,38 +207,38 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Bedroom furniture',
     image: '/images/bedroom.jpg',
     imageAlt: {
-      sq: 'Dhomë gjumi e punuar me porosi nga ROAL Mobileri',
+      sq: 'Dhomë gjumi e projektuar dhe realizuar nga ROAL Mobileri',
       en: 'Bespoke bedroom by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Dhoma gjumi me porosi në Tiranë',
+      sq: 'Dhoma gjumi të projektuara në Tiranë',
       en: 'Bespoke bedrooms in Tirana',
     },
     metaDescription: {
-      sq: 'Dhoma gjumi të plota me porosi — krevate, komodina, garderoba dhe koka krevati të punuara me masë. Projekt 3D falas, instalim dhe garanci 2 vjet.',
+      sq: 'Interierë të plotë gjumi me krevate, komodina, garderoba dhe koka krevati të projektuara si një kompozim i vetëm. Projektim 3D falas dhe garanci 2-vjeçare.',
       en: 'Complete bespoke bedrooms — beds, nightstands, wardrobes and headboards built to measure. Free 3D design, installation and 2-year warranty.',
     },
-    eyebrow: { sq: 'Dhoma gjumi', en: 'Bedrooms' },
+    eyebrow: { sq: 'Dhoma gjumi të projektuara', en: 'Bedrooms' },
     headingLead: { sq: 'Dhoma gjumi ku', en: 'Bedrooms where' },
     headingAccent: { sq: 'pushoni vërtet.', en: 'you truly rest.' },
     subhead: {
-      sq: 'Krevat, garderobë, komodina dhe ndriçim — të projektuara si një e tërë, jo si copa të blera veç e veç.',
+      sq: 'Krevati, garderoba, komodinat dhe ndriçimi projektohen si një kompozim i vetëm, i qetë dhe koherent.',
       en: 'Bed, wardrobe, nightstands and lighting — designed as one whole, not as pieces bought separately.',
     },
     intro: {
-      sq: 'Dhoma e gjumit është dhoma ku kaloni një të tretën e jetës, por shpesh mobilohet e fundit dhe me copa që nuk flasin me njëra-tjetrën. Ne e projektojmë të gjithën si një ambient: krevati me përmasat që i duhen dyshekut tuaj, koka e krevatit me ndriçim dhe priza aty ku i doni, garderoba që shfrytëzon murin nga dyshemeja në tavan. Gjithçka me masë, për hapësirën tuaj të saktë.',
+      sq: 'Dhoma e gjumit kërkon më shumë se elemente që përputhen në ngjyrë. Ne e trajtojmë si një ambient të plotë: krevati dimensionohet për dyshekun tuaj, koka e krevatit integron dritën dhe prizat aty ku duhen, ndërsa garderoba shfrytëzon murin deri në tavan. Çdo element lidhet me tjetrin në formë, material dhe funksion.',
       en: 'The bedroom is where you spend a third of your life, yet it is often furnished last, with pieces that don’t speak to each other. We design it as one environment: a bed sized exactly for your mattress, a headboard with lighting and sockets where you want them, a wardrobe that uses the wall from floor to ceiling. Everything made to measure, for your exact space.',
     },
-    includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
-    includesHeading: { sq: 'Një dhomë gjumi e plotë, me masë', en: 'A complete bedroom, made to measure' },
+    includesTitle: { sq: 'Çfarë projektojmë', en: 'What we can build' },
+    includesHeading: { sq: 'Një ambient i plotë dhe koherent', en: 'A complete bedroom, made to measure' },
     includes: {
       sq: [
-        'Krevate me porosi — me kokë të veshur, dru ose me ndriçim të integruar',
+        'Krevate të dimensionuara për dyshekun dhe hapësirën tuaj',
         'Krevate me ngritje dhe depozitim poshtë dyshekut',
-        'Komodina dhe tualete me pasqyrë, me masë',
+        'Komodina dhe tavolina tualeti me pasqyrë, të projektuara si pjesë e ambientit',
         'Garderoba të integruara dhe dollapë mbi krevat',
         'Dhoma gjumi për fëmijë — krevate teke, marina dhe zona studimi',
-        'Instalim nga ekipi ynë + garanci 2 vjet',
+        'Instalim nga ekipi ynë dhe garanci 2-vjeçare',
       ],
       en: [
         'Custom beds — upholstered, wooden or with integrated lighting',
@@ -251,7 +251,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     },
     materialsTitle: { sq: 'Materialet dhe rehatia', en: 'Materials and comfort' },
     materialsBody: {
-      sq: 'Për dhomat e gjumit zgjedhim materiale që qetësojnë — dru natyral, vener, tekstile të buta për kokat e krevatit dhe lak mat pa shkëlqim. Mekanizmat e ngritjes dhe sirtarët janë me mbyllje të butë, që as nata të mos prishet nga një zhurmë dere. Ngjyrat dhe ndriçimin i provoni në showroom para se të vendosni.',
+      sq: 'Për dhomat e gjumit përzgjedhim materiale dhe tonalitete të qeta: dru natyral, rimeso, tekstile të buta dhe lak mat. Mekanizmat e ngritjes, sirtarët dhe dyert punojnë me lëvizje të butë e të heshtur. Mostrat e ngjyrave, tekstileve dhe ndriçimit mund t’i vlerësoni në showroom përpara vendimit.',
       en: 'For bedrooms we choose materials that calm — natural wood, veneer, soft upholstery for headboards and glare-free matt lacquer. Lift mechanisms and drawers are soft-close, so not even a cabinet door disturbs the night. You try colours and lighting in the showroom before you decide.',
     },
     faqs: [
@@ -265,14 +265,14 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       {
         q: { sq: 'A mund të kombinohet dhoma e gjumit me garderobë të integruar?', en: 'Can the bedroom include an integrated wardrobe?' },
         a: {
-          sq: 'Po, është edhe zgjidhja që rekomandojmë më shpesh — krevati, komodinat dhe garderoba projektohen bashkë, me të njëjtat materiale dhe finitura.',
+          sq: 'Po. Është zgjidhja që rekomandojmë më shpesh: krevati, komodinat dhe garderoba projektohen bashkë, me një gjuhë të përbashkët materialesh dhe përpunimesh.',
           en: 'Yes — it’s the solution we recommend most often. The bed, nightstands and wardrobe are designed together, with the same materials and finishes.',
         },
       },
       {
-        q: { sq: 'Sa kushton një dhomë gjumi me porosi?', en: 'How much does a bespoke bedroom cost?' },
+        q: { sq: 'Sa kushton një projekt i plotë për dhomën e gjumit?', en: 'How much does a bespoke bedroom cost?' },
         a: {
-          sq: 'Varet nga përmasat, materialet dhe elementët që zgjidhni. Matja dhe projekti 3D me çmimin e plotë janë falas — vizitoni showroom-in në Km 8 të autostradës Tiranë–Durrës ose na shkruani në WhatsApp.',
+          sq: 'Varet nga përmasat, materialet dhe elementet që përfshin projekti. Matja, projekti 3D dhe oferta e detajuar janë falas. Mund të na vizitoni në showroom-in në Km 8 të autostradës Tiranë–Durrës ose të na shkruani në WhatsApp.',
           en: 'It depends on dimensions, materials and the elements you choose. Measurement and the 3D design with a full price are free — visit the showroom at Km 8 of the Tirana–Durrës highway or message us on WhatsApp.',
         },
       },
@@ -284,29 +284,29 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Living-room cabinetry',
     image: '/images/11.jpg',
     imageAlt: {
-      sq: 'Dhomë ndenje e punuar me porosi nga ROAL Mobileri',
+      sq: 'Dhomë ndenjeje me mobilieri të integruar nga ROAL Mobileri',
       en: 'Bespoke living room by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Dhoma ndenje me porosi në Tiranë',
+      sq: 'Ambiente ndenjeje të personalizuara në Tiranë',
       en: 'Living-room cabinetry in Tirana',
     },
     metaDescription: {
-      sq: 'Mure medie, vitrina, rafte dhe depozitim i integruar për dhomën tuaj të ndenjes. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
+      sq: 'Mure medie, vitrina, rafte dhe hapësira ruajtjeje të integruara për dhomën e ndenjes. Projektim 3D, instalim dhe garanci 2-vjeçare.',
       en: 'Media walls, display cabinets, shelving and integrated storage for your living room. 3D design, durable materials, installation and 2-year warranty.',
     },
-    eyebrow: { sq: 'Dhoma ndenje', en: 'Living rooms' },
-    headingLead: { sq: 'Dhoma ndenje që', en: 'Living rooms that' },
-    headingAccent: { sq: 'nuk mbushen me mobilje.', en: 'aren\u2019t crowded with furniture.' },
+    eyebrow: { sq: 'Ambiente ndenjeje', en: 'Living rooms' },
+    headingLead: { sq: 'Dhoma ndenjeje që', en: 'Living rooms that' },
+    headingAccent: { sq: 'marrin frymë.', en: 'aren\u2019t crowded with furniture.' },
     subhead: {
-      sq: 'Mure medie, vitrina dhe depozitim i integruar — që dhoma juaj të jetë e rregullt dhe e hapur, jo plot me copë të veçanta.',
+      sq: 'Mure medie, vitrina dhe hapësira ruajtjeje të integruara, për një ambient të rregullt, të hapur dhe vizualisht të qetë.',
       en: 'Media walls, display cabinets and integrated storage — so your room stays tidy and open, not crowded with separate pieces.',
     },
     intro: {
-      sq: 'Dhoma e ndenjes është hapësira ku qëndroni më shumë. Një mobilje e mirë këtu nuk është vetrinë — është një sistem që fsheh kabllot, mban librat dhe dekorin, dhe e lë dhomën të marrë frymë. E projektojmë të gjithë murin si një të vetëm, jo copa që mbivendosen.',
+      sq: 'Dhoma e ndenjes është ambienti ku ndërthuren jeta e përditshme dhe mikpritja. E trajtojmë të gjithë murin si një kompozim të vetëm: fshehim kabllot dhe pajisjet, organizojmë librat e objektet dhe ruajmë hapësirën e lirë. Rezultati është funksional pa u ndier i rënduar.',
       en: 'The living room is where you spend the most time. Good furniture here isn\u2019t a showpiece — it\u2019s a system that hides cables, holds books and decor, and lets the room breathe. We design the whole wall as one unit, not pieces that collide.',
     },
-    includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
+    includesTitle: { sq: 'Çfarë projektojmë', en: 'What we can build' },
     includesHeading: { sq: 'Mobilim i integruar për dhomën tuaj', en: 'Integrated furniture for your room' },
     includes: {
       sq: [
@@ -315,7 +315,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         'Depozitim i fshehur — dollapë pa doreza, hapje me shtytje',
         'Kënde leximi, karrige të personalizuara dhe tavolina mbështetëse',
         'Mbulim i kolonave, radiatorëve dhe kabllove në mur',
-        'Instalim nga ekipi ynë + garanci 2 vjet',
+        'Instalim nga ekipi ynë dhe garanci 2-vjeçare',
       ],
       en: [
         'Media walls for TV with cable management and lighting',
@@ -326,16 +326,16 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         'Installation by our team + 2-year warranty',
       ],
     },
-    materialsTitle: { sq: 'Materialet dhe finiturat', en: 'Materials and finishes' },
+    materialsTitle: { sq: 'Materialet dhe përpunimet', en: 'Materials and finishes' },
     materialsBody: {
-      sq: 'Për dhomat e ndenjes zgjedhim finitura që rezistojnë ndaj gërvishtjeve dhe njollave — lak mat, vener natyrale, melaminë me tekstura. Ndriçimi LED i integruar dhe kablot e fshehura i bëjnë detajet e vogla të duken si të planifikuara, jo të improvizuara.',
+      sq: 'Për ambientet e ndenjes zgjedhim sipërfaqe që ruajnë pamjen në përdorim të përditshëm: lak mat, rimeso natyrale dhe melaminë me teksturë. Ndriçimi LED i integruar dhe kalimet e fshehura të kabllove përfshihen që në projekt, që çdo detaj të duket i qëllimshëm.',
       en: 'For living rooms we choose finishes that resist scratches and stains — matt lacquer, real veneer, textured melamine. Integrated LED lighting and concealed cabling make small details feel planned, not improvised.',
     },
     faqs: [
       {
         q: { sq: 'A mund të integroni një TV ekzistues?', en: 'Can you integrate an existing TV?' },
         a: {
-          sq: 'Po. Duam të dimë vetëm përmasat dhe llojin e montimit (mur ose raft) dhe e punojmë murin e medias përreth tij.',
+          sq: 'Po. Na duhen përmasat dhe mënyra e montimit, në mur ose mbi bazament. Kompozimi i murit të medias projektohet më pas rreth pajisjes suaj.',
           en: 'Yes. We just need the dimensions and mounting type (wall or shelf) and we build the media wall around it.',
         },
       },
@@ -354,15 +354,15 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Office furniture, home office and workspace fit-out',
     image: '/images/homeoffice.jpg',
     imageAlt: {
-      sq: 'Ambient pune i punuar me porosi nga ROAL Mobileri',
+      sq: 'Ambient pune i projektuar dhe realizuar nga ROAL Mobileri',
       en: 'Custom workspace by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Mobilje zyre dhe ambiente pune me porosi në Tiranë',
+      sq: 'Interierë zyrash dhe ambiente pune në Tiranë',
       en: 'Office furniture & custom workspaces in Tirana',
     },
     metaDescription: {
-      sq: 'Mobilje zyre me porosi në Tiranë — tavolina pune, rafte dhe zyra të plota për shtëpi e biznese. Projekt 3D, materiale të qëndrueshme, instalim dhe garanci 2 vjet.',
+      sq: 'Tavolina, rafte dhe ambiente të plota pune për shtëpi e biznese. Projektim 3D, materiale të përzgjedhura, instalim dhe garanci 2-vjeçare.',
       en: 'Custom office furniture in Tirana — desks, shelving and full office fit-outs for homes and businesses. 3D design, durable materials, installation and 2-year warranty.',
     },
     eyebrow: { sq: 'Ambiente pune', en: 'Workspaces' },
@@ -373,19 +373,19 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
       en: 'Home offices, studios and full workspaces — designed around how you actually work.',
     },
     intro: {
-      sq: 'Një hapësirë pune e mirë fillon me pyetje praktike: sa kohë qëndroni ulur, çfarë ju duhet pranë dorës, sa dokumente mbani, a ju duhet hapësirë për takime ose vetëm për veten. Përgjigjet e atyre pyetjeve vendosin projektin. Pastaj bëhet mobilja.',
+      sq: 'Një hapësirë pune e mirë nis me pyetje praktike: çfarë duhet të keni pranë, si organizohen dokumentet dhe pajisjet, sa privatësi kërkohet dhe si zhvillohen takimet. Përgjigjet përcaktojnë ergonominë, organizimin dhe karakterin e projektit.',
       en: 'A good workspace starts with practical questions: how long you sit, what you need within reach, how many documents you keep, whether you need room for meetings or just for yourself. The answers shape the design. Then we build it.',
     },
-    includesTitle: { sq: 'Çfarë mund të punojmë', en: 'What we can build' },
-    includesHeading: { sq: 'Hapësira pune të punuara me porosi', en: 'Bespoke workspaces, built to fit' },
+    includesTitle: { sq: 'Çfarë projektojmë', en: 'What we can build' },
+    includesHeading: { sq: 'Ambiente pune të formësuara rreth jush', en: 'Bespoke workspaces, built to fit' },
     includes: {
       sq: [
-        'Tavolina pune me masë — të drejta, në kënd ose në formë U',
+        'Tavolina pune lineare, në kënd ose në formë U, sipas hapësirës',
         'Rafte, dollapë dosjesh dhe depozitim i integruar',
         'Zyra të plota për shtëpi ose studio',
         'Hapësira bashkëpunimi për biznese të vogla',
         'Kalime kabllosh, ndriçim pune dhe zgjidhje ergonomike',
-        'Instalim nga ekipi ynë + garanci 2 vjet',
+        'Instalim nga ekipi ynë dhe garanci 2-vjeçare',
       ],
       en: [
         'Custom desks — straight, L-shaped or U-shaped',
@@ -398,14 +398,14 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     },
     materialsTitle: { sq: 'Materialet dhe detajet', en: 'Materials and details' },
     materialsBody: {
-      sq: 'Sipërfaqet e tavolinave në lamineo të fortë ose dru masiv, të zgjedhura për t\u2019u përdorur çdo ditë pa u dëmtuar. Trupat me ndarëse të integruara për dokumente, kabllo dhe pajisje. Për zyrat e plota, i përshtatim ngjyrat dhe finiturat me identitetin vizual të biznesit.',
+      sq: 'Syprinat e tavolinave realizohen në laminat rezistent ose dru masiv, të përzgjedhura për përdorim intensiv. Ndarjet për dokumentet, kabllot dhe pajisjet integrohen në strukturë. Për ambiente të plota, ngjyrat dhe materialet harmonizohen me identitetin vizual të biznesit.',
       en: 'Desk tops in hard-wearing laminate or solid wood, chosen to take daily use without damage. Cabinets with built-in compartments for documents, cables and equipment. For full offices, we match colours and finishes to your brand identity.',
     },
     faqs: [
       {
         q: { sq: 'Punoni edhe për apartamente të vogla?', en: 'Do you work on small apartments too?' },
         a: {
-          sq: 'Po. Një këndin pune të mirë mund ta krijojmë edhe në një cep 1.5 metra — me tavolinë të palosshme, rafte të integruara dhe depozitim vertikal.',
+          sq: 'Po. Një kënd pune funksional mund të krijohet edhe në një hapësirë 1,5 metra, me tavolinë të palosshme, rafte të integruara dhe organizim vertikal.',
           en: 'Yes. A good work nook can fit in a 1.5-metre corner — with a fold-down desk, integrated shelving and vertical storage.',
         },
       },
@@ -424,37 +424,37 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     serviceType: 'Hospitality and retail fit-out',
     image: '/images/contract.jpg',
     imageAlt: {
-      sq: 'Punim për hoteleri dhe lokale nga ROAL Mobileri',
+      sq: 'Interier i realizuar nga ROAL për hoteleri dhe ambiente biznesi',
       en: 'Hospitality and retail fit-out by ROAL Mobileri',
     },
     metaTitle: {
-      sq: 'Hoteleri dhe lokale me porosi',
+      sq: 'Interierë për hotele, restorante dhe dyqane',
       en: 'Hospitality & retail fit-out',
     },
     metaDescription: {
-      sq: 'Projekte komerciale me porosi për hotele, restorante, bare, kafene dhe dyqane në gjithë Shqipërinë. Projektim, prodhim dhe instalim nga një ekip i vetëm.',
+      sq: 'Interierë për hotele, restorante, bare, kafene dhe dyqane në gjithë Shqipërinë. Projektim, prodhim dhe instalim nga një ekip i vetëm.',
       en: 'Bespoke commercial projects for hotels, restaurants, bars, cafés and shops across Albania. Design, production and installation from a single team.',
     },
-    eyebrow: { sq: 'Hoteleri dhe lokale', en: 'Hospitality & retail' },
+    eyebrow: { sq: 'Interierë biznesi', en: 'Hospitality & retail' },
     headingLead: { sq: 'Hapësira që', en: 'Spaces that' },
-    headingAccent: { sq: 'presin klientë.', en: 'welcome guests.' },
+    headingAccent: { sq: 'lënë përshtypje.', en: 'welcome guests.' },
     subhead: {
-      sq: 'Restorante, hotele, kafene, bare dhe dyqane — të projektuara për të zgjatur në trafikun e përditshëm.',
+      sq: 'Hotele, restorante, kafene dhe dyqane të projektuara për përvojën e klientit dhe ritmin intensiv të përditshmërisë.',
       en: 'Restaurants, hotels, cafés, bars and shops — designed to hold up under daily traffic.',
     },
     intro: {
-      sq: 'Mobilja komerciale ka rregulla të ndryshme nga ajo e shtëpisë. Duhet të mbajë orët e pikut, të pastrohet shpejt, të mbetet si e re pas një sezoni. Ne kemi punuar me hotele, restorante dhe dyqane në Tiranë dhe jashtë saj, duke mbajtur në mendje si pamjen për klientin ashtu dhe jetëgjatësinë për pronarin.',
+      sq: 'Një interier biznesi duhet të përballojë orët e pikut, të mirëmbahet lehtë dhe të ruajë identitetin e markës. Projektojmë duke mbajtur njëkohësisht në vëmendje përvojën e klientit, punën e stafit dhe qëndrueshmërinë e investimit.',
       en: 'Commercial furniture plays by different rules than home furniture. It has to handle peak hours, clean quickly and still look new after a full season. We\u2019ve worked with hotels, restaurants and shops in Tirana and beyond, keeping in mind both the guest\u2019s experience and the owner\u2019s return on investment.',
     },
-    includesTitle: { sq: 'Çfarë kemi punuar', en: 'What we\u2019ve delivered' },
-    includesHeading: { sq: 'Projekte komerciale që zgjasin', en: 'Commercial projects that last' },
+    includesTitle: { sq: 'Çfarë realizojmë', en: 'What we\u2019ve delivered' },
+    includesHeading: { sq: 'Interierë të menduar për përdorim intensiv', en: 'Commercial projects that last' },
     includes: {
       sq: [
-        'Banakë baresh dhe restorantesh, me finitura rezistente',
+        'Banakë për bare dhe restorante, me sipërfaqe rezistente',
         'Dhoma hoteli — mobilim i plotë dhe i përsëritshëm',
-        'Dyqane retail — vitrina, rafte dhe arredim i brendshëm',
+        'Dyqane — vitrina, rafte dhe mobilim i brendshëm',
         'Kafene dhe lokale — ulëse, tavolina, zona shërbimi',
-        'Logjistikë: projekt, prodhim dhe instalim nga një ekip',
+        'Projektim, prodhim dhe instalim të koordinuar nga një ekip',
         'Afate të qarta dhe garanci e shkruar',
       ],
       en: [
@@ -468,14 +468,14 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     },
     materialsTitle: { sq: 'Si punojmë me biznese', en: 'How we work with businesses' },
     materialsBody: {
-      sq: 'Për projekte komerciale vijmë në vend, kuptojmë flukset e klientëve dhe kufizimet e hapësirës, dhe ju dërgojmë një ofertë të plotë pas projektit 3D. Mund të punojmë si drejtpërdrejt me pronarin, ashtu edhe me arkitektin tuaj. Afatet dhe kushtet shkruhen në kontratë para se të fillojë puna.',
+      sq: 'Për çdo projekt biznesi bëjmë një vizitë në ambient, analizojmë lëvizjen e klientëve dhe stafit, si edhe kufizimet teknike të hapësirës. Pas projektit 3D paraqesim ofertën e plotë. Bashkëpunojmë drejtpërdrejt me pronarin ose me arkitektin e tij, me afate dhe kushte të përcaktuara në kontratë.',
       en: 'For commercial projects we visit on-site, understand customer flow and space constraints, and send you a full quote after the 3D design. We can work directly with owners or alongside your architect. Timelines and terms are written into the contract before work begins.',
     },
     faqs: [
       {
         q: { sq: 'A punoni me arkitektë ose vetëm direkt me pronarin?', en: 'Do you work with architects or only directly with owners?' },
         a: {
-          sq: 'Të dyja. Mund të punojmë nga projekti i arkitektit tuaj, ose mund ta projektojmë ne nga e para. Çfarë ju përshtatet.',
+          sq: 'Të dyja. Mund ta realizojmë projektin e përgatitur nga arkitekti juaj ose të marrim përsipër projektimin nga fillimi, sipas mënyrës që i përshtatet më mirë procesit.',
           en: 'Both. We can work from your architect\u2019s drawings or design the project ourselves from scratch. Whichever suits you.',
         },
       },

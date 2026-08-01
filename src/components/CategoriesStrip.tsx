@@ -19,46 +19,46 @@ const CATEGORIES: Category[] = [
     src: '/images/9.jpg',
     href: '/kuzhina',
     label: { sq: 'Kuzhina', en: 'Kitchens' },
-    alt: { sq: 'Kuzhinë e punuar me porosi', en: 'Bespoke kitchen' },
+    alt: { sq: 'Kuzhinë bashkëkohore e realizuar nga ROAL', en: 'Bespoke kitchen' },
   },
   {
     src: '/images/wardrobe.jpg',
     href: '/garderoba',
     label: { sq: 'Garderoba', en: 'Wardrobes' },
-    alt: { sq: 'Garderobë me masë', en: 'Fitted wardrobe' },
+    alt: { sq: 'Garderobë e integruar nga muri në mur', en: 'Fitted wardrobe' },
   },
   {
     src: '/images/bedroom.jpg',
     href: '/dhoma-gjumi',
     label: { sq: 'Dhoma gjumi', en: 'Bedrooms' },
-    alt: { sq: 'Dhomë gjumi e punuar me porosi', en: 'Bespoke bedroom' },
+    alt: { sq: 'Dhomë gjumi e projektuar si një kompozim i plotë', en: 'Bespoke bedroom' },
   },
   {
     src: '/images/11.jpg',
     href: '/dhoma-ndenje',
-    label: { sq: 'Dhoma ndenje', en: 'Living rooms' },
-    alt: { sq: 'Dhomë ndenje e punuar me porosi', en: 'Bespoke living room' },
+    label: { sq: 'Dhoma ndenjeje', en: 'Living rooms' },
+    alt: { sq: 'Dhomë ndenjeje me mobilieri të integruar', en: 'Bespoke living room' },
   },
   {
     src: '/images/homeoffice.jpg',
     href: '/ambiente-pune',
     label: { sq: 'Ambiente pune', en: 'Workspaces' },
-    alt: { sq: 'Ambient pune i punuar me porosi', en: 'Bespoke workspace' },
+    alt: { sq: 'Ambient pune i projektuar nga ROAL', en: 'Bespoke workspace' },
   },
   {
     src: '/images/contract.jpg',
     href: '/hoteleri-lokale',
-    label: { sq: 'Hoteleri dhe lokale', en: 'Hospitality & retail' },
-    alt: { sq: 'Punim për hoteleri dhe lokale', en: 'Hospitality & retail fit-out' },
+    label: { sq: 'Hotele & ambiente biznesi', en: 'Hospitality & retail' },
+    alt: { sq: 'Interier i realizuar për hoteleri dhe ambiente biznesi', en: 'Hospitality & retail fit-out' },
   },
 ];
 
 const copy = {
-  eyebrow: { sq: 'Çfarë prodhojmë', en: 'What we make' },
-  headingLead: { sq: 'Shumë kategori,', en: 'Few categories,' },
-  headingAccent: { sq: 'shumë mundësi.', en: 'endless options.' },
+  eyebrow: { sq: 'Fushat e ekspertizës', en: 'What we make' },
+  headingLead: { sq: 'Një gjuhë e vetme,', en: 'Few categories,' },
+  headingAccent: { sq: 'për çdo ambient.', en: 'endless options.' },
   subhead: {
-    sq: 'Çdo copë projektohet për hapësirën dhe mënyrën tuaj të jetesës. Pa katalog të ngurtë.',
+    sq: 'Nga një element i vetëm te një interier i plotë, çdo zgjidhje formësohet rreth hapësirës dhe përditshmërisë suaj.',
     en: 'Every piece is designed for your space and your way of living. No rigid catalogue.',
   },
 } satisfies Record<string, Dict<string>>;

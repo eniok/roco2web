@@ -96,8 +96,8 @@ const Header = ({ navScrolled }: HeaderProps) => {
               onClick={() => setNavOpen((o) => !o)}
               aria-label={
                 navOpen
-                  ? lang === 'sq' ? 'Mbyll menynë' : 'Close menu'
-                  : lang === 'sq' ? 'Hap menynë' : 'Open menu'
+                  ? lang === 'sq' ? 'Mbyllni menynë' : 'Close menu'
+                  : lang === 'sq' ? 'Hapni menynë' : 'Open menu'
               }
               aria-expanded={navOpen}
               className="flex h-10 w-10 items-center justify-center"

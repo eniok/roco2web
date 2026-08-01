@@ -19,31 +19,31 @@ const PROJECTS: Project[] = [
   {
     src: '/images/1.jpg',
     alt: {
-      sq: 'Kuzhinë moderne me porosi në Tiranë — projekt nga ROAL Mobileri',
+      sq: 'Kuzhinë bashkëkohore e projektuar dhe realizuar nga ROAL Mobileri në Tiranë',
       en: 'Modern bespoke kitchen in Tirana — project by ROAL Mobileri',
     },
-    caption: { sq: 'Kuzhinë me porosi · Tiranë', en: 'Bespoke kitchen · Tirana' },
+    caption: { sq: 'Kuzhinë · Tiranë', en: 'Bespoke kitchen · Tirana' },
   },
   {
     src: '/images/2.jpg',
     alt: {
-      sq: 'Garderobë me masë në Tiranë — mobilje me porosi nga ROAL Mobileri',
+      sq: 'Garderobë e integruar, e realizuar nga ROAL Mobileri në Tiranë',
       en: 'Fitted wardrobe in Tirana — bespoke furniture by ROAL Mobileri',
     },
-    caption: { sq: 'Garderobë me masë · Tiranë', en: 'Fitted wardrobe · Tirana' },
+    caption: { sq: 'Garderobë e integruar · Tiranë', en: 'Fitted wardrobe · Tirana' },
   },
   {
     src: '/images/3.jpg',
     alt: {
-      sq: 'Dhomë ndenje me mobilje të integruara nga ROAL Mobileri, 2024',
+      sq: 'Dhomë ndenjeje me mobilieri të integruar nga ROAL Mobileri, 2024',
       en: 'Living room with integrated cabinetry by ROAL Mobileri, 2024',
     },
-    caption: { sq: 'Dhomë ndenje · 2024', en: 'Living room · 2024' },
+    caption: { sq: 'Dhomë ndenjeje · 2024', en: 'Living room · 2024' },
   },
   {
     src: '/images/4.jpg',
     alt: {
-      sq: 'Ambient pune i punuar me porosi nga ROAL Mobileri, 2024',
+      sq: 'Ambient pune i projektuar dhe realizuar nga ROAL Mobileri, 2024',
       en: 'Custom workspace by ROAL Mobileri, 2024',
     },
     caption: { sq: 'Ambient pune · 2024', en: 'Workspace · 2024' },
@@ -51,7 +51,7 @@ const PROJECTS: Project[] = [
   {
     src: '/images/5.jpg',
     alt: {
-      sq: 'Kuzhinë e hapur me dhomë ndenje — mobileri me porosi nga ROAL Mobileri',
+      sq: 'Kuzhinë e hapur me dhomë ndenjeje — interier nga ROAL Mobileri',
       en: 'Open-plan kitchen and living — bespoke furniture by ROAL Mobileri',
     },
     caption: { sq: 'Kuzhinë dhe ndenjë', en: 'Kitchen & living' },
@@ -67,30 +67,30 @@ const PROJECTS: Project[] = [
   {
     src: '/images/7.jpg',
     alt: {
-      sq: 'Detaj punimi — finiturë mobilje nga ROAL Mobileri',
+      sq: 'Detaj realizimi — përpunim sipërfaqeje nga ROAL Mobileri',
       en: 'Craft detail — furniture finish by ROAL Mobileri',
     },
-    caption: { sq: 'Detaj punimi', en: 'Craft detail' },
+    caption: { sq: 'Detaj realizimi', en: 'Craft detail' },
   },
   {
     src: '/images/8.jpg',
     alt: {
-      sq: 'Interier me porosi — mobilje të projektuara nga ROAL Mobileri, 2024',
+      sq: 'Interier i personalizuar — projekt nga ROAL Mobileri, 2024',
       en: 'Bespoke interior — furniture designed by ROAL Mobileri, 2024',
     },
-    caption: { sq: 'Interier me porosi · 2024', en: 'Bespoke interior · 2024' },
+    caption: { sq: 'Interier i personalizuar · 2024', en: 'Bespoke interior · 2024' },
   },
 ];
 
 const copy = {
-  eyebrow: { sq: 'Punët tona', en: 'Our work' },
-  headingLead: { sq: 'Prova', en: 'Proof' },
-  headingAccent: { sq: 'jo premtime.', en: 'not promises.' },
+  eyebrow: { sq: 'Projektet tona', en: 'Our work' },
+  headingLead: { sq: 'Realizime,', en: 'Proof' },
+  headingAccent: { sq: 'jo vetëm ide.', en: 'not promises.' },
   subhead: {
-    sq: 'Projekte të mbaruara dhe të instaluara në shtëpi reale në të gjithë Shqipërinë.',
+    sq: 'Një përzgjedhje interierësh të realizuar dhe instaluar nga ekipi ynë në Shqipëri.',
     en: 'Finished projects installed in real homes across Albania.',
   },
-  ctaLabel: { sq: 'Shiko më shumë në Instagram', en: 'See more on Instagram' },
+  ctaLabel: { sq: 'Shihni më shumë në Instagram', en: 'See more on Instagram' },
 } satisfies Record<string, Dict<string>>;
 
 export default function ProjectsGallery() {

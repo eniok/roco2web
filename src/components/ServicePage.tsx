@@ -7,18 +7,18 @@ import { useLang, type Dict } from '@/lib/i18n';
 import { ALL_SERVICES, type ServiceConfig } from '@/constants/services';
 
 const copy = {
-  visitCta: { sq: 'Vizito showroom-in', en: 'Visit the showroom' },
-  whatsappCta: { sq: 'Shkruaj në WhatsApp', en: 'Message on WhatsApp' },
+  visitCta: { sq: 'Vizitoni showroom-in', en: 'Visit the showroom' },
+  whatsappCta: { sq: 'Na shkruani në WhatsApp', en: 'Message on WhatsApp' },
   backHome: { sq: '← Kreu', en: '← Home' },
-  ctaHeading: { sq: 'Le të fillojmë.', en: 'Let\u2019s start.' },
+  ctaHeading: { sq: 'Le ta nisim projektin tuaj.', en: 'Let\u2019s start.' },
   ctaSub: {
-    sq: 'Konsultimi dhe matja janë falas. Eja në showroom ose na shkruaj për të caktuar një takim.',
+    sq: 'Konsultimi dhe matja janë falas. Vizitoni showroom-in ose na shkruani për të caktuar një takim.',
     en: 'The consultation and measurement are free. Visit the showroom or message us to book a meeting.',
   },
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
   moreServices: { sq: 'Shërbime të tjera', en: 'More services' },
-  viewService: { sq: 'Shiko shërbimin', en: 'View service' },
-  catalogueCta: { sq: 'Shfleto atlasin e zgjedhjeve', en: 'Browse the choice atlas' },
+  viewService: { sq: 'Shihni projektet', en: 'View service' },
+  catalogueCta: { sq: 'Shfletoni udhëzuesin e materialeve', en: 'Browse the choice atlas' },
 } satisfies Record<string, Dict<string>>;
 
 const WHATSAPP_HREF = 'https://wa.me/355672029739';

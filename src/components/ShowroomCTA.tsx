@@ -16,10 +16,10 @@ import { btnGhostOnLight, btnSolidOnLight, EASE } from './ui';
 
 const copy = {
   eyebrow: { sq: 'Showroom', en: 'Showroom' },
-  headingLead: { sq: 'Eja të prekësh', en: 'Come touch' },
-  headingAccent: { sq: 'materialet.', en: 'the materials.' },
+  headingLead: { sq: 'Shihni. Prekni.', en: 'Come touch' },
+  headingAccent: { sq: 'Vendosni me siguri.', en: 'the materials.' },
   subhead: {
-    sq: 'Showroom-i ynë është te Km 8, autostrada Tiranë–Durrës. 5 minuta me makinë nga Qendra Tregtare City Park.',
+    sq: 'Vizitoni showroom-in tonë në Km 8 të autostradës Tiranë–Durrës, vetëm 5 minuta me makinë nga City Park.',
     en: 'Our showroom sits at Km 8 on the Tirana–Durrës highway. 5 minutes by car from City Park shopping centre.',
   },
   addressLabel: { sq: 'Adresa', en: 'Address' },
@@ -37,11 +37,11 @@ const copy = {
     sq: 'E diel  ·  08:00 – 16:00',
     en: 'Sun  ·  08:00 – 16:00',
   },
-  whatsappLabel: { sq: 'Shkruaj në WhatsApp', en: 'Message on WhatsApp' },
-  googleMapsLabel: { sq: 'Hap në Google Maps', en: 'Open in Google Maps' },
-  appleMapsLabel: { sq: 'Hap në Apple Maps', en: 'Open in Apple Maps' },
+  whatsappLabel: { sq: 'Na shkruani në WhatsApp', en: 'Message on WhatsApp' },
+  googleMapsLabel: { sq: 'Shihni në Google Maps', en: 'Open in Google Maps' },
+  appleMapsLabel: { sq: 'Shihni në Apple Maps', en: 'Open in Apple Maps' },
   whatsappPreset: {
-    sq: 'Përshëndetje ROAL, dua të vij në showroom. A jeni të lirë sot?',
+    sq: 'Përshëndetje ROAL, dëshiroj të vizitoj showroom-in. A mund të vij sot?',
     en: 'Hello ROAL, I would like to visit the showroom. Are you available today?',
   },
 } satisfies Record<string, Dict<string>>;

@@ -5,7 +5,7 @@ export type NavLink = { label: Dict<string>; href: string };
 
 export const navLinks: NavLink[] = [
   { label: { sq: "Kreu", en: "Home" }, href: "/" },
-  { label: { sq: "Katalogët", en: "Catalogues" }, href: "/#catalogues" },
+  { label: { sq: "Udhëzuesit", en: "Catalogues" }, href: "/#catalogues" },
   { label: { sq: "Si punojmë", en: "How we work" }, href: "/#process" },
   { label: { sq: "Projekte", en: "Projects" }, href: "/#projects" },
   { label: { sq: "Showroom", en: "Showroom" }, href: "/#showroom" },

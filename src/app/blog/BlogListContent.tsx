@@ -15,7 +15,7 @@ const copy = {
     en: 'Thoughts on materials, design and the spaces we build — ideas that might help you before starting your own project.',
   },
   empty: { sq: 'Asnjë postim për tani.', en: 'No posts yet.' },
-  readMore: { sq: 'Lexo më shumë', en: 'Read more' },
+  readMore: { sq: 'Lexoni më shumë', en: 'Read more' },
 } satisfies Record<string, Dict<string>>;
 
 // Month-name lookup for both languages. The dates are stored as localized

@@ -10,39 +10,39 @@ import { btnGhostOnDark, btnSolidOnDark, EASE } from './ui';
 
 const WHATSAPP_NUMBER = '355672029739';
 const WHATSAPP_PRESET = {
-  sq: 'Përshëndetje ROAL, dua të mësoj më shumë për mobiljet me porosi.',
+  sq: 'Përshëndetje ROAL, dua të flasim për një projekt interieri.',
   en: "Hello ROAL, I'd like to learn more about your made-to-measure furniture.",
 } satisfies Dict<string>;
 
 const copy = {
   eyebrow: {
-    sq: 'Mobileri me porosi · Tiranë',
+    sq: 'Interierë të personalizuar · Tiranë',
     en: 'Bespoke furniture · Tirana',
   },
   titleLead: {
-    sq: 'Mobilje të projektuara',
+    sq: 'Mobilieri e menduar',
     en: 'Furniture designed',
   },
   titleAccent: {
-    sq: 'për hapësirën tuaj.',
+    sq: 'për mënyrën si jetoni.',
     en: 'for your space.',
   },
   subhead: {
-    sq: "Kuzhina, garderoba dhe ambiente të plota — të projektuara për t'ju shërbyer për vite. Ne ju shoqërojmë në çdo hap, nga skica e parë deri te instalimi.",
+    sq: 'Nga kuzhina dhe garderoba te interieri i plotë, çdo projekt formësohet rreth hapësirës suaj dhe realizohet për të zgjatur. Një ekip, nga koncepti i parë te instalimi.',
     en: 'Kitchens, wardrobes and full interiors — built to last for years. We stay with you every step, from the first sketch to the final install.',
   },
   ctaPrimary: {
-    sq: 'Vizito showroom-in',
+    sq: 'Vizitoni showroom-in',
     en: 'Visit the showroom',
   },
   ctaSecondary: {
-    sq: 'Shkruaj në WhatsApp',
+    sq: 'Na shkruani në WhatsApp',
     en: 'Message on WhatsApp',
   },
   trust: [
-    { sq: 'Vite përvojë', en: 'Years of experience' },
-    { sq: 'Cilësi e qëndrueshme', en: 'Built to last' },
-    { sq: 'Me ju në çdo hap', en: 'With you every step' },
+    { sq: 'Përvojë e dëshmuar', en: 'Years of experience' },
+    { sq: 'Materiale të përzgjedhura', en: 'Built to last' },
+    { sq: 'Nga projekti te instalimi', en: 'With you every step' },
   ] as const,
 } satisfies Record<string, Dict<string> | readonly Dict<string>[]>;
 
@@ -76,7 +76,7 @@ export default function Hero() {
           src="/images/cover.jpg"
           alt={
             lang === 'sq'
-              ? 'Interier me mobilje me porosi nga ROAL Mobileri — kuzhina, garderoba dhe ambiente të plota në Tiranë'
+              ? 'Interier bashkëkohor i projektuar dhe realizuar nga ROAL Mobileri në Tiranë'
               : 'Interior with bespoke furniture by ROAL Mobileri — kitchens, wardrobes and full interiors in Tirana'
           }
           fill

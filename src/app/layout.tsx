@@ -25,12 +25,12 @@ const fraunces = Fraunces({
 /* ------------------------------------------------------------------ */
 export const metadata: Metadata = {
   title: {
-    default: 'ROAL Mobileri — Mobileri me porosi në Tiranë | Kuzhina, garderoba, dhoma gjumi',
+    default: 'ROAL Mobileri — Interierë të personalizuar në Tiranë',
     template: '%s | ROAL Mobileri',
   },
 
   description:
-    'Mobileri me porosi në Tiranë — kuzhina, garderoba, dhoma gjumi dhe ambiente të plota me masë. Showroom në Km 8, autostrada Tiranë–Durrës. Matje dhe projekt 3D falas.',
+    'Kuzhina, garderoba dhe interierë të plotë, të projektuar për hapësirën dhe mënyrën tuaj të jetesës. Showroom në Km 8 të autostradës Tiranë–Durrës. Konsultim, matje dhe projektim 3D falas.',
 
   metadataBase: new URL('https://roal.design'),
 
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: 'ROAL Mobileri — Mobileri me porosi në Tiranë',
+    title: 'ROAL Mobileri — Interierë të personalizuar në Tiranë',
     description:
       'Kuzhina, garderoba dhe ambiente të plota të projektuara për t\u2019ju shërbyer për vite. Ju shoqërojmë në çdo hap.',
     url: 'https://roal.design/',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
         url: 'https://roal.design/images/cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'Projekt me porosi nga ROAL Mobileri',
+        alt: 'Interier i projektuar dhe realizuar nga ROAL Mobileri',
       },
     ],
   },
@@ -121,7 +121,7 @@ const LOCAL_BUSINESS_JSON_LD = {
         'Custom furniture workshop and showroom in Tirana, Albania. Bespoke kitchens, fitted wardrobes, office furniture and full home interiors — designed, built and installed by one team, with a 2-year warranty.',
     },
   ],
-  slogan: 'Mobilje me porosi, të bëra për të zgjatur',
+  slogan: 'Interierë të menduar me kujdes, të realizuar për të zgjatur',
   url: 'https://roal.design/',
   image: 'https://roal.design/images/cover.jpg',
   logo: 'https://roal.design/logo.svg',
@@ -239,7 +239,7 @@ const LOCAL_BUSINESS_JSON_LD = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Dhoma ndenje',
+          name: 'Dhoma ndenjeje',
           serviceType: 'Living-room cabinetry',
           description:
             'Mobilim i integruar për dhomën e ndenjes — vitrina, mure medie dhe depozitim i personalizuar.',

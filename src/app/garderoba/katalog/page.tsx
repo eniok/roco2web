@@ -4,9 +4,9 @@ import WardrobeCatalogue from '@/components/WardrobeCatalogue';
 const SITE_URL = 'https://roal.design';
 const PAGE_URL = `${SITE_URL}/garderoba/katalog`;
 
-const title = 'Katalogu i garderobave me përmasë — fronte, xham dhe organizim';
+const title = 'Udhëzuesi i garderobës ROAL — fronte, xham dhe organizim';
 const description =
-  'Ndërto garderobën tënde në 6 vendime: forma, hapja, frontet, xhami ose pasqyra, organizimi i brendshëm dhe ndriçimi. Projekt dhe matje falas nga ROAL.';
+  'Përcaktoni garderobën tuaj në 6 vendime: forma, hapja, frontet, xhami ose pasqyra, organizimi i brendshëm dhe ndriçimi. Matja dhe projektimi 3D janë falas.';
 
 export const metadata: Metadata = {
   title,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/images/wardrobe-catalogue/hero.webp`,
         width: 1536,
         height: 1024,
-        alt: 'Garderobë me masë me fronte mat, rimeso arre dhe vitrinë xhami bronz',
+        alt: 'Garderobë e integruar me fronte mat, rimeso arre dhe vitrinë xhami bronz',
       },
     ],
   },
@@ -46,13 +46,13 @@ const schema = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Kreu', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: 'Garderoba me përmasë', item: `${SITE_URL}/garderoba` },
-        { '@type': 'ListItem', position: 3, name: 'Katalogu i garderobave', item: PAGE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Garderoba të integruara', item: `${SITE_URL}/garderoba` },
+        { '@type': 'ListItem', position: 3, name: 'Udhëzuesi i garderobës', item: PAGE_URL },
       ],
     },
     {
       '@type': 'ItemList',
-      name: 'Zgjedhjet e katalogut të garderobave',
+      name: 'Zgjedhjet e udhëzuesit të garderobës',
       numberOfItems: 6,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Forma në dhomë', url: `${PAGE_URL}#forma` },

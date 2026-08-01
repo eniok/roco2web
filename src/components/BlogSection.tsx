@@ -22,7 +22,7 @@ const copy = {
     sq: 'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
     en: 'Notes on materials, design and the spaces we build — ideas that might help you before starting your own project.',
   },
-  viewAll: { sq: 'Shiko të gjitha shkrimet', en: 'See all posts' },
+  viewAll: { sq: 'Shihni të gjitha shkrimet', en: 'See all posts' },
 } satisfies Record<string, Dict<string>>;
 
 export default function BlogSection() {

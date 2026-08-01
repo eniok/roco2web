@@ -20,10 +20,10 @@ const ATLASES: Atlas[] = [
   {
     href: '/kuzhina/katalog',
     image: '/images/kitchen-catalogue/hero.webp',
-    title: { sq: 'Kuzhina me porosi', en: 'Bespoke kitchens' },
+    title: { sq: 'Kuzhina të projektuara', en: 'Bespoke kitchens' },
     meta: { sq: '5 vendime · 20 alternativa', en: '5 decisions · 20 alternatives' },
     description: {
-      sq: 'Materiale, syprina, hapje, mekanizma dhe ndriçim — të krahasuara me pamje të qarta.',
+      sq: 'Materialet, syprinat, hapjet, mekanizmat dhe ndriçimi, të paraqitura qartë për krahasim.',
       en: 'Materials, worktops, opening details, mechanisms and lighting—compared through clear visuals.',
     },
     alt: {
@@ -34,30 +34,30 @@ const ATLASES: Atlas[] = [
   {
     href: '/garderoba/katalog',
     image: '/images/wardrobe-catalogue/hero.webp',
-    title: { sq: 'Garderoba me përmasë', en: 'Fitted wardrobes' },
+    title: { sq: 'Garderoba të integruara', en: 'Fitted wardrobes' },
     meta: { sq: '6 vendime · 24 alternativa', en: '6 decisions · 24 alternatives' },
     description: {
-      sq: 'Forma, hapja, frontet, xhami e pasqyra, organizimi dhe drita — deri te brief-i juaj.',
+      sq: 'Forma, hapja, frontet, xhami, pasqyra, organizimi dhe drita — deri te përmbledhja e projektit tuaj.',
       en: 'Layout, opening, fronts, glass and mirror, organization and light—building your project brief.',
     },
     alt: {
-      sq: 'Garderobë me masë me fronte mat dhe vitrinë xhami bronz',
+      sq: 'Garderobë e integruar me fronte mat dhe vitrinë xhami bronz',
       en: 'Fitted wardrobe with matte fronts and a bronze-glass display bay',
     },
   },
 ];
 
 const copy = {
-  eyebrow: { sq: 'Atlase të zgjedhjeve', en: 'Choice atlases' },
-  headingLead: { sq: 'Shihni opsionet.', en: 'See the options.' },
-  headingAccent: { sq: 'Ejani me një drejtim.', en: 'Arrive with a direction.' },
+  eyebrow: { sq: 'Udhëzuesit ROAL', en: 'Choice atlases' },
+  headingLead: { sq: 'Njihni materialet.', en: 'See the options.' },
+  headingAccent: { sq: 'Përcaktoni stilin tuaj.', en: 'Arrive with a direction.' },
   intro: {
-    sq: 'Krahasoni alternativat, zgjidhni ato që ju afrohen dhe dërgojeni përmbledhjen direkt në WhatsApp. Ne e kthejmë në matje, projekt 3D dhe ofertë.',
+    sq: 'Krahasoni materialet dhe zgjidhjet që ju përshtaten, pastaj na dërgoni përmbledhjen në WhatsApp. Nga kjo pikë kalojmë te matja, projekti 3D dhe oferta e detajuar.',
     en: 'Compare the alternatives, select what feels right and send the summary directly through WhatsApp. We turn it into a measurement, 3D design and quotation.',
   },
-  openAtlas: { sq: 'Hap atlasin', en: 'Open the atlas' },
+  openAtlas: { sq: 'Shfletoni udhëzuesin', en: 'Open the atlas' },
   note: {
-    sq: 'Udhëzues vizual, jo katalog i ngurtë — çdo projekt vazhdon të ndërtohet me masë.',
+    sq: 'Një udhëzues vizual, jo një katalog standard. Çdo zgjidhje përshtatet me arkitekturën dhe përmasat e hapësirës suaj.',
     en: 'A visual guide, not a rigid catalogue—every project is still made to measure.',
   },
 } satisfies Record<string, Dict<string>>;

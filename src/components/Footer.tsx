@@ -8,24 +8,24 @@ import { STORE } from '@/lib/store';
 
 const copy = {
   tagline: {
-    sq: 'Mobilje me porosi, të bëra për të zgjatur.',
+    sq: 'Interierë të menduar me kujdes, të realizuar për të zgjatur.',
     en: 'Bespoke furniture, built to last.',
   },
-  explore: { sq: 'Eksploro', en: 'Explore' },
+  explore: { sq: 'Eksploroni', en: 'Explore' },
   services: { sq: 'Shërbimet', en: 'Services' },
-  legal: { sq: 'Ligjore', en: 'Legal' },
-  instagram: { sq: 'Na ndiq në Instagram', en: 'Follow us on Instagram' },
+  legal: { sq: 'Informacion ligjor', en: 'Legal' },
+  instagram: { sq: 'Na ndiqni në Instagram', en: 'Follow us on Instagram' },
 } satisfies Record<string, Dict<string>>;
 
 const SERVICE_LINKS: { label: Dict<string>; href: string }[] = [
   { label: { sq: 'Kuzhina', en: 'Kitchens' }, href: '/kuzhina' },
-  { label: { sq: 'Katalogu i kuzhinave', en: 'Kitchen catalogue' }, href: '/kuzhina/katalog' },
+  { label: { sq: 'Udhëzuesi i kuzhinës', en: 'Kitchen catalogue' }, href: '/kuzhina/katalog' },
   { label: { sq: 'Garderoba', en: 'Wardrobes' }, href: '/garderoba' },
-  { label: { sq: 'Katalogu i garderobave', en: 'Wardrobe catalogue' }, href: '/garderoba/katalog' },
+  { label: { sq: 'Udhëzuesi i garderobës', en: 'Wardrobe catalogue' }, href: '/garderoba/katalog' },
   { label: { sq: 'Dhoma gjumi', en: 'Bedrooms' }, href: '/dhoma-gjumi' },
-  { label: { sq: 'Dhoma ndenje', en: 'Living rooms' }, href: '/dhoma-ndenje' },
+  { label: { sq: 'Dhoma ndenjeje', en: 'Living rooms' }, href: '/dhoma-ndenje' },
   { label: { sq: 'Ambiente pune', en: 'Workspaces' }, href: '/ambiente-pune' },
-  { label: { sq: 'Hoteleri dhe lokale', en: 'Hospitality & retail' }, href: '/hoteleri-lokale' },
+  { label: { sq: 'Hotele & ambiente biznesi', en: 'Hospitality & retail' }, href: '/hoteleri-lokale' },
 ];
 
 const LEGAL_LINKS: { label: Dict<string>; href: string }[] = [

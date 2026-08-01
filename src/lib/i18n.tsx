@@ -13,6 +13,41 @@ export type Lang = 'sq' | 'en';
 const DEFAULT_LANG: Lang = 'sq';
 const STORAGE_KEY = 'roal-lang';
 
+// Time zones covering the Albanian-speaking region. Kosovo has no IANA zone of
+// its own — devices there report Europe/Belgrade, with Europe/Pristina as an
+// alias on some platforms. Used as a stand-in for "is physically here": a
+// visitor in Albania on an English-set phone should still land on Albanian.
+const ALBANIAN_TIMEZONES = new Set([
+  'Europe/Tirane',
+  'Europe/Pristina',
+  'Europe/Belgrade',
+  'Europe/Skopje',
+  'Europe/Podgorica',
+]);
+
+function detectLang(): Lang {
+  const preferred =
+    window.navigator?.languages?.length
+      ? window.navigator.languages
+      : [window.navigator?.language];
+  const codes = preferred
+    .filter(Boolean)
+    .map((l) => l.slice(0, 2).toLowerCase());
+
+  // Albanian anywhere in the accept-language list wins outright.
+  if (codes.includes('sq')) return 'sq';
+
+  let tz: string | undefined;
+  try {
+    tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch {
+    // Intl can be unavailable in exotic environments
+  }
+  if (tz && ALBANIAN_TIMEZONES.has(tz)) return 'sq';
+
+  return codes[0] === 'en' ? 'en' : DEFAULT_LANG;
+}
+
 type LangContextValue = {
   lang: Lang;
   /** Set the display language. Pass `persist: false` for a transient sync
@@ -36,8 +71,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
         setLangState(stored);
         return;
       }
-      const nav = window.navigator?.language?.slice(0, 2).toLowerCase();
-      if (nav === 'en') setLangState('en');
+      setLangState(detectLang());
     } catch {
       // localStorage can throw in private mode; fall back to default
     }

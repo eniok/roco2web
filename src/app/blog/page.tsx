@@ -6,7 +6,7 @@ import BlogListContent from './BlogListContent';
 export const metadata: Metadata = {
   title: 'Blog — Shënime nga punishtja',
   description:
-    'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë. Ide dhe këshilla para se të filloni projektin tuaj me porosi.',
+    'Shënime mbi materialet, projektimin dhe interierët që realizojmë. Ide dhe këshilla përpara se të nisni projektin tuaj.',
   keywords: [
     'blog mobilje',
     'dizajn interieri Shqipëri',
