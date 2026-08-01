@@ -12,7 +12,7 @@ const copy = {
   backHome: { sq: '← Kreu', en: '← Home' },
   ctaHeading: { sq: 'Le ta nisim projektin tuaj.', en: 'Let\u2019s start.' },
   ctaSub: {
-    sq: 'Konsultimi dhe matja janë falas. Vizitoni showroom-in ose na shkruani për të caktuar një takim.',
+    sq: 'Çdo realizim nis me një konsultim të kujdesshëm. Vizitoni showroom-in ose na shkruani për të caktuar një takim.',
     en: 'The consultation and measurement are free. Visit the showroom or message us to book a meeting.',
   },
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },

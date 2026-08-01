@@ -9,7 +9,7 @@ import { useLang, type Dict } from '@/lib/i18n';
 const copy = {
   eyebrow: { sq: 'Blog', en: 'Journal' },
   headingLead: { sq: 'Shënime nga', en: 'Notes from' },
-  headingAccent: { sq: 'punishtja.', en: 'the workshop.' },
+  headingAccent: { sq: 'studioja jonë.', en: 'the workshop.' },
   subhead: {
     sq: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
     en: 'Thoughts on materials, design and the spaces we build — ideas that might help you before starting your own project.',

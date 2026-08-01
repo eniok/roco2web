@@ -58,14 +58,14 @@ const copy = {
     'Hello ROAL, these are my initial fitted-wardrobe choices:',
   ),
   summaryMessageEnd: t(
-    'Dua të caktoj matjen dhe projektin 3D falas.',
+    'Dua të caktoj një konsultim për matjen dhe projektin 3D.',
     'I would like to arrange the free measurement and 3D design.',
   ),
   standardTitle: t('Standard në çdo projekt', 'Standard in every project'),
   standardHeading: t('Garderoba nis nga dhoma juaj, jo nga një modul.', 'The wardrobe starts with your room, not a module.'),
   standardItems: {
     sq: [
-      'Matje dhe projekt 3D falas para prodhimit',
+      'Matje e saktë dhe projektim 3D para prodhimit',
       'Përshtatje me muret, tavanin dhe dyshemenë reale',
       'Ndarje e brendshme sipas rrobave dhe rutinës suaj',
       'Mekanizma të zgjedhur sipas hapjes, peshës dhe përdorimit',
@@ -98,13 +98,13 @@ const copy = {
   packagesTitle: t('Drejtimi i investimit', 'Investment direction'),
   packagesHeading: t('Tre pikënisje. Çdo projekt mbetet unik.', 'Three starting points. Every project remains made to measure.'),
   packagesNote: t(
-    'Simbolet tregojnë vetëm nivelin relativ të materialeve dhe mekanizmave, jo çmim. Oferta e saktë vjen pas matjes, planit të brendshëm dhe zgjedhjes së xhamit.',
+    'Simbolet tregojnë nivelin relativ të materialeve dhe mekanizmave, jo vlerën përfundimtare. Investimi përcaktohet pas matjes, planit të brendshëm dhe zgjedhjes së xhamit.',
     'The symbols only indicate the relative level of materials and hardware, not a price. The exact quotation follows measurement, interior planning and glass selection.',
   ),
   recommended: t('Balanca më e kërkuar', 'Most requested balance'),
   ctaHeading: t('Pamja zgjedh drejtimin. Matja e bën garderobën tuajën.', 'The visuals set the direction. Measurement makes it yours.'),
   ctaSub: t(
-    'Ejani të shihni mostrat e fronteve dhe xhamit, të provoni mekanizmat dhe të planifikojmë çdo zonë të brendshme. Matja dhe projekti 3D janë falas.',
+    'Ejani të shihni mostrat e fronteve dhe xhamit, të provoni mekanizmat dhe të planifikojmë çdo zonë të brendshme. Matja dhe projektimi 3D janë pjesë e procesit tonë.',
     'Come see the front and glass samples, test the hardware and plan every interior zone. Measurement and 3D design are free.',
   ),
   genericWhatsAppMessage: t(
@@ -344,7 +344,7 @@ const PACKAGES: Package[] = [
   {
     name: t('Essential', 'Essential'),
     level: '€',
-    tagline: t('Qartësi, kapacitet, materiale praktike', 'Clarity, capacity and practical materials'),
+    tagline: t('Qartësi, kapacitet dhe qëndrueshmëri', 'Clarity, capacity and practical materials'),
     image: '/images/wardrobe-catalogue/fronts/melamine.webp',
     imageAlt: t('Garderobë e qetë me fronte melamine', 'Calm wardrobe with melamine fronts'),
     features: {

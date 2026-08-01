@@ -14,9 +14,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     },
   },
   {
-    q: { sq: 'Sa kushton një kuzhinë ose garderobë?', en: 'How much does a kitchen or wardrobe cost?' },
+    q: { sq: 'Si përcaktohet investimi për një kuzhinë ose garderobë?', en: 'How much does a kitchen or wardrobe cost?' },
     a: {
-      sq: 'Çmimi përcaktohet nga përmasat, materialet dhe kompleksiteti i projektit. Konsultimi në showroom dhe matja në ambientin tuaj janë falas. Më pas merrni projektin 3D dhe një ofertë të detajuar.',
+      sq: 'Investimi përcaktohet nga përmasat, materialet dhe kompleksiteti i realizimit. Konsultimi në showroom dhe matja në ambientin tuaj janë pjesë e fazës fillestare. Më pas merrni projektin 3D dhe një ofertë të detajuar.',
       en: 'Pricing depends on materials, dimensions and the amount of work involved. The showroom consultation and the on-site measurement are free. After measuring we send you the full 3D design with the price.',
     },
   },
@@ -43,11 +43,11 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: {
-      sq: 'Çfarë vlere ofron prodhimi juaj vendor?',
+      sq: 'Çfarë e dallon një projekt ROAL?',
       en: 'How do you compare with imported furniture on price vs quality?',
     },
     a: {
-      sq: 'Prodhojmë në punishten tonë në Tiranë, pa ndërmjetës. Investimi përqendrohet te materialet, puna e kujdesshme dhe përshtatja me hapësirën. I njëjti ekip ndjek projektin deri në instalim dhe ofron garanci 2-vjeçare.',
+      sq: 'Çdo interier e trajtojmë si një investim afatgjatë. Proporcionet, materialet, mekanizmat dhe çdo detaj teknik studiohen për të arritur një rezultat të plotë, preciz dhe të qëndrueshëm. Projekti ndiqet me të njëjtin standard nga koncepti deri në instalimin përfundimtar dhe mbulohet nga një garanci 2-vjeçare.',
       en: 'We manufacture in our own workshop in Tirana, with no import middlemen — so the price goes into materials and craftsmanship, not distribution margins. Materials are chosen to last years of daily use, and every project includes installation and a 2-year warranty from the same team.',
     },
   },

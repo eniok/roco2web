@@ -4,7 +4,7 @@ import { getAllBlogPosts } from '@/lib/firebase/firestore';
 import BlogListContent from './BlogListContent';
 
 export const metadata: Metadata = {
-  title: 'Blog — Shënime nga punishtja',
+  title: 'Blog — Shënime nga studioja ROAL',
   description:
     'Shënime mbi materialet, projektimin dhe interierët që realizojmë. Ide dhe këshilla përpara se të nisni projektin tuaj.',
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'bespoke furniture blog',
   ],
   openGraph: {
-    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    title: 'Blog — Shënime nga studioja | ROAL Mobileri',
     description:
       'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide për projektin tuaj të ardhshëm.',
     url: 'https://roal.design/blog',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    title: 'Blog — Shënime nga studioja | ROAL Mobileri',
     description: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë.',
     images: ['https://roal.design/images/cover.jpg'],
   },

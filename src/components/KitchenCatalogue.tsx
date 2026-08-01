@@ -68,7 +68,7 @@ const copy = {
     en: 'Hello ROAL, these are my initial kitchen choices:',
   },
   summaryMessageEnd: {
-    sq: 'Dua të caktoj matjen dhe projektin 3D falas.',
+    sq: 'Dua të caktoj një konsultim për matjen dhe projektin 3D.',
     en: 'I would like to arrange the free measurement and 3D design.',
   },
   standardTitle: { sq: 'Standard në çdo kuzhinë', en: 'Standard in every kitchen' },
@@ -81,7 +81,7 @@ const copy = {
       'Mentesha dhe rrëshqitës me mbyllje të butë',
       'Sirtarë me nxjerrje të plotë',
       'Strukturë sipas përmasave të sakta dhe bordurë ABS rezistente',
-      'Matje falas dhe projekt 3D para prodhimit',
+      'Matje e saktë dhe projektim 3D para prodhimit',
       'Instalim nga ekipi ynë dhe garanci 2 vjet',
     ],
     en: [
@@ -120,10 +120,10 @@ const copy = {
     sq: 'Kuzhinë në jeshile mat me ishull guri të rrumbullakosur dhe panel të kanaluar arre',
     en: 'Matte green kitchen with a rounded stone island and fluted walnut end panel',
   },
-  pricesTitle: { sq: 'Buxheti orientues', en: 'Indicative budget' },
-  pricesHeading: { sq: 'Tre pikënisje. I njëjti kujdes në ndërtim.', en: 'Three starting points. The same care in every build.' },
+  pricesTitle: { sq: 'Nivelet e investimit', en: 'Indicative budget' },
+  pricesHeading: { sq: 'Tre nivele materialesh. Një standard realizimi.', en: 'Three starting points. The same care in every build.' },
   pricesNote: {
-    sq: 'Çmimet janë orientuese, për metër linear dhe pa pajisje elektroshtëpiake. Dollapët e lartë, ishulli, mekanizmat dhe materialet ndryshojnë totalin. Pas matjes merrni projektin 3D dhe ofertën e detajuar falas.',
+    sq: 'Vlerat janë orientuese, për metër linear dhe pa pajisje elektroshtëpiake. Dollapët e lartë, ishulli, mekanizmat dhe materialet përcaktojnë investimin përfundimtar. Pas matjes paraqesim projektin 3D dhe ofertën e detajuar.',
     en: 'Prices are indicative, per linear metre and exclude appliances. Tall units, islands, mechanisms and materials change the total. After measurement, you receive the detailed 3D design and quotation free of charge.',
   },
   perMeter: { sq: '/ metër linear', en: '/ linear metre' },
@@ -131,7 +131,7 @@ const copy = {
   popular: { sq: 'Më e kërkuara', en: 'Most requested' },
   ctaHeading: { sq: 'Ekrani ju jep drejtimin. Mostrat japin sigurinë.', en: 'The screen gives direction. The samples give certainty.' },
   ctaSub: {
-    sq: 'Ejani t’i prekni materialet, të provoni mekanizmat dhe ta shohim hapësirën tuaj bashkë. Matja dhe projekti 3D janë falas.',
+    sq: 'Ejani t’i prekni materialet, të provoni mekanizmat dhe ta analizojmë hapësirën tuaj bashkë. Matja dhe projektimi 3D janë pjesë e procesit tonë.',
     en: 'Come touch the materials, test the mechanisms and let us look at your space together. Measurement and 3D design are free.',
   },
   genericWhatsAppMessage: {
@@ -176,7 +176,7 @@ const STEPS: CatalogueStep[] = [
         name: { sq: 'Melaminë', en: 'Melamine' },
         badge: { sq: 'Praktike', en: 'Practical' },
         desc: {
-          sq: 'Rezistente ndaj përdorimit të përditshëm, me shumë dekore druri dhe ngjyra uni. Vlera më e mirë për buxhetin.',
+          sq: 'Rezistente ndaj përdorimit të përditshëm, me një gamë të gjerë dekorësh druri dhe ngjyrash të plota. Një zgjedhje e ekuilibruar për funksion dhe qëndrueshmëri.',
           en: 'Durable for everyday use, with a wide range of woodgrains and solid colours. The strongest value for budget.',
         },
         tier: '€',
@@ -227,7 +227,7 @@ const STEPS: CatalogueStep[] = [
     title: { sq: 'Syprina e punës', en: 'The worktop' },
     question: { sq: 'Sa fort duhet të punojë?', en: 'How hard does it need to work?' },
     intro: {
-      sq: 'Këtu takohen pamja, mirëmbajtja dhe buxheti. Shikoni sidomos trashësinë e profilit, skajin dhe mënyrën si materiali lidhet me frontin poshtë.',
+      sq: 'Këtu takohen pamja, mirëmbajtja dhe performanca. Vlerësoni trashësinë e profilit, përpunimin e skajit dhe mënyrën si materiali lidhet me frontin poshtë.',
       en: 'This is where appearance, maintenance and budget meet. Look closely at the profile thickness, edge treatment and how the material meets the front below.',
     },
     options: [
@@ -236,7 +236,7 @@ const STEPS: CatalogueStep[] = [
         name: { sq: 'Laminat / postforming', en: 'Laminate / postforming' },
         badge: { sq: 'Praktike', en: 'Economical' },
         desc: {
-          sq: 'Zgjidhje e shpejtë dhe praktike, me dekore guri bindëse dhe skaj të rrumbullakosur.',
+          sq: 'Sipërfaqe funksionale dhe e qëndrueshme, me dekore guri bindëse dhe skaj të rrumbullakosur.',
           en: 'A quick, practical solution with convincing stone decors and a softly rounded front edge.',
         },
         tier: '€',
@@ -479,7 +479,7 @@ const PRICE_TIERS: PriceTier[] = [
   {
     name: { sq: 'Klasike', en: 'Essential' },
     price: '€250',
-    total: { sq: 'Kuzhinë tipike 5 m: €1.250 – €1.750', en: 'Typical 5 m kitchen: €1,250 – €1,750' },
+    total: { sq: 'Investim orientues për 5 m: €1.250 – €1.750', en: 'Typical 5 m kitchen: €1,250 – €1,750' },
     image: '/images/kitchen-catalogue/materials/melamine.webp',
     imageAlt: { sq: 'Front melamine me dekor lisi', en: 'Oak-look melamine cabinet front' },
     features: {
@@ -500,7 +500,7 @@ const PRICE_TIERS: PriceTier[] = [
   {
     name: { sq: 'E përzgjedhur', en: 'Signature' },
     price: '€400',
-    total: { sq: 'Kuzhinë tipike 5 m: €2.000 – €2.750', en: 'Typical 5 m kitchen: €2,000 – €2,750' },
+    total: { sq: 'Investim orientues për 5 m: €2.000 – €2.750', en: 'Typical 5 m kitchen: €2,000 – €2,750' },
     image: '/images/kitchen-catalogue/handles/gola-profile.webp',
     imageAlt: { sq: 'Profil Gola i integruar mes fronteve', en: 'Integrated Gola profile between fronts' },
     highlighted: true,
@@ -524,7 +524,7 @@ const PRICE_TIERS: PriceTier[] = [
   {
     name: { sq: 'Premium', en: 'Premium' },
     price: '€600',
-    total: { sq: 'Kuzhinë tipike 5 m: €3.000 – €4.500+', en: 'Typical 5 m kitchen: €3,000 – €4,500+' },
+    total: { sq: 'Investim orientues për 5 m: €3.000 – €4.500+', en: 'Typical 5 m kitchen: €3,000 – €4,500+' },
     image: '/images/kitchen-catalogue/worktops/quartz.webp',
     imageAlt: { sq: 'Syprinë premium kuarci me vena delikate', en: 'Premium quartz worktop with restrained veining' },
     features: {

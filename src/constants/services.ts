@@ -61,7 +61,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     includesHeading: { sq: 'Gjithçka, e menduar si një e tërë', en: 'Everything for a complete kitchen' },
     includes: {
       sq: [
-        'Konsultim dhe matje falas në ambientin tuaj ose në showroom',
+        'Konsultim fillestar dhe matje e saktë në ambientin tuaj ose në showroom',
         'Projektim 3D me materialet, ngjyrat dhe pajisjet e përzgjedhura',
         'Strukturë dhe fronte të prodhuara sipas përmasave të sakta',
         'Syprina pune në granit, kuarc, porcelan ose laminat',
@@ -91,7 +91,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         },
       },
       {
-        q: { sq: 'A përfshihen pajisjet elektroshtëpiake në çmim?', en: 'Are appliances included in the price?' },
+        q: { sq: 'A përfshihen pajisjet elektroshtëpiake në ofertë?', en: 'Are appliances included in the price?' },
         a: {
           sq: 'Pajisjet mund t’i siguroni përmes nesh ose t’i zgjidhni vetë. Në të dyja rastet, projekti përshtatet saktësisht me modelet dhe përmasat e tyre.',
           en: 'Appliances can be supplied by us or bought by you. Either way, we build the kitchen to fit them exactly.',
@@ -105,9 +105,9 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         },
       },
       {
-        q: { sq: 'Sa kushton një kuzhinë e projektuar për hapësirën time?', en: 'How much does a bespoke kitchen cost?' },
+        q: { sq: 'Si përcaktohet investimi për kuzhinën?', en: 'How much does a bespoke kitchen cost?' },
         a: {
-          sq: 'Çmimi varet nga metrat linearë, materialet e fronteve dhe të syprinës, si edhe nga mekanizmat e pajisjet që zgjidhni. Matja, projekti 3D dhe oferta e detajuar janë falas dhe pa detyrim.',
+          sq: 'Investimi varet nga përmasat, materialet e fronteve dhe të syprinës, si edhe nga mekanizmat e pajisjet që zgjidhni. Pas matjes, merrni projektin 3D dhe një ofertë të detajuar për të gjithë realizimin.',
           en: 'The price depends on the linear metres, the door and worktop materials, and the appliances you choose. The home measurement and the 3D design with a full quote are free and without obligation — so you can compare our offer against any alternative.',
         },
       },
@@ -145,7 +145,7 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
     includesHeading: { sq: 'Një garderobë e menduar në çdo detaj', en: 'Inside every fitted wardrobe' },
     includes: {
       sq: [
-        'Konsultim dhe matje falas në ambientin tuaj',
+        'Konsultim fillestar dhe matje e saktë në ambientin tuaj',
         'Projektim 3D i kompozimit dhe organizimit të brendshëm',
         'Dyer rrëshqitëse, me mentesha ose konfigurim i hapur walk-in',
         'Fronte pasqyre, xhami të tymosur, bronz ose të kanaluar',
@@ -270,9 +270,9 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         },
       },
       {
-        q: { sq: 'Sa kushton një projekt i plotë për dhomën e gjumit?', en: 'How much does a bespoke bedroom cost?' },
+        q: { sq: 'Si përcaktohet investimi për dhomën e gjumit?', en: 'How much does a bespoke bedroom cost?' },
         a: {
-          sq: 'Varet nga përmasat, materialet dhe elementet që përfshin projekti. Matja, projekti 3D dhe oferta e detajuar janë falas. Mund të na vizitoni në showroom-in në Km 8 të autostradës Tiranë–Durrës ose të na shkruani në WhatsApp.',
+          sq: 'Investimi varet nga përmasat, materialet dhe elementet që përfshin projekti. Pas konsultimit dhe matjes, paraqesim projektin 3D dhe ofertën e detajuar. Mund të na vizitoni në showroom-in në Km 8 të autostradës Tiranë–Durrës ose të na shkruani në WhatsApp.',
           en: 'It depends on dimensions, materials and the elements you choose. Measurement and the 3D design with a full price are free — visit the showroom at Km 8 of the Tirana–Durrës highway or message us on WhatsApp.',
         },
       },
