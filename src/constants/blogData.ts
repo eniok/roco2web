@@ -34,6 +34,9 @@ export interface BlogPost {
   dates: Record<Lang, string>;
   excerpts: Record<Lang, string>;
   content: Record<Lang, string>;
+  /** ISO date (YYYY-MM-DD); `dates` holds the localized display strings. */
+  publishedAt?: string;
+  updatedAt?: string;
   seo?: SeoMetadata;
 }
 
