@@ -29,7 +29,7 @@ const SECTIONS: LegalSection[] = [
     body: {
       sq: (
         <p>
-          {STORE.name} (RO-AL SH.P.K.) është një punishte mobilerie me porosi. Kjo faqe ofron
+          {STORE.name} (RO-AL SH.P.K.) projekton dhe realizon mobilje e interierë të personalizuar. Kjo faqe ofron
           informacion mbi shërbimet tona (kuzhina, garderoba, ambiente pune, dhoma ndenje,
           hoteleri dhe lokale). Çmimet, afatet dhe skicat e paraqitura në faqe ose gjatë
           bisedave në WhatsApp/telefon janë orientuese dhe jo oferta detyruese, deri sa të
@@ -86,11 +86,11 @@ const SECTIONS: LegalSection[] = [
     },
   },
   {
-    heading: { sq: 'Porositë me porosi', en: 'Custom orders' },
+    heading: { sq: 'Porositë e mobiljeve', en: 'Custom orders' },
     body: {
       sq: (
         <p>
-          Çdo porosi mobilerie me porosi rregullohet nga një ofertë/kontratë e veçantë e
+          Çdo porosi mobiljesh rregullohet nga një ofertë/kontratë e veçantë e
           nënshkruar nga të dyja palët, e cila përcakton çmimin final, paradhënien, afatin e
           prodhimit/instalimit dhe garancinë. Këto Kushte Përdorimi rregullojnë vetëm përdorimin
           e faqes, jo marrëdhënien tregtare të porosisë.

@@ -19,11 +19,11 @@ import { btnGhostOnDark, btnSolidOnDark, EASE } from './ui';
 
 const copy = {
   eyebrow: { sq: 'Kontakt', en: 'Contact' },
-  headingLead: { sq: 'Le ta nisim', en: 'Ready to' },
-  headingAccent: { sq: 'projektin tuaj.', en: 'start?' },
+  headingLead: { sq: 'Na tregoni', en: 'Tell us' },
+  headingAccent: { sq: 'si doni të jetoni.', en: 'how you want to live.' },
   subhead: {
-    sq: 'Na tregoni për hapësirën dhe idenë tuaj. Ekipi ynë ju udhëheq nga konsultimi i parë deri te instalimi përfundimtar.',
-    en: 'One WhatsApp message is enough to get started. We guide you from the first sketch to the final install.',
+    sq: 'Mjafton një ide, një foto ose përmasat e hapësirës. Na tregoni edhe buxhetin që keni në mendje; bashkë gjejmë zgjidhjen e duhur. Konsultimi, matja dhe projekti 3D janë falas.',
+    en: 'Start with an idea, a photo or the dimensions of your space. Share the budget you have in mind and we’ll work through the options together. Consultation, measurement and 3D design are free.',
   },
   openNow: { sq: 'Hapur tani', en: 'Open now' },
   closed: { sq: 'Mbyllur', en: 'Closed' },

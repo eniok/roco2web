@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   keywords: [
     'blog mobilje',
     'dizajn interieri Shqipëri',
-    'mobilje me porosi',
+    'mobilje të personalizuara',
     'kuzhina me masë',
     'këshilla dizajni',
     'ROAL Mobileri',

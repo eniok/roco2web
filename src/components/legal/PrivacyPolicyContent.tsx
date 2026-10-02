@@ -31,7 +31,7 @@ const SECTIONS: LegalSection[] = [
     body: {
       sq: (
         <p>
-          {STORE.name} (RO-AL SH.P.K.) është një punishte mobilerie me porosi, me adresë{' '}
+          {STORE.name} (RO-AL SH.P.K.) projekton dhe realizon mobilje e interierë të personalizuar, me adresë{' '}
           {STORE.addressLine}. Na kontaktoni në {STORE.email} ose {STORE.phonePretty} për çdo
           pyetje rreth kësaj politike.
         </p>

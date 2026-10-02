@@ -15,26 +15,26 @@ type Step = {
 const STEPS: Step[] = [
   {
     icon: Ruler,
-    title: { sq: 'Konsultim dhe matje', en: 'Meeting & measuring' },
+    title: { sq: 'Bisedë dhe matje', en: 'Conversation & measurement' },
     body: {
-      sq: 'Ju takojmë në showroom ose në ambientin tuaj. Kuptojmë nevojat dhe masim hapësirën me saktësi.',
-      en: 'We come to you, or you come to us. We measure the space and listen to your idea.',
+      sq: 'Flasim për idetë, nevojat dhe buxhetin tuaj, pastaj masim hapësirën. Konsultimi dhe matja janë falas.',
+      en: 'We discuss your ideas, needs and budget, then measure your space. Consultation and measurement are free.',
     },
   },
   {
     icon: Box,
-    title: { sq: 'Projektim 3D', en: '3D design' },
+    title: { sq: 'Projekt 3D dhe ofertë', en: '3D design & a clear quote' },
     body: {
-      sq: 'E shihni projektin të plotë, me materiale dhe përmasa, përpara se të nisë prodhimi.',
-      en: 'We show you the space furnished — before production begins.',
+      sq: 'E shihni projektin në 3D falas, e përpunojmë bashkë dhe merrni ofertën e detajuar. Prodhimi nis pasi të miratoni projektin.',
+      en: 'See your space in a free 3D design, refine it with us and review the detailed quote. Production starts after you approve the design.',
     },
   },
   {
     icon: Hammer,
     title: { sq: 'Materiale të përzgjedhura', en: 'Materials built to last' },
     body: {
-      sq: 'Çdo material zgjidhet për pamjen, ndjesinë dhe qëndrueshmërinë në përdorim të përditshëm.',
-      en: 'Every piece is built with carefully chosen materials, meant to serve you for years.',
+      sq: 'Krahasoni mostrat dhe mekanizmat në showroom. Ju ndihmojmë të zgjidhni ku ia vlen të shpenzoni dhe ku mund të kurseni, sipas përdorimit.',
+      en: 'Compare samples and mechanisms in the showroom. We help you decide where to spend and where to save, based on how you will use the furniture.',
     },
   },
   {
@@ -49,11 +49,11 @@ const STEPS: Step[] = [
 
 const copy = {
   eyebrow: { sq: 'Si punojmë', en: 'How we work' },
-  headingLead: { sq: 'Nga ideja', en: 'From your idea' },
-  headingAccent: { sq: 'te realizimi.', en: 'to your home.' },
+  headingLead: { sq: 'Nga ajo që na tregoni', en: 'From what you tell us' },
+  headingAccent: { sq: 'te ajo që ndërtojmë.', en: 'to what we make.' },
   subhead: {
-    sq: 'Një proces i qartë, i udhëhequr nga i njëjti ekip: koncept, matje, projektim, prodhim dhe instalim.',
-    en: 'Years of experience in bespoke furniture. We stay with you from the first sketch to the final install — never dropped halfway.',
+    sq: 'Zëri juaj udhëheq çdo hap. I njëjti ekip ju shoqëron nga biseda dhe matja, te projektimi, prodhimi dhe instalimi.',
+    en: 'Your voice guides every step. The same team stays with you through consultation, measurement, design, production and installation.',
   },
   figuresCaption: { sq: 'Matje dhe projektim 3D', en: 'Measuring & 3D design' },
   altMeasuring: {

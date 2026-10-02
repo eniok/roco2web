@@ -16,11 +16,11 @@ import { btnGhostOnLight, btnSolidOnLight, EASE } from './ui';
 
 const copy = {
   eyebrow: { sq: 'Showroom', en: 'Showroom' },
-  headingLead: { sq: 'Shihni. Prekni.', en: 'Come touch' },
-  headingAccent: { sq: 'Vendosni me siguri.', en: 'the materials.' },
+  headingLead: { sq: 'Ejani. Eksploroni me qetësi.', en: 'Come in. Take your time.' },
+  headingAccent: { sq: 'Ne ju dëgjojmë.', en: 'We’ll listen.' },
   subhead: {
-    sq: 'Vizitoni showroom-in tonë në Km 8 të autostradës Tiranë–Durrës, vetëm 5 minuta me makinë nga City Park.',
-    en: 'Our showroom sits at Km 8 on the Tirana–Durrës highway. 5 minutes by car from City Park shopping centre.',
+    sq: 'Prekni materialet, provoni mekanizmat dhe krahasoni zgjedhjet për buxhetin tuaj. Konsultimi është falas: ejani me një ide dhe e zhvillojmë bashkë, pa presion.',
+    en: 'Touch the materials, test the mechanisms and compare options for your budget. The consultation is free: bring an idea and we’ll develop it together, without pressure.',
   },
   addressLabel: { sq: 'Adresa', en: 'Address' },
   hoursLabel: { sq: 'Orari', en: 'Hours' },

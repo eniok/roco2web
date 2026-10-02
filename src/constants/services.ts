@@ -105,9 +105,9 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         },
       },
       {
-        q: { sq: 'Si përcaktohet investimi për kuzhinën?', en: 'How much does a bespoke kitchen cost?' },
+        q: { sq: 'Si përcaktohet çmimi i kuzhinës?', en: 'How much does a bespoke kitchen cost?' },
         a: {
-          sq: 'Investimi varet nga përmasat, materialet e fronteve dhe të syprinës, si edhe nga mekanizmat e pajisjet që zgjidhni. Pas matjes, merrni projektin 3D dhe një ofertë të detajuar për të gjithë realizimin.',
+          sq: 'Çmimi varet nga përmasat, materialet e fronteve dhe të syprinës, si edhe nga mekanizmat e pajisjet që zgjidhni. Pas matjes, merrni projektin 3D dhe një ofertë të detajuar për të gjithë realizimin.',
           en: 'The price depends on the linear metres, the door and worktop materials, and the appliances you choose. The home measurement and the 3D design with a full quote are free and without obligation — so you can compare our offer against any alternative.',
         },
       },
@@ -270,9 +270,9 @@ export const SERVICES: Record<ServiceSlug, ServiceConfig> = {
         },
       },
       {
-        q: { sq: 'Si përcaktohet investimi për dhomën e gjumit?', en: 'How much does a bespoke bedroom cost?' },
+        q: { sq: 'Si përcaktohet çmimi i dhomës së gjumit?', en: 'How much does a bespoke bedroom cost?' },
         a: {
-          sq: 'Investimi varet nga përmasat, materialet dhe elementet që përfshin projekti. Pas konsultimit dhe matjes, paraqesim projektin 3D dhe ofertën e detajuar. Mund të na vizitoni në showroom-in në Km 8 të autostradës Tiranë–Durrës ose të na shkruani në WhatsApp.',
+          sq: 'Çmimi varet nga përmasat, materialet dhe elementet që përfshin projekti. Pas konsultimit dhe matjes, paraqesim projektin 3D dhe ofertën e detajuar. Mund të na vizitoni në showroom-in në Km 8 të autostradës Tiranë–Durrës ose të na shkruani në WhatsApp.',
           en: 'It depends on dimensions, materials and the elements you choose. Measurement and the 3D design with a full price are free — visit the showroom at Km 8 of the Tirana–Durrës highway or message us on WhatsApp.',
         },
       },

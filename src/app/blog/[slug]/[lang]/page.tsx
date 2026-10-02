@@ -11,6 +11,7 @@ import { collection, doc, getDoc, getDocs } from 'firebase/firestore/lite';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { BlogPost, Lang } from '@/constants/blogData';
 import { db } from '@/lib/firebase/firestore';
+import { normalizeBlogCopy } from '@/lib/blogCopy';
 
 const SITE_URL = 'https://roal.design';
 const BRAND = 'ROAL Mobileri';
@@ -22,7 +23,7 @@ function readingTime(html: string): number {
 }
 
 function normalizeSlug<T extends Partial<BlogPost>>(data: T, id: string): BlogPost {
-  return { ...data, slug: (data as any).slug ?? id } as BlogPost;
+  return normalizeBlogCopy({ ...data, slug: (data as any).slug ?? id } as BlogPost);
 }
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
@@ -77,7 +78,7 @@ function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: stri
     isAccessibleForFree: true,
     articleSection: 'Furniture Design',
     keywords:
-      post.seo?.keywords || 'mobileri me porosi, kuzhina me masë, dizajn interieri',
+      post.seo?.keywords || 'interierë të personalizuar, kuzhina me masë, dizajn interieri',
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -170,9 +171,9 @@ export async function generateMetadata({
     description,
     keywords:
       seo?.keywords?.split(',').map((k) => k.trim()) || [
-        'mobileri me porosi',
+        'interierë të personalizuar',
         'kuzhina me masë',
-        'garderoba me porosi',
+        'garderoba të integruara',
         'dizajn interieri',
         'mobileri Tiranë',
         'ROAL Mobileri',
