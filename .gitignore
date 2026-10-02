@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Rendered social media (videos, audio, frames) — regenerate with scripts/render-kitchen-builder-*.mjs
+/social/
