@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { localizedHref } from '@/lib/localizedRoutes';
 import { usePathname } from 'next/navigation';
 import { MapPin, Phone } from 'lucide-react';
 import { navLinks } from '../constants';
@@ -49,7 +50,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
           <Link
-            href="/"
+            href={localizedHref('/', lang)}
             aria-label="ROAL Mobileri — kreu"
             className="relative z-50 flex items-center"
             onClick={() => setNavOpen(false)}
@@ -71,7 +72,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizedHref(link.href, lang)}
                 className={`group relative py-2 text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
                   dark ? 'hover:text-sand' : 'hover:text-clay'
                 }`}
@@ -148,7 +149,7 @@ const Header = ({ navScrolled }: HeaderProps) => {
                     className="border-b border-white/10"
                   >
                     <Link
-                      href={link.href}
+                      href={localizedHref(link.href, lang)}
                       onClick={() => setNavOpen(false)}
                       className="group flex items-baseline gap-4 py-4"
                     >

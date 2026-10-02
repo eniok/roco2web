@@ -1,5 +1,8 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+import { routeLanguage } from './localizedRoutes';
+
 import {
   createContext,
   useContext,
@@ -62,9 +65,18 @@ const LangContext = createContext<LangContextValue>({
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
+  const pathname = usePathname();
+  const urlLang = routeLanguage(pathname);
+  const [preferredLang, setLangState] = useState<Lang>(urlLang ?? DEFAULT_LANG);
+  // A translated URL determines both the server HTML and the hydrated UI.
+  // Saved preferences must never replace content at a canonical language URL.
+  const lang = urlLang ?? preferredLang;
 
   useEffect(() => {
+    if (urlLang) {
+      setLangState(urlLang);
+      return;
+    }
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored === 'sq' || stored === 'en') {
@@ -75,7 +87,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
     } catch {
       // localStorage can throw in private mode; fall back to default
     }
-  }, []);
+  }, [urlLang]);
 
   useEffect(() => {
     if (typeof document !== 'undefined') {

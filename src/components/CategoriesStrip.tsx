@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { localizedHref } from '@/lib/localizedRoutes';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useLang, type Dict } from '@/lib/i18n';
@@ -140,7 +141,7 @@ export default function CategoriesStrip() {
                 className="w-[78%] shrink-0 snap-start bg-ink first:snap-align-none sm:w-[55%] md:w-auto"
               >
                 {c.href ? (
-                  <Link href={c.href} className={tileClasses}>
+                  <Link href={localizedHref(c.href, lang)} className={tileClasses}>
                     {tile}
                   </Link>
                 ) : (

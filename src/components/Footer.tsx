@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { localizedHref } from '@/lib/localizedRoutes';
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 import { navLinks } from '../constants';
 import { useLang, type Dict } from '@/lib/i18n';
@@ -8,8 +9,8 @@ import { STORE } from '@/lib/store';
 
 const copy = {
   tagline: {
-    sq: 'Interierë të menduar me kujdes, të realizuar për të zgjatur.',
-    en: 'Bespoke furniture, built to last.',
+    sq: 'Ideja juaj. Kujdesi ynë. Mobilje për të jetuar mirë.',
+    en: 'Your ideas. Our care. Furniture to live well with.',
   },
   explore: { sq: 'Eksploroni', en: 'Explore' },
   services: { sq: 'Shërbimet', en: 'Services' },
@@ -48,7 +49,7 @@ const Footer = () => {
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-12">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Link href="/" aria-label="ROAL Mobileri — kreu">
+            <Link href={localizedHref('/', lang)} aria-label="ROAL Mobileri — kreu">
               <img
                 src="/logo.svg"
                 alt="ROAL Mobileri"
@@ -102,7 +103,7 @@ const Footer = () => {
           <nav aria-label={copy.explore[lang]} className="md:col-span-2">
             <h3 className={colHeading}>{copy.explore[lang]}</h3>
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={colLink}>
+              <Link key={link.href} href={localizedHref(link.href, lang)} className={colLink}>
                 {link.label[lang]}
               </Link>
             ))}
@@ -112,7 +113,7 @@ const Footer = () => {
           <nav aria-label={copy.services[lang]} className="md:col-span-2">
             <h3 className={colHeading}>{copy.services[lang]}</h3>
             {SERVICE_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className={colLink}>
+              <Link key={link.href} href={localizedHref(link.href, lang)} className={colLink}>
                 {link.label[lang]}
               </Link>
             ))}
@@ -122,7 +123,7 @@ const Footer = () => {
           <nav aria-label={copy.legal[lang]} className="md:col-span-3">
             <h3 className={colHeading}>{copy.legal[lang]}</h3>
             {LEGAL_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className={colLink}>
+              <Link key={link.href} href={localizedHref(link.href, lang)} className={colLink}>
                 {link.label[lang]}
               </Link>
             ))}

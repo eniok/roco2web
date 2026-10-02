@@ -3,6 +3,8 @@ import { Poppins, Fraunces } from 'next/font/google';
 import './globals.css';
 import MainLayout from '@/components/MainLayout';
 import { FirebaseAnalytics } from '@/components/FirebaseAnalytics';
+import { ALL_SERVICES } from '@/constants/services';
+import { HOME_COPY } from '@/lib/seo';
 
 /* ------------------------------------------------------------------ */
 /* Fonts                                                              */
@@ -25,31 +27,22 @@ const fraunces = Fraunces({
 /* ------------------------------------------------------------------ */
 export const metadata: Metadata = {
   title: {
-    default: 'ROAL Mobileri — Interierë të personalizuar në Tiranë',
+    default: HOME_COPY.title.sq,
     template: '%s | ROAL Mobileri',
   },
 
   description:
-    'Kuzhina, garderoba dhe interierë të plotë, të projektuar për hapësirën dhe mënyrën tuaj të jetesës. Showroom në Km 8 të autostradës Tiranë–Durrës. Konsultim, matje dhe projektim 3D falas.',
+    HOME_COPY.description.sq,
 
   metadataBase: new URL('https://roal.design'),
 
-  alternates: {
-    canonical: 'https://roal.design/',
-    types: {
-      'text/plain': [
-        { url: '/llms.txt', title: 'LLMs.txt — site summary for AI crawlers' },
-      ],
-    },
-  },
-
   keywords: [
-    'mobileri me porosi',
-    'mobilje me porosi',
-    'kuzhina me porosi',
+    'interierë të personalizuar',
+    'mobilje të personalizuara',
+    'kuzhina të projektuara',
     'kuzhina me masë',
-    'garderoba me porosi',
-    'dhoma gjumi me porosi',
+    'garderoba të integruara',
+    'dhoma gjumi të personalizuara',
     'mobileri Tiranë',
     'mobileri Durrës',
     'mobileri Shqipëri',
@@ -66,9 +59,9 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: 'ROAL Mobileri — Interierë të personalizuar në Tiranë',
+    title: HOME_COPY.title.sq,
     description:
-      'Kuzhina, garderoba dhe ambiente të plota të projektuara për t\u2019ju shërbyer për vite. Ju shoqërojmë në çdo hap.',
+      HOME_COPY.description.sq,
     url: 'https://roal.design/',
     type: 'website',
     siteName: 'ROAL Mobileri',
@@ -85,12 +78,12 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    site: '@roalmobileri',
   },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   },
 
   verification: {
@@ -113,7 +106,7 @@ const LOCAL_BUSINESS_JSON_LD = {
     {
       '@language': 'sq',
       '@value':
-        'Mobileri me porosi në Tiranë. Kuzhina, garderoba, mobilje zyre dhe ambiente të plota, të projektuara për të zgjatur.',
+        'Mobilje dhe interierë të personalizuar në Tiranë. Kuzhina, garderoba, mobilje zyre dhe ambiente të plota, të projektuara për të zgjatur.',
     },
     {
       '@language': 'en',
@@ -121,24 +114,23 @@ const LOCAL_BUSINESS_JSON_LD = {
         'Custom furniture workshop and showroom in Tirana, Albania. Bespoke kitchens, fitted wardrobes, office furniture and full home interiors — designed, built and installed by one team, with a 2-year warranty.',
     },
   ],
-  slogan: 'Interierë të menduar me kujdes, të realizuar për të zgjatur',
+  slogan: 'Ideja juaj. Kujdesi ynë. Mobilje për të jetuar mirë.',
   url: 'https://roal.design/',
   image: 'https://roal.design/images/cover.jpg',
   logo: 'https://roal.design/logo.svg',
   telephone: '+355672029739',
   email: 'info@roalmobileri.com',
-  priceRange: '$$$',
   currenciesAccepted: 'ALL, EUR',
   paymentAccepted: 'Cash, Bank transfer, Bank instalment plans',
   hasMap: 'https://www.google.com/maps/search/?api=1&query=41.367775,19.69557',
   knowsAbout: [
-    'kuzhina me porosi',
+    'kuzhina të projektuara',
     'bespoke kitchens',
     'garderoba me përmasë',
     'fitted wardrobes',
-    'dhoma gjumi me porosi',
+    'dhoma gjumi të personalizuara',
     'bedroom furniture',
-    'krevate me porosi',
+    'krevate të personalizuara',
     'custom beds',
     'mobilje zyre',
     'office furniture',
@@ -184,82 +176,21 @@ const LOCAL_BUSINESS_JSON_LD = {
   sameAs: ['https://www.instagram.com/roal_mobileri/'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Sherbime ROAL Mobileri',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Kuzhina me porosi',
-          serviceType: 'Bespoke kitchens',
-          description:
-            'Kuzhina të projektuara dhe të punuara sipas përmasave të hapësirës suaj, me materiale të zgjedhura për të zgjatur vite.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
+    name: 'Shërbime ROAL Mobileri',
+    itemListElement: ALL_SERVICES.map((service) => ({
+      '@type': 'Offer',
+      url: `https://roal.design/${service.slug}`,
+      itemOffered: {
+        '@type': 'Service',
+        '@id': `https://roal.design/${service.slug}#service`,
+        name: service.eyebrow.sq,
+        alternateName: service.eyebrow.en,
+        serviceType: service.serviceType,
+        url: `https://roal.design/${service.slug}`,
+        provider: { '@id': 'https://roal.design/#business' },
+        areaServed: { '@type': 'Country', name: 'Albania' },
       },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Garderoba me përmasë',
-          serviceType: 'Fitted wardrobes',
-          description:
-            'Garderoba dhe dollapë me masë për çdo dhomë, përfshirë hapësira të parregullta dhe tavane të pjerrëta.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Ambiente pune dhe mobilje zyre',
-          alternateName: 'Office furniture and workspace fit-out',
-          serviceType: 'Office furniture, home office and workspace fit-out',
-          description:
-            'Mobilje zyre me porosi — tavolina pune, rafte dhe ambiente të plota zyre për shtëpinë ose biznesin tuaj.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Dhoma gjumi me porosi',
-          serviceType: 'Bedroom furniture',
-          description:
-            'Dhoma gjumi të plota me masë — krevate, komodina, garderoba dhe koka krevati të punuara sipas hapësirës suaj.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Dhoma ndenjeje',
-          serviceType: 'Living-room cabinetry',
-          description:
-            'Mobilim i integruar për dhomën e ndenjes — vitrina, mure medie dhe depozitim i personalizuar.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Hoteleri dhe lokale',
-          serviceType: 'Hospitality and retail fit-out',
-          description:
-            'Projekte komerciale për hotele, restorante, bare dhe dyqane në gjithë Shqipërinë.',
-          areaServed: { '@type': 'Country', name: 'Albania' },
-          provider: { '@id': 'https://roal.design/#business' },
-        },
-      },
-    ],
+    })),
   },
 };
 
@@ -268,7 +199,7 @@ const WEBSITE_JSON_LD = {
   '@type': 'WebSite',
   '@id': 'https://roal.design/#website',
   name: 'ROAL Mobileri',
-  alternateName: 'ROAL — Mobileri me porosi në Tiranë',
+  alternateName: 'ROAL — Mobilje dhe interierë të personalizuar në Tiranë',
   url: 'https://roal.design/',
   inLanguage: ['sq', 'en'],
   publisher: { '@id': 'https://roal.design/#business' },

@@ -1,42 +1,44 @@
 import type { ServiceConfig } from '@/constants/services';
+import type { Lang } from './i18n';
+import { localizedHref } from './localizedRoutes';
+import { SITE_URL } from './seo';
 
-const SITE_URL = 'https://roal.design';
-
-export function buildServiceSchema(service: ServiceConfig) {
-  const url = `${SITE_URL}/${service.slug}`;
-
-  // Each node is emitted as a top-level entity in @graph so Google parses them
-  // independently — FAQPage as a standalone node is eligible for FAQ rich results
-  // (it was previously buried inside Service.mainEntityOfPage and ignored), and
-  // the BreadcrumbList drives the breadcrumb trail in search results.
+export function buildServiceSchema(service: ServiceConfig, lang: Lang = 'sq') {
+  const url = `${SITE_URL}${localizedHref(`/${service.slug}`, lang)}`;
+  const serviceId = `${SITE_URL}/${service.slug}#service`;
+  // Entity IDs stay stable across translations; each page has its own URL,
+  // language and FAQ matching the content rendered for visitors.
   const graph: Record<string, unknown>[] = [
     {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: service.metaTitle[lang],
+      description: service.metaDescription[lang],
+      inLanguage: lang,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      mainEntity: { '@id': serviceId },
+      breadcrumb: { '@id': `${url}#breadcrumb` },
+    },
+    {
       '@type': 'Service',
-      '@id': `${url}#service`,
-      name: service.eyebrow.sq,
-      alternateName: service.eyebrow.en,
+      '@id': serviceId,
+      name: service.eyebrow[lang],
+      alternateName: service.eyebrow[lang === 'sq' ? 'en' : 'sq'],
       serviceType: service.serviceType,
-      description: service.metaDescription.sq,
+      description: service.metaDescription[lang],
       url,
       image: `${SITE_URL}${service.image}`,
       provider: { '@id': `${SITE_URL}/#business` },
       areaServed: { '@type': 'Country', name: 'Albania' },
-      offers: {
-        '@type': 'Offer',
-        availability: 'https://schema.org/InStock',
-        priceCurrency: 'ALL',
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          description: 'Kuota sipas projektit — konsultimi dhe matja janë falas.',
-        },
-      },
+      mainEntityOfPage: { '@id': `${url}#webpage` },
     },
     {
       '@type': 'BreadcrumbList',
       '@id': `${url}#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Kreu', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: service.eyebrow.sq, item: url },
+        { '@type': 'ListItem', position: 1, name: lang === 'sq' ? 'Kreu' : 'Home', item: `${SITE_URL}${localizedHref('/', lang)}` },
+        { '@type': 'ListItem', position: 2, name: service.eyebrow[lang], item: url },
       ],
     },
   ];
@@ -45,16 +47,13 @@ export function buildServiceSchema(service: ServiceConfig) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
+      inLanguage: lang,
+      isPartOf: { '@id': `${url}#webpage` },
       mainEntity: service.faqs.map((f) => ({
-        '@type': 'Question',
-        name: f.q.sq,
-        acceptedAnswer: { '@type': 'Answer', text: f.a.sq },
+        '@type': 'Question', name: f.q[lang],
+        acceptedAnswer: { '@type': 'Answer', text: f.a[lang] },
       })),
     });
   }
-
-  return {
-    '@context': 'https://schema.org',
-    '@graph': graph,
-  };
+  return { '@context': 'https://schema.org', '@graph': graph };
 }

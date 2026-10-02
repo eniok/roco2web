@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { localizedHref } from '@/lib/localizedRoutes';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, MessageCircle, Plus } from 'lucide-react';
 import { useLang, type Dict } from '@/lib/i18n';
@@ -12,12 +13,16 @@ const copy = {
   backHome: { sq: '← Kreu', en: '← Home' },
   ctaHeading: { sq: 'Le ta nisim projektin tuaj.', en: 'Let\u2019s start.' },
   ctaSub: {
-    sq: 'Çdo realizim nis me një konsultim të kujdesshëm. Vizitoni showroom-in ose na shkruani për të caktuar një takim.',
-    en: 'The consultation and measurement are free. Visit the showroom or message us to book a meeting.',
+    sq: 'Na tregoni idenë dhe buxhetin tuaj. Konsultimi, matja dhe projekti 3D janë falas; zgjedhjet dhe ofertën i diskutojmë bashkë përpara prodhimit.',
+    en: 'Tell us your idea and budget. Consultation, measurement and 3D design are free; we work through the options and quote together before production.',
+  },
+  budgetNote: {
+    sq: 'Nisim nga idetë dhe buxheti juaj. Krahasojmë materialet bashkë dhe ju japim një ofertë të detajuar përpara prodhimit.',
+    en: 'We start with your ideas and budget. Compare materials with us and review a detailed quote before production.',
   },
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
   moreServices: { sq: 'Shërbime të tjera', en: 'More services' },
-  viewService: { sq: 'Shihni projektet', en: 'View service' },
+  viewService: { sq: 'Shihni shërbimin', en: 'View service' },
   catalogueCta: { sq: 'Shfletoni udhëzuesin e materialeve', en: 'Browse the choice atlas' },
 } satisfies Record<string, Dict<string>>;
 
@@ -35,13 +40,13 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
         : undefined;
 
   return (
-    <main id="main-content" className="bg-[#FAF8F4] text-[#15130F]">
+    <main id="main-content" lang={lang} className="bg-[#FAF8F4] text-[#15130F]">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
             <Link
-              href="/"
+              href={localizedHref('/', lang)}
               className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] hover:underline"
             >
               {copy.backHome[lang]}
@@ -79,9 +84,13 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
               {service.subhead[lang]}
             </motion.p>
 
+            <p className="mt-5 max-w-xl border-l border-[#8B4A2E]/35 pl-4 text-sm leading-relaxed text-[#3A352C]">
+              {copy.budgetNote[lang]}
+            </p>
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href={SHOWROOM_HREF}
+                href={localizedHref(SHOWROOM_HREF, lang)}
                 className="inline-flex items-center gap-2 rounded-full bg-[#15130F] px-6 py-3 text-sm font-medium text-[#FAF8F4] transition hover:bg-[#8B4A2E]"
               >
                 {copy.visitCta[lang]}
@@ -250,7 +259,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
             >
               {others.map((s) => (
                 <li key={s.slug} className="border-t border-[#15130F]/15 pt-5">
-                  <Link href={`/${s.slug}`} className="group block focus:outline-none">
+                  <Link href={localizedHref(`/${s.slug}`, lang)} className="group block focus:outline-none">
                     <h3
                       className="font-serif text-xl font-normal leading-snug tracking-tight text-[#15130F] transition-colors group-hover:text-[#8B4A2E]"
                       style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
@@ -292,7 +301,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href={SHOWROOM_HREF}
+              href={localizedHref(SHOWROOM_HREF, lang)}
               className="inline-flex items-center gap-2 rounded-full bg-[#FAF8F4] px-6 py-3 text-sm font-medium text-[#15130F] transition hover:bg-[#E8B894]"
             >
               {copy.visitCta[lang]}

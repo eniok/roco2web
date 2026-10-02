@@ -2,18 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
 import { useLang, type Lang } from '@/lib/i18n';
+import { localizedHref, routeLanguage } from '@/lib/localizedRoutes';
 
 const LANGS: { code: Lang; label: string }[] = [
   { code: 'sq', label: 'SQ' },
   { code: 'en', label: 'EN' },
 ];
 
-// The only language-keyed (SEO) routes are individual blog posts:
-// /blog/<slug>/<lang>. On those, language switching must navigate between real
-// URLs so each language stays separately indexable; everywhere else the toggle
-// just flips the client-side display language.
+// Home, services and individual blog posts have indexable language URLs.
+// Keep the in-page toggle for routes without a translated URL.
 const BLOG_POST_RE = /^\/blog\/([^/]+)\/(sq|en)\/?$/;
 
 export default function LangToggle({ className = '' }: { className?: string }) {
@@ -22,18 +20,8 @@ export default function LangToggle({ className = '' }: { className?: string }) {
 
   const match = pathname?.match(BLOG_POST_RE);
   const blogSlug = match?.[1] ?? null;
-  const urlLang = (match?.[2] as Lang | undefined) ?? null;
-
-  // On a language-keyed blog post the URL is the source of truth — sync the
-  // global context so the chrome (nav labels, etc.) matches. This is a transient
-  // sync (persist: false): landing on an EN post from search must NOT overwrite
-  // an Albanian-primary visitor's explicitly-chosen language in localStorage.
-  useEffect(() => {
-    if (urlLang && urlLang !== lang) setLang(urlLang, false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urlLang]);
-
-  const activeLang = urlLang ?? lang;
+  const activeLang = routeLanguage(pathname) ?? lang;
+  const hasLanguageRoute = Boolean(routeLanguage(pathname));
 
   return (
     <div
@@ -50,10 +38,11 @@ export default function LangToggle({ className = '' }: { className?: string }) {
         return (
           <div key={l.code} className="inline-flex items-center">
             {i > 0 && <span className="mx-1.5 opacity-40">/</span>}
-            {blogSlug ? (
+            {hasLanguageRoute ? (
               // SEO-compliant: a real link to the other-language URL.
               <Link
-                href={`/blog/${blogSlug}/${l.code}`}
+                href={blogSlug ? `/blog/${blogSlug}/${l.code}` : localizedHref(pathname, l.code)}
+                onClick={() => setLang(l.code)}
                 hrefLang={l.code}
                 aria-current={isActive ? 'true' : undefined}
                 className={classes}
