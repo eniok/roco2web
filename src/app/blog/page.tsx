@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import type { BlogPost } from '@/constants/blogData';
 import { getAllBlogPosts } from '@/lib/firebase/firestore';
-import BlogListContent from './BlogListContent';
+import BlogListContent, { type BlogCardPost } from './BlogListContent';
 
 export const metadata: Metadata = {
   title: 'Blog — Shënime nga studioja ROAL',
@@ -60,5 +60,8 @@ export const revalidate = 3600;
 
 export default async function BlogListPage() {
   const posts = (await getAllBlogPosts().catch(() => [])) as BlogPost[];
-  return <BlogListContent posts={posts} />;
+  const cards: BlogCardPost[] = posts.map(({ slug, imageUrl, titles, authors, dates, excerpts }) => (
+    { slug, imageUrl, titles, authors, dates, excerpts }
+  ));
+  return <BlogListContent posts={cards} />;
 }

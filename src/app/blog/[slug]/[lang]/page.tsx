@@ -4,14 +4,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import parse from 'html-react-parser';
-import Script from 'next/script';
 import { ArrowLeft, ArrowUpRight, Share2 } from 'lucide-react';
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore/lite';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import { BlogPost, Lang } from '@/constants/blogData';
+import { BlogPost, Lang, SeoMetadata } from '@/constants/blogData';
 import { db } from '@/lib/firebase/firestore';
 import { normalizeBlogCopy } from '@/lib/blogCopy';
+import { localizedHref } from '@/lib/localizedRoutes';
 
 const SITE_URL = 'https://roal.design';
 const BRAND = 'ROAL Mobileri';
@@ -53,67 +53,77 @@ async function getPublicImageUrl(imageUrl: string): Promise<string> {
   return `${SITE_URL}/images/${imageUrl}`;
 }
 
+// A CMS SEO block with a canonicalUrl was written for that URL's language, so
+// its titles and descriptions apply only to that page; the other language uses
+// the post's own copy. Keywords and the image are language-neutral.
+function localizedSeo(seo: SeoMetadata | undefined, lang: Lang): Partial<SeoMetadata> | undefined {
+  return seo?.canonicalUrl?.endsWith(`/${lang}`) ? seo : undefined;
+}
+
 function generateStructuredData(post: BlogPost, lang: Lang, publicImageUrl: string) {
   const postUrl = `${SITE_URL}/blog/${post.slug}/${lang}`;
+  const homeUrl = `${SITE_URL}${localizedHref('/', lang)}`;
 
+  // Plain ld+json in the initial HTML, linked to the site-wide business and
+  // website entities, so crawlers that don't run JavaScript can read it.
   return {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.titles[lang],
-    description: post.excerpts[lang],
-    image: publicImageUrl,
-    author: { '@type': 'Person', name: post.authors[lang] },
-    publisher: {
-      '@type': 'Organization',
-      name: BRAND,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-    },
-    // Prefer the ISO timestamp (valid schema.org Date); locale strings like
-    // "9 Janar 2025" are not parseable by search engines.
-    datePublished: (post as any).publishedAt || post.dates[lang],
-    dateModified: (post as any).updatedAt || (post as any).publishedAt || post.dates[lang],
-    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
-    url: postUrl,
-    inLanguage: lang === 'sq' ? 'sq' : 'en',
-    isAccessibleForFree: true,
-    articleSection: 'Furniture Design',
-    keywords:
-      post.seo?.keywords || 'interierë të personalizuar, kuzhina me masë, dizajn interieri',
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: lang === 'sq' ? 'Kreu' : 'Home',
-          item: SITE_URL,
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${postUrl}#webpage`,
+        url: postUrl,
+        name: post.titles[lang],
+        inLanguage: lang,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        breadcrumb: { '@id': `${postUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BlogPosting',
+        '@id': `${postUrl}#article`,
+        headline: post.titles[lang],
+        description: post.excerpts[lang],
+        image: publicImageUrl,
+        author: { '@type': 'Person', name: post.authors[lang] },
+        publisher: {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#business`,
+          name: BRAND,
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
         },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Blog',
-          item: `${SITE_URL}/blog`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: post.titles[lang],
-          item: postUrl,
-        },
-      ],
-    },
+        // Prefer the ISO date (valid schema.org Date); locale strings like
+        // "9 Janar 2025" are not parseable by search engines.
+        datePublished: post.publishedAt || post.dates[lang],
+        dateModified: post.updatedAt || post.publishedAt || post.dates[lang],
+        mainEntityOfPage: { '@id': `${postUrl}#webpage` },
+        url: postUrl,
+        inLanguage: lang,
+        isAccessibleForFree: true,
+        articleSection: 'Furniture Design',
+        keywords:
+          post.seo?.keywords || 'interierë të personalizuar, kuzhina me masë, dizajn interieri',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${postUrl}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: lang === 'sq' ? 'Kreu' : 'Home', item: homeUrl },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+          { '@type': 'ListItem', position: 3, name: post.titles[lang], item: postUrl },
+        ],
+      },
+    ],
   };
 }
 
-function sortByDateDesc(posts: BlogPost[], lang: Lang) {
-  return [...posts].sort(
-    (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
-  );
+// Localized display dates ("9 Janar 2025") don't parse; sort on the ISO date.
+function sortByDateDesc(posts: BlogPost[]) {
+  return [...posts].sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''));
 }
 
-async function getNextPosts(currentSlug: string, lang: Lang, count = 3): Promise<BlogPost[]> {
+async function getNextPosts(currentSlug: string, count = 3): Promise<BlogPost[]> {
   const posts = await getAllPosts();
-  return sortByDateDesc(posts, lang)
+  return sortByDateDesc(posts)
     .filter((p) => p.slug !== currentSlug)
     .slice(0, count);
 }
@@ -137,7 +147,7 @@ export async function generateMetadata({
   const post = await getBlogPost(slug);
   if (!post) return {};
 
-  const seo = post.seo;
+  const seo = localizedSeo(post.seo, lang);
   const baseUrl = new URL(SITE_URL);
   const canonicalPath = `/blog/${slug}/${lang}`;
   const selfUrl = `${baseUrl.origin}${canonicalPath}`;
@@ -153,8 +163,9 @@ export async function generateMetadata({
       ? seo.canonicalUrl
       : selfUrl;
 
-  const imageUrl = seo?.ogImage || post.imageUrl;
+  const imageUrl = post.seo?.ogImage || post.imageUrl;
   const publicImageUrl = await getPublicImageUrl(imageUrl);
+  const keywords = post.seo?.keywords?.split(',').map((k) => k.trim());
 
   // The root layout applies the `%s | ROAL Mobileri` template, so the document
   // <title> must NOT already include the brand. Use the bare post title (template
@@ -170,7 +181,7 @@ export async function generateMetadata({
     title: seo?.metaTitle ? { absolute: seo.metaTitle } : titleText,
     description,
     keywords:
-      seo?.keywords?.split(',').map((k) => k.trim()) || [
+      keywords || [
         'interierë të personalizuar',
         'kuzhina me masë',
         'garderoba të integruara',
@@ -178,18 +189,20 @@ export async function generateMetadata({
         'mobileri Tiranë',
         'ROAL Mobileri',
       ],
+    // Same language codes and x-default as the localized service pages.
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'sq-AL': `/blog/${slug}/sq`,
-        'en-AL': `/blog/${slug}/en`,
+        sq: `${SITE_URL}/blog/${slug}/sq`,
+        en: `${SITE_URL}/blog/${slug}/en`,
+        'x-default': `${SITE_URL}/blog/${slug}/sq`,
       },
     },
     openGraph: {
       title: socialTitle,
       description: seo?.ogDescription || description,
       url: seo?.ogUrl && seo.ogUrl.startsWith(SITE_URL) ? seo.ogUrl : canonicalUrl,
-      type: seo?.ogType || 'article',
+      type: 'article',
       images: [
         {
           url: publicImageUrl,
@@ -198,11 +211,14 @@ export async function generateMetadata({
           alt: post.titles[lang],
         },
       ],
-      locale: lang === 'sq' ? 'sq_AL' : 'en_US',
+      locale: lang === 'sq' ? 'sq_AL' : 'en_GB',
+      alternateLocale: lang === 'sq' ? ['en_GB'] : ['sq_AL'],
       siteName: BRAND,
-      publishedTime: post.dates[lang],
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.authors[lang]],
-      tags: seo?.keywords?.split(',').map((k) => k.trim()) || [],
+      section: 'Furniture Design',
+      tags: keywords || [],
     },
     twitter: {
       card: 'summary_large_image',
@@ -222,12 +238,6 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    other: {
-      'article:published_time': post.dates[lang],
-      'article:author': post.authors[lang],
-      'article:section': 'Furniture Design',
-      'article:tag': seo?.keywords?.split(',').map((k) => k.trim()) || [],
-    },
   };
 }
 
@@ -242,9 +252,9 @@ export default async function BlogPage({
   const post = await getBlogPost(slug);
   if (!post) return notFound();
 
-  const suggestions = await getNextPosts(slug, lang);
+  const suggestions = await getNextPosts(slug);
 
-  const { titles, authors, dates, content, imageUrl } = post;
+  const { titles, authors, dates, content, imageUrl, publishedAt } = post;
   const title = titles[lang];
   const author = authors[lang];
   const date = dates[lang];
@@ -270,10 +280,9 @@ export default async function BlogPage({
 
   return (
     <>
-      <Script
-        id="structured-data"
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
       />
 
       <main id="main-content" className="relative bg-[#FAF8F4] text-[#15130F]">
@@ -283,7 +292,7 @@ export default async function BlogPage({
           <nav aria-label="Breadcrumb" className="mb-10">
             <ol className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
               <li>
-                <Link href="/" className="hover:text-[#8B4A2E] transition-colors">
+                <Link href={localizedHref('/', lang)} className="hover:text-[#8B4A2E] transition-colors">
                   {t.home}
                 </Link>
               </li>
@@ -306,7 +315,7 @@ export default async function BlogPage({
           {/* Header */}
           <header>
             <p className="text-xs uppercase tracking-[0.18em] text-[#15130F]/55">
-              <time dateTime={date}>{date}</time>
+              <time dateTime={publishedAt}>{date}</time>
               <span className="mx-2">·</span>
               {author}
               <span className="mx-2">·</span>
@@ -324,13 +333,13 @@ export default async function BlogPage({
           </header>
         </div>
 
-        {/* Full-width hero image */}
+        {/* Full-width hero image — the page's largest paint, so load it eagerly */}
         <div className="mx-auto mt-12 max-w-5xl px-6 sm:px-8">
           <div className="relative overflow-hidden bg-[#E8E3DB]" style={{ aspectRatio: '16 / 9' }}>
             <img
               src={imageUrl}
               alt={title}
-              loading="lazy"
+              fetchPriority="high"
               decoding="async"
               className="h-full w-full object-cover"
             />

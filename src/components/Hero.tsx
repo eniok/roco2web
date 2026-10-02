@@ -86,6 +86,7 @@ export default function Hero() {
   const rafRef = useRef(0);
 
   // Frame-download progress for the loading bar (motion value: no re-renders).
+  const [framesLoading, setFramesLoading] = useState(false);
   const [framesReady, setFramesReady] = useState(false);
   const loadProgress = useMotionValue(0);
   const loadBarScale = useSpring(loadProgress, { stiffness: 120, damping: 28 });
@@ -213,11 +214,27 @@ export default function Hero() {
       };
       img.src = frameSrc(index);
     };
-    // Modest concurrency so frames don't starve the rest of the page.
-    for (let i = 0; i < 4; i++) loadNext();
+    // The sequence is ~8 MB. Large screens fetch it straight away; phones and
+    // Save-Data visitors wait for the first scroll or touch, so someone who
+    // reads the hero and taps a button doesn't download the animation.
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const eager = !connection?.saveData && window.matchMedia('(min-width: 1024px)').matches;
+    const intentEvents = ['scroll', 'wheel', 'touchstart', 'keydown'] as const;
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      intentEvents.forEach((type) => window.removeEventListener(type, start));
+      setFramesLoading(true);
+      // Modest concurrency so frames don't starve the rest of the page.
+      for (let i = 0; i < 4; i++) loadNext();
+    };
+    if (eager || window.scrollY > 0) start();
+    else intentEvents.forEach((type) => window.addEventListener(type, start, { passive: true }));
 
     return () => {
       cancelled = true;
+      intentEvents.forEach((type) => window.removeEventListener(type, start));
       window.removeEventListener('resize', resize);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = 0;
@@ -372,7 +389,7 @@ export default function Hero() {
 
         {/* Frame-download progress — hairline along the bottom edge, gone once loaded */}
         <AnimatePresence>
-          {!reducedMotion && !framesReady && (
+          {!reducedMotion && framesLoading && !framesReady && (
             <motion.div
               aria-hidden="true"
               initial={{ opacity: 0 }}

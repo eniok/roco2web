@@ -48,10 +48,14 @@ function postTimestamp(date: string): number {
   return new Date(Number(year[0]), MONTHS[monthKey], Number(day[0])).getTime();
 }
 
+// Only the fields a card renders; passing whole posts serialized every article
+// body into the page's client payload.
+export type BlogCardPost = Pick<BlogPost, 'slug' | 'imageUrl' | 'titles' | 'authors' | 'dates' | 'excerpts'>;
+
 // Posts are fetched server-side in page.tsx and passed in, so the full list is
 // present in the initial HTML for crawlers. `useLang` only swaps the display
 // language client-side (default 'sq' during SSR/hydration — no mismatch).
-export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
+export default function BlogListContent({ posts }: { posts: BlogCardPost[] }) {
   const { lang } = useLang();
 
   const sortedPosts = [...posts].sort(
