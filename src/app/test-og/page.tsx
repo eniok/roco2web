@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Test Open Graph - RO-AL Mobileri',
   description: 'This is a test page to verify Open Graph meta tags are working correctly for social media sharing.',
+  robots: { index: false, follow: false },
   openGraph: {
     title: 'Test Open Graph - RO-AL Mobileri',
     description: 'This is a test page to verify Open Graph meta tags are working correctly for social media sharing.',

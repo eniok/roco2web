@@ -53,7 +53,22 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 ```
 
-## 📦 Deployment Steps
+## 🤖 Automatic Deploys (GitHub Actions)
+
+Merging to `main` deploys the site: `.github/workflows/deploy.yml` runs `firebase deploy --only hosting`, which builds Next.js and updates both Hosting (live) and the SSR function `ssrroalweb` (europe-west1). You can also run **Deploy to Firebase** manually from the Actions tab. Each release message is the commit SHA, so the Firebase Hosting release history shows which commit is live.
+
+Pull requests only run a build check (`.github/workflows/build.yml`). Preview channels are possible, since each Hosting release is pinned to its own tagged function revision so previews don't affect live. They're left out because every PR push would then do a full function deploy.
+
+Deploys fail if a function in the `firebase-frameworks-roal-web` codebase exists outside the source, for example an `ssrroalweb` left in another region. CI runs non-interactively and can't confirm the deletion. Delete it with `firebase functions:delete <name> --region <region>`.
+
+CI configuration:
+
+- Secret `FIREBASE_SERVICE_ACCOUNT_ROAL_WEB`: key for `github-action-1009879602@roal-web.iam.gserviceaccount.com`. It has Firebase Hosting Admin and Cloud Functions Developer on the project, plus Service Account User on `roal-web@appspot` and the default compute service account.
+- Variables `NEXT_PUBLIC_FIREBASE_*`: the public web config, the same values as `.env.local`. Update them with `gh variable set` if they change.
+
+Prefer merging to `main` over a local `firebase deploy` from uncommitted changes, so git and production stay in sync.
+
+## 📦 Manual Deployment Steps
 
 ### 1. **Build the Application**
 ```bash

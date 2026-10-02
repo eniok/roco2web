@@ -6,6 +6,9 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "predeploy": [
+      "rm -rf .next/dev"
+    ],
     "frameworksBackend": {
       "region": "europe-west1"
     }

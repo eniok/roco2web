@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore, Firestore, getDocs, collection, getDoc, doc } from 'firebase/firestore/lite';
 import { getStorage } from 'firebase/storage';
+import { normalizeBlogCopy } from '@/lib/blogCopy';
 
 // mirror the same config as analytics.ts
 const config = {
@@ -23,11 +24,11 @@ export const storage  = getStorage(app);
 export const getAllBlogPosts = async () => {
   const snap = await getDocs(collection(db, 'blogPosts'))
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return snap.docs.map(d => ({ slug: d.id, ...(d.data() as any) }))
+  return snap.docs.map(d => normalizeBlogCopy({ slug: d.id, ...(d.data() as any) }))
 }
 
 export const getBlogPost = async (slug: string) => {
   const snap = await getDoc(doc(db, 'blogPosts', slug))
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return snap.exists() ? { slug, ...(snap.data() as any) } : null
+  return snap.exists() ? normalizeBlogCopy({ slug, ...(snap.data() as any) }) : null
 }

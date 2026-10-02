@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { Lang } from './i18n';
 
 export const STORE = {
-  name: 'RO-AL Mobilieri',
+  name: 'ROAL Mobileri',
   phone: '+355672029739',
   phonePretty: '+355 67 202 9739',
   email: 'info@roalmobileri.com',
@@ -12,7 +12,7 @@ export const STORE = {
   addressLine: 'Km 8, Autostrada Tiranë–Durrës, Tiranë 1000',
   googleMaps: 'https://maps.app.goo.gl/c9y8jRiAwvtSGaRaA',
   appleMaps:
-    'https://maps.apple.com/?address=Autostrada%20Tiran%C3%AB%E2%80%93Durr%C3%ABs%2C%20Km%208%2C%20Tiran%C3%AB%201000,%20Albania&ll=41.3520,19.7690&q=RO-AL%20Mobilieri',
+    'https://maps.apple.com/?address=Autostrada%20Tiran%C3%AB%E2%80%93Durr%C3%ABs%2C%20Km%208%2C%20Tiran%C3%AB%201000,%20Albania&ll=41.367775,19.69557&q=ROAL%20Mobileri',
   mapsEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.815510747332!2d19.695570000000004!3d41.367774999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13502e909a5e14ef%3A0xaa02fd9bc40743d5!2sRO-AL%20Mobileri!5e1!3m2!1sen!2s!4v1755731243285!5m2!1sen!2s',
   hours: {

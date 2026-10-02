@@ -1,0 +1,55 @@
+# Builds the Next.js app and deploys it to Firebase Hosting (live) plus its
+# SSR Cloud Function (ssrroalweb, europe-west1) on every push to main.
+# Run it manually from the Actions tab to redeploy without a new commit.
+#
+# Needs:
+#   secrets.FIREBASE_SERVICE_ACCOUNT_ROAL_WEB  key for github-action-1009879602@roal-web
+#   vars.NEXT_PUBLIC_FIREBASE_*                public web config (same as .env.local)
+
+name: Deploy to Firebase
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: firebase-deploy-live
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{ vars.NEXT_PUBLIC_FIREBASE_API_KEY }}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ vars.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+      NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ vars.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}
+      NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_APP_ID }}
+      NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node 22 matches local deploys and the function's nodejs22 runtime.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ROAL_WEB }}
+
+      # The frameworks integration runs `next build` and deploys the SSR
+      # function along with Hosting. The release message records the commit,
+      # so the live version can be matched to git.
+      - name: Deploy
+        run: npx --yes firebase-tools@15 deploy --only hosting --project roal-web --non-interactive --message "$GITHUB_SHA"
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks

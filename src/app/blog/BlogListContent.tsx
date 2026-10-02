@@ -1,67 +1,65 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { collection, getDocs } from 'firebase/firestore/lite';
 import { BlogPost } from '@/constants/blogData';
-import { db } from '@/lib/firebase/firestore';
-import { useLang, type Dict, type Lang } from '@/lib/i18n';
+import { useLang, type Dict } from '@/lib/i18n';
 
 const copy = {
   eyebrow: { sq: 'Blog', en: 'Journal' },
   headingLead: { sq: 'Shënime nga', en: 'Notes from' },
-  headingAccent: { sq: 'punishtja.', en: 'the workshop.' },
+  headingAccent: { sq: 'studioja jonë.', en: 'the workshop.' },
   subhead: {
     sq: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide që mund t\u2019ju ndihmojnë para se të filloni projektin tuaj.',
     en: 'Thoughts on materials, design and the spaces we build — ideas that might help you before starting your own project.',
   },
-  loading: { sq: 'Po ngarkohet…', en: 'Loading…' },
   empty: { sq: 'Asnjë postim për tani.', en: 'No posts yet.' },
-  readMore: { sq: 'Lexo më shumë', en: 'Read more' },
+  readMore: { sq: 'Lexoni më shumë', en: 'Read more' },
 } satisfies Record<string, Dict<string>>;
 
-export default function BlogListContent() {
-  const { lang, setLang } = useLang();
-  const params = useSearchParams();
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+// Month-name lookup for both languages. The dates are stored as localized
+// display strings (e.g. "18 Mars 2025"), which `new Date()` cannot parse — it
+// returns `Invalid Date`/NaN for Albanian month names, producing a NaN
+// comparator whose sort order differs between the server and client V8 engines
+// (the cause of the hydration mismatch). Parsing explicitly keeps sort order
+// deterministic and correct.
+const MONTHS: Record<string, number> = {
+  // Albanian
+  janar: 0, shkurt: 1, mars: 2, prill: 3, maj: 4, qershor: 5,
+  korrik: 6, gusht: 7, shtator: 8, tetor: 9, nentor: 10, dhjetor: 11,
+  // English
+  january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11,
+};
 
-  // Sync lang from ?lang= on mount so shared URLs keep working
-  useEffect(() => {
-    const qp = params.get('lang') as Lang | null;
-    if ((qp === 'sq' || qp === 'en') && qp !== lang) {
-      setLang(qp);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+// Parse a localized "D Month YYYY" string into a sortable timestamp.
+// Returns 0 (oldest) if the string can't be parsed, so unknown formats sink
+// deterministically instead of poisoning the comparator with NaN.
+function postTimestamp(date: string): number {
+  const normalized = date
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, ''); // strip diacritics: "nëntor" -> "nentor"
+  const day = normalized.match(/\d{1,2}/);
+  const year = normalized.match(/\d{4}/);
+  const monthKey = Object.keys(MONTHS).find((m) => normalized.includes(m));
+  if (!day || !year || monthKey === undefined) return 0;
+  return new Date(Number(year[0]), MONTHS[monthKey], Number(day[0])).getTime();
+}
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const snap = await getDocs(collection(db, 'blogPosts'));
-        const posts = snap.docs.map((doc) => ({
-          slug: doc.id,
-          ...(doc.data() as Omit<BlogPost, 'slug'>),
-        }));
-        setBlogPosts(posts);
-      } catch (err) {
-        console.error('Could not fetch blog posts:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
+// Posts are fetched server-side in page.tsx and passed in, so the full list is
+// present in the initial HTML for crawlers. `useLang` only swaps the display
+// language client-side (default 'sq' during SSR/hydration — no mismatch).
+export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
+  const { lang } = useLang();
 
-  const sortedPosts = [...blogPosts].sort(
-    (a, b) => new Date(b.dates[lang]).getTime() - new Date(a.dates[lang]).getTime(),
+  const sortedPosts = [...posts].sort(
+    (a, b) => postTimestamp(b.dates[lang]) - postTimestamp(a.dates[lang]),
   );
 
   return (
-    <section className="relative bg-[#FAF8F4] text-[#15130F] min-h-screen">
+    <main id="main-content" className="relative bg-[#FAF8F4] text-[#15130F] min-h-screen">
       <div className="mx-auto max-w-6xl px-6 pt-32 pb-24 sm:px-8 sm:pt-40 sm:pb-32">
         <p className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] mb-5">
           {copy.eyebrow[lang]}
@@ -82,9 +80,7 @@ export default function BlogListContent() {
           {copy.subhead[lang]}
         </p>
 
-        {loading ? (
-          <p className="mt-16 text-sm text-[#15130F]/50">{copy.loading[lang]}</p>
-        ) : blogPosts.length === 0 ? (
+        {sortedPosts.length === 0 ? (
           <p className="mt-16 text-sm text-[#15130F]/50">{copy.empty[lang]}</p>
         ) : (
           <ul
@@ -148,6 +144,6 @@ export default function BlogListContent() {
           </ul>
         )}
       </div>
-    </section>
+    </main>
   );
 }

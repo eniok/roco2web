@@ -1,21 +1,27 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useLang, type Dict } from '@/lib/i18n';
 import { whatsappHref } from '@/lib/store';
 
 const PRESET: Dict<string> = {
-  sq: 'Përshëndetje ROAL, dua të mësoj më shumë për një projekt me porosi.',
+  sq: 'Përshëndetje ROAL, dua të flasim për një projekt interieri.',
   en: 'Hello ROAL, I\u2019d like to learn more about a made-to-measure project.',
 };
 
 const LABEL: Dict<string> = {
-  sq: 'Shkruaj në WhatsApp',
+  sq: 'Na shkruani në WhatsApp',
   en: 'Message on WhatsApp',
 };
 
 export default function WhatsAppFAB() {
   const { lang } = useLang();
+  const pathname = usePathname();
+
+  // The catalogues have contextual WhatsApp actions in the hero and selection
+  // summary; the floating shortcut would cover the swipeable choice cards.
+  if (pathname === '/kuzhina/katalog' || pathname === '/garderoba/katalog') return null;
 
   return (
     <a

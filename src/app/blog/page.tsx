@@ -1,22 +1,23 @@
 import { Metadata } from 'next';
-import { Suspense } from 'react';
+import type { BlogPost } from '@/constants/blogData';
+import { getAllBlogPosts } from '@/lib/firebase/firestore';
 import BlogListContent from './BlogListContent';
 
 export const metadata: Metadata = {
-  title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+  title: 'Blog — Shënime nga studioja ROAL',
   description:
-    'Shënime mbi materialet, dizajnin dhe hapësirat që ndërtojmë. Ide dhe këshilla para se të filloni projektin tuaj me porosi.',
+    'Shënime mbi materialet, projektimin dhe interierët që realizojmë. Ide dhe këshilla përpara se të nisni projektin tuaj.',
   keywords: [
     'blog mobilje',
     'dizajn interieri Shqipëri',
-    'mobilje me porosi',
+    'mobilje të personalizuara',
     'kuzhina me masë',
     'këshilla dizajni',
     'ROAL Mobileri',
     'bespoke furniture blog',
   ],
   openGraph: {
-    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    title: 'Blog — Shënime nga studioja | ROAL Mobileri',
     description:
       'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë — ide për projektin tuaj të ardhshëm.',
     url: 'https://roal.design/blog',
@@ -34,16 +35,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog — Shënime nga punishtja | ROAL Mobileri',
+    title: 'Blog — Shënime nga studioja | ROAL Mobileri',
     description: 'Mendime mbi materialet, dizajnin dhe hapësirat që ndërtojmë.',
     images: ['https://roal.design/images/cover.jpg'],
   },
   alternates: {
     canonical: 'https://roal.design/blog',
-    languages: {
-      'sq-AL': '/blog?lang=sq',
-      'en-AL': '/blog?lang=en',
-    },
   },
   robots: {
     index: true,
@@ -58,16 +55,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogListPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="bg-[#FAF8F4] min-h-screen pt-32 text-center text-sm text-[#15130F]/50">
-          Po ngarkohet…
-        </div>
-      }
-    >
-      <BlogListContent />
-    </Suspense>
-  );
+// Revalidate hourly so the post list is served from cached HTML (ISR), not refetched per request.
+export const revalidate = 3600;
+
+export default async function BlogListPage() {
+  const posts = (await getAllBlogPosts().catch(() => [])) as BlogPost[];
+  return <BlogListContent posts={posts} />;
 }

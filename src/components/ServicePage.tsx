@@ -1,21 +1,29 @@
 'use client';
 
 import Link from 'next/link';
+import { localizedHref } from '@/lib/localizedRoutes';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, MessageCircle, Plus } from 'lucide-react';
 import { useLang, type Dict } from '@/lib/i18n';
-import type { ServiceConfig } from '@/constants/services';
+import { ALL_SERVICES, type ServiceConfig } from '@/constants/services';
 
 const copy = {
-  visitCta: { sq: 'Vizito showroom-in', en: 'Visit the showroom' },
-  whatsappCta: { sq: 'Shkruaj në WhatsApp', en: 'Message on WhatsApp' },
+  visitCta: { sq: 'Vizitoni showroom-in', en: 'Visit the showroom' },
+  whatsappCta: { sq: 'Na shkruani në WhatsApp', en: 'Message on WhatsApp' },
   backHome: { sq: '← Kreu', en: '← Home' },
-  ctaHeading: { sq: 'Le të fillojmë.', en: 'Let\u2019s start.' },
+  ctaHeading: { sq: 'Le ta nisim projektin tuaj.', en: 'Let\u2019s start.' },
   ctaSub: {
-    sq: 'Konsultimi dhe matja janë falas. Eja në showroom ose na shkruaj për të caktuar një takim.',
-    en: 'The consultation and measurement are free. Visit the showroom or message us to book a meeting.',
+    sq: 'Na tregoni idenë dhe buxhetin tuaj. Konsultimi, matja dhe projekti 3D janë falas; zgjedhjet dhe ofertën i diskutojmë bashkë përpara prodhimit.',
+    en: 'Tell us your idea and budget. Consultation, measurement and 3D design are free; we work through the options and quote together before production.',
+  },
+  budgetNote: {
+    sq: 'Nisim nga idetë dhe buxheti juaj. Krahasojmë materialet bashkë dhe ju japim një ofertë të detajuar përpara prodhimit.',
+    en: 'We start with your ideas and budget. Compare materials with us and review a detailed quote before production.',
   },
   faqHeading: { sq: 'Pyetje të shpeshta', en: 'Frequently asked' },
+  moreServices: { sq: 'Shërbime të tjera', en: 'More services' },
+  viewService: { sq: 'Shihni shërbimin', en: 'View service' },
+  catalogueCta: { sq: 'Shfletoni udhëzuesin e materialeve', en: 'Browse the choice atlas' },
 } satisfies Record<string, Dict<string>>;
 
 const WHATSAPP_HREF = 'https://wa.me/355672029739';
@@ -23,15 +31,22 @@ const SHOWROOM_HREF = '/#showroom';
 
 export default function ServicePage({ service }: { service: ServiceConfig }) {
   const { lang } = useLang();
+  const others = ALL_SERVICES.filter((s) => s.slug !== service.slug);
+  const catalogueHref =
+    service.slug === 'kuzhina'
+      ? '/kuzhina/katalog'
+      : service.slug === 'garderoba'
+        ? '/garderoba/katalog'
+        : undefined;
 
   return (
-    <main className="bg-[#FAF8F4] text-[#15130F]">
+    <main id="main-content" lang={lang} className="bg-[#FAF8F4] text-[#15130F]">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
             <Link
-              href="/"
+              href={localizedHref('/', lang)}
               className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E] hover:underline"
             >
               {copy.backHome[lang]}
@@ -69,9 +84,13 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
               {service.subhead[lang]}
             </motion.p>
 
+            <p className="mt-5 max-w-xl border-l border-[#8B4A2E]/35 pl-4 text-sm leading-relaxed text-[#3A352C]">
+              {copy.budgetNote[lang]}
+            </p>
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href={SHOWROOM_HREF}
+                href={localizedHref(SHOWROOM_HREF, lang)}
                 className="inline-flex items-center gap-2 rounded-full bg-[#15130F] px-6 py-3 text-sm font-medium text-[#FAF8F4] transition hover:bg-[#8B4A2E]"
               >
                 {copy.visitCta[lang]}
@@ -87,6 +106,18 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
                 {copy.whatsappCta[lang]}
               </a>
             </div>
+            {catalogueHref && (
+              <Link
+                href={catalogueHref}
+                className="group mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-[#8B4A2E] underline decoration-[#8B4A2E]/35 underline-offset-[6px] transition hover:decoration-[#8B4A2E]"
+              >
+                {copy.catalogueCta[lang]}
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            )}
           </div>
 
           <motion.div
@@ -136,8 +167,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
               }}
             >
-              {service.headingLead[lang]}{' '}
-              <span className="italic text-[#E8B894]">{service.headingAccent[lang]}</span>
+              {service.includesHeading[lang]}
             </h2>
           </div>
 
@@ -216,6 +246,44 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
         </section>
       )}
 
+      {/* More services — sibling cross-links spread authority and keep visitors on the site */}
+      {others.length > 0 && (
+        <section className="border-t border-[#15130F]/10 bg-[#FAF8F4]">
+          <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+            <p className="text-[0.7rem] uppercase tracking-[0.22em] text-[#8B4A2E]">
+              {copy.moreServices[lang]}
+            </p>
+            <ul
+              role="list"
+              className="mt-8 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              {others.map((s) => (
+                <li key={s.slug} className="border-t border-[#15130F]/15 pt-5">
+                  <Link href={localizedHref(`/${s.slug}`, lang)} className="group block focus:outline-none">
+                    <h3
+                      className="font-serif text-xl font-normal leading-snug tracking-tight text-[#15130F] transition-colors group-hover:text-[#8B4A2E]"
+                      style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+                    >
+                      {s.eyebrow[lang]}
+                    </h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-[#3A352C] line-clamp-2">
+                      {s.subhead[lang]}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#15130F] underline-offset-[6px] group-hover:underline">
+                      {copy.viewService[lang]}
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* Bottom CTA */}
       <section className="bg-[#15130F] text-[#FAF8F4]">
         <div className="mx-auto max-w-4xl px-6 py-24 text-center sm:px-8 sm:py-32">
@@ -233,7 +301,7 @@ export default function ServicePage({ service }: { service: ServiceConfig }) {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href={SHOWROOM_HREF}
+              href={localizedHref(SHOWROOM_HREF, lang)}
               className="inline-flex items-center gap-2 rounded-full bg-[#FAF8F4] px-6 py-3 text-sm font-medium text-[#15130F] transition hover:bg-[#E8B894]"
             >
               {copy.visitCta[lang]}
