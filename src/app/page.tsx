@@ -1,5 +1,6 @@
 // src/app/page.tsx
 import Hero from '../components/Hero';
+import RoalExperience from '../components/RoalExperience';
 import ProcessSection from '../components/ProcessSection';
 import ProjectsGallery from '../components/ProjectsGallery';
 import CatalogueGateway from '../components/CatalogueGateway';
@@ -15,6 +16,7 @@ export default function HomePage() {
     <main id="main-content">
       <HomeSchema />
       <Hero />
+      <RoalExperience />
       <ProcessSection />
       <ProjectsGallery />
       <CatalogueGateway />
