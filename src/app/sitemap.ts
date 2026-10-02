@@ -34,11 +34,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const posts = await getAllBlogPosts().catch(() => [] as Array<{ slug: string; publishedAt?: string | number | Date }>);
+  const posts = await getAllBlogPosts().catch(() => [] as Array<{ slug: string; publishedAt?: string; updatedAt?: string }>);
 
   const blogRoutes: MetadataRoute.Sitemap = posts.flatMap((post) => {
-    const published = post.publishedAt ? new Date(post.publishedAt) : undefined;
-    const lastModified = published && !Number.isNaN(published.getTime()) ? published : undefined;
+    // Same date as the article's dateModified.
+    const edited = post.updatedAt || post.publishedAt;
+    const date = edited ? new Date(edited) : undefined;
+    const lastModified = date && !Number.isNaN(date.getTime()) ? date : undefined;
     return (['sq', 'en'] as const).map((lang) => ({
       url: `${SITE_URL}/blog/${post.slug}/${lang}`,
       lastModified,
