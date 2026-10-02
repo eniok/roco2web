@@ -94,12 +94,18 @@ export const metadata: Metadata = {
   },
 };
 
+// Google Business Profile listing (stable CID link).
+const GOOGLE_BUSINESS_PROFILE = 'https://www.google.com/maps?cid=12250632781851739093';
+
 const LOCAL_BUSINESS_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
   '@id': 'https://roal.design/#business',
   name: 'ROAL Mobileri',
-  alternateName: 'RO-AL SH.P.K',
+  legalName: 'RO-AL SH.P.K',
+  // Names the business is listed and searched under (the Google Business
+  // Profile uses "RO-AL Mobileri"), so search and AI systems join them up.
+  alternateName: ['RO-AL Mobileri', 'Mobileri ROAL'],
   // Bilingual description — English retrieval matters for AI assistants
   // answering "furniture in Tirana" queries asked in English.
   description: [
@@ -122,7 +128,7 @@ const LOCAL_BUSINESS_JSON_LD = {
   email: 'info@roalmobileri.com',
   currenciesAccepted: 'ALL, EUR',
   paymentAccepted: 'Cash, Bank transfer, Bank instalment plans',
-  hasMap: 'https://www.google.com/maps/search/?api=1&query=41.367775,19.69557',
+  hasMap: GOOGLE_BUSINESS_PROFILE,
   knowsAbout: [
     'kuzhina të projektuara',
     'bespoke kitchens',
@@ -173,7 +179,12 @@ const LOCAL_BUSINESS_JSON_LD = {
       closes: '16:00',
     },
   ],
-  sameAs: ['https://www.instagram.com/roal_mobileri/'],
+  sameAs: [
+    'https://www.instagram.com/roal_mobileri/',
+    'https://www.facebook.com/roalmobileri/',
+    'https://www.threads.com/@roal_mobileri',
+    GOOGLE_BUSINESS_PROFILE,
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Shërbime ROAL Mobileri',
