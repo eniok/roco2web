@@ -31,13 +31,16 @@ This guide will help you deploy your Next.js application to Firebase Hosting.
       "region": "europe-west1",
       "memory": "1GiB",
       "cpu": 1,
-      "concurrency": 80
+      "concurrency": 80,
+      "minInstances": 1
     }
   }
 }
 ```
 
 `frameworksBackend` is passed to the SSR function (`ssrroalweb`) as its options. At the default 256 MiB the function got about 1/6 of a vCPU and handled one request per instance. It regularly logged "Memory limit of 256 MiB exceeded", and requests in flight when the instance was killed failed. Under a crawler's parallel requests, blog pages returned 500s or timed out. Use at least one full vCPU so an instance can serve concurrent requests.
+
+`minInstances: 1` keeps one instance warm. Blog pages and the feed don't wait for a cold Next.js server, and AI fetchers abandon a page within a few seconds. The idle instance is billed continuously, roughly US$13 a month at 1 vCPU / 1 GiB in europe-west1. Remove the line to return to scale-to-zero.
 
 ### Next.js Configuration (`next.config.ts`)
 ```typescript
